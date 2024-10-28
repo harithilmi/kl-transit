@@ -1,26 +1,38 @@
 import { type ReactNode } from "react";
+import { db } from "~/server/db";
 
 function Card({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <div className={`rounded-lg bg-white/10 p-6 shadow-xl backdrop-blur-sm ${className}`}>
-      {children}
-    </div>
-  );
+		<div
+			className={`rounded-lg bg-white/10 p-6 shadow-xl backdrop-blur-sm ${className}`}
+		>
+			{children}
+		</div>
+	);
 }
 
-export default function HomePage() {
-  return (
-    <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] px-4 py-16 text-white">
-      <div className="container flex max-w-6xl flex-col items-center gap-12">
-        {/* Hero Section */}
-        <div className="flex flex-col items-center gap-4 text-center">
-          <h1 className="text-5xl font-bold tracking-tight sm:text-[5rem]">
-            KL Transit
-          </h1>
-          <p className="text-lg text-white/80">
-            Find your way around Kuala Lumpur with real-time bus information
-          </p>
-        </div>
+export default async function HomePage() {
+
+	const posts = await db.query.posts.findMany();
+
+	console.log(posts);
+	return (
+		<main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] px-4 py-16 text-white">
+			<div className="container flex max-w-6xl flex-col items-center gap-12">
+				{/* Hero Section */}
+				<div className="flex flex-col items-center gap-4 text-center">
+					<h1 className="text-5xl font-bold tracking-tight sm:text-[5rem]">
+						KL Transit
+					</h1>
+					
+						{posts.map((post) => (
+							<p key={post.id}>{post.name}</p>
+						))}
+
+					<p className="text-lg text-white/80">
+						Find your way around Kuala Lumpur with real-time bus information
+					</p>
+				</div>
 
         {/* Search Section */}
         <Card className="w-full max-w-2xl">
