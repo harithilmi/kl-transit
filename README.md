@@ -2,8 +2,8 @@
 
 ## To do list
 
-- [ ] Make it deploy
-- [ ] Scaffold basic ui with mock data
+- [x] Make it deploy
+- [x] Scaffold basic ui with mock data
 - [ ] Setup db (vercel postgres)
 - [ ] Attach db to UI
 - [ ] Error management (sentry)
