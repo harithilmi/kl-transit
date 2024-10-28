@@ -15,9 +15,11 @@ export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
 
-	const posts = await db.query.posts.findMany();
+	const routes = await db.query.routes.findMany({
+		orderBy: (routes, { asc }) => [asc(routes.routeShortName)],
+	});
 
-	console.log(posts);
+	console.log(routes);
 	return (
 		<main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] px-4 py-16 text-white">
 			<div className="container flex max-w-6xl flex-col items-center gap-12">
@@ -26,10 +28,7 @@ export default async function HomePage() {
 					<h1 className="text-5xl font-bold tracking-tight sm:text-[5rem]">
 						KL Transit
 					</h1>
-					
-						{posts.map((post) => (
-							<p key={post.id}>{post.name}</p>
-						))}
+
 
 					<p className="text-lg text-white/80">
 						Find your way around Kuala Lumpur with real-time bus information
@@ -55,27 +54,27 @@ export default async function HomePage() {
           <Card>
             <h3 className="mb-2 text-xl font-bold">Popular Routes</h3>
             <ul className="space-y-2 text-white/80">
-              <li>• GOKL City Bus</li>
-              <li>• Smart Selangor</li>
-              <li>• RapidKL Bus</li>
+              {routes.map((route) => (
+                <li key={route.id}><span className="font-bold">{route.routeShortName}</span> - 	{route.routeLongName}</li>
+              ))}
             </ul>
           </Card>
 
           <Card>
             <h3 className="mb-2 text-xl font-bold">Service Updates</h3>
-            <p className="text-white/80">
-              Real-time updates and service notifications for KL bus routes
-            </p>
-          </Card>
+						<p className="text-white/80">
+							Real-time updates and service notifications for KL bus routes
+						</p>
+					</Card>
 
-          <Card>
-            <h3 className="mb-2 text-xl font-bold">Plan Your Journey</h3>
-            <p className="text-white/80">
-              Get detailed route information and estimated travel times
-            </p>
-          </Card>
-        </div>
-      </div>
-    </main>
-  );
+					<Card>
+						<h3 className="mb-2 text-xl font-bold">Plan Your Journey</h3>
+						<p className="text-white/80">
+							Get detailed route information and estimated travel times
+						</p>
+					</Card>
+				</div>
+			</div>
+		</main>
+	);
 }
