@@ -50,29 +50,19 @@ export default async function HomePage() {
         </Card>
 
         {/* Quick Info Cards */}
-        <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid w-full ">
           <Card>
             <h3 className="mb-2 text-xl font-bold">Popular Routes</h3>
-            <ul className="space-y-2 text-white/80">
-              {routes.map((route) => (
-                <li key={route.id}><span className="font-bold">{route.routeShortName}</span> - 	{route.routeLongName}</li>
+						<ul className="space-y-2 text-white/80">
+              {routes.slice(0, 5).map((route) => (
+                <li key={route.id}>
+                  <span className="font-bold">{route.routeShortName}</span> -{" "}
+                  {route.routeLongName}
+                </li>
               ))}
             </ul>
           </Card>
 
-          <Card>
-            <h3 className="mb-2 text-xl font-bold">Service Updates</h3>
-						<p className="text-white/80">
-							Real-time updates and service notifications for KL bus routes
-						</p>
-					</Card>
-
-					<Card>
-						<h3 className="mb-2 text-xl font-bold">Plan Your Journey</h3>
-						<p className="text-white/80">
-							Get detailed route information and estimated travel times
-						</p>
-					</Card>
 				</div>
 			</div>
 		</main>

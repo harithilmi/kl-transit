@@ -23,9 +23,9 @@ export const routes = createTable(
   'route',
   {
     id: serial('id').primaryKey(),
-    routeId: varchar('route_id', { length: 10 }).notNull().unique(),
+    routeId: varchar('route_id', { length: 50 }).notNull().unique(),
     agencyId: varchar('agency_id', { length: 50 }).notNull(),
-    routeShortName: varchar('route_short_name', { length: 10 }).notNull(),
+    routeShortName: varchar('route_short_name', { length: 50 }).notNull(),
     routeLongName: varchar('route_long_name', { length: 100 }).notNull(),
     routeType: integer('route_type').notNull(),
     routeColor: varchar('route_color', { length: 6 }).notNull(),
@@ -52,11 +52,11 @@ export const routes = createTable(
 
 export const stops = createTable('stop', {
   id: serial('id').primaryKey(),
-  stopId: varchar('stop_id', { length: 10 }).notNull().unique(),
-  stopName: varchar('stop_name', { length: 100 }).notNull(),
-  stopDesc: varchar('stop_desc', { length: 100 }).notNull(),
-  stopLat: varchar('stop_lat', { length: 20 }).notNull(),
-  stopLon: varchar('stop_lon', { length: 20 }).notNull(),
+  stopId: varchar('stop_id', { length: 10 }),
+  stopName: varchar('stop_name', { length: 100 }),
+  stopDesc: varchar('stop_desc', { length: 100 }),
+  stopLat: varchar('stop_lat', { length: 20 }),
+  stopLon: varchar('stop_lon', { length: 20 }),
 })
 
 //stops.csv
@@ -67,12 +67,12 @@ export const stops = createTable('stop', {
 
 export const stopTimes = createTable('stop_time', {
   id: serial('id').primaryKey(),
-  tripId: varchar('trip_id', { length: 10 }).notNull(),
-  arrivalTime: varchar('arrival_time', { length: 10 }).notNull(),
-  departureTime: varchar('departure_time', { length: 10 }).notNull(),
+  tripId: varchar('trip_id', { length: 50 }).notNull(),
+  arrivalTime: varchar('arrival_time', { length: 50 }).notNull(),
+  departureTime: varchar('departure_time', { length: 50 }).notNull(),
   stopId: varchar('stop_id', { length: 10 }).notNull(),
-  stopSequence: integer('stop_sequence').notNull(),
-  stopHeadsign: varchar('stop_headsign', { length: 100 }).notNull(),
+  stopSequence: integer('stop_sequence').notNull(),  // This needs to handle string conversion
+  stopHeadsign: varchar('stop_headsign', { length: 100 }).default(''),
 })
 
 // 	trip_id,arrival_time,departure_time,stop_id,stop_sequence,stop_headsign
@@ -86,12 +86,12 @@ export const stopTimes = createTable('stop_time', {
 
 export const trips = createTable('trip', {
   id: serial('id').primaryKey(),
-  routeId: varchar('route_id', { length: 10 }).notNull(),
-  serviceId: varchar('service_id', { length: 10 }).notNull(),
-  tripId: varchar('trip_id', { length: 10 }).notNull(),
-  shapeId: varchar('shape_id', { length: 10 }).notNull(),
-  tripHeadsign: varchar('trip_headsign', { length: 100 }).notNull(),
-  directionId: integer('direction_id').notNull(),
+  routeId: varchar('route_id', { length: 50 }).notNull(),
+  serviceId: varchar('service_id', { length: 50 }),
+  tripId: varchar('trip_id', { length: 50 }).notNull().unique(), // Add unique constraint
+  shapeId: varchar('shape_id', { length: 50 }),
+  tripHeadsign: varchar('trip_headsign', { length: 100 }),
+  directionId: integer('direction_id'),
 })
 
 // route_id,service_id,trip_id,shape_id,trip_headsign,direction_id
