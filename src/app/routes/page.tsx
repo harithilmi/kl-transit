@@ -1,10 +1,23 @@
 import { db } from '~/server/db'
 import { Card } from '~/components/ui/card'
+import { SearchForm } from './search-form'
 
-export default async function RoutesPage() {
+export default async function RoutesPage({
+  searchParams,
+}: {
+  searchParams: { q?: string }
+}) {
+  const search = searchParams.q?.toLowerCase() ?? ''
+
   const routes = await db.query.routes.findMany({
     orderBy: (routes, { asc }) => [asc(routes.routeShortName)],
   })
+
+  const filteredRoutes = routes.filter(
+    (route) =>
+      route.routeShortName.toLowerCase().includes(search) ||
+      route.routeLongName.toLowerCase().includes(search),
+  )
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] px-4 py-16 text-white">
@@ -19,17 +32,13 @@ export default async function RoutesPage() {
         {/* Search and Filter */}
         <Card className="w-full max-w-2xl">
           <div className="flex flex-col gap-4 p-4">
-            <input
-              type="text"
-              placeholder="Search by route number or destination..."
-              className="w-full rounded-lg bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/20"
-            />
+            <SearchForm initialSearch={search} />
           </div>
         </Card>
 
         {/* Routes Grid */}
         <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {routes.map((route) => (
+          {filteredRoutes.map((route) => (
             <Card key={route.id} className="flex flex-col p-4">
               <div className="flex items-center gap-3">
                 <div
