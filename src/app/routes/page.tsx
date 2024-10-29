@@ -1,6 +1,7 @@
 import { db } from '~/server/db'
 import { Card } from '~/components/ui/card'
 import { SearchForm } from './search-form'
+import Link from 'next/link'
 
 export default async function RoutesPage({
   searchParams,
@@ -39,25 +40,33 @@ export default async function RoutesPage({
         {/* Routes Grid */}
         <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {filteredRoutes.map((route) => (
-            <Card key={route.id} className="flex flex-col p-4">
-              <div className="flex items-center gap-3">
-                <div
-                  className="flex h-12 w-12 items-center justify-center rounded-lg font-bold"
-                  style={{
-                    backgroundColor: `#${route.routeColor}`,
-                    color: `#${route.routeTextColor}`,
-                  }}
-                >
-                  {route.routeShortName}
+            <Link
+              className="transition-transform hover:scale-105"
+              href={`/routes/${route.routeShortName}`}
+              key={route.id}
+            >
+              <Card className="flex flex-col p-4">
+                <div className="flex items-center gap-3">
+                  <div
+                    className="flex h-12 w-12 items-center justify-center rounded-lg font-bold"
+                    style={{
+                      backgroundColor: `#${route.routeColor}`,
+                      color: `#${route.routeTextColor}`,
+                    }}
+                  >
+                    {route.routeShortName}
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="font-semibold">
+                      {route.routeShortName}
+                    </span>
+                    <span className="text-sm text-white/70">
+                      {route.routeLongName}
+                    </span>
+                  </div>
                 </div>
-                <div className="flex flex-col">
-                  <span className="font-semibold">{route.routeShortName}</span>
-                  <span className="text-sm text-white/70">
-                    {route.routeLongName}
-                  </span>
-                </div>
-              </div>
-            </Card>
+              </Card>
+            </Link>
           ))}
         </div>
       </div>
