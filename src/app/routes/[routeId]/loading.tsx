@@ -13,7 +13,7 @@ export default function LoadingRoutePage() {
         {/* Stops List Loading */}
         <Card className="w-full max-w-2xl">
           <div className="flex flex-col divide-y divide-white/10">
-            {[...Array(10)].map((_, i) => (
+            {[...Array<number>(10)].map((_, i) => (
               <div key={i} className="flex items-center gap-4 p-4">
                 <div className="h-8 w-8 animate-pulse rounded-full bg-white/20" />
                 <div className="flex flex-col gap-2">
