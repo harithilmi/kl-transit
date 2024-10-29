@@ -32,7 +32,7 @@ export default async function HomePage() {
 
 
 					<p className="text-lg text-white/80">
-						Find your way around Kuala Lumpur with real-time bus information
+						Your guide to public transportation in Kuala Lumpur
 					</p>
 				</div>
 

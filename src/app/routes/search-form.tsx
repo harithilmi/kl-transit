@@ -22,14 +22,32 @@ export function SearchForm({ initialSearch }: { initialSearch: string }) {
   }
 
   return (
-    <input
-      type="text"
-      placeholder="Search by route number or destination..."
-      defaultValue={initialSearch}
-      onChange={(e) => handleSearch(e.target.value)}
-      className={`w-full rounded-lg bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/20 ${
-        isPending ? 'opacity-50' : ''
-      }`}
-    />
+    <div className="flex gap-2">
+      <input
+        type="text"
+        placeholder="Search for a bus route or destination..."
+        defaultValue={initialSearch}
+        onChange={(e) => {
+          startTransition(() => {
+            router.push(`/routes?q=${encodeURIComponent(e.target.value)}`)
+          })
+        }}
+        className={`w-full rounded-lg bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/20 ${
+          isPending ? 'opacity-50' : ''
+        }`}
+      />
+      <button
+        onClick={() => {
+          const input = document.querySelector('input') as HTMLInputElement
+          startTransition(() => {
+            router.push(`/routes?q=${encodeURIComponent(input.value)}`)
+          })
+        }}
+        disabled={isPending}
+        className="rounded-lg bg-white/10 px-6 py-3 font-medium text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/20 disabled:opacity-50"
+      >
+        Search
+      </button>
+    </div>
   )
 }
