@@ -10,6 +10,7 @@ import {
   varchar,
   integer,
 } from 'drizzle-orm/pg-core'
+import { relations } from 'drizzle-orm'
 
 /**
  * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
@@ -50,14 +51,26 @@ export const routes = createTable(
 // U3000,rapidkl,300,Hab Pandan Indah ~ Lebuh Ampang,3,006CFF,FFFFFF
 // U3030,rapidkl,303,Taman Mulia Jaya ~ Lebuh Ampang,3,006CFF,FFFFFF
 
-export const stops = createTable('stop', {
-  id: serial('id').primaryKey(),
-  stopId: varchar('stop_id', { length: 10 }),
-  stopName: varchar('stop_name', { length: 100 }),
-  stopDesc: varchar('stop_desc', { length: 100 }),
-  stopLat: varchar('stop_lat', { length: 20 }),
-  stopLon: varchar('stop_lon', { length: 20 }),
-})
+export const stops = createTable(
+  'stop',
+  {
+    id: serial('id').primaryKey(),
+    stopId: varchar('stop_id', { length: 10 }).notNull().unique(),
+    stopName: varchar('stop_name', { length: 100 }).notNull(),
+    stopDesc: varchar('stop_desc', { length: 100 }),
+    stopLat: varchar('stop_lat', { length: 20 }).notNull(),
+    stopLon: varchar('stop_lon', { length: 20 }).notNull(),
+    createdAt: timestamp('created_at', { withTimezone: true })
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+    updatedAt: timestamp('updated_at', { withTimezone: true }).$onUpdate(
+      () => new Date(),
+    ),
+  },
+  (stops) => ({
+    stopIdIndex: index('stop_id_idx').on(stops.stopId),
+  }),
+)
 
 //stops.csv
 // stop_id,stop_name,stop_desc,stop_lat,stop_lon
@@ -65,41 +78,85 @@ export const stops = createTable('stop', {
 // 1001672,KL112 KOTA RAYA,JLN TUN TAN CHENG LOCK,3.1454957091436,101.69812709966
 // 1002080,KL113 HAB LEBUH PUDU,JLN TUN PERAK,3.146744,101.698695
 
-export const stopTimes = createTable('stop_time', {
-  id: serial('id').primaryKey(),
-  tripId: varchar('trip_id', { length: 50 }).notNull(),
-  arrivalTime: varchar('arrival_time', { length: 50 }).notNull(),
-  departureTime: varchar('departure_time', { length: 50 }).notNull(),
-  stopId: varchar('stop_id', { length: 10 }).notNull(),
-  stopSequence: integer('stop_sequence').notNull(),  // This needs to handle string conversion
-  stopHeadsign: varchar('stop_headsign', { length: 100 }).default(''),
-})
+export const routeStops = createTable(
+  'route_stop',
+  {
+    id: serial('id').primaryKey(),
+    routeId: varchar('route_id', { length: 50 })
+      .notNull()
+      .references(() => routes.routeId),
+    stopId: varchar('stop_id', { length: 10 })
+      .notNull()
+      .references(() => stops.stopId),
+    sequence: integer('sequence').notNull(),
+    headsign: varchar('headsign', { length: 100 }).notNull(),
+    createdAt: timestamp('created_at', { withTimezone: true })
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+    updatedAt: timestamp('updated_at', { withTimezone: true }).$onUpdate(
+      () => new Date(),
+    ),
+  },
+  (routeStops) => ({
+    routeStopIndex: index('route_stop_idx').on(
+      routeStops.routeId,
+      routeStops.stopId,
+    ),
+    sequenceIndex: index('sequence_idx').on(
+      routeStops.routeId,
+      routeStops.sequence,
+    ),
+  }),
+)
 
-// 	trip_id,arrival_time,departure_time,stop_id,stop_sequence,stop_headsign
-// weekend_U8510_U851002_0,06:30:00,06:30:00,1004342,1,Kompleks Mahkamah Jalan Duta
-// weekend_U8510_U851002_0,06:30:24,06:30:24,1001672,2,Kompleks Mahkamah Jalan Duta
-// weekend_U8510_U851002_0,06:30:40,06:30:40,1002080,3,Kompleks Mahkamah Jalan Duta
-// weekend_U8510_U851002_0,06:31:01,06:31:01,1001810,4,Kompleks Mahkamah Jalan Duta
-// weekend_U8510_U851002_0,06:31:41,06:31:41,1000230,5,Kompleks Mahkamah Jalan Duta
-// weekend_U8510_U851002_0,06:31:54,06:31:54,1001070,6,Kompleks Mahkamah Jalan Duta
-// weekend_U8510_U851002_0,06:32:14,06:32:14,1001411,7,Kompleks Mahkamah Jalan Duta
+// route_id stop_id stop_sequence stop_headsign
+// 1004342	1	Kompleks Mahkamah Jalan Duta
+// 1001672	2	Kompleks Mahkamah Jalan Duta
+// 1002080	3	Kompleks Mahkamah Jalan Duta
+// 1001810	4	Kompleks Mahkamah Jalan Duta
+// 1000230	5	Kompleks Mahkamah Jalan Duta
+// 1001070	6	Kompleks Mahkamah Jalan Duta
+// 1001411	7	Kompleks Mahkamah Jalan Duta
+// 1001173	8	Kompleks Mahkamah Jalan Duta
+// 1001171	9	Kompleks Mahkamah Jalan Duta
+// 1000313	10	Kompleks Mahkamah Jalan Duta
+// 1000597	11	Kompleks Mahkamah Jalan Duta
+// 1001099	12	Kompleks Mahkamah Jalan Duta
+// 1001101	13	Kompleks Mahkamah Jalan Duta
+// 1001957	14	Kompleks Mahkamah Jalan Duta
+// 1001623	15	Pasar Seni
+// 1002010	16	Pasar Seni
+// 1001116	17	Pasar Seni
+// 1001958	18	Pasar Seni
+// 1007469	19	Pasar Seni
+// 1001100	20	Pasar Seni
+// 1001375	21	Pasar Seni
+// 1000598	22	Pasar Seni
+// 1001172	23	Pasar Seni
+// 1001071	24	Pasar Seni
+// 1000488	25	Pasar Seni
+// 1001183	26	Pasar Seni
+// 1001673	27	Pasar Seni
+// 1004342	28	Pasar Seni
 
-export const trips = createTable('trip', {
-  id: serial('id').primaryKey(),
-  routeId: varchar('route_id', { length: 50 }).notNull(),
-  serviceId: varchar('service_id', { length: 50 }),
-  tripId: varchar('trip_id', { length: 50 }).notNull().unique(), // Add unique constraint
-  shapeId: varchar('shape_id', { length: 50 }),
-  tripHeadsign: varchar('trip_headsign', { length: 100 }),
-  directionId: integer('direction_id'),
-})
+// Define relations for routes
+export const routesRelations = relations(routes, ({ many }) => ({
+  routeStops: many(routeStops),
+}))
 
-// route_id,service_id,trip_id,shape_id,trip_headsign,direction_id
-// U8510,weekend,weekend_U8510_U851002_0,U851002,,0
-// S0100,weekday,weekday_S0100_S010002_0,S010002,,0
-// S0100,weekend,weekend_S0100_S010002_0,S010002,,0
-// T7570,weekday,weekday_T7570_T757002_0,T757002,,0
-// T7570,weekday,weekday_T7570_T757002_1,T757002,,0
-// T7570,weekday,weekday_T7570_T757002_2,T757002,,0
-// T7570,weekday,weekday_T7570_T757002_3,T757002,,0
-// T7570,weekday,weekday_T7570_T757002_4,T757002,,0
+// Define relations for stops
+export const stopsRelations = relations(stops, ({ many }) => ({
+  routeStops: many(routeStops),
+}))
+
+// Define relations for routeStops
+export const routeStopsRelations = relations(routeStops, ({ one }) => ({
+  route: one(routes, {
+    fields: [routeStops.routeId],
+    references: [routes.routeId],
+  }),
+  stop: one(stops, {
+    fields: [routeStops.stopId],
+    references: [stops.stopId],
+  }),
+}))

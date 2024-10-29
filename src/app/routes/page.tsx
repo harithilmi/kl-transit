@@ -42,7 +42,7 @@ export default async function RoutesPage({
           {filteredRoutes.map((route) => (
             <Link
               className="transition-transform hover:scale-105"
-              href={`/routes/${route.routeShortName}`}
+              href={`/routes/${route.routeId}`}
               key={route.id}
             >
               <Card className="flex flex-col p-4">
