@@ -1,5 +1,6 @@
 import { type ReactNode } from "react";
 import { db } from "~/server/db";
+import { HomeSearchForm } from "~/app/components/home-search-form";
 
 function Card({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
@@ -36,18 +37,12 @@ export default async function HomePage() {
 				</div>
 
         {/* Search Section */}
-        <Card className="w-full max-w-2xl">
-          <div className="flex flex-col gap-4">
-            <input
-              type="text"
-              placeholder="Search for a bus route or destination..."
-              className="w-full rounded-lg bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/20"
-            />
-            <button className="rounded-lg bg-white px-4 py-3 font-semibold text-[#2e026d] hover:bg-white/90">
-              Search Routes
-            </button>
-          </div>
-        </Card>
+		{/* Search Section */}
+<Card className="w-full max-w-2xl">
+  <div className="flex flex-col gap-4">
+    <HomeSearchForm />
+  </div>
+</Card>
 
         {/* Quick Info Cards */}
         <div className="grid w-full ">
