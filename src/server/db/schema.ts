@@ -89,7 +89,7 @@ export const routeStops = createTable(
       .notNull()
       .references(() => stops.stopId),
     sequence: integer('sequence').notNull(),
-    headsign: varchar('headsign', { length: 100 }).notNull(),
+    headsign: varchar('headsign', { length: 100 }),
     createdAt: timestamp('created_at', { withTimezone: true })
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
