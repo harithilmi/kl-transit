@@ -124,20 +124,7 @@ export const routeStops = createTable(
 // 1001099	12	Kompleks Mahkamah Jalan Duta
 // 1001101	13	Kompleks Mahkamah Jalan Duta
 // 1001957	14	Kompleks Mahkamah Jalan Duta
-// 1001623	15	Pasar Seni
-// 1002010	16	Pasar Seni
-// 1001116	17	Pasar Seni
-// 1001958	18	Pasar Seni
-// 1007469	19	Pasar Seni
-// 1001100	20	Pasar Seni
-// 1001375	21	Pasar Seni
-// 1000598	22	Pasar Seni
-// 1001172	23	Pasar Seni
-// 1001071	24	Pasar Seni
-// 1000488	25	Pasar Seni
-// 1001183	26	Pasar Seni
-// 1001673	27	Pasar Seni
-// 1004342	28	Pasar Seni
+
 
 // Define relations for routes
 export const routesRelations = relations(routes, ({ many }) => ({
