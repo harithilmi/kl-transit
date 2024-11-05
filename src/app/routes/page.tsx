@@ -31,7 +31,7 @@ interface Route {
 
 // Function to get unique route numbers from services
 function getUniqueRoutes(services: Service[]): string[] {
-  return [...new Set(services.map(service => service.route_number))]
+  return [...new Set(services.map((service) => service.route_number))]
 }
 
 // Helper function to read and parse CSV
@@ -53,48 +53,59 @@ export default async function RoutesPage({
 
   // Read CSV files
   const dataDir = path.join(process.cwd(), 'src/data/processed')
-  const services: Service[] = readCsv<Service>(path.join(dataDir, 'services.csv'))
+  const services: Service[] = readCsv<Service>(
+    path.join(dataDir, 'services.csv'),
+  )
   const stops: Stop[] = readCsv<Stop>(path.join(dataDir, 'stops.csv'))
 
   // Get unique routes
   const routeNumbers = getUniqueRoutes(services)
 
   // Create route objects with first and last stops
-  const routes: Route[] = routeNumbers.map(routeNumber => {
-    const routeServices = services.filter(s => s.route_number === routeNumber)
-    
+  const routes: Route[] = routeNumbers.map((routeNumber) => {
+    const routeServices = services.filter((s) => s.route_number === routeNumber)
+
     // Get direction 1 services
     const direction1 = routeServices
-      .filter(s => s.direction === '1')
+      .filter((s) => s.direction === '1')
       .sort((a, b) => a.sequence - b.sequence)
 
     // Get direction 2 services
     const direction2 = routeServices
-      .filter(s => s.direction === '2')
+      .filter((s) => s.direction === '2')
       .sort((a, b) => a.sequence - b.sequence)
 
     // Get first and last stops for direction 1
-    const firstStop1 = direction1.length > 0 && direction1[0]
-      ? stops.find(s => s.stop_id === direction1[0]?.stop_id) ?? null
-      : null
-    const lastStop1 = direction1.length > 0 && direction1[direction1.length - 1]
-      ? stops.find(s => s.stop_id === direction1[direction1.length - 1]?.stop_id) ?? null
-      : null
+    const firstStop1 =
+      direction1.length > 0 && direction1[0]
+        ? stops.find((s) => s.stop_id === direction1[0]?.stop_id) ?? null
+        : null
+    const lastStop1 =
+      direction1.length > 0 && direction1[direction1.length - 1]
+        ? stops.find(
+            (s) => s.stop_id === direction1[direction1.length - 1]?.stop_id,
+          ) ?? null
+        : null
 
     // Get first and last stops for direction 2
-    const firstStop2 = direction2.length > 0 && direction2[0]
-      ? stops.find(s => s.stop_id === direction2[0]?.stop_id) ?? null
-      : null
-    const lastStop2 = direction2.length > 0 && direction2[direction2.length - 1]
-      ? stops.find(s => s.stop_id === direction2[direction2.length - 1]?.stop_id) ?? null
-      : null
+    const firstStop2 =
+      direction2.length > 0 && direction2[0]
+        ? stops.find((s) => s.stop_id === direction2[0]?.stop_id) ?? null
+        : null
+    const lastStop2 =
+      direction2.length > 0 && direction2[direction2.length - 1]
+        ? stops.find(
+            (s) => s.stop_id === direction2[direction2.length - 1]?.stop_id,
+          ) ?? null
+        : null
 
     return {
       routeId: routeNumber,
       routeShortName: routeNumber,
-      routeLongName: direction1.length > 0
-        ? `${firstStop1?.stop_name ?? ''} ↔ ${lastStop1?.stop_name ?? ''}`
-        : `${firstStop2?.stop_name ?? ''} ↔ ${lastStop2?.stop_name ?? ''}`,
+      routeLongName:
+        direction1.length > 0
+          ? `${firstStop1?.stop_name ?? ''} ↔ ${lastStop1?.stop_name ?? ''}`
+          : `${firstStop2?.stop_name ?? ''} ↔ ${lastStop2?.stop_name ?? ''}`,
       routeColor: '1e40af', // Default blue color
       routeTextColor: 'ffffff', // White text
     }
@@ -132,25 +143,12 @@ export default async function RoutesPage({
               key={route.routeId}
             >
               <Card className="flex flex-col p-4">
-                <div className="flex items-center gap-3">
-                  <div
-                    className="flex h-12 w-12 items-center justify-center rounded-lg font-bold"
-                    style={{
-                      backgroundColor: `#${route.routeColor}`,
-                      color: `#${route.routeTextColor}`,
-                    }}
-                  >
-                    {route.routeShortName}
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="font-semibold">
-                      {route.routeShortName}
-                    </span>
-                    <span className="text-sm text-white/70">
-                      {route.routeLongName}
-                    </span>
-                  </div>
-                </div>
+                <div className="flex flex-col">
+                  <span className="font-semibold">{route.routeShortName}</span>
+                  <span className="text-sm text-white/70">
+                    {route.routeLongName}
+                  </span>
+	                </div>
               </Card>
             </Link>
           ))}
