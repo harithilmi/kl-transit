@@ -58,16 +58,16 @@ def extract_stop_info(stop_name):
         prefix = match.group(1)
         number = match.group(2)
         stop_code = f"{prefix}{number}"
-        
+
         # Remove the code and clean up
         clean_name = re.sub(f"{prefix}[\\s-]*?{number}\\s*", "", stop_name).strip()
         # Remove any leading/trailing spaces, commas, and dashes
         clean_name = re.sub(r"^[\s,\-]+|[\s,\-]+$", "", clean_name)
-        
+
         # If clean_name is empty, return original name
         if not clean_name:
             return stop_code, stop_name
-            
+
         return stop_code, clean_name
 
     return None, stop_name
@@ -332,6 +332,17 @@ if not invalid_stops.empty:
         print(
             f"Route {row['route_number']}, Direction {row['direction']}, Zone {row['zone']}"
         )
+
+# Remove duplicate services while preserving the sequence
+services_output = services_output.drop_duplicates(
+    subset=['route_number', 'stop_id', 'direction'], 
+    keep='first'
+).copy()
+
+# Recompute sequence numbers after removing duplicates
+services_output['sequence'] = services_output.groupby(
+    ['route_number', 'direction']
+).cumcount() + 1
 
 # Print invalid stops information
 invalid_stops = stops_output[stops_output["stop_id"].isna()]
