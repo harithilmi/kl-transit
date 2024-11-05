@@ -502,7 +502,7 @@ stop_id,stop_code,stop_name,street_name,latitude,longitude,stop_name_old,street_
 1003066,AJ5,Medan Selera Desa Keramat,Jalan Enggang,3.1765343179563,101.7533559133,Medan Selera Desa Keramat,Jalan Enggang
 1000869,AJ6,GSK (Opp),Jalan Enggang,3.178129791143,101.75457221573,GSK (Opp),Jalan Enggang
 1003821,AJ7,Geologi Petronas,Jalan Au 3/1,3.1801207373274,101.75606951586,Geologi Petronas,Jalan Au 3/1
-1000800,AJ8,Flat PKNS Au3 (Opp),Jalan Au3/1,3.1814831882915,101.75709215496,Flat Pkns Au3 (Opp),Jalan Au3/1
+1000800,AJ8,Flat PKNS Au3 (Opp),Jalan Au3/1,3.1814831882915,101.75709215496,Flat PKNS Au3 (Opp),Jalan Au3/1
 1000995,AJ9,Flat UTM (Opp),Jalan Au 3/1,3.1850311328965,101.75916097828,Flat UTM (Opp),Jalan Au 3/1
 1001761,AJ10,Loji Iwk,Jalan Au3/1,3.1879037937925,101.76030871743,Loji Iwk,Jalan Au3/1
 1004143,AJ11,Transformer,Jalan Au3/1,3.1908805190146,101.76089970243,Transformer,Jalan Au3/1
@@ -534,7 +534,7 @@ stop_id,stop_code,stop_name,street_name,latitude,longitude,stop_name_old,street_
 1004144,AJ16,Transformer (Opp),Jalan Au3/1,3.1899810027823,101.76114303605,Transformer (Opp),Jalan Au3/1
 1001090,AJ17,Loji Iwk,Jalan Au 3/1,3.1879299883652,101.76058368157,Loji Iwk,Jalan Au 3/1
 1000996,AJ18,Flat UTM,Jalan Au 3/1,3.1843791720355,101.75921960751,Flat UTM,Jalan Au 3/1
-1000801,AJ19,Flat PKNS Au3,Jalan Au3/1,3.1812679517238,101.75722310574,Flat Pkns Au3,Jalan Au3/1
+1000801,AJ19,Flat PKNS Au3,Jalan Au3/1,3.1812679517238,101.75722310574,Flat PKNS Au3,Jalan Au3/1
 1000870,AJ20,GSK,Jalan Enggang,3.1779976442041,101.75473156694,GSK,Jalan Enggang
 1003067,AJ21,Sapura,Jalan Enggang,3.1764620964573,101.75360792144,Sapura,Jalan Enggang
 1003063,AJ22,S.E.H,Jalan Enggang,3.1742143133601,101.75321452058,S.E.H,Jalan Enggang
@@ -774,7 +774,7 @@ stop_id,stop_code,stop_name,street_name,latitude,longitude,stop_name_old,street_
 1000967,AJ54,Hub Sri Nilam,Jalan Wawasan Ampang,3.139297,101.769531,Hub Sri Nilam,Jalan Wawasan Ampang
 1001315,AJ148,Apartment Mesra Villa,Jalan Ikan Jelawat,3.132015,101.771306,Apartment Mesra Villa,Jalan Ikan Jelawat
 1003724,AJ149,Sri Taman Baru (Utara),Jalan 1/1,3.129224,101.772499,Sri Taman Baru (Utara),Jalan 1/1
-1008308,AJ150,Pangsapuri PKNS,Jalan Tasik Tambahan 1,3.128109,101.771801,Pangsapuri Pkns,Jalan Tasik Tambahan 1
+1008308,AJ150,Pangsapuri PKNS,Jalan Tasik Tambahan 1,3.128109,101.771801,Pangsapuri PKNS,Jalan Tasik Tambahan 1
 1001768,AJ340,Kampung Tasik Tambahan (Timur),Jalan Tasik Tambahan 1,3.126855,101.770104,Kampung Tasik Tambahan (Timur),Jalan Tasik Tambahan 1
 1001559,AJ416,Kampung Tasik Tambahan (Utara),Jalan Tasik Tambahan 1,3.126018,101.769023,Kampung Tasik Tambahan (Utara),Jalan Tasik Tambahan 1
 1003509,AJ151,Kampung Tasik Tambahan (Barat),Jalan Tasik Tambahan 1,3.12346615344,101.76833017204,Kampung Tasik Tambahan (Barat),Jalan Tasik Tambahan 1
@@ -789,11 +789,11 @@ stop_id,stop_code,stop_name,street_name,latitude,longitude,stop_name_old,street_
 1002320,AJ434,Pandan Indah Autocity,Jalan Pandan Indah,3.132713,101.760186,Pandan Indah Autocity,Jalan Pandan Indah
 1008108,AJ178,Masjid Al-Adzim,Jalan Pandan Indah,3.133591,101.756402,Masjid Al-Adzim,Jalan Pandan Indah
 1000968,KL1818,Hab Titiwangsa,Jalan Pangkor,3.1720151676225,101.69593158369,Hab Titiwangsa,Jalan Pangkor
-1000758,KL1943,Flat PKNS (Opp),Jalan Tun Razak,3.166433,101.714857,Flat Pkns (Opp),Jalan Tun Razak
+1000758,KL1943,Flat PKNS (Opp),Jalan Tun Razak,3.166433,101.714857,Flat PKNS (Opp),Jalan Tun Razak
 1004279,KL1949,Intermark Mall,Jalan Tun Razak,3.161832,101.719627,Intermark Mall,Jalan Tun Razak
 1000077,KL96,Menara Ambank,Jalan Yap Kwan Seng,3.1607922350002,101.71098241514,Menara Ambank,Jalan Yap Kwan Seng
 1002764,KL1945,Menara Ptptn,Jalan Yap Kwan Seng,3.162313,101.713241,Menara Ptptn,Jalan Yap Kwan Seng
-1000757,KL1948,Flat PKNS,Jalan Tun Razak,3.1661583681554,101.71454310215,Flat Pkns,Jalan Tun Razak
+1000757,KL1948,Flat PKNS,Jalan Tun Razak,3.1661583681554,101.71454310215,Flat PKNS,Jalan Tun Razak
 1000971,AJ76,Hentian Taman Mulia Jaya,Persiaran Saujana,3.1319488465415,101.78806435634,Hentian Taman Mulia Jaya,Persiaran Saujana
 1000717,AJ77,Flat Taman Mulia Jaya,Jalan Ampang Indah,3.133246,101.788143,Flat Taman Mulia Jaya,Jalan Ampang Indah
 1003460,AJ90,Kampung Indah Permai (Selatan),Jalan Indah 1,3.133874,101.784943,Kampung Indah Permai (Selatan),Jalan Indah 1
@@ -1106,7 +1106,7 @@ stop_id,stop_code,stop_name,street_name,latitude,longitude,stop_name_old,street_
 1005696,PPJ191,Kompleks Parcel F,Lebuh Perdana Timur,2.944757,101.708408,Kompleks Parcel F,Lebuh Perdana Timur
 1008545,PPJ204,Nadi 15 P15,Jalan P14,2.946629,101.722218,Nadi 15 P15,Jalan P14
 1006089,KJ429,Komersial Seksyen 8 Bandar Baru Bangi,Persiaran Bangi,2.962555,101.757129,Komersial Seksyen 8 Bandar Baru Bangi,Persiaran Bangi
-12001175,KJ536,Kompleks PKNS Bangi,Persiaran Bangi,2.962426,101.756659,Kompleks Pkns Bangi,Persiaran Bangi
+12001175,KJ536,Kompleks PKNS Bangi,Persiaran Bangi,2.962426,101.756659,Kompleks PKNS Bangi,Persiaran Bangi
 1008544,PPJ202,Nadi 15 P15,Jalan P14,2.946307,101.721992,Nadi 15 P15,Jalan P14
 1005625,PPJ276,Kompleks Parcel E (Utara),Lebuh Perdana Timur,2.944436,101.707934,Kompleks Parcel E (Utara),Lebuh Perdana Timur
 1005652,PPJ49,Kementerian Kewangan,Persiaran Perdana,2.927547,101.688711,Kementerian Kewangan,Persiaran Perdana
@@ -1130,7 +1130,7 @@ stop_id,stop_code,stop_name,street_name,latitude,longitude,stop_name_old,street_
 1003510,SJ611,Setiawalk Mall,LDP,3.0288195079409,101.61521542686,Setiawalk Mall,LDP
 1000070,SJ667,Taman Industri Puchong,LDP,3.0227373948343,101.61417436779,Taman Industri Puchong,LDP
 1003913,SJ516,Lotus Extra Puchong,LDP,3.035177,101.616545,Lotus Extra Puchong,LDP
-1001010,SJ610,Ioi Mall Puchong,LDP,3.0435545736493,101.61873927724,Ioi Mall Puchong,LDP
+1001010,SJ610,IOI Mall Puchong,LDP,3.0435545736493,101.61873927724,Ioi Mall Puchong,LDP
 1004221,PJ624,Western Digital,LDP,3.0911149549487,101.611083393,Western Digital,LDP
 1002200,PJ632,Giant Kelana Jaya (Opp),LDP,3.1020056496033,101.59708052652,Giant Kelana Jaya (Opp),LDP
 1001508,PJ602,Kjmc,LDP,3.1087558931513,101.59568537163,Kjmc,LDP
@@ -1437,7 +1437,7 @@ stop_id,stop_code,stop_name,street_name,latitude,longitude,stop_name_old,street_
 1001921,SJ300,Masjid Puchong Perdana,Persiaran Puchong Perdana,3.009608,101.608224,Masjid Puchong Perdana,Persiaran Puchong Perdana
 1000745,SJ301,Flat Puchong Indah,Persiaran Puchong Perdana,3.010214,101.609935,Flat Puchong Indah,Persiaran Puchong Perdana
 1002155,SJ609,Setia Walk (Selatan),LDP,3.029122,101.614638,Setia Walk (Selatan),LDP
-1006287,SJ680,LRT Ioi Puchong,LDP,3.048111,101.62074,LRT Ioi Puchong,LDP
+1006287,SJ680,LRT IOI Puchong,LDP,3.048111,101.62074,LRT Ioi Puchong,LDP
 1003977,SJ623,Flat Puchong Indah,Persiaran Puchong Perdana,3.0099794568679,101.61026827472,Flat Puchong Indah,Persiaran Puchong Perdana
 12002883,SJ302,Masjid Puchong Perdana (Opp),Persiaran Puchong Perdana,3.009161,101.608268,Masjid Puchong Perdana (Opp),Persiaran Puchong Perdana
 12002884,SJ267,LRT Puchong Perdana,Persiaran Puchong Perdana,3.007707,101.605601,LRT Puchong Perdana,Persiaran Puchong Perdana
@@ -1607,7 +1607,7 @@ stop_id,stop_code,stop_name,street_name,latitude,longitude,stop_name_old,street_
 1002596,SA4,Pos Malaysia,Persiaran Dato Menteri,3.0693575000853,101.52391904805,Pos Malaysia,Persiaran Dato Menteri
 1003078,SA786,Hentian Bandar Seksyen 14,Jalan 14/1,3.0724427493567,101.52135232628,Hentian Bandar Seksyen 14,Jalan 14/1
 1008399,SA855,Wisma Mbsa (Opp),Persiaran Perbandaran,3.072952,101.520611,Wisma Mbsa (Opp),Persiaran Perbandaran
-1008075,SA854,Kompleks PKNS Shah Alam,Persiaran Perbandaran,3.072057,101.51693,Kompleks Pkns Shah Alam,Persiaran Perbandaran
+1008075,SA854,Kompleks PKNS Shah Alam,Persiaran Perbandaran,3.072057,101.51693,Kompleks PKNS Shah Alam,Persiaran Perbandaran
 1003267,SA6,Sirim,Persiaran Dato Menteri,3.0687533794527,101.51497243083,Sirim,Persiaran Dato Menteri
 1008104,SA967,SMK Seksyen 2,Persiaran Masjid,3.073193,101.509487,SMK Seksyen 2,Persiaran Masjid
 1000171,SA7,Hub Seksyen 2,Persiaran Masjid,3.0717952198749,101.50800645308,Hub Seksyen 2,Persiaran Masjid
@@ -1639,7 +1639,7 @@ stop_id,stop_code,stop_name,street_name,latitude,longitude,stop_name_old,street_
 1000172,SA14,Hub Seksyen 2,Persiaran Masjid,3.071829,101.507558,Hub Seksyen 2,Persiaran Masjid
 1006016,SA968,SMK Sekyen 2 (Opp),Persiaran Masjid,3.07375,101.50965,SMK Sekyen 2 (Opp),Persiaran Masjid
 1004224,SA15,Taman Tasik Shah Alam,Persiaran Dato Menteri,3.068967,101.515673,Taman Tasik Shah Alam,Persiaran Dato Menteri
-1003856,SA16,Kompleks PKNS (Opp),Persiaran Tasik,3.071462,101.516276,Kompleks Pkns (Opp),Persiaran Tasik
+1003856,SA16,Kompleks PKNS (Opp),Persiaran Tasik,3.071462,101.516276,Kompleks PKNS (Opp),Persiaran Tasik
 1001016,SA912,Istana Kayangan,Lebuhraya Persekutuan,3.0692566996827,101.53863339011,Istana Kayangan,Lebuhraya Persekutuan
 1000395,SA914,Jejantas Petron Bt 3,Lebuhraya Persekutuan,3.0735089041891,101.54853587064,Jejantas Petron Bt 3,Lebuhraya Persekutuan
 1000392,SA916,Spg Bt 3 Ke Kl,Lebuhraya Persekutuan,3.075421856924,101.55598314485,Spg Bt 3 Ke Kl,Lebuhraya Persekutuan
@@ -1822,8 +1822,8 @@ stop_id,stop_code,stop_name,street_name,latitude,longitude,stop_name_old,street_
 1000331,SA302,Pangsapuri Nilam Sari (Utara),Persiaran Bestari,3.0746018567432,101.48718981095,Pangsapuri Nilam Sari (Utara),Persiaran Bestari
 1003315,SA303,SK Seksyen 7 (Utara),Persiaran Bestari,3.0729698842367,101.48506489209,SK Seksyen 7 (Utara),Persiaran Bestari
 1000336,SA310,Masjid Seksyen 7 (Opp),Persiaran Bestari,3.070612,101.481918,Masjid Seksyen 7 (Opp),Persiaran Bestari
-1000325,SA311,Pangsapuri PKNS Seksyen 7 (Barat),Persiaran Permai,3.0690223949782,101.48118951544,Pangsapuri Pkns Seksyen 7 (Barat),Persiaran Permai
-1000691,SA312,Pangsapuri PKNS Seksyen 7 (Selatan),Persiaran Permai,3.067552,101.483797,Pangsapuri Pkns Seksyen 7 (Selatan),Persiaran Permai
+1000325,SA311,Pangsapuri PKNS Seksyen 7 (Barat),Persiaran Permai,3.0690223949782,101.48118951544,Pangsapuri PKNS Seksyen 7 (Barat),Persiaran Permai
+1000691,SA312,Pangsapuri PKNS Seksyen 7 (Selatan),Persiaran Permai,3.067552,101.483797,Pangsapuri PKNS Seksyen 7 (Selatan),Persiaran Permai
 1003096,,Midlands Convention Centre,Persiaran Permai,3.067597,101.487577,Midlands Convention Centre,Persiaran Permai
 1001026,SA316,Komersial Seksyen 7 (Utara),Persiaran Permai,3.067662,101.489845,Komersial Seksyen 7 (Utara),Persiaran Permai
 1008214,SA865,Pusat Komersial Seksyen 7 (Timur),Persiaran Kayangan,3.066674,101.491487,Pusat Komersial Seksyen 7 (Timur),Persiaran Kayangan
@@ -2580,7 +2580,7 @@ stop_id,stop_code,stop_name,street_name,latitude,longitude,stop_name_old,street_
 1006062,KJ520,Bandar Baru Bangi Seksyen 2 (Selatan),Persiaran Bandar,2.938104,101.769635,Bandar Baru Bangi Seksyen 2 (Selatan),Persiaran Bandar
 1006177,KJ521,Bandar Baru Bangi Seksyen 3 (Selatan),Persiaran Pekeliling,2.942058,101.775674,Bandar Baru Bangi Seksyen 3 (Selatan),Persiaran Pekeliling
 1005795,,Perumahan Seksyen 3/4a,Jalan 3/4,2.942805,101.777168,Perumahan Seksyen 3/4a,Jalan 3/4
-1005793,,Pangsapuri PKNS Seksyen 3,Jalan 3/4,2.945296,101.778391,Pangsapuri Pkns Seksyen 3,Jalan 3/4
+1005793,,Pangsapuri PKNS Seksyen 3,Jalan 3/4,2.945296,101.778391,Pangsapuri PKNS Seksyen 3,Jalan 3/4
 1005791,,SK Jalan Tiga (Opp),Jalan 3/4,2.946392,101.778378,SK Jalan Tiga (Opp),Jalan 3/4
 1005789,,Surau Al-Sobah (Opp),Jalan 3/4,2.947567,101.778382,Surau Al-Sobah (Opp),Jalan 3/4
 1005787,,SK Jalan Empat (Opp),Jalan 3/6,2.950911,101.779004,SK Jalan Empat (Opp),Jalan 3/6
@@ -3134,7 +3134,7 @@ stop_id,stop_code,stop_name,street_name,latitude,longitude,stop_name_old,street_
 1006209,,Rumah No 28,Jalan SS 4b/10,3.10945,101.60324,Rumah No 28,Jalan SS 4b/10
 1006210,,Kuarters PDRM,Jalan SS 4b/10,3.10943,101.60006,Kuarters PDRM,Jalan SS 4b/10
 1001381,PJ331,Highpark Suites,Jalan SS 6/2,3.1017526230211,101.60002442637,Highpark Suites,Jalan SS 6/2
-1006211,PJ770,Pangsapuri PKNS (Opp),Jalan SS 6/3,3.102563,101.600384,Pangsapuri Pkns (Opp),Jalan SS 6/3
+1006211,PJ770,Pangsapuri PKNS (Opp),Jalan SS 6/3,3.102563,101.600384,Pangsapuri PKNS (Opp),Jalan SS 6/3
 1006212,,Dataran Glomac,Jalan SS 6/3,3.10455,101.6003233,Dataran Glomac,Jalan SS 6/3
 1002198,PJ506,Perumahan PDRM (Opp),Jalan SS 5/2,3.105075,101.600731,Perumahan PDRM (Opp),Jalan SS 5/2
 1003137,PJ513,Wisma Rehda,Jalan SS 5/2,3.1051840616149,101.60657921929,Wisma Rehda,Jalan SS 5/2
@@ -3272,13 +3272,13 @@ stop_id,stop_code,stop_name,street_name,latitude,longitude,stop_name_old,street_
 1001024,SA592,JPS Selangor,Persiaran Jubli Perak,3.047628,101.509695,JPS Selangor,Persiaran Jubli Perak
 1009246,SA593,Kolej UITM Seksyen 18,Persiaran Jubli Perak,3.044767,101.515034,Kolej UITM Seksyen 18,Persiaran Jubli Perak
 1006630,SA479,Pusat Jagaan Alhafiz,Jalan Timun 24/1,3.040972,101.513652,Pusat Jagaan Alhafiz,Jalan Timun 24/1
-1008166,,Flat PKNS Blok 79 (Seksyen 24),Jalan Timun 24/1,3.039317,101.514631,Flat Pkns Blok 79 (Seksyen 24),Jalan Timun 24/1
+1008166,,Flat PKNS Blok 79 (Seksyen 24),Jalan Timun 24/1,3.039317,101.514631,Flat PKNS Blok 79 (Seksyen 24),Jalan Timun 24/1
 1006631,SA481,Kolej Tingkatan Enam Shah Alam,Jalan Timun 24/1,3.037777,101.515572,Kolej Tingkatan Enam Shah Alam,Jalan Timun 24/1
 1006632,,Blok 72 Seksyen 24,Jalan Timun 24/1,3.035219,101.517245,Blok 72 Seksyen 24,Jalan Timun 24/1
 1006633,SA484,Komersial Seksyen 24,Jalan Timun 24/1,3.036664,101.520485,Komersial Seksyen 24,Jalan Timun 24/1
 1008158,,Dewan Beringin Seksyen 24,Jalan Bayam Merah 24/2,3.042292,101.520471,Dewan Beringin Seksyen 24,Jalan Bayam Merah 24/2
 1002343,SA544,Flat Seksyen 24,Persiaran Jubli Perak,3.043525,101.520308,Flat Seksyen 24,Persiaran Jubli Perak
-1000642,SA545,Pangsapuri PKNS Blok 12,Persiaran Jubli Perak,3.043472,101.515672,Pangsapuri Pkns Blok 12,Persiaran Jubli Perak
+1000642,SA545,Pangsapuri PKNS Blok 12,Persiaran Jubli Perak,3.043472,101.515672,Pangsapuri PKNS Blok 12,Persiaran Jubli Perak
 1000175,SA546,Kolej UITM Seksyen 18,Persiaran Jubli Perak,3.044906,101.514597,Kolej UITM Seksyen 18,Persiaran Jubli Perak
 1000867,SA594,Petron Seksyen 18,Persiaran Jubli Perak,3.043687,101.515901,Petron Seksyen 18,Persiaran Jubli Perak
 1008172,,Masjid Al-Azhariah,Jalan Pinang Siri 18/3,3.044962,101.519006,Masjid Al-Azhariah,Jalan Pinang Siri 18/3
@@ -3292,7 +3292,7 @@ stop_id,stop_code,stop_name,street_name,latitude,longitude,stop_name_old,street_
 1006701,,Kuarters Mbsa Seksyen 20,Jalan Singa 20/1,3.051916,101.538132,Kuarters Mbsa Seksyen 20,Jalan Singa 20/1
 1003757,SA461,Hentian Jubli Perak,Persiaran Jubli Perak,3.0521086003269,101.54180352842,Hentian Jubli Perak,Persiaran Jubli Perak
 1006638,SA459,Hospital KPJ,Jalan Singa 20/1,3.056779,101.540854,Hospital KPJ,Jalan Singa 20/1
-1006639,,Flat PKNS Seksyen 20,Jalan Pelanduk 20/19,3.057821,101.536689,Flat Pkns Seksyen 20,Jalan Pelanduk 20/19
+1006639,,Flat PKNS Seksyen 20,Jalan Pelanduk 20/19,3.057821,101.536689,Flat PKNS Seksyen 20,Jalan Pelanduk 20/19
 1006640,,Masjid Al-Ubudiyah (Opp),Jalan Belat 19/32,3.056516,101.532726,Masjid Al-Ubudiyah (Opp),Jalan Belat 19/32
 1006641,SA448,SRA Integrasi,Jalan Nelayan 19/15,3.053781,101.532178,SRA Integrasi,Jalan Nelayan 19/15
 1006642,SA453,Seksyen 19 (Timur),Jalan Nelayan 19/15,3.052949,101.529385,Seksyen 19 (Timur),Jalan Nelayan 19/15
@@ -3332,7 +3332,7 @@ stop_id,stop_code,stop_name,street_name,latitude,longitude,stop_name_old,street_
 1001233,SA580,Alam Residentials (Barat),Jalan Cengkih 16/10,3.053369,101.502356,Alam Residentials (Barat),Jalan Cengkih 16/10
 1003931,SA589,UITM Seksyen 17,Persiaran Jubli Perak,3.048508,101.502452,UITM Seksyen 17,Persiaran Jubli Perak
 1000503,SA590,Columbia Hospital,Persiaran Jubli Perak,3.0477834184797,101.50472472138,Columbia Hospital,Persiaran Jubli Perak
-1000731,SA548,Flat PKNS Seksyen 17,Jalan Senangin 17/2,3.0468309513531,101.50725246311,Flat Pkns Seksyen 17,Jalan Senangin 17/2
+1000731,SA548,Flat PKNS Seksyen 17,Jalan Senangin 17/2,3.0468309513531,101.50725246311,Flat PKNS Seksyen 17,Jalan Senangin 17/2
 1002329,SA549,Seksyen 17 (Timur),Jalan Senangin 17/2,3.0439039565797,101.50731425926,Seksyen 17 (Timur),Jalan Senangin 17/2
 1003165,SA550,Seksyen 17 (Selatan),Jalan Senangin 17/2,3.0415343109893,101.50413117411,Seksyen 17 (Selatan),Jalan Senangin 17/2
 1003860,SA554,SK Seksyen 17 (Selatan),Jalan Jelawat 17/1,3.042661108927,101.50249242283,SK Seksyen 17 (Selatan),Jalan Jelawat 17/1
@@ -3549,8 +3549,8 @@ stop_id,stop_code,stop_name,street_name,latitude,longitude,stop_name_old,street_
 1008013,,Perumahan SK 2,Jalan Pasar,3.027655,101.702553,Perumahan SK 2,Jalan Pasar
 1008014,,Perumahan SK 8,Jalan Pasar,3.024905,101.704751,Perumahan SK 8,Jalan Pasar
 12002624,SJ816,Komersial Serdang Jaya,Jalan Raya 2,3.019391,101.711938,Komersial Serdang Jaya,Jalan Raya 2
-1008168,,Pangsapuri PKNS Cendana,Jalan 7/1,3.022493,101.713234,Pangsapuri Pkns Cendana,Jalan 7/1
-1008169,,Pangsapuri PKNS,Jalan 7/1,3.023621,101.710423,Pangsapuri Pkns,Jalan 7/1
+1008168,,Pangsapuri PKNS Cendana,Jalan 7/1,3.022493,101.713234,Pangsapuri PKNS Cendana,Jalan 7/1
+1008169,,Pangsapuri PKNS,Jalan 7/1,3.023621,101.710423,Pangsapuri PKNS,Jalan 7/1
 1008170,,Stadium Serdang Jaya (Opp),Jalan 7/1,3.021294,101.711456,Stadium Serdang Jaya (Opp),Jalan 7/1
 1006328,,Komersial Sri Serdang,Jalan Raya 2,3.019108,101.711986,Komersial Sri Serdang,Jalan Raya 2
 1008017,,Taman Sri Andalas SK,Jalan Raya 5,3.017118,101.707892,Taman Sri Andalas SK,Jalan Raya 5
@@ -3995,7 +3995,7 @@ SA1015,SA1015,U19 Taman Sri Buloh,Jalan Kubu Gajah,3.203365,101.542755,U19 Taman
 12002961,DUMMY28,Perumahan Kundang Jaya,Jalan Lagong,3.281245,101.527026,Perumahan Kundang Jaya,Jalan Lagong
 12002962,DUMMY29,Azalea Homes Kundang Jaya,Jalan Lagong,3.281134,101.532095,Azalea Homes Kundang Jaya,Jalan Lagong
 1007706,,Funpark/Gamuda Luge Gardens,,3.275375,101.552686,Funpark/Gamuda Luge Gardens,
-12002965,DUMMY32,Pangsapuri PKNS Kuang,Jalan Lagong,3.262007,101.549919,Pangsapuri Pkns Kuang,Jalan Lagong
+12002965,DUMMY32,Pangsapuri PKNS Kuang,Jalan Lagong,3.262007,101.549919,Pangsapuri PKNS Kuang,Jalan Lagong
 12002966,DUMMY33,Taman Kuang Raya,Jalan Lagong,3.260873,101.550382,Taman Kuang Raya,Jalan Lagong
 12002967,DUMMY34,Dewan Serbaguna Kuang (Opp),Jalan Kuang,3.255819,101.550823,Dewan Serbaguna Kuang (Opp),Jalan Kuang
 12002968,DUMMY35,Kampung Batu 20 Kuang,Jalan Kuang,3.253562,101.549959,Kampung Batu 20 Kuang,Jalan Kuang
@@ -4036,14 +4036,14 @@ SA1015,SA1015,U19 Taman Sri Buloh,Jalan Kubu Gajah,3.203365,101.542755,U19 Taman
 12003007,DUMMY51,Perumahan Kota Puteri 2 (Opp),Persiaran Kota Puteri 3,3.309347,101.435555,Perumahan Kota Puteri 2 (Opp),Persiaran Kota Puteri 3
 12003008,DUMMY52,Perumahan Kota Puteri 3,Persiaran Kota Puteri 3,3.311513,101.437745,Perumahan Kota Puteri 3,Persiaran Kota Puteri 3
 12003009,DUMMY53,Perindustrian Exsim Kota Puteri,Persiaran Kota Puteri 5,3.307666,101.445572,Perindustrian Exsim Kota Puteri,Persiaran Kota Puteri 5
-12003010,DUMMY54,Idaman PKNS Kota Puteri 1 (Opp),Persiaran Kota Puteri 5,3.307213,101.453016,Idaman Pkns Kota Puteri 1 (Opp),Persiaran Kota Puteri 5
+12003010,DUMMY54,Idaman PKNS Kota Puteri 1 (Opp),Persiaran Kota Puteri 5,3.307213,101.453016,Idaman PKNS Kota Puteri 1 (Opp),Persiaran Kota Puteri 5
 12003011,DUMMY55,Villa Damai,Persiaran Kota Puteri 1,3.310445,101.458282,Villa Damai,Persiaran Kota Puteri 1
 12003015,DUMMY57,Oakwood Court Apartment,Pinggiran Lembah Hijau 9,3.283928,101.468488,Oakwood Court Apartment,Pinggiran Lembah Hijau 9
 12003016,DUMMY58,Komersial Lembah Hijau,Pinggiran Lembah Hijau 4,3.281532,101.465931,Komersial Lembah Hijau,Pinggiran Lembah Hijau 4
 12003017,DUMMY59,Rosewood Court Apartment,Pinggiran Lembah Hijau 1,3.283383,101.464498,Rosewood Court Apartment,Pinggiran Lembah Hijau 1
 12003018,DUMMY60,Perumahan Blok 26/27a,Pinggiran Lembah Hijau 2,3.288457,101.467268,Perumahan Blok 26/27a,Pinggiran Lembah Hijau 2
 12003021,DUMMY63,Villa Damai (Opp),Persiaran Kota Puteri 1,3.310154,101.458781,Villa Damai (Opp),Persiaran Kota Puteri 1
-12003022,DUMMY64,Idaman PKNS Kota Puteri 1,Persiaran Kota Puteri 5,3.307184,101.451903,Idaman Pkns Kota Puteri 1,Persiaran Kota Puteri 5
+12003022,DUMMY64,Idaman PKNS Kota Puteri 1,Persiaran Kota Puteri 5,3.307184,101.451903,Idaman PKNS Kota Puteri 1,Persiaran Kota Puteri 5
 12003023,DUMMY65,Perumahan Kota Puteri 5,Persiaran Kota Puteri 5,3.307628,101.445931,Perumahan Kota Puteri 5,Persiaran Kota Puteri 5
 12003024,DUMMY66,Perumahan Kota Puteri 3 (Opp),Persiaran Kota Puteri 3,3.311288,101.437685,Perumahan Kota Puteri 3 (Opp),Persiaran Kota Puteri 3
 12003025,DUMMY67,Perumahan Kota Puteri 2,Persiaran Kota Puteri 3,3.309502,101.435992,Perumahan Kota Puteri 2,Persiaran Kota Puteri 3
@@ -4169,7 +4169,7 @@ SA1015,SA1015,U19 Taman Sri Buloh,Jalan Kubu Gajah,3.203365,101.542755,U19 Taman
 1002724,AJ394,Pangsapuri Sri Impian (Opp),Jalan Ukay Perdana,3.2080939606078,101.78105743062,Pangsapuri Sri Impian (Opp),Jalan Ukay Perdana
 1001822,KL812,LRT Setiawangsa,Jalan Jelatek,3.175839,101.735726,LRT Setiawangsa,Jalan Jelatek
 1002812,AJ413,SRA Al-Aziziah (Opp),Jalan Au1a/1,3.173119,101.737152,SRA Al-Aziziah (Opp),Jalan Au1a/1
-1002332,AJ414,Pangsapuri PKNS (Opp),Jalan Au1a/1,3.173853,101.73771,Pangsapuri Pkns (Opp),Jalan Au1a/1
+1002332,AJ414,Pangsapuri PKNS (Opp),Jalan Au1a/1,3.173853,101.73771,Pangsapuri PKNS (Opp),Jalan Au1a/1
 1001267,AJ479,Taman Keramat Permai Barat,Jalan Au1a/1,3.176344,101.738925,Taman Keramat Permai Barat,Jalan Au1a/1
 1000048,KL431,Setiawangsa Business Centre,Jalan Taman Setiawangsa,3.177623,101.742667,Setiawangsa Business Centre,Jalan Taman Setiawangsa
 1001180,KL2188,Pangsapuri Atm Setiawangsa (Opp),Jalan Taman Setiawangsa,3.1774984131365,101.74485486242,Pangsapuri Atm Setiawangsa (Opp),Jalan Taman Setiawangsa
@@ -4840,7 +4840,7 @@ SA1015,SA1015,U19 Taman Sri Buloh,Jalan Kubu Gajah,3.203365,101.542755,U19 Taman
 1001160,KJ603,Jalan Sasapan Kelubi,Jalan Semenyih,2.880919,101.871192,Jalan Sasapan Kelubi,Jalan Semenyih
 1000402,KJ604,Kampung Sesapan Kelubi (Utara),Jalan Semenyih,2.885753,101.870429,Kampung Sesapan Kelubi (Utara),Jalan Semenyih
 1003979,KJ605,Taman Perindustrian Mahkota,Jalan Semenyih,2.889742,101.870479,Taman Perindustrian Mahkota,Jalan Semenyih
-1001718,KJ606,Taman PKNS Beranang,Jalan Semenyih,2.892359,101.870404,Taman Pkns Beranang,Jalan Semenyih
+1001718,KJ606,Taman PKNS Beranang,Jalan Semenyih,2.892359,101.870404,Taman PKNS Beranang,Jalan Semenyih
 1003451,KJ608,Semenyih Parklands,Jalan Semenyih,2.896233,101.869003,Semenyih Parklands,Jalan Semenyih
 1001597,KJ609,Kolej Profesional Mara,Jalan Semenyih,2.903866,101.867111,Kolej Profesional Mara,Jalan Semenyih
 1001609,KJ610,Kolej Tinggi Mara Japan,Jalan Kesuma 3,2.905437,101.863768,Kolej Tinggi Mara Japan,Jalan Kesuma 3
@@ -4898,7 +4898,7 @@ SA1015,SA1015,U19 Taman Sri Buloh,Jalan Kubu Gajah,3.203365,101.542755,U19 Taman
 1001598,KJ587,Kolej Profesional Mara (Opp),Jalan Semenyih,2.903684,101.867508,Kolej Profesional Mara (Opp),Jalan Semenyih
 1001226,KJ588,Semenyih Parklands,Jalan Semenyih,2.896654,101.869219,Semenyih Parklands,Jalan Semenyih
 1007632,KJ589,Pejabat Pertubuhan Peladang,Jalan Semenyih,2.894309,101.869946,Pejabat Pertubuhan Peladang,Jalan Semenyih
-1001328,KJ590,Taman PKNS Beranang,Jalan Semenyih,2.891338,101.870877,Taman Pkns Beranang,Jalan Semenyih
+1001328,KJ590,Taman PKNS Beranang,Jalan Semenyih,2.891338,101.870877,Taman PKNS Beranang,Jalan Semenyih
 1001159,KJ592,Kampung Sesapan Kelubi (Utara),Jalan Semenyih,2.886038,101.870613,Kampung Sesapan Kelubi (Utara),Jalan Semenyih
 1007630,KJ594,Kampung Sesapan Bukit Rembau,Jalan Semenyih,2.878111,101.872158,Kampung Sesapan Bukit Rembau,Jalan Semenyih
 1001282,KJ595,Kampung Machang Hilir,Jalan Semenyih,2.875275,101.872535,Kampung Machang Hilir,Jalan Semenyih
@@ -5130,7 +5130,7 @@ SA1015,SA1015,U19 Taman Sri Buloh,Jalan Kubu Gajah,3.203365,101.542755,U19 Taman
 12001173,KJ814,D'8 Bandar Baru Bangi (Utara),Jalan Dato Dagang,2.965588,101.75761,D'8 Bandar Baru Bangi (Utara),Jalan Dato Dagang
 12001167,KJ433,D'8 Bandar Baru Bangi (Selatan),Jalan Dato Dagang,2.963694,101.75868,D'8 Bandar Baru Bangi (Selatan),Jalan Dato Dagang
 12001166,KJ535,Persimpangan Jalan Dato Dagang,Persiaran Bangi,2.962327,101.75873,Persimpangan Jalan Dato Dagang,Persiaran Bangi
-12001175,,Kompleks PKNS Bangi,Persiaran Bangi,2.962383,101.75687,Kompleks Pkns Bangi,Persiaran Bangi
+12001175,,Kompleks PKNS Bangi,Persiaran Bangi,2.962383,101.75687,Kompleks PKNS Bangi,Persiaran Bangi
 12001181,KJ872,3b Curve Business Park,Persiaran Bangi,2.963835,101.753075,3b Curve Business Park,Persiaran Bangi
 12001185,KJ873,Komersial Medan Pb,Persiaran Kemajuan,2.961288,101.75184,Komersial Medan Pb,Persiaran Kemajuan
 12001179,KJ874,Hospital Pakar An Nur,Persiaran Kemajuan,2.959709,101.75379,Hospital Pakar An Nur,Persiaran Kemajuan
@@ -5893,7 +5893,7 @@ SA1015,SA1015,U19 Taman Sri Buloh,Jalan Kubu Gajah,3.203365,101.542755,U19 Taman
 1003465,SA322,Perumahan Jalan Tepian 8,Jalan Liku 8/1,3.090228,101.513563,Perumahan Jalan Tepian 8,Jalan Liku 8/1
 1003719,SA323,Komersial Seksyen 8,Jalan Liku 8/1,3.091379,101.508826,Komersial Seksyen 8,Jalan Liku 8/1
 1003686,SA324,Flat Seksyen 8,Jalan Liku 8/1,3.0902113958282,101.50578521312,Flat Seksyen 8,Jalan Liku 8/1
-1003079,SA45,Pangsapuri PKNS Seksyen 8,Persiaran Kayangan,3.088918,101.509158,Pangsapuri Pkns Seksyen 8,Persiaran Kayangan
+1003079,SA45,Pangsapuri PKNS Seksyen 8,Persiaran Kayangan,3.088918,101.509158,Pangsapuri PKNS Seksyen 8,Persiaran Kayangan
 1000556,SA349,Perumahan Jalan Helang,Jalan Merak 6/3,3.088339,101.510258,Perumahan Jalan Helang,Jalan Merak 6/3
 1000319,SA351,Flat Seksyen 6 (Opp),Jalan Nuri 6/1,3.086614,101.509767,Flat Seksyen 6 (Opp),Jalan Nuri 6/1
 1000674,SA352,SK Bandar Anggerik (Opp),Jalan Nuri 6/1,3.086587,101.508471,SK Bandar Anggerik (Opp),Jalan Nuri 6/1
@@ -6055,7 +6055,7 @@ SA1015,SA1015,U19 Taman Sri Buloh,Jalan Kubu Gajah,3.203365,101.542755,U19 Taman
 1002837,PJ552,Perumahan SS 5c,Jalan SS 5/2,3.105194,101.604294,Perumahan SS 5c,Jalan SS 5/2
 1002934,PJ553,Perumahan SS 5c,Jalan SS 5/2,3.1050718831856,101.6023104923,Perumahan SS 5c,Jalan SS 5/2
 1002199,PJ554,Perumahan PDRM,Jalan SS 5/2,3.1049664371534,101.60062782475,Perumahan PDRM,Jalan SS 5/2
-1002168,PJ555,Pangsapuri PKNS,Jalan SS 6/3,3.102068,101.600545,Pangsapuri Pkns,Jalan SS 6/3
+1002168,PJ555,Pangsapuri PKNS,Jalan SS 6/3,3.102068,101.600545,Pangsapuri PKNS,Jalan SS 6/3
 1003887,PJ364,Unitar PJ (Opp),Jalan SS 6/3,3.099791,101.600831,Unitar PJ (Opp),Jalan SS 6/3
 1000093,PJ394,Angkasa,Jalan SS 6/3,3.098819,101.601964,Angkasa,Jalan SS 6/3
 1001223,PJ696,Jabatan Kastam PJ (Opp),Jalan SS 5/1,3.096747,101.602336,Jabatan Kastam PJ (Opp),Jalan SS 5/1
@@ -6099,7 +6099,7 @@ SA1015,SA1015,U19 Taman Sri Buloh,Jalan Kubu Gajah,3.203365,101.542755,U19 Taman
 1003264,PJ275,Sin Chew Media,Jalan Prof Khoo Kay Kim,3.116558,101.630662,Sin Chew Media,Jalan Prof Khoo Kay Kim
 1000600,PJ276,Dutch Lady Industries,Jalan Prof Khoo Kay Kim,3.114271,101.632923,Dutch Lady Industries,Jalan Prof Khoo Kay Kim
 1002029,KL2147,Midvalley North Court,Lingkaran Syed Putra,3.119758,101.677393,Midvalley North Court,Lingkaran Syed Putra
-1000838,KL1397,Flat PKNS Kerinchi/Kl Gateway,Jalan Kerinchi,3.112801,101.662745,Flat Pkns Kerinchi/Kl Gateway,Jalan Kerinchi
+1000838,KL1397,Flat PKNS Kerinchi/Kl Gateway,Jalan Kerinchi,3.112801,101.662745,Flat PKNS Kerinchi/Kl Gateway,Jalan Kerinchi
 1001833,KL1440,LRT Universiti (Timur),Jalan Kerinchi,3.114012,101.662208,LRT Universiti (Timur),Jalan Kerinchi
 1000583,KL2137,Fakulti Undang-Undang UM,Lingkungan Budi,3.118674,101.661071,Fakulti Undang-Undang UM,Lingkungan Budi
 1001596,KL1103,Kolej Kediaman Pertama UM,Lingkungan Budi,3.1181239305332,101.65932260272,Kolej Kediaman Pertama UM,Lingkungan Budi
@@ -6116,7 +6116,7 @@ SA1015,SA1015,U19 Taman Sri Buloh,Jalan Kubu Gajah,3.203365,101.542755,U19 Taman
 1008487,,Inwood Residences,Jalan Pantai Murni 2,3.102553,101.663576,Inwood Residences,Jalan Pantai Murni 2
 1000453,KL1438,Bangsar South,Jalan Kerinchi,3.1089238252724,101.66799880187,Bangsar South,Jalan Kerinchi
 1000227,KL1439,Nexus Bangsar South,Jalan Kerinchi,3.1098943241081,101.66608889972,Nexus Bangsar South,Jalan Kerinchi
-1001650,KL2134,Flat PKNS Kerinchi,Jalan Kerinchi,3.112272,101.662094,Flat Pkns Kerinchi,Jalan Kerinchi
+1001650,KL2134,Flat PKNS Kerinchi,Jalan Kerinchi,3.112272,101.662094,Flat PKNS Kerinchi,Jalan Kerinchi
 1002618,PJ258,PPUM,Jalan Universiti,3.114309,101.650787,PPUM,Jalan Universiti
 1001845,PJ260,Mahsa Avenue (Opp),Jalan Universiti,3.1179615157635,101.6480490315,Mahsa Avenue (Opp),Jalan Universiti
 1003406,PJ263,SMK Sultan Abd Samad,Jalan Universiti,3.118222,101.645127,SMK Sultan Abd Samad,Jalan Universiti
