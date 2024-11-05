@@ -18,13 +18,14 @@ raw_df["stop_id"] = raw_df["stop_id"].astype(str)
 # After reading the input files, create a name-to-code mapping
 mrt_name_to_code = dict(zip(mrt_df["stop_name"], mrt_df["stop_code"]))
 
+
 def extract_stop_info(stop_name):
     if pd.isna(stop_name):
         return None, stop_name
 
     # Clean whitespace first
     stop_name = str(stop_name).strip()
-    
+
     # First check if we have a direct mapping from MRT data
     if stop_name in mrt_name_to_code:
         return mrt_name_to_code[stop_name], stop_name
@@ -45,20 +46,39 @@ def extract_stop_info(stop_name):
         "BD",
     ]
 
-    # Try to find a code that starts with valid prefix and its number
-    pattern = f"({'|'.join(valid_prefixes)})\\s*(\\\d+)"
+    # Try to find a code at the start of the name
+    prefix_pattern = f"^({'|'.join(valid_prefixes)})\\s*(\\d+)\\s+"
+    match = re.search(prefix_pattern, stop_name)
+    if match:
+        prefix = match.group(1)
+        number = match.group(2)
+        stop_code = f"{prefix}{number}"
+        
+        # Remove the code from the beginning and clean up
+        clean_name = re.sub(prefix_pattern, "", stop_name).strip()
+        # Remove any leading/trailing spaces, commas
+        clean_name = re.sub(r"^[\s,]+|[\s,]+$", "", clean_name)
+        if clean_name:  # Only return if we have a name left
+            return stop_code, clean_name
+        return stop_code, stop_name  # Keep original name if nothing left
+
+    # Try to find a code anywhere in the name
+    pattern = f"({'|'.join(valid_prefixes)})\\s*(\\d+)\\s+"
     match = re.search(pattern, stop_name)
     if match:
         prefix = match.group(1)
         number = match.group(2)
         stop_code = f"{prefix}{number}"
 
-        # Remove the prefix and number from the name and clean up
+        # Remove the code and clean up
         clean_name = re.sub(pattern, "", stop_name).strip()
         # Remove any leading/trailing spaces and commas
         clean_name = re.sub(r"^[\s,]+|[\s,]+$", "", clean_name)
-        return stop_code, clean_name
-    return None, stop_name
+        if clean_name:  # Only return if we have a name left
+            return stop_code, clean_name
+        return stop_code, stop_name  # Keep original name if nothing left
+
+    return None, stop_name  # Keep original name if no code found
 
 
 # Clean and standardize stop codes in reference data
@@ -210,7 +230,7 @@ def get_correct_stop_id(row):
                 return rapid_mapping[row["stop_id"]]
             if row["stop_id"] in mrt_mapping:
                 return mrt_mapping[row["stop_id"]]
-        
+
         # If stop_id is numeric and starts with 1, keep it (Rapid Bus stops)
         if str(row["stop_id"]).isdigit() and str(row["stop_id"]).startswith("1"):
             return row["stop_id"]
@@ -257,13 +277,19 @@ stops_output[["stop_code", "stop_name"]] = pd.DataFrame(
     index=stops_output.index,
 )
 
-# Update stop_ids where possible
+# Update stop_ids where possible, but keep original if no match found
 stops_output["new_stop_id"] = stops_output.apply(get_correct_stop_id, axis=1)
-# Replace stop_id with new_stop_id where available
+# Replace stop_id with new_stop_id only where available (keep original otherwise)
 stops_output.loc[stops_output["new_stop_id"].notna(), "stop_id"] = stops_output[
     "new_stop_id"
 ]
 stops_output = stops_output.drop("new_stop_id", axis=1)
+
+# For rows with empty stop_names, restore the original name
+empty_names = stops_output["stop_name"].isna() | (stops_output["stop_name"] == "")
+if empty_names.any():
+    original_names = raw_df.loc[stops_output[empty_names].index, "stop_name"]
+    stops_output.loc[empty_names, "stop_name"] = original_names
 
 # Reorder columns
 stops_output = stops_output[
@@ -281,7 +307,6 @@ services_output.loc[:, "sequence"] = (
 # Create a mapping dictionary from stop_code to stop_id using the final stops_output
 stop_code_to_id = dict(zip(stops_output["stop_code"], stops_output["stop_id"]))
 
-
 # Function to get stop_id from stop_code
 def get_stop_id(stop_code):
     if pd.isna(stop_code):
@@ -297,14 +322,12 @@ def get_stop_id(stop_code):
         return stop_code_to_id[stop_code]
     return None
 
-
-# Update stop_ids in services_output and stops_output
-services_output["stop_id"] = services_output["stop_id"].apply(
+# Update stop_ids in services_output only where we can find a match
+services_output["new_stop_id"] = services_output["stop_id"].apply(
     lambda x: get_stop_id(x) if isinstance(x, str) and not x.startswith("1") else x
 )
-stops_output["stop_id"] = stops_output["stop_id"].apply(
-    lambda x: get_stop_id(x) if isinstance(x, str) and not x.startswith("1") else x
-)
+services_output.loc[services_output["new_stop_id"].notna(), "stop_id"] = services_output["new_stop_id"]
+services_output = services_output.drop("new_stop_id", axis=1)
 
 # Instead of removing rows, print the invalid stop_ids
 invalid_stops = services_output[services_output["stop_id"].isna()]

@@ -74,6 +74,7 @@ UPPERCASE_WORDS = {
     "PJ",
     "UM",
     "SS2",
+    "PKNS",
     "OCBC",
     "PPUM",
     "TNB",
@@ -105,6 +106,15 @@ UPPERCASE_WORDS = {
     "DTR",
     "DXC",
     "DXN",
+    "GSK",
+    "BU",
+    "S.E.H",
+    "UIA",
+    "UIAM",
+    "KENMS",
+    "UTM",
+    "IRKHS",
+    "RKK1",
 }
 
 # Street types and their proper forms
@@ -126,6 +136,12 @@ STREET_TYPES = {
     "LDP": "LDP",
     "SPRINT": "SPRINT",
     "CKE": "CKE",
+    "DUKE": "DUKE",
+    "LKSA": "LKSA",
+    "PSSAAS": "PSSAAS",
+    "JSM": "Jalan Sultan Mohamed",
+    "JIN": "Jalan",
+    "SILK": "SILK",
 }
 
 # Combined rules dictionary
