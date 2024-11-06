@@ -4,30 +4,7 @@ import Link from 'next/link'
 import path from 'path'
 import fs from 'fs'
 import { parse } from 'csv-parse/sync'
-
-// Types for our data
-interface Stop {
-  stop_id: string
-  stop_name: string
-  latitude: number
-  longitude: number
-}
-
-interface Service {
-  route_number: string
-  stop_id: string
-  direction: string
-  zone: string
-  sequence: number
-}
-
-interface Route {
-  routeId: string
-  routeShortName: string
-  routeLongName: string
-  routeColor: string
-  routeTextColor: string
-}
+import type { Route, Service, Stop } from '../types/routes'
 
 // Function to get unique route numbers from services
 function getUniqueRoutes(services: Service[]): string[] {
@@ -148,7 +125,7 @@ export default async function RoutesPage({
                   <span className="text-sm text-white/70">
                     {route.routeLongName}
                   </span>
-	                </div>
+                </div>
               </Card>
             </Link>
           ))}

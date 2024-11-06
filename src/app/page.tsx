@@ -1,6 +1,5 @@
 import { type ReactNode } from "react";
 import { HomeSearchForm } from "~/app/components/home-search-form";
-import { StopMap } from "~/app/components/stop-map";
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import { parse } from 'csv-parse/sync';
@@ -67,7 +66,7 @@ export default async function HomePage() {
     return acc;
   }, {});
 
-  
+
   return (
     <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] px-4 py-16 text-white">
       <div className="container flex max-w-6xl flex-col items-center gap-12">
@@ -89,7 +88,6 @@ export default async function HomePage() {
         </Card>
 
         {/* Quick Info Cards */}
-        <StopMap stops={transformedStops} stopRoutes={stopRoutes} />
       </div>
     </main>
   );

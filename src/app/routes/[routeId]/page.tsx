@@ -4,33 +4,18 @@ import { Card } from '~/components/ui/card'
 import { notFound } from 'next/navigation'
 import { parse } from 'csv-parse/sync'
 import { RouteStopList } from '~/app/components/route-stop-list'
-
-// Types for our data
-type RouteStop = {
-  route_number: string
-  stop_id: string
-  stop_code: string
-  direction: string
-  zone: string
-  sequence: string
-}
-
-type Stop = {
-  stop_id: string
-  stop_code: string
-  stop_name: string
-  street_name: string
-  latitude: string
-  longitude: string
-  stop_name_old: string
-  street_name_old: string
-}
-
-type RouteStopWithData = RouteStop & {
-  stop: Stop | undefined
-}
+import type { RouteStop, RouteStopWithData, Stop } from '~/app/types/routes'
 
 type DirectionMap = Record<string, RouteStopWithData[]>
+
+
+async function validateRouteParams(params: { routeId: string }) {
+  const routeId = params.routeId
+  if (!routeId) {
+    notFound()
+  }
+  return routeId
+}
 
 async function getRouteData(routeId: string): Promise<DirectionMap> {
   // Read CSV files
@@ -104,7 +89,8 @@ export default async function RoutePage({
 }: {
   params: { routeId: string }
 }) {
-  const stopsByDirection = await getRouteData(params.routeId)
+  const routeId = await validateRouteParams(params)
+  const stopsByDirection = await getRouteData(routeId)
   const directions = Object.keys(stopsByDirection)
 
   if (directions.length === 0) {
@@ -140,7 +126,7 @@ export default async function RoutePage({
     <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] px-4 py-16 text-white">
       <div className="container flex max-w-6xl flex-col items-center gap-12">
         <div className="flex flex-col items-center gap-4 bg-white/5 p-4 rounded-lg">
-          <h1 className="text-4xl font-bold">Route {params.routeId}</h1>
+          <h1 className="text-4xl font-bold">Route {routeId}</h1>
           <span className="text-xl text-white/70">
             {startStop} ↔ {endStop}
           </span>

@@ -1,28 +1,5 @@
 import { Fragment } from 'react'
-
-type Stop = {
-  stop_id: string
-  stop_code: string
-  stop_name: string
-  street_name: string
-  latitude: string
-  longitude: string
-  stop_name_old: string
-  street_name_old: string
-}
-
-type RouteStop = {
-  route_number: string
-  stop_id: string
-  stop_code: string
-  direction: string
-  zone: string
-  sequence: string
-}
-
-type RouteStopWithData = RouteStop & {
-  stop: Stop | undefined
-}
+import type { RouteStopWithData } from '../types/routes'
 
 interface RouteStopListProps {
   firstDirectionByZone: Record<string, RouteStopWithData[]>
@@ -96,7 +73,17 @@ export function RouteStopList({
                         {index < stops.length - 1 && (
                           <div className="relative h-full w-full">
                             <div className="absolute left-1/2 top-0 h-full w-px bg-white/20" />
-                            <div className="after:content-[''] after:absolute after:bottom-0 after:left-[50%] after:h-[8px] after:w-[8px] after:-translate-y-4 after:rotate-[45deg] after:border-b-2 after:border-r-2 after:border-[#ffffff] after:opacity-50" />
+                            <div className="absolute bottom-0 left-1/2 h-3 w-3 -translate-x-1/2 -translate-y-4">
+                              <svg
+                                viewBox="0 0 24 24"
+                                className="h-full w-full text-white/50"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                                />
+                              </svg>
+                            </div>
                           </div>
                         )}
                       </td>
@@ -104,7 +91,17 @@ export function RouteStopList({
                         {secondDirectionStop && index < stops.length - 1 && (
                           <div className="relative h-full w-full">
                             <div className="absolute left-1/2 top-0 h-full w-px bg-white/20" />
-                            <div className="after:content-[''] after:absolute after:bottom-0 after:left-[50%] after:h-[8px] after:w-[8px] after:-translate-y-4 after:rotate-[225deg] after:border-b-2 after:border-r-2 after:border-[#ffffff] after:opacity-50" />
+                            <div className="absolute bottom-0 left-1/2 h-3 w-3 -translate-x-1/2 -translate-y-4">
+                              <svg
+                                viewBox="0 0 24 24"
+                                className="h-full w-full rotate-180 text-white/50"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                                />
+                              </svg>
+                            </div>
                           </div>
                         )}
                       </td>
