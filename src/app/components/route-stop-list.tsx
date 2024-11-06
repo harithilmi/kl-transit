@@ -119,20 +119,16 @@ export function RouteStopList({ stopsByDirection }: RouteStopListProps) {
                     <div className="flex">
                       {/* First direction stop */}
                       <div className="flex-[45] p-4">
-                        <div className="flex flex-col items-end">
-                          {routeStop.stop?.stop_code && (
-                            <span className="text-sm text-white/70">
-                              {routeStop.stop?.stop_code}
-                            </span>
-                          )}
+                        <div className="flex flex-col items-start sm:items-end">
+                          <span className="text-sm text-white/70 h-5">
+                            {routeStop.stop?.stop_code ?? '\u00A0'}
+                          </span>
                           <span className="font-semibold">
                             {routeStop.stop?.stop_name}
                           </span>
-                          {routeStop.stop?.street_name && (
-                            <span className="text-sm text-white/70">
-                              {routeStop.stop.street_name}
-                            </span>
-                          )}
+                          <span className="text-sm text-white/70 h-5">
+                            {routeStop.stop?.street_name ?? '\u00A0'}
+                          </span>
                         </div>
                       </div>
 
@@ -176,11 +172,9 @@ export function RouteStopList({ stopsByDirection }: RouteStopListProps) {
                       <div className="flex-[45] p-4">
                         {secondDirectionStop && (
                           <div className="flex flex-col">
-                            {secondDirectionStop.stop?.stop_code && (
-                              <span className="text-sm text-white/70">
-                                {secondDirectionStop.stop?.stop_code}
-                              </span>
-                            )}
+                            <span className="text-sm text-white/70 h-5">
+                              {secondDirectionStop.stop?.stop_code ?? '\u00A0'}
+                            </span>
                             <span className="font-semibold">
                               {secondDirectionStop.stop?.stop_name}
                             </span>

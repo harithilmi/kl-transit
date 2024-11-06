@@ -335,14 +335,13 @@ if not invalid_stops.empty:
 
 # Remove duplicate services while preserving the sequence
 services_output = services_output.drop_duplicates(
-    subset=['route_number', 'stop_id', 'direction'], 
-    keep='first'
+    subset=["route_number", "stop_id", "direction"], keep="first"
 ).copy()
 
 # Recompute sequence numbers after removing duplicates
-services_output['sequence'] = services_output.groupby(
-    ['route_number', 'direction']
-).cumcount() + 1
+services_output["sequence"] = (
+    services_output.groupby(["route_number", "direction"]).cumcount() + 1
+)
 
 # Print invalid stops information
 invalid_stops = stops_output[stops_output["stop_id"].isna()]
@@ -360,3 +359,70 @@ stops_output.to_csv("src/data/processed/stops.csv", index=False)
 services_output.to_csv("src/data/processed/services.csv", index=False)
 
 print("\nFiles created successfully in src/data/processed/!")
+
+# import pandas as pd
+# import re
+# from name_rules import NAME_RULES
+
+# def is_all_consonants(word):
+#     # Remove any non-letter characters
+#     word = re.sub(r'[^a-zA-Z]', '', word)
+#     # Check if word has at least 2 letters and contains no vowels
+#     return len(word) >= 2 and not bool(re.search(r'[aeiouAEIOU]', word))
+
+# # Read the CSV file
+# df = pd.read_csv('../src/data/processed/stops.csv')
+
+# # Get existing uppercase words from NAME_RULES
+# existing_words = set(NAME_RULES['uppercase']) | set(NAME_RULES['street_types'].keys())
+
+# # Dictionary to store words and their contexts
+# new_abbr_contexts = {}
+
+# # Process each row
+# for _, row in df.iterrows():
+#     stop_name = str(row['stop_name'])
+#     street_name = str(row['street_name'])
+#     lat = row['latitude']
+#     lon = row['longitude']
+
+#     # Check words in stop name and street name
+#     for word in f"{stop_name} {street_name}".split():
+#         if (is_all_consonants(word.upper()) and
+#             word.upper() not in existing_words):
+
+#             context = {
+#                 'full_stop_name': stop_name,
+#                 'street_name': street_name,
+#                 'location': f"({lat}, {lon})"
+#             }
+
+#             if word not in new_abbr_contexts:
+#                 new_abbr_contexts[word] = []
+#             new_abbr_contexts[word].append(context)
+
+# # Print results
+# print("New words containing only consonants (not in NAME_RULES) with context:")
+# for word, contexts in sorted(new_abbr_contexts.items()):
+#     print(f"\n{word}:")
+#     for ctx in contexts:
+#         print(f"  - Stop: {ctx['full_stop_name']}")
+#         print(f"    Street: {ctx['street_name']}")
+#         print(f"    Location: {ctx['location']}")
+
+
+# import pandas as pd
+
+# # Read the CSV file
+# df = pd.read_csv("../src/data/processed/stops.csv")
+
+# # Extract the first word of each street_name
+# # Split on space and take first word, handle NaN values
+# prefixes = df["street_name"].dropna().apply(lambda x: x.split()[0]).unique()
+
+# # Sort alphabetically
+# prefixes.sort()
+
+# print("Unique street name prefixes:")
+# for prefix in prefixes:
+#     print(f"- {prefix}")
