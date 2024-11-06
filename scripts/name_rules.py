@@ -71,6 +71,7 @@ UPPERCASE_WORDS = {
     "TM",
     "TTDI",
     "UIA",
+    "KL",
     "S.R.A",
     "TUDM",
     "S.K",
