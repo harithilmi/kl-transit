@@ -8,7 +8,6 @@ A modern web application for tracking public transportation routes in Kuala Lump
 
 ## Features
 
-- 🚌 Real-time bus route information
 - 🔍 Search functionality for routes and destinations
 - 📍 Detailed stop information with street names and coordinates
 - 🗺️ Zone-based route organization
