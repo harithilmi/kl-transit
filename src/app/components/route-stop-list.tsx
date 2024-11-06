@@ -133,11 +133,6 @@ export function RouteStopList({ stopsByDirection }: RouteStopListProps) {
                               {routeStop.stop.street_name}
                             </span>
                           )}
-                          {routeStop.zone && (
-                            <span className="text-sm text-white/70">
-                              Zone {routeStop.zone}
-                            </span>
-                          )}
                         </div>
                       </div>
 
@@ -192,11 +187,6 @@ export function RouteStopList({ stopsByDirection }: RouteStopListProps) {
                             {secondDirectionStop.stop?.street_name && (
                               <span className="text-sm text-white/70">
                                 {secondDirectionStop.stop.street_name}
-                              </span>
-                            )}
-                            {secondDirectionStop.zone && (
-                              <span className="text-sm text-white/70">
-                                Zone {secondDirectionStop.zone}
                               </span>
                             )}
                           </div>

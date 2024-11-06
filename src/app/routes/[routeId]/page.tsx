@@ -8,37 +8,23 @@ import type { RouteStop, RouteStopWithData, Stop } from '~/app/types/routes'
 
 type DirectionMap = Record<string, RouteStopWithData[]>
 
-async function validateRouteParams(params: { routeId: string }) {
-  const routeId = params.routeId
-  if (!routeId) {
-    notFound()
-  }
-  return routeId
+// Helper function to read and parse CSV
+async function readCsv<T extends object>(filePath: string): Promise<T[]> {
+  const fileContent = await fs.readFile(filePath, 'utf-8')
+  const records = parse(fileContent, {
+    columns: true,
+    skip_empty_lines: true,
+  }) as T[]
+  return records
 }
 
 async function getRouteData(routeId: string): Promise<DirectionMap> {
   // Read CSV files
-  const servicesPath = path.join(
-    process.cwd(),
-    'src/data/processed/services.csv',
-  )
-  const stopsPath = path.join(process.cwd(), 'src/data/processed/stops.csv')
-
-  const [servicesFile, stopsFile] = await Promise.all([
-    fs.readFile(servicesPath, 'utf-8'),
-    fs.readFile(stopsPath, 'utf-8'),
+  const dataDir = path.join(process.cwd(), 'src/data/processed')
+  const [routeStops, stops] = await Promise.all([
+    readCsv<RouteStop>(path.join(dataDir, 'services.csv')),
+    readCsv<Stop>(path.join(dataDir, 'stops.csv')),
   ])
-
-  // Parse CSV data
-  const routeStops = parse(servicesFile, {
-    columns: true,
-    skip_empty_lines: true,
-  }) as RouteStop[]
-
-  const stops = parse(stopsFile, {
-    columns: true,
-    skip_empty_lines: true,
-  }) as Stop[]
 
   // Filter route stops for this route
   const routeStopsFiltered = routeStops.filter(
@@ -74,9 +60,14 @@ async function getRouteData(routeId: string): Promise<DirectionMap> {
 export default async function RoutePage({
   params,
 }: {
-  params: { routeId: string }
+  params: Promise<{ routeId: string }>
 }) {
-  const routeId = await validateRouteParams(params)
+  // Await the params object to access routeId
+  const { routeId } = await params
+  if (!routeId) {
+    notFound()
+  }
+
   const stopsByDirection = await getRouteData(routeId)
   const directions = Object.keys(stopsByDirection)
 

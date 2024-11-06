@@ -24,9 +24,11 @@ function readCsv<T extends object>(filePath: string): T[] {
 export default async function RoutesPage({
   searchParams,
 }: {
-  searchParams: { q?: string }
+  searchParams: Promise<{ q?: string }>
 }) {
-  const search = searchParams.q?.toLowerCase() ?? ''
+  // Await searchParams before accessing q
+  const { q } = await searchParams
+  const search = q?.toLowerCase() ?? ''
 
   // Read CSV files
   const dataDir = path.join(process.cwd(), 'src/data/processed')
