@@ -18,8 +18,6 @@ A modern web application for tracking public transportation routes in Kuala Lump
 - Next.js 15
 - TypeScript
 - Tailwind CSS
-- Vercel Postgres
-- Drizzle ORM (soon)
 
 ## Development
 
@@ -28,11 +26,6 @@ To run the project locally:
 ```bash
 # Install dependencies
 npm install
-
-# Setup database
-npm run db:generate
-npm run db:push
-
 # Start development server
 npm run dev
 ```
@@ -41,8 +34,8 @@ npm run dev
 
 - [x] Make it deploy
 - [x] Scaffold basic ui with mock data
-- [x] Setup db (vercel postgres)
-- [x] Attach db to UI
+- [ ] Add map integration
+- [ ] Add realtime bus location from GTFS-RT
 - [ ] Error management (sentry)
 - [ ] Routing/routes page (parallel route)
 - [ ] Analytics page (posthog)

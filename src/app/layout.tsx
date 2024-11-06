@@ -1,6 +1,7 @@
 import "~/styles/globals.css";
 import { Inter } from "next/font/google";
 import { type Metadata } from "next";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,19 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={inter.className}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <footer className="fixed bottom-0 left-0 right-0 p-4 text-center text-white/50">
+          <Link 
+            href="https://github.com/harithilmi/kl-transit"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white/80 transition-colors"
+          >
+            Contribute on GitHub
+          </Link>
+        </footer>
+      </body>
     </html>
   );
 }

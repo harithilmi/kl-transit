@@ -1,25 +1,11 @@
 'use client'
 
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useTransition } from 'react'
 
 export function SearchForm({ initialSearch }: { initialSearch: string }) {
   const router = useRouter()
-  const searchParams = useSearchParams()
   const [isPending, startTransition] = useTransition()
-
-  function handleSearch(term: string) {
-    const params = new URLSearchParams(searchParams)
-    if (term) {
-      params.set('q', term)
-    } else {
-      params.delete('q')
-    }
-
-    startTransition(() => {
-      router.replace(`/routes?${params.toString()}`)
-    })
-  }
 
   return (
     <div className="flex gap-2">
@@ -38,7 +24,7 @@ export function SearchForm({ initialSearch }: { initialSearch: string }) {
       />
       <button
         onClick={() => {
-          const input = document.querySelector('input') as HTMLInputElement
+          const input = document.querySelector('input')!
           startTransition(() => {
             router.push(`/routes?q=${encodeURIComponent(input.value)}`)
           })
