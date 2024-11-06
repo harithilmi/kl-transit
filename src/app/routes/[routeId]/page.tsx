@@ -8,7 +8,6 @@ import type { RouteStop, RouteStopWithData, Stop } from '~/app/types/routes'
 
 type DirectionMap = Record<string, RouteStopWithData[]>
 
-
 async function validateRouteParams(params: { routeId: string }) {
   const routeId = params.routeId
   if (!routeId) {
@@ -87,7 +86,7 @@ export default async function RoutePage({
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] px-4 py-16 text-white">
-      <div className="container flex max-w-6xl flex-col items-center gap-12">
+      <div className="container flex max-w-4xl min-w-96 flex-col items-center gap-12">
         <Card className="w-full">
           <RouteStopList stopsByDirection={stopsByDirection} />
         </Card>
