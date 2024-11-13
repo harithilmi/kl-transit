@@ -72,9 +72,13 @@ export function RouteStopList({ services }: RouteStopListProps) {
           ?.stop_name ?? ''
       : ''
 
+  // Get unique zones from first direction
+  const uniqueZones = new Set(firstDirectionStops.map((stop) => stop.zone))
+  const hasMultipleZones = uniqueZones.size > 1
+
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-col items-center gap-4 bg-white/5 p-4 rounded-lg">
+      <div className="flex flex-col items-center gap-4 bg-white/5 p-4 rounded-t-lg">
         <h1 className="text-4xl font-bold">
           Route {firstDirectionStops[0]?.route_number}
         </h1>
@@ -86,10 +90,12 @@ export function RouteStopList({ services }: RouteStopListProps) {
       <div className="flex flex-col">
         {Object.entries(firstDirectionByZone).map(([zone, stops]) => (
           <Fragment key={zone}>
-            {/* Zone Header */}
-            <div className="bg-white/5 p-2 text-center text-sm font-medium text-white/70">
-              Zone {zone}
-            </div>
+            {/* Zone Header*/}
+            {hasMultipleZones && (
+              <div className="bg-white/5 p-2 text-center text-sm font-medium text-white/70">
+                Zone {zone}
+              </div>
+            )}
 
             {/* Stops for this zone */}
             {stops.map((routeStop, index) => {

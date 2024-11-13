@@ -1,6 +1,7 @@
 export const UPPERCASE_WORDS = new Set([
   'SMK',
   'MM',
+  'MATRADE',
   'SK',
   'ILP',
   'SMJKC',
@@ -110,6 +111,7 @@ export const UPPERCASE_WORDS = new Set([
   'RKK1',
   'W.P',
   'DTR',
+  'OUG',
   'DXC',
   'DXN',
   'GSK',
@@ -148,6 +150,7 @@ export const STREET_TYPES = {
   JSM: 'Jalan Sultan Mohamed',
   JIN: 'Jalan',
   SILK: 'SILK',
+  NPE: 'NPE',
 } as const
 
 export const NAME_RULES = {

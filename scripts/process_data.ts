@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { parse } from 'csv-parse/sync'
 import type { Service, Stop } from '~/app/types/routes'
-import { NAME_RULES } from '~/data/name-rules'
+import { NAME_RULES } from './name-rules'
 
 function cleanStreetName(street: string): string {
   if (!street) return street
@@ -102,20 +102,48 @@ const services = parse(servicesFile, {
   columns: true,
   skip_empty_lines: true,
   cast: (value, context) => {
-    if (context.column === 'sequence') {
-      return parseInt(value)
+    switch (context.column) {
+      case 'stop_id':
+      case 'sequence':
+      case 'direction':
+      case 'zone':
+        return parseInt(value)
+      default:
+        return value
     }
-    return value
   },
 }) as Service[]
 
-const stops = parse(stopsFile, {
+const rawStops = parse(stopsFile, {
   columns: true,
   skip_empty_lines: true,
-}) as Stop[]
+  cast: (value, context) => {
+    switch (context.column) {
+      case 'stop_id':
+        return parseInt(value)
+      case 'latitude':
+      case 'longitude':
+        return parseFloat(value)
+      default:
+        return value
+    }
+  },
+}) as Record<string, string | number>[]
 
-// Clean stop names
-const cleanedStops = stops.map((stop) => ({
+// Transform raw stops to match Stop interface
+const stops: Stop[] = rawStops.map((rawStop) => ({
+  stop_id: Number(rawStop.stop_id),
+  stop_code: String(rawStop.stop_code ?? ''),
+  stop_name: String(rawStop.stop_name ?? ''),
+  street_name: String(rawStop.street_name ?? ''),
+  latitude: Number(rawStop.latitude ?? 0),
+  longitude: Number(rawStop.longitude ?? 0),
+  stop_name_old: String(rawStop.stop_name ?? ''),
+  street_name_old: String(rawStop.street_name ?? ''),
+}))
+
+// Clean stop names with proper typing
+const cleanedStops: Stop[] = stops.map((stop) => ({
   ...stop,
   stop_name_old: stop.stop_name,
   street_name_old: stop.street_name,
@@ -123,25 +151,47 @@ const cleanedStops = stops.map((stop) => ({
   street_name: cleanStreetName(stop.street_name),
 }))
 
-// Create bundled data
-const bundledData = {
+// Create bundled data with proper typing
+const bundledData: {
+  services: Service[]
+  stops: Stop[]
+} = {
   services,
   stops: cleanedStops,
 }
 
-// Write processed stops back to CSV
+// Write processed stops back to CSV with proper typing
 if (cleanedStops.length === 0) {
   console.log('No stops to process')
   process.exit(0)
 }
 
-const firstStop = cleanedStops[0] as Record<string, string>
-const csvHeader = Object.keys(firstStop).join(',')
-const csvRows = cleanedStops.map((stop) =>
-  Object.values(stop)
-    .map((value) => `"${value}"`)
-    .join(','),
-)
+// Ensure all stop fields are properly quoted in CSV
+const csvHeader = [
+  'stop_id',
+  'stop_code',
+  'stop_name',
+  'street_name',
+  'latitude',
+  'longitude',
+  'stop_name_old',
+  'street_name_old',
+].join(',')
+
+const csvRows = cleanedStops.map((stop) => {
+  const values = [
+    stop.stop_id,
+    stop.stop_code,
+    stop.stop_name,
+    stop.street_name,
+    stop.latitude,
+    stop.longitude,
+    stop.stop_name_old,
+    stop.street_name_old,
+  ]
+  return values.map((value) => `"${value}"`).join(',')
+})
+
 const csvContent = [csvHeader, ...csvRows].join('\n')
 
 fs.writeFileSync(path.join(dataDir, 'stops.csv'), csvContent)

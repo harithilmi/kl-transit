@@ -1,0 +1,731 @@
+[
+  {
+    "stop_id": "1000531",
+    "stop_name": "(M) KL1933 PASAR SENI (PLATFORM E1 - E3)",
+    "street_name": "JSM",
+    "lat": 3.141408,
+    "lng": 101.695443,
+    "dr": "2",
+    "zone": "4"
+  },
+  {
+    "stop_id": "1002640",
+    "stop_name": "KL1092 PUBLIC BANK",
+    "street_name": " JLN SYED PUTRA",
+    "lat": 3.139119,
+    "lng": 101.695358,
+    "dr": "2",
+    "zone": "4"
+  },
+  {
+    "stop_id": "1002495",
+    "stop_name": "KL2145 HOTEL PRESCOTT",
+    "street_name": " JLN TUN SAMBANTHAN",
+    "lat": 3.136322,
+    "lng": 101.690915,
+    "dr": "2",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1004276",
+    "stop_name": "KL1080 BRICKFIELDS",
+    "street_name": " JLN TUN SAMBANTHAN 4",
+    "lat": 3.1336400597905,
+    "lng": 101.68908163724,
+    "dr": "2",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1002023",
+    "stop_name": "KL1082 SK METHODIST",
+    "street_name": " JLN SULTAN AB SAMAD",
+    "lat": 3.131473,
+    "lng": 101.689089,
+    "dr": "2",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1002234",
+    "stop_name": "KL1083 PALM COURT",
+    "street_name": " JLN SULTAN ABDUL SAMAD",
+    "lat": 3.129818,
+    "lng": 101.687114,
+    "dr": "2",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1003301",
+    "stop_name": "KL1084 SMK LA SALLE",
+    "street_name": " JLN TUN SAMBANTHAN",
+    "lat": 3.127033195959,
+    "lng": 101.68320063589,
+    "dr": "2",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1000205",
+    "stop_name": "KL1085 BALAI POLIS BRICKFIELDS",
+    "street_name": " JLN TUN SAMBANTHAN",
+    "lat": 3.125382,
+    "lng": 101.682305,
+    "dr": "2",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1004210",
+    "stop_name": "KL278 KOMERSIAL TAMAN SEPUTEH",
+    "street_name": " JLN SYED PUTRA",
+    "lat": 3.120092,
+    "lng": 101.679603,
+    "dr": "2",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1000981",
+    "stop_name": "KL1179 MAZDA",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.1094981426141,
+    "lng": 101.678508753,
+    "dr": "2",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1000289",
+    "stop_name": "(M) KL1180 BHP",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.1072844280663,
+    "lng": 101.67868293317,
+    "dr": "2",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1003216",
+    "stop_name": "KL1181 SHELL",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.105637,
+    "lng": 101.678384,
+    "dr": "2",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1004113",
+    "stop_name": "KL1182 THAM WAH WAN",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.1034073153277,
+    "lng": 101.67791957298,
+    "dr": "2",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1000493",
+    "stop_name": "KL1183 AVANTAS RESIDENCE",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.1001431566626,
+    "lng": 101.6765307254,
+    "dr": "2",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1003568",
+    "stop_name": "(M) KL1184 TAMAN SHANGHAI (SELATAN)",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.098404,
+    "lng": 101.676208,
+    "dr": "2",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1003004",
+    "stop_name": "KL1750 THE SCOTT GARDEN",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.0953143908189,
+    "lng": 101.67572573982,
+    "dr": "2",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1002263",
+    "stop_name": "KL1212 PASAR KLANG LAMA",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.0923666487538,
+    "lng": 101.67504495979,
+    "dr": "2",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1002575",
+    "stop_name": "KL1267 PLAZA PRIMA",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.0890109519977,
+    "lng": 101.67435542147,
+    "dr": "2",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1004262",
+    "stop_name": "KL1268 WISMA TEOH CHIN KEE",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.0866355709206,
+    "lng": 101.67388225873,
+    "dr": "2",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1002195",
+    "stop_name": "(M) KL1269 PEARL POINT",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.0835904519984,
+    "lng": 101.67119037612,
+    "dr": "2",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1003077",
+    "stop_name": "KL1270 TAMAN YARL (UTARA)",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.082005,
+    "lng": 101.668566,
+    "dr": "2",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1001906",
+    "stop_name": "KL1348 MASJID ABDUL RAHMAN",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0797726835549,
+    "lng": 101.6655312482,
+    "dr": "2",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1002175",
+    "stop_name": "KL1349 PANGSAPURI SRI JATI",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0776171979654,
+    "lng": 101.66383355433,
+    "dr": "2",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1003579",
+    "stop_name": "KL1351 NEST RESIDENCE (OPP)",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0749481692745,
+    "lng": 101.66078147764,
+    "dr": "2",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1003222",
+    "stop_name": "KL1352 SHELL TAMAN KUCHAI",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0739527099007,
+    "lng": 101.65932732328,
+    "dr": "2",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1002118",
+    "stop_name": "KL1353 OUG PARKLANE",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.070513914108,
+    "lng": 101.65676696837,
+    "dr": "2",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1000025",
+    "stop_name": "(M) SJ345 JEJANTAS TAMAN KINRARA",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0640580865611,
+    "lng": 101.64927564385,
+    "dr": "2",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1008309",
+    "stop_name": "SJ654 TAMAN KINRARA SEKSYEN 1",
+    "street_name": "JLN PUCHONG",
+    "lat": 3.062814,
+    "lng": 101.648076,
+    "dr": "2",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1001396",
+    "stop_name": "SJ346 TAMAN PAIK SIONG",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0614401901635,
+    "lng": 101.64642875202,
+    "dr": "2",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1001397",
+    "stop_name": "SJ347 TUDM KINRARA",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0599994816712,
+    "lng": 101.64395831592,
+    "dr": "2",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1003944",
+    "stop_name": "SJ352 BHPETROL BUKIT KUCHAI",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.058117,
+    "lng": 101.638599,
+    "dr": "2",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1004078",
+    "stop_name": "SJ353 BUKIT KUCHAI",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0573787950817,
+    "lng": 101.63307641888,
+    "dr": "2",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1004079",
+    "stop_name": "SJ354 BHPETROL",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0569807544853,
+    "lng": 101.63001155169,
+    "dr": "2",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1001058",
+    "stop_name": "SJ358 KOMUNITI PUCHONG JAYA (OPP)",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0528842606685,
+    "lng": 101.62487388353,
+    "dr": "2",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1006678",
+    "stop_name": "SJ447 SKYPOD RESIDENCE",
+    "street_name": "PERS PUCHONG JAYA",
+    "lat": 3.043501,
+    "lng": 101.620776,
+    "dr": "2",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1002768",
+    "stop_name": "(M) SJ449 SETIA WALK",
+    "street_name": " PERS WAWASAN",
+    "lat": 3.0329749146266,
+    "lng": 101.61732496691,
+    "dr": "2",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1003510",
+    "stop_name": "SJ611 SETIAWALK MALL",
+    "street_name": " LDP",
+    "lat": 3.0288195079409,
+    "lng": 101.61521542686,
+    "dr": "2",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1000070",
+    "stop_name": "SJ667 TAMAN INDUSTRI PUCHONG",
+    "street_name": " LDP",
+    "lat": 3.0227373948343,
+    "lng": 101.61417436779,
+    "dr": "2",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1004141",
+    "stop_name": "SJ625 TRACTOR MALAYSIA",
+    "street_name": " LDP",
+    "lat": 3.015995,
+    "lng": 101.610628,
+    "dr": "2",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1001053",
+    "stop_name": "SJ601 JEJANTAS SK PUCHONG UTAMA 3",
+    "street_name": " LDP",
+    "lat": 3.0014403214833,
+    "lng": 101.61194528657,
+    "dr": "2",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1002641",
+    "stop_name": "SJ237 TERMINAL PUCHONG UTAMA",
+    "street_name": " JLN PUCHONG UTAMA 3",
+    "lat": 2.990446,
+    "lng": 101.615552,
+    "dr": "2",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1002641",
+    "stop_name": "SJ237 TERMINAL PUCHONG UTAMA",
+    "street_name": " JLN PUCHONG UTAMA 3",
+    "lat": 2.990446,
+    "lng": 101.615552,
+    "dr": "1",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1001048",
+    "stop_name": "SJ603 PUCHONG UTAMA 1 (PRESINT10)",
+    "street_name": "LDP",
+    "lat": 3.001928,
+    "lng": 101.611521,
+    "dr": "1",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1004140",
+    "stop_name": "SJ605 TRACTORS MALAYSIA",
+    "street_name": " LDP",
+    "lat": 3.0159634449745,
+    "lng": 101.61023858797,
+    "dr": "1",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1001615",
+    "stop_name": "SJ677 KOMPLEKS RAKAN MUDA",
+    "street_name": " LDP",
+    "lat": 3.0204021983635,
+    "lng": 101.61167012268,
+    "dr": "1",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1003913",
+    "stop_name": "SJ516 LOTUS EXTRA PUCHONG",
+    "street_name": " LDP",
+    "lat": 3.035177,
+    "lng": 101.616545,
+    "dr": "1",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1001010",
+    "stop_name": "(M) SJ610 IOI MALL PUCHONG",
+    "street_name": " LDP",
+    "lat": 3.0435545736493,
+    "lng": 101.61873927724,
+    "dr": "1",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1002662",
+    "stop_name": "SJ330 PUSAT IT KOMUNITI",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.05312255214,
+    "lng": 101.6243507846,
+    "dr": "1",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1003690",
+    "stop_name": "SJ331 TM KINRARA",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0568381561533,
+    "lng": 101.62831918758,
+    "dr": "1",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1004080",
+    "stop_name": "SJ332 APARTMENT SRI CEMPAKA",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0574526123317,
+    "lng": 101.63062513102,
+    "dr": "1",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1001241",
+    "stop_name": "SJ333 PERUMAHAN AMAN SARI",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0576663725663,
+    "lng": 101.63284739765,
+    "dr": "1",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1003943",
+    "stop_name": "SJ334 TAMAN BUKIT KUCHAI",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0584740354052,
+    "lng": 101.63895995946,
+    "dr": "1",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1001269",
+    "stop_name": "SJ348 TUDM KINRARA (OPP)",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.059714993532,
+    "lng": 101.64272805478,
+    "dr": "1",
+    "zone": "1"
+  },
+  {
+    "stop_id": "1004014",
+    "stop_name": "SJ338 KOMERSIAL PAIK SIONG",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0613621064222,
+    "lng": 101.64556669176,
+    "dr": "1",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1002193",
+    "stop_name": "(M) SJ339 KOMERSIAL TAMAN KINRARA",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0626925917768,
+    "lng": 101.64745798043,
+    "dr": "1",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1000977",
+    "stop_name": "SJ340 JEJANTAS TAMAN KINRARA",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0646661482707,
+    "lng": 101.64930516488,
+    "dr": "1",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1003533",
+    "stop_name": "KL1342 MENARA IIP (OPP)",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0689529989657,
+    "lng": 101.65504988486,
+    "dr": "1",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1001338",
+    "stop_name": "KL1343 OUG PARKLANE (OPP)",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0699834974841,
+    "lng": 101.65616583845,
+    "dr": "1",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1000437",
+    "stop_name": "KL1344 CALTEX TAMAN KUCHAI",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0733168962789,
+    "lng": 101.65793524654,
+    "dr": "1",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1001933",
+    "stop_name": "KL1345 MASJID JAMEK PETALING",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.0762449803645,
+    "lng": 101.66164947585,
+    "dr": "1",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1001872",
+    "stop_name": "KL1346 PANGSAPURI SRI JATI (OPP)",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.078180689134,
+    "lng": 101.6638491875,
+    "dr": "1",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1002400",
+    "stop_name": "KL1347 MASJID ABDUL RAHMAN (OPP)",
+    "street_name": " JLN PUCHONG",
+    "lat": 3.080146371525,
+    "lng": 101.66530040274,
+    "dr": "1",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1000730",
+    "stop_name": "KL1271 TAMAN YARL (UTARA)",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.0823313189399,
+    "lng": 101.66828836662,
+    "dr": "1",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1000506",
+    "stop_name": "KL1272 PEARL POINT",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.084468,
+    "lng": 101.671892,
+    "dr": "1",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1002401",
+    "stop_name": "KL1274 ROZEL",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.087139,
+    "lng": 101.673633,
+    "dr": "1",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1003828",
+    "stop_name": "KL1275 PLAZA PRIMA (OPP)",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.0905681300214,
+    "lng": 101.67420902381,
+    "dr": "1",
+    "zone": "2"
+  },
+  {
+    "stop_id": "1004255",
+    "stop_name": "KL1276 VERVE SUITES",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.092457906865,
+    "lng": 101.67462926176,
+    "dr": "1",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1000072",
+    "stop_name": "(M) KL1277 SCOTT GARDEN/AMBANK",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.0959619224579,
+    "lng": 101.67534789075,
+    "dr": "1",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1001474",
+    "stop_name": "(M) KL1280 TAMAN SHANGHAI (SELATAN)",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.099155,
+    "lng": 101.675978,
+    "dr": "1",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1003199",
+    "stop_name": "KL1281 SOUTHBANK RESIDENCE",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.101513,
+    "lng": 101.676822,
+    "dr": "1",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1004204",
+    "stop_name": "KL1282 3RD MILES SQUARE",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.103537,
+    "lng": 101.677629,
+    "dr": "1",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1001009",
+    "stop_name": "KL1283 SHELL (OPP)",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.105557,
+    "lng": 101.678057,
+    "dr": "1",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1004229",
+    "stop_name": "KL1284 WISMA BUDDHIST",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.108093,
+    "lng": 101.678386,
+    "dr": "1",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1001346",
+    "stop_name": "KL1395 SAVILLE RESIDENCE (OPP)",
+    "street_name": " JLN KLANG LAMA",
+    "lat": 3.110688,
+    "lng": 101.678065,
+    "dr": "1",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1004209",
+    "stop_name": "KL1535 MIDVALLEY",
+    "street_name": " JLN SYED PUTRA",
+    "lat": 3.119766,
+    "lng": 101.679256,
+    "dr": "1",
+    "zone": "3"
+  },
+  {
+    "stop_id": "1000206",
+    "stop_name": "KL1086 IPD BRICKFIELDS",
+    "street_name": " JLN TUN SAMBANTHAN",
+    "lat": 3.126168,
+    "lng": 101.682412,
+    "dr": "1",
+    "zone": "4"
+  },
+  {
+    "stop_id": "1001512",
+    "stop_name": "KL1079 KL SENTRAL",
+    "street_name": " JLN TUN SAMBANTHAN",
+    "lat": 3.132961,
+    "lng": 101.687618,
+    "dr": "1",
+    "zone": "4"
+  },
+  {
+    "stop_id": "1004275",
+    "stop_name": "KL1090 SENTRAL EXHIBITION MALL",
+    "street_name": " JLN TUN SAMBANTHAN",
+    "lat": 3.134408,
+    "lng": 101.688902,
+    "dr": "1",
+    "zone": "4"
+  },
+  {
+    "stop_id": "1003588",
+    "stop_name": "KL1925 JABATAN WARISAN NEGARA",
+    "street_name": " JLN HISAMUDDIN",
+    "lat": 3.138258,
+    "lng": 101.694216,
+    "dr": "1",
+    "zone": "4"
+  },
+  {
+    "stop_id": "1002639",
+    "stop_name": "KL1091 PUBLIC BANK (OPP)",
+    "street_name": " JLN SYED PUTRA",
+    "lat": 3.138761,
+    "lng": 101.695062,
+    "dr": "1",
+    "zone": "4"
+  },
+  {
+    "stop_id": "1000531",
+    "stop_name": "(M) KL1933 PASAR SENI (PLATFORM E1 - E3)",
+    "street_name": "JSM",
+    "lat": 3.141408,
+    "lng": 101.695443,
+    "dr": "1",
+    "zone": "4"
+  }
+])
