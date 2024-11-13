@@ -354,7 +354,75 @@ if not invalid_stops.empty:
         print(f"Street: {stop['street_name']}")
         print("---")
 
-# Save the files
+# Create services.json
+services_json = {}
+for route_number, group in services_output.groupby('route_number'):
+    # Sort by direction and sequence
+    group = group.sort_values(['direction', 'sequence'])
+    
+    # Create routes list for each direction
+    routes = []
+    current_route = []
+    current_direction = None
+    
+    for _, row in group.iterrows():
+        if current_direction is None:
+            current_direction = row['direction']
+        
+        # If direction changes, append current route and start new one
+        if row['direction'] != current_direction:
+            routes.append(current_route)
+            current_route = []
+            current_direction = row['direction']
+            
+        current_route.append(row['stop_id'])
+    
+    # Append last route
+    if current_route:
+        routes.append(current_route)
+    
+    # Add to services dictionary
+    services_json[str(route_number)] = {
+        "name": f"Route {route_number}",  # You may want to add actual route names
+        "routes": routes
+    }
+
+# Create stops.min.json
+stops_json = {}
+for _, row in stops_output.iterrows():
+    if pd.notna(row['stop_id']):
+        # Handle stop_name - convert to string if it's a float/int
+        stop_name = row['stop_name']
+        if isinstance(stop_name, (float, int)):
+            stop_name = str(stop_name)
+        else:
+            stop_name = str(stop_name).strip()
+            
+        # Handle street_name - convert to string if it's a float/int
+        street_name = row['street_name']
+        if pd.isna(street_name):
+            street_name = ""
+        elif isinstance(street_name, (float, int)):
+            street_name = str(street_name)
+        else:
+            street_name = str(street_name).strip()
+            
+        stops_json[str(row['stop_id'])] = [
+            float(row['longitude']),
+            float(row['latitude']),
+            stop_name,
+            street_name
+        ]
+
+# Save JSON files
+import json
+with open('src/data/processed/services.json', 'w', encoding='utf-8') as f:
+    json.dump(services_json, f, ensure_ascii=False, indent=2)
+
+with open('src/data/processed/stops.min.json', 'w', encoding='utf-8') as f:
+    json.dump(stops_json, f, ensure_ascii=False, separators=(',', ':'))
+
+# Keep existing CSV saves
 stops_output.to_csv("src/data/processed/stops.csv", index=False)
 services_output.to_csv("src/data/processed/services.csv", index=False)
 

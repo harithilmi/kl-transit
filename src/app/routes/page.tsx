@@ -1,67 +1,46 @@
 import { Card } from '~/components/ui/card'
 import { SearchForm } from './search-form'
 import Link from 'next/link'
-import path from 'path'
-import fs from 'fs'
-import { parse } from 'csv-parse/sync'
-import type { Route, Service, Stop } from '../types/routes'
-
-// Function to get unique route numbers from services
-function getUniqueRoutes(services: Service[]): string[] {
-  return [...new Set(services.map((service) => service.route_number))]
-}
-
-// Helper function to read and parse CSV
-function readCsv<T extends object>(filePath: string): T[] {
-  const fileContent = fs.readFileSync(filePath, 'utf-8')
-  const records = parse(fileContent, {
-    columns: true,
-    skip_empty_lines: true,
-  }) as T[]
-  return records
-}
+import bundledData from '~/data/bundled-data.json'
+import type { Route } from '../types/routes'
 
 export default async function RoutesPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string }>
+  searchParams: { q?: string }
 }) {
-  // Await searchParams before accessing q
-  const { q } = await searchParams
-  const search = q?.toLowerCase() ?? ''
-
-  // Read CSV files
-  const dataDir = path.join(process.cwd(), 'src/data/processed')
-  const services: Service[] = readCsv<Service>(
-    path.join(dataDir, 'services.csv'),
-  )
-  const stops: Stop[] = readCsv<Stop>(path.join(dataDir, 'stops.csv'))
+  const search = searchParams.q?.toLowerCase() ?? ''
 
   // Get unique routes
-  const routeNumbers = getUniqueRoutes(services)
+  const routeNumbers = [
+    ...new Set(bundledData.services.map((s) => s.route_number)),
+  ]
 
   // Create route objects with first and last stops
   const routes: Route[] = routeNumbers.map((routeNumber) => {
-    const routeServices = services.filter((s) => s.route_number === routeNumber)
+    const routeServices = bundledData.services.filter(
+      (s) => s.route_number === routeNumber,
+    )
 
     // Get direction 1 services
     const direction1 = routeServices
       .filter((s) => s.direction === '1')
-      .sort((a, b) => a.sequence - b.sequence)
+      .sort((a, b) => Number(a.sequence) - Number(b.sequence))
 
     // Get direction 2 services
     const direction2 = routeServices
       .filter((s) => s.direction === '2')
-      .sort((a, b) => a.sequence - b.sequence)
+      .sort((a, b) => Number(a.sequence) - Number(b.sequence))
 
     // Get first and last stops for direction 1
     const firstStop1 =
       direction1.length > 0 && direction1[0]
-        ? stops.find((s) => s.stop_id === direction1[0]?.stop_id) ?? null
+        ? bundledData.stops.find((s) => s.stop_id === direction1[0]?.stop_id) ??
+          null
         : null
     const lastStop1 =
       direction1.length > 0 && direction1[direction1.length - 1]
-        ? stops.find(
+        ? bundledData.stops.find(
             (s) => s.stop_id === direction1[direction1.length - 1]?.stop_id,
           ) ?? null
         : null
@@ -69,11 +48,12 @@ export default async function RoutesPage({
     // Get first and last stops for direction 2
     const firstStop2 =
       direction2.length > 0 && direction2[0]
-        ? stops.find((s) => s.stop_id === direction2[0]?.stop_id) ?? null
+        ? bundledData.stops.find((s) => s.stop_id === direction2[0]?.stop_id) ??
+          null
         : null
     const lastStop2 =
       direction2.length > 0 && direction2[direction2.length - 1]
-        ? stops.find(
+        ? bundledData.stops.find(
             (s) => s.stop_id === direction2[direction2.length - 1]?.stop_id,
           ) ?? null
         : null

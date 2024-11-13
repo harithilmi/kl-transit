@@ -32,7 +32,7 @@ export interface RouteStop {
   stop_code: string
   direction: string
   zone: string
-  sequence: string
+  sequence: number
 }
 
 export type RouteStopWithData = RouteStop & {

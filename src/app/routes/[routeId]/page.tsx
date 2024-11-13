@@ -1,77 +1,49 @@
-import { promises as fs } from 'fs'
-import path from 'path'
 import { Card } from '~/components/ui/card'
 import { notFound } from 'next/navigation'
-import { parse } from 'csv-parse/sync'
 import { RouteStopList } from '~/app/components/route-stop-list'
-import type { RouteStop, RouteStopWithData, Stop } from '~/app/types/routes'
-
-type DirectionMap = Record<string, RouteStopWithData[]>
-
-// Helper function to read and parse CSV
-async function readCsv<T extends object>(filePath: string): Promise<T[]> {
-  const fileContent = await fs.readFile(filePath, 'utf-8')
-  const records = parse(fileContent, {
-    columns: true,
-    skip_empty_lines: true,
-  }) as T[]
-  return records
-}
-
-async function getRouteData(routeId: string): Promise<DirectionMap> {
-  // Read CSV files
-  const dataDir = path.join(process.cwd(), 'src/data/processed')
-  const [routeStops, stops] = await Promise.all([
-    readCsv<RouteStop>(path.join(dataDir, 'services.csv')),
-    readCsv<Stop>(path.join(dataDir, 'stops.csv')),
-  ])
-
-  // Filter route stops for this route
-  const routeStopsFiltered = routeStops.filter(
-    (rs) => rs.route_number === routeId,
-  )
-
-  // Sort by sequence
-  routeStopsFiltered.sort((a, b) => parseInt(a.sequence) - parseInt(b.sequence))
-
-  // Map stops data to route stops
-  const stopsMap = new Map(stops.map((stop) => [stop.stop_id, stop]))
-
-  const validRouteStops = routeStopsFiltered
-    .map((rs) => ({
-      ...rs,
-      stop: stopsMap.get(rs.stop_id),
-    }))
-    .filter((rs) => rs.stop !== undefined)
-
-  // Group stops by direction with proper typing
-  const stopsByDirection = validRouteStops.reduce<DirectionMap>((acc, stop) => {
-    const direction = stop.direction
-    if (!acc[direction]) {
-      acc[direction] = []
-    }
-    acc[direction].push(stop)
-    return acc
-  }, {} as DirectionMap)
-
-  return stopsByDirection
-}
+import bundledData from '~/data/bundled-data.json'
+import type { RouteStopWithData, Stop } from '~/app/types/routes'
 
 export default async function RoutePage({
   params,
 }: {
-  params: Promise<{ routeId: string }>
+  params: { routeId: string }
 }) {
-  // Await the params object to access routeId
-  const { routeId } = await params
+  const { routeId } = params
   if (!routeId) {
     notFound()
   }
 
-  const stopsByDirection = await getRouteData(routeId)
-  const directions = Object.keys(stopsByDirection)
+  // Using the bundled data
+  const routeServices = bundledData.services
+    .filter((service) => String(service.route_number) === routeId)
+    .sort((a, b) => Number(a.sequence) - Number(b.sequence))
 
-  if (directions.length === 0) {
+  // Enrich services with stop data
+  const servicesWithStops = routeServices
+    .map((service) => {
+      const stop = bundledData.stops.find(
+        (stop) => stop.stop_id === service.stop_id,
+      )
+      return stop
+        ? {
+            ...service,
+            stop_code: stop.stop_code,
+            stop,
+            sequence: Number(service.sequence),
+          }
+        : null
+    })
+    .filter(
+      (
+        service,
+      ): service is Omit<RouteStopWithData, 'stop' | 'sequence'> & {
+        stop: Stop
+        sequence: number
+      } => service !== null,
+    )
+
+  if (servicesWithStops.length === 0) {
     notFound()
   }
 
@@ -104,7 +76,7 @@ export default async function RoutePage({
         {/* Main content */}
         <div className="flex w-full max-w-4xl flex-col gap-6 sm:gap-8">
           <Card className="w-full overflow-hidden text-white">
-            <RouteStopList stopsByDirection={stopsByDirection} />
+            <RouteStopList services={servicesWithStops} />
           </Card>
 
           {/* Map placeholder */}

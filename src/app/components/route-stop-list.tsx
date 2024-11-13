@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 import type { RouteStopWithData } from '../types/routes'
 
 interface RouteStopListProps {
-  stopsByDirection: Record<string, RouteStopWithData[]>
+  services: RouteStopWithData[]
 }
 
 // Helper function to group stops by zone
@@ -17,7 +17,17 @@ function groupByZone(stops: RouteStopWithData[]) {
   }, {})
 }
 
-export function RouteStopList({ stopsByDirection }: RouteStopListProps) {
+export function RouteStopList({ services }: RouteStopListProps) {
+  // Group by direction
+  const stopsByDirection = services.reduce((acc, service) => {
+    const direction = service.direction
+    if (!acc[direction]) {
+      acc[direction] = []
+    }
+    acc[direction].push(service)
+    return acc
+  }, {} as Record<string, RouteStopWithData[]>)
+
   const directions = Object.keys(stopsByDirection)
   const firstDirection = directions[0]
   const secondDirection = directions[1]
@@ -38,28 +48,21 @@ export function RouteStopList({ stopsByDirection }: RouteStopListProps) {
 
   // Get all stops from first direction
   const allFirstDirectionStops = Object.values(firstDirectionByZone).flat()
-  // Get all stops from second direction
-  const allSecondDirectionStops = Object.values(secondDirectionByZone).flat()
-
-  const firstFinalStop =
-    allFirstDirectionStops[allFirstDirectionStops.length - 1]?.stop
-  const secondFinalStop =
-    allSecondDirectionStops[allSecondDirectionStops.length - 1]?.stop
 
   // Only log if the final stops are different
-  if (firstFinalStop?.stop_id !== secondFinalStop?.stop_id) {
-    console.log('First Direction Final Stop:', {
-      name: firstFinalStop?.stop_name,
-      code: firstFinalStop?.stop_code,
-      id: firstFinalStop?.stop_id,
-    })
+  //   if (firstFinalStop?.stop_id !== secondFinalStop?.stop_id) {
+  //     console.log('First Direction Final Stop:', {
+  //       name: firstFinalStop?.stop_name,
+  //       code: firstFinalStop?.stop_code,
+  //       id: firstFinalStop?.stop_id,
+  //     })
 
-    console.log('Second Direction Final Stop:', {
-      name: secondFinalStop?.stop_name,
-      code: secondFinalStop?.stop_code,
-      id: secondFinalStop?.stop_id,
-    })
-  }
+  //     console.log('Second Direction Final Stop:', {
+  //       name: secondFinalStop?.stop_name,
+  //       code: secondFinalStop?.stop_code,
+  //       id: secondFinalStop?.stop_id,
+  //     })
+  //   }
 
   // Get start and end stops
   const startStop = allFirstDirectionStops[0]?.stop?.stop_name ?? ''
@@ -118,15 +121,15 @@ export function RouteStopList({ stopsByDirection }: RouteStopListProps) {
                   ) : (
                     <div className="flex">
                       {/* First direction stop */}
-                      <div className="flex-[45] p-4">
-                        <div className="flex flex-col items-start sm:items-end">
-                          <span className="text-sm text-white/70 h-5">
+                      <div className="flex-[45] p-4 ">
+                        <div className="flex flex-col">
+                          <span className="text-sm text-right text-white/70 h-5">
                             {routeStop.stop?.stop_code ?? '\u00A0'}
                           </span>
-                          <span className="font-semibold">
+                          <p className="font-semibold text-right">
                             {routeStop.stop?.stop_name}
-                          </span>
-                          <span className="text-sm text-white/70 h-5">
+                          </p>
+                          <span className="text-sm text-right text-white/70 h-5">
                             {routeStop.stop?.street_name ?? '\u00A0'}
                           </span>
                         </div>
