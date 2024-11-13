@@ -2,6 +2,7 @@ import { Card } from '~/components/ui/card'
 import { notFound } from 'next/navigation'
 import { RouteStopList } from '~/app/components/route-stop-list'
 import bundledData from '~/data/bundled-data.json'
+import servicesData from '~/data/services.json'
 import type { RouteStopWithData, Stop } from '~/app/types/routes'
 
 export default async function RoutePage({
@@ -11,6 +12,12 @@ export default async function RoutePage({
 }) {
   const { routeId } = params
   if (!routeId) {
+    notFound()
+  }
+
+  // Get route info from services.json
+  const routeInfo = servicesData[routeId]
+  if (!routeInfo) {
     notFound()
   }
 
@@ -71,6 +78,20 @@ export default async function RoutePage({
             </svg>
             Back to Routes
           </a>
+        </div>
+
+        {/* Route header */}
+        <div className="flex w-full max-w-4xl flex-col gap-6 sm:gap-8">
+          <Card className="w-full p-4">
+            <div className="flex flex-col gap-2">
+              <h1 className="text-3xl text-center font-bold">
+                Route {routeId}
+              </h1>
+              <p className="text-lg text-center text-white/80">
+                {routeInfo.route_name}
+              </p>
+            </div>
+          </Card>
         </div>
 
         {/* Main content */}

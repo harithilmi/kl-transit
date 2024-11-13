@@ -78,15 +78,6 @@ export function RouteStopList({ services }: RouteStopListProps) {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-col items-center gap-4 bg-white/5 p-4 rounded-t-lg">
-        <h1 className="text-4xl font-bold">
-          Route {firstDirectionStops[0]?.route_number}
-        </h1>
-        <span className="text-xl text-white/70">
-          {startStop} ↔ {endStop}
-        </span>
-      </div>
-
       <div className="flex flex-col">
         {Object.entries(firstDirectionByZone).map(([zone, stops]) => (
           <Fragment key={zone}>

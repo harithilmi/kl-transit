@@ -22,8 +22,6 @@ export interface Route {
   routeId: string
   routeShortName: string
   routeLongName: string
-  routeColor: string
-  routeTextColor: string
 }
 
 export interface RouteStop {

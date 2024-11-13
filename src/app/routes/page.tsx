@@ -2,6 +2,7 @@ import { Card } from '~/components/ui/card'
 import { SearchForm } from './search-form'
 import Link from 'next/link'
 import bundledData from '~/data/bundled-data.json'
+import servicesData from '~/data/services.json'
 import type { Route } from '../types/routes'
 
 export default async function RoutesPage({
@@ -16,57 +17,12 @@ export default async function RoutesPage({
     ...new Set(bundledData.services.map((s) => s.route_number)),
   ]
 
-  // Create route objects with first and last stops
+  // Create route objects with route names from services.json
   const routes: Route[] = routeNumbers.map((routeNumber) => {
-    const routeServices = bundledData.services.filter(
-      (s) => s.route_number === routeNumber,
-    )
-
-    // Get direction 1 services
-    const direction1 = routeServices
-      .filter((s) => s.direction === '1')
-      .sort((a, b) => Number(a.sequence) - Number(b.sequence))
-
-    // Get direction 2 services
-    const direction2 = routeServices
-      .filter((s) => s.direction === '2')
-      .sort((a, b) => Number(a.sequence) - Number(b.sequence))
-
-    // Get first and last stops for direction 1
-    const firstStop1 =
-      direction1.length > 0 && direction1[0]
-        ? bundledData.stops.find((s) => s.stop_id === direction1[0]?.stop_id) ??
-          null
-        : null
-    const lastStop1 =
-      direction1.length > 0 && direction1[direction1.length - 1]
-        ? bundledData.stops.find(
-            (s) => s.stop_id === direction1[direction1.length - 1]?.stop_id,
-          ) ?? null
-        : null
-
-    // Get first and last stops for direction 2
-    const firstStop2 =
-      direction2.length > 0 && direction2[0]
-        ? bundledData.stops.find((s) => s.stop_id === direction2[0]?.stop_id) ??
-          null
-        : null
-    const lastStop2 =
-      direction2.length > 0 && direction2[direction2.length - 1]
-        ? bundledData.stops.find(
-            (s) => s.stop_id === direction2[direction2.length - 1]?.stop_id,
-          ) ?? null
-        : null
-
     return {
       routeId: routeNumber,
       routeShortName: routeNumber,
-      routeLongName:
-        direction1.length > 0
-          ? `${firstStop1?.stop_name ?? ''} ↔ ${lastStop1?.stop_name ?? ''}`
-          : `${firstStop2?.stop_name ?? ''} ↔ ${lastStop2?.stop_name ?? ''}`,
-      routeColor: '1e40af', // Default blue color
-      routeTextColor: 'ffffff', // White text
+      routeLongName: servicesData[routeNumber]?.route_name ?? routeNumber,
     }
   })
 
