@@ -1,32 +1,32 @@
 // Types for our data
 export interface Stop {
-  stop_id: number
+  stop_id: string
   stop_code: string
   stop_name: string
   street_name: string
   latitude: number
   longitude: number
-  stop_name_old: string
-  street_name_old: string
 }
 
 export interface Service {
+  service_id: number
   route_number: string
-  stop_id: number
+  stop_id: string
   direction: number
   zone: number
   sequence: number
 }
 
 export interface Route {
-  routeId: string
-  routeShortName: string
-  routeLongName: string
+  route_id: number
+  route_number: string
+  route_name: string
+  route_type: string
 }
 
 export interface RouteStop {
   route_number: string
-  stop_id: number
+  stop_id: string
   stop_code: string
   direction: number
   zone: number

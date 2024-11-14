@@ -1,0 +1,530 @@
+[
+  {
+    "group": 1,
+    "distance": 0.46,
+    "stops": [
+      {
+        "stop_id": "N2999977E101714847",
+        "stop_code": "SJ144",
+        "stop_name": "Fakulti Bahasa Moden & Komunikasi",
+        "coordinates": "2.999977,101.714847"
+      },
+      {
+        "stop_id": "N2999981E101714848",
+        "stop_code": "(no code)",
+        "stop_name": "Fakulti Bahasa Dan Komunikasi",
+        "coordinates": "2.999981,101.714848"
+      }
+    ],
+    "resolution": {
+      "action": "merge",
+      "preferred_stop_id": "N2999977E101714847"
+    }
+  },
+  {
+    "group": 2,
+    "distance": 0.47,
+    "stops": [
+      {
+        "stop_id": "N3041804E101687798",
+        "stop_code": "SJ766",
+        "stop_name": "Pangsapuri Orkid (Opp)",
+        "coordinates": "3.041804,101.687798"
+      },
+      {
+        "stop_id": "N3041807E101687801",
+        "stop_code": "(no code)",
+        "stop_name": "Pangsapuri Orkid",
+        "coordinates": "3.041807,101.687801"
+      }
+    ],
+    "resolution": {
+      "action": "merge",
+      "preferred_stop_id": "N3041804E101687798"
+    }
+  },
+  {
+    "group": 3,
+    "distance": 0.57,
+    "stops": [
+      {
+        "stop_id": "N3037571E101689786",
+        "stop_code": "SJ771",
+        "stop_name": "Apartment Vista Serdang",
+        "coordinates": "3.037571,101.689786"
+      },
+      {
+        "stop_id": "N3037576E101689787",
+        "stop_code": "(no code)",
+        "stop_name": "Apt Vista Serdang",
+        "coordinates": "3.037576,101.689787"
+      }
+    ],
+    "resolution": {
+      "action": "merge",
+      "preferred_stop_id": "N3037571E101689786"
+    }
+  },
+  {
+    "group": 4,
+    "distance": 0.79,
+    "stops": [
+      {
+        "stop_id": "N3039629E101688509",
+        "stop_code": "SJ770",
+        "stop_name": "Perumahan Bukit Serdang 10",
+        "coordinates": "3.039629,101.688509"
+      },
+      {
+        "stop_id": "N3039634E101688514",
+        "stop_code": "(no code)",
+        "stop_name": "Taman Bukit Serdang",
+        "coordinates": "3.039634,101.688514"
+      }
+    ],
+    "resolution": {
+      "action": "merge",
+      "preferred_stop_id": "N3039629E101688509"
+    }
+  },
+  {
+    "group": 5,
+    "distance": 1.34,
+    "stops": [
+      {
+        "stop_id": "N3037440E101694260",
+        "stop_code": "SJ763",
+        "stop_name": "Perumahan Bs 9",
+        "coordinates": "3.03744,101.69426"
+      },
+      {
+        "stop_id": "N3037441E101694248",
+        "stop_code": "(no code)",
+        "stop_name": "Signature Bs9",
+        "coordinates": "3.037441,101.694248"
+      }
+    ],
+    "resolution": {
+      "action": "merge",
+      "preferred_stop_id": "N3037440E101694260"
+    }
+  },
+  {
+    "group": 6,
+    "distance": 1.34,
+    "stops": [
+      {
+        "stop_id": "N3142400E101695304",
+        "stop_code": "(no code)",
+        "stop_name": "Pasar Seni (Platform B3 - B4)",
+        "coordinates": "3.1424,101.695304"
+      },
+      {
+        "stop_id": "N3142408E101695313",
+        "stop_code": "KL2213",
+        "stop_name": "Pasar Seni (Platform B5)",
+        "coordinates": "3.142408,101.695313"
+      }
+    ],
+    "resolution": {
+      "action": "keep_separate",
+      "preferred_stop_id": null
+    }
+  },
+  {
+    "group": 7,
+    "distance": 1.59,
+    "stops": [
+      {
+        "stop_id": "N3021233E101696605",
+        "stop_code": "(no code)",
+        "stop_name": "Bukit Serdang 6",
+        "coordinates": "3.021233,101.696605"
+      },
+      {
+        "stop_id": "N3021246E101696611",
+        "stop_code": "SJ802",
+        "stop_name": "Persimpangan Bs 6/9",
+        "coordinates": "3.021246,101.696611"
+      }
+    ],
+    "resolution": {
+      "action": "merge",
+      "preferred_stop_id": "N3021246E101696611"
+    }
+  },
+  {
+    "group": 8,
+    "distance": 3.78,
+    "stops": [
+      {
+        "stop_id": "N3086797E101703838",
+        "stop_code": "KL1493",
+        "stop_name": "Desa Hill Villas",
+        "coordinates": "3.086797,101.703838"
+      },
+      {
+        "stop_id": "N3086831E101703837",
+        "stop_code": "KL1492",
+        "stop_name": "Desa Petaling (Utara)",
+        "coordinates": "3.086831,101.703837"
+      }
+    ],
+    "resolution": {
+      "action": "merge",
+      "preferred_stop_id": "N3086831E101703837"
+    }
+  },
+  {
+    "group": 9,
+    "distance": 4.65,
+    "stops": [
+      {
+        "stop_id": "N3059682E101521675",
+        "stop_code": "SA938",
+        "stop_name": "Balai Polis Seksyen 15",
+        "coordinates": "3.0596818439679,101.52167521309"
+      },
+      {
+        "stop_id": "N3059683E101521633",
+        "stop_code": "(no code)",
+        "stop_name": "Balai Polis Shah Alam",
+        "coordinates": "3.0596833333333,101.52163333333"
+      }
+    ],
+    "resolution": {
+      "action": "merge",
+      "preferred_stop_id": "N3059682E101521675"
+    }
+  },
+  {
+    "group": 10,
+    "distance": 5.51,
+    "stops": [
+      {
+        "stop_id": "N2999578E101664741",
+        "stop_code": "(no code)",
+        "stop_name": "Pangsapuri Sri Indah",
+        "coordinates": "2.999578,101.664741"
+      },
+      {
+        "stop_id": "N2999586E101664790",
+        "stop_code": "SJ839",
+        "stop_name": "Pangsapuri Sri Indah Blok 11",
+        "coordinates": "2.999586,101.66479"
+      }
+    ],
+    "resolution": {
+      "action": "merge",
+      "preferred_stop_id": "N2999586E101664790"
+    }
+  },
+  {
+    "group": 11,
+    "distance": 5.51,
+    "stops": [
+      {
+        "stop_id": "N3118849E101628699",
+        "stop_code": "PJ312",
+        "stop_name": "Medan Selera Seksyen 19",
+        "coordinates": "3.118849,101.628699"
+      },
+      {
+        "stop_id": "N3118898E101628694",
+        "stop_code": "PJ349",
+        "stop_name": "Komersial Ss19/8",
+        "coordinates": "3.1188983,101.628694"
+      }
+    ],
+    "resolution": {
+      "action": "merge",
+      "preferred_stop_id": "N3118849E101628699"
+    }
+  },
+  {
+    "group": 12,
+    "distance": 6.16,
+    "stops": [
+      {
+        "stop_id": "N2970108E101772791",
+        "stop_code": "(no code)",
+        "stop_name": "Wisma Ck Rahim",
+        "coordinates": "2.970108,101.772791"
+      },
+      {
+        "stop_id": "N2970134E101772840",
+        "stop_code": "KJ439",
+        "stop_name": "Pusat Komersial Sek 7 (Selatan)",
+        "coordinates": "2.970134,101.77284"
+      }
+    ],
+    "resolution": {
+      "action": "merge",
+      "preferred_stop_id": "N2970134E101772840"
+    }
+  },
+  {
+    "group": 13,
+    "distance": 6.86,
+    "stops": [
+      {
+        "stop_id": "N3086710E101706355",
+        "stop_code": "(no code)",
+        "stop_name": "Impact Futsal Court",
+        "coordinates": "3.0867097819879,101.70635489286"
+      },
+      {
+        "stop_id": "N3086762E101706322",
+        "stop_code": "KL1493",
+        "stop_name": "Kampung Baru Salak Selatan (Selatan)",
+        "coordinates": "3.086762,101.706322"
+      }
+    ],
+    "resolution": {
+      "action": "merge",
+      "preferred_stop_id": "N3086762E101706322"
+    }
+  },
+  {
+    "group": 14,
+    "distance": 7.23,
+    "stops": [
+      {
+        "stop_id": "N3038075E101697826",
+        "stop_code": "SJ762",
+        "stop_name": "32 Avenue Bukit Serdang",
+        "coordinates": "3.038075,101.697826"
+      },
+      {
+        "stop_id": "N3038119E101697874",
+        "stop_code": "(no code)",
+        "stop_name": "Komersial Bukit Serdang",
+        "coordinates": "3.038119,101.697874"
+      }
+    ],
+    "resolution": {
+      "action": "merge",
+      "preferred_stop_id": "N3038075E101697826"
+    }
+  },
+  {
+    "group": 15,
+    "distance": 7.24,
+    "stops": [
+      {
+        "stop_id": "N2960747E101778100",
+        "stop_code": "KJ923",
+        "stop_name": "Jalan 4/3",
+        "coordinates": "2.960747,101.7781"
+      },
+      {
+        "stop_id": "N2960752E101778165",
+        "stop_code": "(no code)",
+        "stop_name": "Jalan 4/5d",
+        "coordinates": "2.960752,101.778165"
+      }
+    ],
+    "resolution": {
+      "action": "merge",
+      "preferred_stop_id": "N2960747E101778100"
+    }
+  },
+  {
+    "group": 16,
+    "distance": 7.76,
+    "stops": [
+      {
+        "stop_id": "N3013883E101697243",
+        "stop_code": "SJ799",
+        "stop_name": "Olive Hill Business Park",
+        "coordinates": "3.013883,101.697243"
+      },
+      {
+        "stop_id": "N3013945E101697211",
+        "stop_code": "(no code)",
+        "stop_name": "Komersial Sri Kembangan",
+        "coordinates": "3.013945,101.697211"
+      }
+    ],
+    "resolution": {
+      "action": "merge",
+      "preferred_stop_id": "N3013883E101697243"
+    }
+  },
+  {
+    "group": 17,
+    "distance": 7.93,
+    "stops": [
+      {
+        "stop_id": "N3037442E101690313",
+        "stop_code": "(no code)",
+        "stop_name": "Apt Vista Serdang (Opp)",
+        "coordinates": "3.037442,101.690313"
+      },
+      {
+        "stop_id": "N3037450E101690242",
+        "stop_code": "SJ764",
+        "stop_name": "Apartment Vista Serdang (Opp)",
+        "coordinates": "3.03745,101.690242"
+      }
+    ],
+    "resolution": {
+      "action": "merge",
+      "preferred_stop_id": "N3037450E101690242"
+    }
+  },
+  {
+    "group": 18,
+    "distance": 8.48,
+    "stops": [
+      {
+        "stop_id": "N3057335E101757667",
+        "stop_code": "(no code)",
+        "stop_name": "Apartment Waja",
+        "coordinates": "3.057335,101.757667"
+      },
+      {
+        "stop_id": "N3057408E101757645",
+        "stop_code": "KJ298",
+        "stop_name": "Pangsapuri Waja",
+        "coordinates": "3.057408,101.757645"
+      }
+    ],
+    "resolution": {
+      "action": "merge",
+      "preferred_stop_id": "N3057408E101757645"
+    }
+  },
+  {
+    "group": 19,
+    "distance": 8.85,
+    "stops": [
+      {
+        "stop_id": "N3251065E101558297",
+        "stop_code": "SL610",
+        "stop_name": "Apartment Seri Mawar (Opp)",
+        "coordinates": "3.251065,101.558297"
+      },
+      {
+        "stop_id": "N3251097E101558370",
+        "stop_code": "SL612",
+        "stop_name": "Apartment Seri Mawar",
+        "coordinates": "3.251097,101.55837"
+      }
+    ],
+    "resolution": {
+      "action": "keep_separate",
+      "preferred_stop_id": null
+    }
+  },
+  {
+    "group": 20,
+    "distance": 9.12,
+    "stops": [
+      {
+        "stop_id": "N2968784E101772868",
+        "stop_code": "(no code)",
+        "stop_name": "Taska Bestari Sek 8",
+        "coordinates": "2.968784,101.772868"
+      },
+      {
+        "stop_id": "N2968789E101772950",
+        "stop_code": "KJ436",
+        "stop_name": "Pusat Komersial Sek 7 (Utara)",
+        "coordinates": "2.968789,101.77295"
+      }
+    ],
+    "resolution": {
+      "action": "merge",
+      "preferred_stop_id": "N2968789E101772950"
+    }
+  },
+  {
+    "group": 21,
+    "distance": 9.13,
+    "stops": [
+      {
+        "stop_id": "N3178638E101535880",
+        "stop_code": "SA698",
+        "stop_name": "Komersial Mutiara Subang",
+        "coordinates": "3.178638,101.53588"
+      },
+      {
+        "stop_id": "N3178657E101535800",
+        "stop_code": "SA703",
+        "stop_name": "Komersial Mutiara Subang (Opp)",
+        "coordinates": "3.178657,101.5358"
+      }
+    ],
+    "resolution": {
+      "action": "keep_separate",
+      "preferred_stop_id": null
+    }
+  },
+  {
+    "group": 22,
+    "distance": 9.5,
+    "stops": [
+      {
+        "stop_id": "N2939138E101701795",
+        "stop_code": "PPJ189",
+        "stop_name": "Kompleks Kerajaan Parcel D",
+        "coordinates": "2.939138,101.701795"
+      },
+      {
+        "stop_id": "N2939182E101701722",
+        "stop_code": "PPJ188",
+        "stop_name": "Kementerian Dalam Negeri",
+        "coordinates": "2.9391821237369,101.70172175545"
+      }
+    ],
+    "resolution": {
+      "action": "merge",
+      "preferred_stop_id": "N2939138E101701795"
+    }
+  },
+  {
+    "group": 23,
+    "distance": 9.6,
+    "stops": [
+      {
+        "stop_id": "N3119817E101741670",
+        "stop_code": "AJ446",
+        "stop_name": "Warta Perdana",
+        "coordinates": "3.119817,101.74167"
+      },
+      {
+        "stop_id": "N3119833E101741585",
+        "stop_code": "AJ279",
+        "stop_name": "Pandan Warta",
+        "coordinates": "3.119833,101.741585"
+      }
+    ],
+    "resolution": {
+      "action": "keep_separate",
+      "preferred_stop_id": null
+    }
+  },
+  {
+    "group": 24,
+    "distance": 9.79,
+    "stops": [
+      {
+        "stop_id": "N3195642E101762172",
+        "stop_code": "(no code)",
+        "stop_name": "Bengkel Goodyear",
+        "coordinates": "3.195642,101.762172"
+      },
+      {
+        "stop_id": "N3195730E101762170",
+        "stop_code": "(no code)",
+        "stop_name": "Bengkel Goodyear (Opp)",
+        "coordinates": "3.19573,101.76217"
+      }
+    ],
+    "resolution": {
+      "action": "keep_separate",
+      "preferred_stop_id": null
+    }
+  }
+]

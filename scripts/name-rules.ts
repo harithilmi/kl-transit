@@ -5,6 +5,7 @@ export const UPPERCASE_WORDS = new Set([
   'SK',
   'ILP',
   'SMJKC',
+  'KLIA',
   'JPJ',
   'IPG',
   'KISAS',

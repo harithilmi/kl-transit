@@ -9,6 +9,7 @@ import {
   timestamp,
   varchar,
   integer,
+  decimal,
 } from 'drizzle-orm/pg-core'
 import { relations } from 'drizzle-orm'
 
@@ -20,46 +21,16 @@ import { relations } from 'drizzle-orm'
  */
 export const createTable = pgTableCreator((name) => `kl-transit_${name}`)
 
-export const routes = createTable(
-  'route',
-  {
-    id: serial('id').primaryKey(),
-    routeId: varchar('route_id', { length: 50 }).notNull().unique(),
-    agencyId: varchar('agency_id', { length: 50 }).notNull(),
-    routeShortName: varchar('route_short_name', { length: 50 }).notNull(),
-    routeLongName: varchar('route_long_name', { length: 100 }).notNull(),
-    routeType: integer('route_type').notNull(),
-    routeColor: varchar('route_color', { length: 6 }).notNull(),
-    routeTextColor: varchar('route_text_color', { length: 6 }).notNull(),
-    createdAt: timestamp('created_at', { withTimezone: true })
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
-    updatedAt: timestamp('updated_at', { withTimezone: true }).$onUpdate(
-      () => new Date(),
-    ),
-  },
-  (routes) => ({
-    routeIdIndex: index('route_id_idx').on(routes.routeId),
-    routeShortNameIndex: index('route_short_name_idx').on(
-      routes.routeShortName,
-    ),
-  }),
-)
-
-// routes.csv
-// route_id,agency_id,route_short_name,route_long_name,route_type,route_color,route_text_color
-// U3000,rapidkl,300,Hab Pandan Indah ~ Lebuh Ampang,3,006CFF,FFFFFF
-// U3030,rapidkl,303,Taman Mulia Jaya ~ Lebuh Ampang,3,006CFF,FFFFFF
-
 export const stops = createTable(
   'stop',
   {
     id: serial('id').primaryKey(),
-    stopId: varchar('stop_id', { length: 10 }).notNull().unique(),
+    stopId: varchar('stop_id', { length: 50 }).notNull().unique(),
+    stopCode: varchar('stop_code', { length: 20 }),
     stopName: varchar('stop_name', { length: 100 }).notNull(),
-    stopDesc: varchar('stop_desc', { length: 100 }),
-    stopLat: varchar('stop_lat', { length: 20 }).notNull(),
-    stopLon: varchar('stop_lon', { length: 20 }).notNull(),
+    streetName: varchar('street_name', { length: 100 }),
+    latitude: decimal('latitude', { precision: 10, scale: 7 }).notNull(),
+    longitude: decimal('longitude', { precision: 10, scale: 7 }).notNull(),
     createdAt: timestamp('created_at', { withTimezone: true })
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
@@ -72,24 +43,17 @@ export const stops = createTable(
   }),
 )
 
-//stops.csv
-// stop_id,stop_name,stop_desc,stop_lat,stop_lon
-// 1004342,KL1821 PASAR SENI (PLATFORM A1 - A2),JSM,3.142834,101.6956
-// 1001672,KL112 KOTA RAYA,JLN TUN TAN CHENG LOCK,3.1454957091436,101.69812709966
-// 1002080,KL113 HAB LEBUH PUDU,JLN TUN PERAK,3.146744,101.698695
-
-export const routeStops = createTable(
-  'route_stop',
+export const services = createTable(
+  'service',
   {
     id: serial('id').primaryKey(),
-    routeId: varchar('route_id', { length: 50 })
-      .notNull()
-      .references(() => routes.routeId),
-    stopId: varchar('stop_id', { length: 10 })
+    routeNumber: varchar('route_number', { length: 20 }).notNull(),
+    stopId: varchar('stop_id', { length: 50 })
       .notNull()
       .references(() => stops.stopId),
+    direction: integer('direction').notNull(),
+    zone: integer('zone').notNull(),
     sequence: integer('sequence').notNull(),
-    headsign: varchar('headsign', { length: 100 }),
     createdAt: timestamp('created_at', { withTimezone: true })
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
@@ -97,53 +61,53 @@ export const routeStops = createTable(
       () => new Date(),
     ),
   },
-  (routeStops) => ({
+  (services) => ({
     routeStopIndex: index('route_stop_idx').on(
-      routeStops.routeId,
-      routeStops.stopId,
+      services.routeNumber,
+      services.stopId,
     ),
     sequenceIndex: index('sequence_idx').on(
-      routeStops.routeId,
-      routeStops.sequence,
+      services.routeNumber,
+      services.sequence,
     ),
   }),
 )
 
-// route_id stop_id stop_sequence stop_headsign
-// 1004342	1	Kompleks Mahkamah Jalan Duta
-// 1001672	2	Kompleks Mahkamah Jalan Duta
-// 1002080	3	Kompleks Mahkamah Jalan Duta
-// 1001810	4	Kompleks Mahkamah Jalan Duta
-// 1000230	5	Kompleks Mahkamah Jalan Duta
-// 1001070	6	Kompleks Mahkamah Jalan Duta
-// 1001411	7	Kompleks Mahkamah Jalan Duta
-// 1001173	8	Kompleks Mahkamah Jalan Duta
-// 1001171	9	Kompleks Mahkamah Jalan Duta
-// 1000313	10	Kompleks Mahkamah Jalan Duta
-// 1000597	11	Kompleks Mahkamah Jalan Duta
-// 1001099	12	Kompleks Mahkamah Jalan Duta
-// 1001101	13	Kompleks Mahkamah Jalan Duta
-// 1001957	14	Kompleks Mahkamah Jalan Duta
-
-
-// Define relations for routes
-export const routesRelations = relations(routes, ({ many }) => ({
-  routeStops: many(routeStops),
-}))
-
-// Define relations for stops
-export const stopsRelations = relations(stops, ({ many }) => ({
-  routeStops: many(routeStops),
-}))
-
-// Define relations for routeStops
-export const routeStopsRelations = relations(routeStops, ({ one }) => ({
-  route: one(routes, {
-    fields: [routeStops.routeId],
-    references: [routes.routeId],
+export const routes = createTable(
+  'route',
+  {
+    id: serial('id').primaryKey(),
+    routeNumber: varchar('route_number', { length: 20 }).notNull().unique(),
+    routeName: varchar('route_name', { length: 200 }).notNull(),
+    routeType: varchar('route_type', { length: 50 }).notNull(),
+    createdAt: timestamp('created_at', { withTimezone: true })
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+    updatedAt: timestamp('updated_at', { withTimezone: true }).$onUpdate(
+      () => new Date(),
+    ),
+  },
+  (routes) => ({
+    routeNumberIndex: index('route_number_idx').on(routes.routeNumber),
   }),
+)
+
+// Define relations
+export const stopsRelations = relations(stops, ({ many }) => ({
+  services: many(services),
+}))
+
+export const servicesRelations = relations(services, ({ one }) => ({
   stop: one(stops, {
-    fields: [routeStops.stopId],
+    fields: [services.stopId],
     references: [stops.stopId],
   }),
+  route: one(routes, {
+    fields: [services.routeNumber],
+    references: [routes.routeNumber],
+  }),
+}))
+
+export const routesRelations = relations(routes, ({ many }) => ({
+  services: many(services),
 }))

@@ -11,6 +11,14 @@
     "route_name": "MRT Kg Batu ↺ Batu Caves (Thaipusam)",
     "route_type": "batu_caves_shuttle"
   },
+  "BET16": {
+    "route_name": "Warta Lama ⇌ Monumen Alaf Baru; Putrajaya",
+    "route_type": "bet"
+  },
+  "BET17": {
+    "route_name": "Pinggiran Batu Caves ⇌ Monumen Alaf Baru; Putrajaya",
+    "route_type": "bet"
+  },
   "451": {
     "route_name": "MRT Kajang ⇌ MRT Putrajaya Sentral",
     "route_type": "bet"
@@ -220,7 +228,7 @@
     "route_type": "mall_shuttle"
   },
   "KLG2A": {
-    "route_name": "SJKC Kong Hoe �� Taman Sri Pekan",
+    "route_name": "SJKC Kong Hoe ↺ Taman Sri Pekan",
     "route_type": "mbdk"
   },
   "KLG2B": {
@@ -228,15 +236,15 @@
     "route_type": "mbdk"
   },
   "KLG3A": {
-    "route_name": "Taman Sri Andalas �� Bandar Klang",
+    "route_name": "Taman Sri Andalas ↺ Bandar Klang",
     "route_type": "mbdk"
   },
   "KLG3B": {
-    "route_name": "Bandar Putera �� Bandar Klang via Jalan Raja Niong",
+    "route_name": "Bandar Putera ↺ Bandar Klang via Jalan Raja Niong",
     "route_type": "mbdk"
   },
   "KLG3C": {
-    "route_name": "Bandar Putera �� Bandar Klang via Jalan Kebun",
+    "route_name": "Bandar Putera ↺ Bandar Klang via Jalan Kebun",
     "route_type": "mbdk"
   },
   "PJ01": {
@@ -264,11 +272,11 @@
     "route_type": "mbpj"
   },
   "SA01": {
-    "route_name": "Stesen KTM Seksyen 19 ↺ Seksyen 7",
+    "route_name": "KTM Seksyen 19 ↺ Seksyen 7",
     "route_type": "mbsa"
   },
   "SA02": {
-    "route_name": "Hentian Bandar Seksyen 14 ↺ Stesen KTM Batu 3",
+    "route_name": "Hentian Bandar Seksyen 14 ↺ KTM Batu 3",
     "route_type": "mbsa"
   },
   "SA05": {
@@ -276,7 +284,7 @@
     "route_type": "mbsa"
   },
   "SA07": {
-    "route_name": "Stesen KTM Batu 3 ↺ Seksyen 20 via HICOM",
+    "route_name": "KTM Batu 3 ↺ Seksyen 20 via HICOM",
     "route_type": "mbsa"
   },
   "SA08": {
@@ -348,7 +356,7 @@
     "route_type": "mpkj"
   },
   "KJ02": {
-    "route_name": "Stesen KTM Bangi ↺ Bandar Bukit Mahkota",
+    "route_name": "KTM Bangi ↺ Bandar Bukit Mahkota",
     "route_type": "mpkj"
   },
   "KJ03": {
@@ -369,6 +377,10 @@
   },
   "MPS1": {
     "route_name": "Selayang Mutiara ↺ LRT Gombak",
+    "route_type": "mps"
+  },
+  "MPS2": {
+    "route_name": "Lotus Rawang ↺ Rawang Perdana",
     "route_type": "mps"
   },
   "MPS2A": {
@@ -792,7 +804,7 @@
     "route_type": "mrt_feeder"
   },
   "T819": {
-    "route_name": "MRT Semantan ↺ Stesen KL Sentral Via Stesen KTM Segambut",
+    "route_name": "MRT Semantan ↺ Stesen KL Sentral Via KTM Segambut",
     "route_type": "mrt_feeder"
   },
   "T820": {
@@ -844,7 +856,7 @@
     "route_type": "tempatan"
   },
   "T571": {
-    "route_name": "Stesen KTM Serdang ↺ Taman Sri Pulai",
+    "route_name": "KTM Serdang ↺ Taman Sri Pulai",
     "route_type": "tempatan"
   },
   "T602": {
@@ -972,7 +984,7 @@
     "route_type": "utama"
   },
   "540": {
-    "route_name": "Putra Permai ⇌ Stesen KTM Serdang",
+    "route_name": "Putra Permai ⇌ KTM Serdang",
     "route_type": "utama"
   },
   "580": {
@@ -984,7 +996,7 @@
     "route_type": "utama"
   },
   "600": {
-    "route_name": "Puchong Utama ⇌ Hab Pasar Seni",
+    "route_name": "Terminal Puchong Utama ⇌ Hab Pasar Seni",
     "route_type": "utama"
   },
   "602": {
@@ -1058,5 +1070,36 @@
   "851": {
     "route_name": "Hab Pasar Seni ⇌ Kompleks Mahkamah Jalan Duta",
     "route_type": "utama"
+  },
+  "P101": {
+    "route_name": "Pavilion Bukit Jalil ↺ KLSC",
+    "route_type": "nadiputra"
+  },
+  "P102": {
+    "route_number": "P102",
+    "route_name": "Presint 11 ↺ Kompleks E",
+    "route_type": "nadiputra",
+    "created_at": "2024-11-14 19:46:01.396373+00",
+    "updated_at": null
+  },
+  "P104": {
+    "route_name": "Dataran Gemilang ↺ Kompleks ABCDE",
+    "route_type": "nadiputra"
+  },
+  "P108": {
+    "route_name": "Terminal Putrajaya Sentral ↺ Kompleks ABCDE",
+    "route_type": "nadiputra"
+  },
+  "P103": {
+    "route_name": "Presint 14 via Alamanda ↺ Kompleks E",
+    "route_type": "nadiputra"
+  },
+  "P105": {
+    "route_name": "Dataran Gemilang ↺ Kompleks ABCDE",
+    "route_type": "nadiputra"
+  },
+  "P106": {
+    "route_name": "Presint 4 ↺ Kompleks E",
+    "route_type": "nadiputra"
   }
 }

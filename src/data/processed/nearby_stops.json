@@ -1,0 +1,5482 @@
+[
+  {
+    "distance": "0.06 meters",
+    "stops": [
+      {
+        "code": "KJ511",
+        "name": "Taman Hijau",
+        "coordinates": "2.9808280635305, 101.78989943649"
+      },
+      {
+        "code": "KJ511",
+        "name": "Kedai Motor Suzuki (Opp)",
+        "coordinates": "2.980828, 101.7899"
+      }
+    ]
+  },
+  {
+    "distance": "0.11 meters",
+    "stops": [
+      {
+        "code": "SP75",
+        "name": "Cyberjaya Transport Terminal",
+        "coordinates": "2.921205, 101.650769"
+      },
+      {
+        "code": "SP75",
+        "name": "Cyberjaya Transport Terminal",
+        "coordinates": "2.921205, 101.65077"
+      }
+    ]
+  },
+  {
+    "distance": "0.11 meters",
+    "stops": [
+      {
+        "code": "SJ836",
+        "name": "Pangsapuri Suria Permai",
+        "coordinates": "2.980664, 101.66737"
+      },
+      {
+        "code": "SJ836",
+        "name": "Pangsapuri Suria Permai",
+        "coordinates": "2.980664, 101.667371"
+      }
+    ]
+  },
+  {
+    "distance": "0.11 meters",
+    "stops": [
+      {
+        "code": "KJ508",
+        "name": "Pekan Kajang",
+        "coordinates": "2.991911, 101.787865"
+      },
+      {
+        "code": "KJ508",
+        "name": "Bandar Kajang",
+        "coordinates": "2.991912, 101.787865"
+      }
+    ]
+  },
+  {
+    "distance": "0.11 meters",
+    "stops": [
+      {
+        "code": "SL628",
+        "name": "Padang Bola Taman Ehsan",
+        "coordinates": "3.218822, 101.62188"
+      },
+      {
+        "code": "SL628",
+        "name": "Padang Bola Taman Ehsan",
+        "coordinates": "3.218822, 101.621881"
+      }
+    ]
+  },
+  {
+    "distance": "0.12 meters",
+    "stops": [
+      {
+        "code": "KL757",
+        "name": "Cheras Leisure Mall",
+        "coordinates": "3.08921, 101.741165"
+      },
+      {
+        "code": "KL757",
+        "name": "Cheras Leisure Mall",
+        "coordinates": "3.08921001753, 101.74116607053"
+      }
+    ]
+  },
+  {
+    "distance": "0.16 meters",
+    "stops": [
+      {
+        "code": "KJ467",
+        "name": "Taman Sri Reko",
+        "coordinates": "2.979071, 101.7897"
+      },
+      {
+        "code": "KJ467",
+        "name": "Taman Sri Reko",
+        "coordinates": "2.979072, 101.789699"
+      }
+    ]
+  },
+  {
+    "distance": "0.16 meters",
+    "stops": [
+      {
+        "code": "KL1254",
+        "name": "Taman Continental (Tengah)",
+        "coordinates": "3.088722, 101.681392"
+      },
+      {
+        "code": "KL1254",
+        "name": "Taman Continental (Tengah)",
+        "coordinates": "3.088723, 101.681393"
+      }
+    ]
+  },
+  {
+    "distance": "0.19 meters",
+    "stops": [
+      {
+        "code": "KL363",
+        "name": "Kondo Brunsfield",
+        "coordinates": "3.1280184, 101.72146"
+      },
+      {
+        "code": "KL363",
+        "name": "Sunway Medical Velocity (Opp)",
+        "coordinates": "3.1280183333333, 101.72146166667"
+      }
+    ]
+  },
+  {
+    "distance": "0.2 meters",
+    "stops": [
+      {
+        "code": "KL140",
+        "name": "Perumahan PDRM Desa Tasik (Pintu 2)",
+        "coordinates": "3.069314, 101.715554"
+      },
+      {
+        "code": "KL140",
+        "name": "Flat Desa Tasik (Utara)",
+        "coordinates": "3.069314851, 101.7155556"
+      }
+    ]
+  },
+  {
+    "distance": "0.21 meters",
+    "stops": [
+      {
+        "code": "KJ470",
+        "name": "Masjid India Kajang (Opp)",
+        "coordinates": "2.9856220682994, 101.78960810767"
+      },
+      {
+        "code": "KJ470",
+        "name": "Gudang KTM (Opp)",
+        "coordinates": "2.9856222, 101.78961"
+      }
+    ]
+  },
+  {
+    "distance": "0.22 meters",
+    "stops": [
+      {
+        "code": "KJ462",
+        "name": "Plaza Perabot",
+        "coordinates": "2.961152, 101.79206"
+      },
+      {
+        "code": "KJ462",
+        "name": "Plaza Perabot",
+        "coordinates": "2.961152, 101.792062"
+      }
+    ]
+  },
+  {
+    "distance": "0.22 meters",
+    "stops": [
+      {
+        "code": "KJ705",
+        "name": "Symphony Tower",
+        "coordinates": "3.0262187974836, 101.75109805471"
+      },
+      {
+        "code": "KJ705",
+        "name": "Symphony Tower",
+        "coordinates": "3.026219, 101.7511"
+      }
+    ]
+  },
+  {
+    "distance": "0.22 meters",
+    "stops": [
+      {
+        "code": "KL784",
+        "name": "Pangsapuri Permai",
+        "coordinates": "3.062202, 101.706764"
+      },
+      {
+        "code": "KL784",
+        "name": "Pangsapuri Permai",
+        "coordinates": "3.062202, 101.706766"
+      }
+    ]
+  },
+  {
+    "distance": "0.22 meters",
+    "stops": [
+      {
+        "code": "PJ823",
+        "name": "MRT Phileo Damansara Pintu A",
+        "coordinates": "3.128419, 101.642747"
+      },
+      {
+        "code": "PJ823",
+        "name": "MRT Phileo Damansara Pintu A",
+        "coordinates": "3.128421, 101.642747"
+      }
+    ]
+  },
+  {
+    "distance": "0.22 meters",
+    "stops": [
+      {
+        "code": "PJ55",
+        "name": "Residensi Suasana Damai (Opp)",
+        "coordinates": "3.194511, 101.591378"
+      },
+      {
+        "code": "PJ55",
+        "name": "Residensi Suasana Damai (Opp)",
+        "coordinates": "3.194511, 101.59138"
+      }
+    ]
+  },
+  {
+    "distance": "0.22 meters",
+    "stops": [
+      {
+        "code": "SL100",
+        "name": "Selayang Mall",
+        "coordinates": "3.236597, 101.644088"
+      },
+      {
+        "code": "SL100",
+        "name": "Selayang Mall",
+        "coordinates": "3.236597, 101.64409"
+      }
+    ]
+  },
+  {
+    "distance": "0.24 meters",
+    "stops": [
+      {
+        "code": "PJ814",
+        "name": "MRT Mutiara Damansara Pintu C",
+        "coordinates": "3.1564871, 101.6078861"
+      },
+      {
+        "code": "PJ814",
+        "name": "MRT Mutiara Damansara Pintu C",
+        "coordinates": "3.156489, 101.607885"
+      }
+    ]
+  },
+  {
+    "distance": "0.25 meters",
+    "stops": [
+      {
+        "code": "KJ509",
+        "name": "Masjid India Kajang",
+        "coordinates": "2.985971774422, 101.78985371103"
+      },
+      {
+        "code": "KJ509",
+        "name": "Gudang KTM",
+        "coordinates": "2.9859717, 101.789856"
+      }
+    ]
+  },
+  {
+    "distance": "0.25 meters",
+    "stops": [
+      {
+        "code": "KJ699",
+        "name": "Komersial Taming Jaya",
+        "coordinates": "3.025512, 101.74046"
+      },
+      {
+        "code": "KJ699",
+        "name": "Komersial Taming Jaya",
+        "coordinates": "3.025513, 101.740462"
+      }
+    ]
+  },
+  {
+    "distance": "0.25 meters",
+    "stops": [
+      {
+        "code": "SA756",
+        "name": "Denai Alam (Timur)",
+        "coordinates": "3.159082, 101.515819"
+      },
+      {
+        "code": "SA756",
+        "name": "Denai Alam (Timur)",
+        "coordinates": "3.159084, 101.51582"
+      }
+    ]
+  },
+  {
+    "distance": "0.25 meters",
+    "stops": [
+      {
+        "code": "SA761",
+        "name": "Pangsapuri Teratai",
+        "coordinates": "3.172279, 101.515448"
+      },
+      {
+        "code": "SA761",
+        "name": "Pangsapuri Teratai, Taman Bukit Subang",
+        "coordinates": "3.17228, 101.51545"
+      }
+    ]
+  },
+  {
+    "distance": "0.25 meters",
+    "stops": [
+      {
+        "code": "KL536",
+        "name": "Menara Tkss",
+        "coordinates": "3.182464, 101.676725"
+      },
+      {
+        "code": "KL536",
+        "name": "Menara Tkss",
+        "coordinates": "3.182466, 101.676726"
+      }
+    ]
+  },
+  {
+    "distance": "0.25 meters",
+    "stops": [
+      {
+        "code": "SA707",
+        "name": "Pangsapuri Utarid",
+        "coordinates": "3.182572, 101.535168"
+      },
+      {
+        "code": "SA707",
+        "name": "Pangsapuri Utarid Subang",
+        "coordinates": "3.182573, 101.53517"
+      }
+    ]
+  },
+  {
+    "distance": "0.28 meters",
+    "stops": [
+      {
+        "code": "KJ179",
+        "name": "Taman Delima",
+        "coordinates": "3.0169964062436, 101.77663152189"
+      },
+      {
+        "code": "KJ179",
+        "name": "Taman Delima",
+        "coordinates": "3.0169964, 101.776634"
+      }
+    ]
+  },
+  {
+    "distance": "0.29 meters",
+    "stops": [
+      {
+        "code": "AJ275",
+        "name": "Pandan Perdana (Selatan)",
+        "coordinates": "3.1142465789033, 101.74105738188"
+      },
+      {
+        "code": "AJ275",
+        "name": "Spg Safari Park",
+        "coordinates": "3.1142466, 101.74106"
+      }
+    ]
+  },
+  {
+    "distance": "0.32 meters",
+    "stops": [
+      {
+        "code": "KJ471",
+        "name": "Maybank Pekan Kajang",
+        "coordinates": "2.9916301133654, 101.78740709961"
+      },
+      {
+        "code": "KJ471",
+        "name": "Maybank Pekan Kajang",
+        "coordinates": "2.99163, 101.78741"
+      }
+    ]
+  },
+  {
+    "distance": "0.33 meters",
+    "stops": [
+      {
+        "code": "SP432",
+        "name": "DXN Cyberville (Opp)",
+        "coordinates": "2.940657, 101.655846"
+      },
+      {
+        "code": "SP432",
+        "name": "DXN Cyberville (Opp)",
+        "coordinates": "2.940657, 101.655849"
+      }
+    ]
+  },
+  {
+    "distance": "0.33 meters",
+    "stops": [
+      {
+        "code": "KJ187",
+        "name": "Masjid Kampung Sg Sekamat",
+        "coordinates": "3.0219243, 101.775566"
+      },
+      {
+        "code": "KJ187",
+        "name": "Masjid Sg Sekamat (Opp)",
+        "coordinates": "3.0219241574636, 101.77556894731"
+      }
+    ]
+  },
+  {
+    "distance": "0.33 meters",
+    "stops": [
+      {
+        "code": "KL147",
+        "name": "Bandar Tasik Selatan (Utara)",
+        "coordinates": "3.073745, 101.713694"
+      },
+      {
+        "code": "KL147",
+        "name": "Perumahan Tasik Selatan 16",
+        "coordinates": "3.073745, 101.713697"
+      }
+    ]
+  },
+  {
+    "distance": "0.33 meters",
+    "stops": [
+      {
+        "code": "KL2205",
+        "name": "Kawasan Perindustrian Chan Sow Lin",
+        "coordinates": "3.120341, 101.710822"
+      },
+      {
+        "code": "KL2205",
+        "name": "Perindustrian Trisegi",
+        "coordinates": "3.120341, 101.710825"
+      }
+    ]
+  },
+  {
+    "distance": "0.33 meters",
+    "stops": [
+      {
+        "code": "KL874",
+        "name": "Aeon Maluri (Opp)",
+        "coordinates": "3.1250635680885, 101.72670707363"
+      },
+      {
+        "code": "KL874",
+        "name": "Aeon Maluri 1 (Opp)",
+        "coordinates": "3.1250637, 101.72671"
+      }
+    ]
+  },
+  {
+    "distance": "0.33 meters",
+    "stops": [
+      {
+        "code": "SA902",
+        "name": "Mas HQ",
+        "coordinates": "3.130825, 101.55597"
+      },
+      {
+        "code": "SA902",
+        "name": "Malaysian Airline Berhad",
+        "coordinates": "3.130825, 101.555973"
+      }
+    ]
+  },
+  {
+    "distance": "0.33 meters",
+    "stops": [
+      {
+        "code": "SL515",
+        "name": "Surau Al-Firdaus Taman Bidara",
+        "coordinates": "3.241901, 101.644135"
+      },
+      {
+        "code": "SL515",
+        "name": "Surau Firdaus Taman Bidara",
+        "coordinates": "3.241904, 101.644135"
+      }
+    ]
+  },
+  {
+    "distance": "0.35 meters",
+    "stops": [
+      {
+        "code": "KJ205",
+        "name": "Taman Sri Langat 2 (Opp)",
+        "coordinates": "2.974814, 101.7899"
+      },
+      {
+        "code": "KJ205",
+        "name": "Taman Sri Langat 2",
+        "coordinates": "2.974815, 101.789903"
+      }
+    ]
+  },
+  {
+    "distance": "0.35 meters",
+    "stops": [
+      {
+        "code": "AJ156",
+        "name": "Hospital Ampang",
+        "coordinates": "3.12755, 101.762898"
+      },
+      {
+        "code": "AJ156",
+        "name": "Hospital Ampang (Opp)",
+        "coordinates": "3.127551, 101.762901"
+      }
+    ]
+  },
+  {
+    "distance": "0.35 meters",
+    "stops": [
+      {
+        "code": "PJ522",
+        "name": "Merchant Square",
+        "coordinates": "3.132555, 101.600965"
+      },
+      {
+        "code": "PJ522",
+        "name": "Merchant Square",
+        "coordinates": "3.132558, 101.600964"
+      }
+    ]
+  },
+  {
+    "distance": "0.37 meters",
+    "stops": [
+      {
+        "code": "SJ177",
+        "name": "Pasar Seri Kembangan",
+        "coordinates": "3.023464, 101.706845"
+      },
+      {
+        "code": "SJ177",
+        "name": "Pasar Seri Kembangan",
+        "coordinates": "3.023464481587, 101.70684828288"
+      }
+    ]
+  },
+  {
+    "distance": "0.39 meters",
+    "stops": [
+      {
+        "code": "AJ276",
+        "name": "Pandan Height",
+        "coordinates": "3.1127224, 101.73863"
+      },
+      {
+        "code": "AJ276",
+        "name": "Pandan Height",
+        "coordinates": "3.112722443449, 101.73863347999"
+      }
+    ]
+  },
+  {
+    "distance": "0.4 meters",
+    "stops": [
+      {
+        "code": "KJ931",
+        "name": "Uline Tyre",
+        "coordinates": "2.9643771, 101.7816349"
+      },
+      {
+        "code": "KJ931",
+        "name": "Komersial Seksyen 4",
+        "coordinates": "2.964379, 101.781638"
+      }
+    ]
+  },
+  {
+    "distance": "0.4 meters",
+    "stops": [
+      {
+        "code": "KL151",
+        "name": "LRT Bukit Jalil (Opp)",
+        "coordinates": "3.058517, 101.691516"
+      },
+      {
+        "code": "KL151",
+        "name": "LRT Bkt Jalil",
+        "coordinates": "3.058519, 101.691519"
+      }
+    ]
+  },
+  {
+    "distance": "0.4 meters",
+    "stops": [
+      {
+        "code": "AJ334",
+        "name": "Taman Seraya (Timur)",
+        "coordinates": "3.115573, 101.762985"
+      },
+      {
+        "code": "AJ334",
+        "name": "Taman Seraya (Timur)",
+        "coordinates": "3.115575, 101.762988"
+      }
+    ]
+  },
+  {
+    "distance": "0.4 meters",
+    "stops": [
+      {
+        "code": "SA776",
+        "name": "Denai Alam (Timur)",
+        "coordinates": "3.159301, 101.51646"
+      },
+      {
+        "code": "SA776",
+        "name": "Denai Alam (Timur)",
+        "coordinates": "3.159304, 101.516458"
+      }
+    ]
+  },
+  {
+    "distance": "0.44 meters",
+    "stops": [
+      {
+        "code": "SP73",
+        "name": "Quill 3",
+        "coordinates": "2.922024, 101.654166"
+      },
+      {
+        "code": "SP73",
+        "name": "Quill 3",
+        "coordinates": "2.922024, 101.65417"
+      }
+    ]
+  },
+  {
+    "distance": "0.44 meters",
+    "stops": [
+      {
+        "code": "SJ108",
+        "name": "South City Plaza (Opp)",
+        "coordinates": "3.027164, 101.710344"
+      },
+      {
+        "code": "SJ106",
+        "name": "South City Plaza (Opp)",
+        "coordinates": "3.027164, 101.710348"
+      }
+    ]
+  },
+  {
+    "distance": "0.44 meters",
+    "stops": [
+      {
+        "code": "KL781",
+        "name": "MRT/LRT Sungai Besi",
+        "coordinates": "3.063572, 101.70729"
+      },
+      {
+        "code": "KL781",
+        "name": "MRT/LRT Sungai Besi",
+        "coordinates": "3.063572, 101.707294"
+      }
+    ]
+  },
+  {
+    "distance": "0.44 meters",
+    "stops": [
+      {
+        "code": "SL558",
+        "name": "Masjid Sg Buloh",
+        "coordinates": "3.219001, 101.596911"
+      },
+      {
+        "code": "SL558",
+        "name": "Masjid Hospital Sg Buloh",
+        "coordinates": "3.219001, 101.596915"
+      }
+    ]
+  },
+  {
+    "distance": "0.46 meters",
+    "stops": [
+      {
+        "code": "KJ465",
+        "name": "Saville Kajang",
+        "coordinates": "2.972186, 101.789639"
+      },
+      {
+        "code": "KJ465",
+        "name": "Saville Kajang",
+        "coordinates": "2.972187, 101.789635"
+      }
+    ]
+  },
+  {
+    "distance": "0.46 meters",
+    "stops": [
+      {
+        "code": "SJ144",
+        "name": "Fakulti Bahasa Moden & Komunikasi",
+        "coordinates": "2.999977, 101.714847"
+      },
+      {
+        "code": "(no code)",
+        "name": "Fakulti Bahasa Dan Komunikasi",
+        "coordinates": "2.999981, 101.714848"
+      }
+    ]
+  },
+  {
+    "distance": "0.46 meters",
+    "stops": [
+      {
+        "code": "KJ703",
+        "name": "Susur U-Turn Cheras Jaya",
+        "coordinates": "3.028845, 101.756126"
+      },
+      {
+        "code": "KJ703",
+        "name": "Susur U-Turn Cheras Jaya (Opp)",
+        "coordinates": "3.028846, 101.75613"
+      }
+    ]
+  },
+  {
+    "distance": "0.47 meters",
+    "stops": [
+      {
+        "code": "KJ930",
+        "name": "SMK Jalan Empat (Opp)",
+        "coordinates": "2.961775, 101.78159"
+      },
+      {
+        "code": "KJ930",
+        "name": "SMK Jalan Empat (Opp)",
+        "coordinates": "2.961778, 101.781593"
+      }
+    ]
+  },
+  {
+    "distance": "0.47 meters",
+    "stops": [
+      {
+        "code": "SJ766",
+        "name": "Pangsapuri Orkid (Opp)",
+        "coordinates": "3.041804, 101.687798"
+      },
+      {
+        "code": "(no code)",
+        "name": "Pangsapuri Orkid",
+        "coordinates": "3.041807, 101.687801"
+      }
+    ]
+  },
+  {
+    "distance": "0.47 meters",
+    "stops": [
+      {
+        "code": "KJ361",
+        "name": "Bdr Sg. Long 7 (Barat)",
+        "coordinates": "3.046014, 101.79483"
+      },
+      {
+        "code": "KJ361",
+        "name": "Green Seksyen 7",
+        "coordinates": "3.046017, 101.794833"
+      }
+    ]
+  },
+  {
+    "distance": "0.48 meters",
+    "stops": [
+      {
+        "code": "KJ884",
+        "name": "Uline Tyre (Opp)",
+        "coordinates": "2.9644943, 101.7817418"
+      },
+      {
+        "code": "KJ884",
+        "name": "Komersial Seksyen 4",
+        "coordinates": "2.964498, 101.781744"
+      }
+    ]
+  },
+  {
+    "distance": "0.49 meters",
+    "stops": [
+      {
+        "code": "KJ463",
+        "name": "Shell",
+        "coordinates": "2.9646004641002, 101.79096441243"
+      },
+      {
+        "code": "KJ463",
+        "name": "Shell",
+        "coordinates": "2.9646006, 101.79096"
+      }
+    ]
+  },
+  {
+    "distance": "0.5 meters",
+    "stops": [
+      {
+        "code": "SJ640",
+        "name": "The Mines",
+        "coordinates": "3.027062, 101.718937"
+      },
+      {
+        "code": "SJ640",
+        "name": "The Mines",
+        "coordinates": "3.027064, 101.718933"
+      }
+    ]
+  },
+  {
+    "distance": "0.5 meters",
+    "stops": [
+      {
+        "code": "KL778",
+        "name": "Kg. Malaysia Raya",
+        "coordinates": "3.074733, 101.7039"
+      },
+      {
+        "code": "KL778",
+        "name": "Kampung Malaysia Raya",
+        "coordinates": "3.074737, 101.703902"
+      }
+    ]
+  },
+  {
+    "distance": "0.52 meters",
+    "stops": [
+      {
+        "code": "PJ239",
+        "name": "Pusat Asasi Mahallah Aisyah UIA",
+        "coordinates": "3.119611, 101.6432035"
+      },
+      {
+        "code": "PJ239",
+        "name": "Pusat Asasi UIA",
+        "coordinates": "3.119615, 101.643201"
+      }
+    ]
+  },
+  {
+    "distance": "0.56 meters",
+    "stops": [
+      {
+        "code": "SJ703",
+        "name": "Taman Puncak Jalil",
+        "coordinates": "3.017728, 101.67513"
+      },
+      {
+        "code": "SJ703",
+        "name": "Puj 4 Taman Puncak Jalil",
+        "coordinates": "3.017731, 101.675126"
+      }
+    ]
+  },
+  {
+    "distance": "0.56 meters",
+    "stops": [
+      {
+        "code": "KJ674",
+        "name": "Komersial Dutamas Cheras",
+        "coordinates": "3.030219, 101.760952"
+      },
+      {
+        "code": "KJ674",
+        "name": "Komersial Dutamas Cheras",
+        "coordinates": "3.030222, 101.760956"
+      }
+    ]
+  },
+  {
+    "distance": "0.56 meters",
+    "stops": [
+      {
+        "code": "KL755",
+        "name": "Taman Bukit Hijau",
+        "coordinates": "3.086075, 101.74153"
+      },
+      {
+        "code": "KL755",
+        "name": "Taman Bukit Hijau",
+        "coordinates": "3.086078, 101.741526"
+      }
+    ]
+  },
+  {
+    "distance": "0.56 meters",
+    "stops": [
+      {
+        "code": "SL510",
+        "name": "Taman Selayang Jaya",
+        "coordinates": "3.236613, 101.64704"
+      },
+      {
+        "code": "SL510",
+        "name": "Taman Selayang Jaya",
+        "coordinates": "3.236613, 101.647045"
+      }
+    ]
+  },
+  {
+    "distance": "0.56 meters",
+    "stops": [
+      {
+        "code": "SL514",
+        "name": "Taman Selayang Jaya (Barat)",
+        "coordinates": "3.236617, 101.646895"
+      },
+      {
+        "code": "SL514",
+        "name": "Taman Selayang Jaya (Barat)",
+        "coordinates": "3.236617, 101.6469"
+      }
+    ]
+  },
+  {
+    "distance": "0.56 meters",
+    "stops": [
+      {
+        "code": "SL283",
+        "name": "Dataran Bandar Baru Selayang",
+        "coordinates": "3.255694, 101.657104"
+      },
+      {
+        "code": "SL283",
+        "name": "Dataran Bandar Baru Selayang",
+        "coordinates": "3.255699, 101.657104"
+      }
+    ]
+  },
+  {
+    "distance": "0.57 meters",
+    "stops": [
+      {
+        "code": "KJ483",
+        "name": "Kolej Vokasional Kajang",
+        "coordinates": "2.985496, 101.813125"
+      },
+      {
+        "code": "KJ483",
+        "name": "Kolej Vokasional Kajang",
+        "coordinates": "2.9854972, 101.81312"
+      }
+    ]
+  },
+  {
+    "distance": "0.57 meters",
+    "stops": [
+      {
+        "code": "SJ771",
+        "name": "Apartment Vista Serdang",
+        "coordinates": "3.037571, 101.689786"
+      },
+      {
+        "code": "(no code)",
+        "name": "Apt Vista Serdang",
+        "coordinates": "3.037576, 101.689787"
+      }
+    ]
+  },
+  {
+    "distance": "0.57 meters",
+    "stops": [
+      {
+        "code": "KL531",
+        "name": "Masjid Al Firdaus (Opp)",
+        "coordinates": "3.188024, 101.669172"
+      },
+      {
+        "code": "KL531",
+        "name": "Masjid Al Firdaus (Opp)",
+        "coordinates": "3.1880291336005, 101.66917150582"
+      }
+    ]
+  },
+  {
+    "distance": "0.6 meters",
+    "stops": [
+      {
+        "code": "KJ925",
+        "name": "Spg 4/8e (Opp)",
+        "coordinates": "2.952044, 101.77863"
+      },
+      {
+        "code": "KJ925",
+        "name": "Simpang 4/8e",
+        "coordinates": "2.952049, 101.778632"
+      }
+    ]
+  },
+  {
+    "distance": "0.6 meters",
+    "stops": [
+      {
+        "code": "KJ498",
+        "name": "Klinik Kesihatan Kajang",
+        "coordinates": "2.978, 101.82563"
+      },
+      {
+        "code": "KJ498",
+        "name": "Klinik Kesihatan Kajang (Opp)",
+        "coordinates": "2.978002, 101.825625"
+      }
+    ]
+  },
+  {
+    "distance": "0.65 meters",
+    "stops": [
+      {
+        "code": "AJ237",
+        "name": "Sekolah Kebangsaan Taman Muda",
+        "coordinates": "3.120506, 101.755424"
+      },
+      {
+        "code": "AJ237",
+        "name": "SK Taman Muda",
+        "coordinates": "3.1205083504751, 101.75542940854"
+      }
+    ]
+  },
+  {
+    "distance": "0.65 meters",
+    "stops": [
+      {
+        "code": "PJ863",
+        "name": "Komersial Bandar Sri Damansara",
+        "coordinates": "3.188383, 101.605487"
+      },
+      {
+        "code": "PJ863",
+        "name": "Komersial Bandar Sri Damansara",
+        "coordinates": "3.188388, 101.605484"
+      }
+    ]
+  },
+  {
+    "distance": "0.65 meters",
+    "stops": [
+      {
+        "code": "SL21",
+        "name": "Pangsapuri Merak",
+        "coordinates": "3.246421, 101.642195"
+      },
+      {
+        "code": "SL21",
+        "name": "Pangsapuri Merak",
+        "coordinates": "3.246424, 101.6422"
+      }
+    ]
+  },
+  {
+    "distance": "0.67 meters",
+    "stops": [
+      {
+        "code": "AJ155",
+        "name": "SMK Pandan Mewah",
+        "coordinates": "3.125219, 101.762831"
+      },
+      {
+        "code": "AJ155",
+        "name": "SMK Pandan Mewah",
+        "coordinates": "3.125225, 101.762831"
+      }
+    ]
+  },
+  {
+    "distance": "0.67 meters",
+    "stops": [
+      {
+        "code": "SL511",
+        "name": "Selayang Mall (Opp)",
+        "coordinates": "3.236374, 101.64459"
+      },
+      {
+        "code": "SL511",
+        "name": "Selayang Mall (Opp)",
+        "coordinates": "3.236374, 101.644596"
+      }
+    ]
+  },
+  {
+    "distance": "0.68 meters",
+    "stops": [
+      {
+        "code": "KJ922",
+        "name": "Petronas Unikeb 2 (Hub)",
+        "coordinates": "2.957884, 101.779205"
+      },
+      {
+        "code": "KJ922",
+        "name": "Petronas Unikeb 2",
+        "coordinates": "2.957885, 101.779211"
+      }
+    ]
+  },
+  {
+    "distance": "0.69 meters",
+    "stops": [
+      {
+        "code": "KJ464",
+        "name": "Reko Sentral",
+        "coordinates": "2.967952, 101.78986"
+      },
+      {
+        "code": "KJ464",
+        "name": "Reko Sentral",
+        "coordinates": "2.967951949354, 101.78986621205"
+      }
+    ]
+  },
+  {
+    "distance": "0.7 meters",
+    "stops": [
+      {
+        "code": "SJ598",
+        "name": "The Mines (Opp)",
+        "coordinates": "3.026619, 101.719623"
+      },
+      {
+        "code": "SJ598",
+        "name": "The Mines (Opp)",
+        "coordinates": "3.026621, 101.719617"
+      }
+    ]
+  },
+  {
+    "distance": "0.7 meters",
+    "stops": [
+      {
+        "code": "SL18",
+        "name": "Pangsapuri Merak",
+        "coordinates": "3.246566, 101.641694"
+      },
+      {
+        "code": "SL18",
+        "name": "Pangsapuri Merak (Opp)",
+        "coordinates": "3.246568, 101.6417"
+      }
+    ]
+  },
+  {
+    "distance": "0.71 meters",
+    "stops": [
+      {
+        "code": "PJ620",
+        "name": "Kampung Seri Damansara",
+        "coordinates": "3.13158109, 101.6319485"
+      },
+      {
+        "code": "PJ620",
+        "name": "Kampung Seri Damansara",
+        "coordinates": "3.131587, 101.631946"
+      }
+    ]
+  },
+  {
+    "distance": "0.73 meters",
+    "stops": [
+      {
+        "code": "KL1785",
+        "name": "Apartment Desa Tun Razak",
+        "coordinates": "3.0791862, 101.71878"
+      },
+      {
+        "code": "KL1785",
+        "name": "Apartment Desa Tun Razak (Opp)",
+        "coordinates": "3.079192, 101.718777"
+      }
+    ]
+  },
+  {
+    "distance": "0.75 meters",
+    "stops": [
+      {
+        "code": "KL148",
+        "name": "Perumahan Tasik Selatan 29",
+        "coordinates": "3.074589, 101.716354"
+      },
+      {
+        "code": "KL148",
+        "name": "Royal Squadron Regimen",
+        "coordinates": "3.074595, 101.716357"
+      }
+    ]
+  },
+  {
+    "distance": "0.75 meters",
+    "stops": [
+      {
+        "code": "KL2206",
+        "name": "Hyundai Services",
+        "coordinates": "3.123098, 101.712808"
+      },
+      {
+        "code": "KL2206",
+        "name": "Perindustrian Chan Sow Lin (Tengah)",
+        "coordinates": "3.123104, 101.712811"
+      }
+    ]
+  },
+  {
+    "distance": "0.76 meters",
+    "stops": [
+      {
+        "code": "KJ482",
+        "name": "Taman Restu 7",
+        "coordinates": "2.9875555, 101.80795"
+      },
+      {
+        "code": "KJ482",
+        "name": "Taman Restu 7",
+        "coordinates": "2.987562, 101.807948"
+      }
+    ]
+  },
+  {
+    "distance": "0.78 meters",
+    "stops": [
+      {
+        "code": "SJ835",
+        "name": "Pusat Bandar Putra Permai (Selatan)",
+        "coordinates": "2.980595, 101.6647"
+      },
+      {
+        "code": "SJ835",
+        "name": "Pusat Bandar Putra Permai (Selatan)",
+        "coordinates": "2.980595, 101.664707"
+      }
+    ]
+  },
+  {
+    "distance": "0.79 meters",
+    "stops": [
+      {
+        "code": "SJ702",
+        "name": "Taman Puncak Jalil Puj 5",
+        "coordinates": "3.017887, 101.67483"
+      },
+      {
+        "code": "SJ702",
+        "name": "Puj 4 Taman Puncak Jalil",
+        "coordinates": "3.017892, 101.674835"
+      }
+    ]
+  },
+  {
+    "distance": "0.79 meters",
+    "stops": [
+      {
+        "code": "SJ770",
+        "name": "Perumahan Bukit Serdang 10",
+        "coordinates": "3.039629, 101.688509"
+      },
+      {
+        "code": "(no code)",
+        "name": "Taman Bukit Serdang",
+        "coordinates": "3.039634, 101.688514"
+      }
+    ]
+  },
+  {
+    "distance": "0.79 meters",
+    "stops": [
+      {
+        "code": "SA654",
+        "name": "Taman Subang Perdana (Selatan)",
+        "coordinates": "3.149539, 101.54342"
+      },
+      {
+        "code": "SA654",
+        "name": "Komersial Subang Perdana",
+        "coordinates": "3.149544, 101.543415"
+      }
+    ]
+  },
+  {
+    "distance": "0.8 meters",
+    "stops": [
+      {
+        "code": "KL1042",
+        "name": "Taman Sri Segambut (Selatan)",
+        "coordinates": "3.195415, 101.655531"
+      },
+      {
+        "code": "KL1042",
+        "name": "Taman Sri Segambut (Selatan)",
+        "coordinates": "3.195419, 101.655525"
+      }
+    ]
+  },
+  {
+    "distance": "0.81 meters",
+    "stops": [
+      {
+        "code": "KJ667",
+        "name": "Susur Cheras Jaya",
+        "coordinates": "3.030769, 101.763363"
+      },
+      {
+        "code": "KJ667",
+        "name": "Susur Cheras Jaya",
+        "coordinates": "3.030771, 101.76337"
+      }
+    ]
+  },
+  {
+    "distance": "0.81 meters",
+    "stops": [
+      {
+        "code": "SL6",
+        "name": "Taman Ehsan (Timur)",
+        "coordinates": "3.220164, 101.624017"
+      },
+      {
+        "code": "SL6",
+        "name": "Taman Ehsan (Timur)",
+        "coordinates": "3.220166, 101.62401"
+      }
+    ]
+  },
+  {
+    "distance": "0.87 meters",
+    "stops": [
+      {
+        "code": "SL7",
+        "name": "Taman Ehsan (Selatan)",
+        "coordinates": "3.218416, 101.62159"
+      },
+      {
+        "code": "SL7",
+        "name": "Taman Ehsan (Selatan)",
+        "coordinates": "3.218421, 101.621584"
+      }
+    ]
+  },
+  {
+    "distance": "0.9 meters",
+    "stops": [
+      {
+        "code": "KL805",
+        "name": "Toyota Sg Besi (Opp)",
+        "coordinates": "3.118916, 101.709987"
+      },
+      {
+        "code": "KL805",
+        "name": "Perindustrian Chan Sow Lin (Utara)",
+        "coordinates": "3.118923, 101.709983"
+      }
+    ]
+  },
+  {
+    "distance": "0.9 meters",
+    "stops": [
+      {
+        "code": "SL616",
+        "name": "Mas Kipark Damansara",
+        "coordinates": "3.207006, 101.608651"
+      },
+      {
+        "code": "SL616",
+        "name": "Mas Kipark Damansara",
+        "coordinates": "3.207014, 101.60865"
+      }
+    ]
+  },
+  {
+    "distance": "0.9 meters",
+    "stops": [
+      {
+        "code": "SL19",
+        "name": "IPD Gombak",
+        "coordinates": "3.251437, 101.641266"
+      },
+      {
+        "code": "SL19",
+        "name": "IPD Gombak",
+        "coordinates": "3.251444, 101.64127"
+      }
+    ]
+  },
+  {
+    "distance": "0.92 meters",
+    "stops": [
+      {
+        "code": "KJ755",
+        "name": "MRT Batu 11 Cheras Pintu A",
+        "coordinates": "3.040949, 101.77288"
+      },
+      {
+        "code": "KJ755",
+        "name": "MRT Batu 11 Cheras",
+        "coordinates": "3.040957, 101.772878"
+      }
+    ]
+  },
+  {
+    "distance": "0.92 meters",
+    "stops": [
+      {
+        "code": "PJ515",
+        "name": "SMK Tropicana",
+        "coordinates": "3.128849, 101.598469"
+      },
+      {
+        "code": "PJ515",
+        "name": "SMK Tropicana",
+        "coordinates": "3.128851, 101.598477"
+      }
+    ]
+  },
+  {
+    "distance": "0.92 meters",
+    "stops": [
+      {
+        "code": "PJ784",
+        "name": "Prima Damansara",
+        "coordinates": "3.198231, 101.599158"
+      },
+      {
+        "code": "PJ784",
+        "name": "Sphere Damansara",
+        "coordinates": "3.198239, 101.59916"
+      }
+    ]
+  },
+  {
+    "distance": "0.94 meters",
+    "stops": [
+      {
+        "code": "SL22",
+        "name": "Taman Bidara (Utara)",
+        "coordinates": "3.243248, 101.643574"
+      },
+      {
+        "code": "SL22",
+        "name": "Taman Bidara (Utara)",
+        "coordinates": "3.243254, 101.64358"
+      }
+    ]
+  },
+  {
+    "distance": "0.96 meters",
+    "stops": [
+      {
+        "code": "PPJ45",
+        "name": "Lembaga Pembiayaan Perumahan (Utara)",
+        "coordinates": "2.922944, 101.686688"
+      },
+      {
+        "code": "PPJ45",
+        "name": "Lembaga Pembiayaan Perumahan (Opp)",
+        "coordinates": "2.922949, 101.686681"
+      }
+    ]
+  },
+  {
+    "distance": "0.96 meters",
+    "stops": [
+      {
+        "code": "KJ704",
+        "name": "Susur U-Turn Cheras Jaya",
+        "coordinates": "3.027925, 101.755947"
+      },
+      {
+        "code": "KJ704",
+        "name": "Susur U-Turn Cheras Jaya",
+        "coordinates": "3.02793, 101.75594"
+      }
+    ]
+  },
+  {
+    "distance": "0.96 meters",
+    "stops": [
+      {
+        "code": "KL802",
+        "name": "Temple Mariamman (Opp)",
+        "coordinates": "3.198002, 101.659652"
+      },
+      {
+        "code": "KL802",
+        "name": "Mariamman Temple (Opp)",
+        "coordinates": "3.198007, 101.659645"
+      }
+    ]
+  },
+  {
+    "distance": "0.99 meters",
+    "stops": [
+      {
+        "code": "PPJ55",
+        "name": "Kementerian Belia & Sukan",
+        "coordinates": "2.914144, 101.684242"
+      },
+      {
+        "code": "PPJ55",
+        "name": "Kementerian Belia & Sukan",
+        "coordinates": "2.914148, 101.68425"
+      }
+    ]
+  },
+  {
+    "distance": "0.99 meters",
+    "stops": [
+      {
+        "code": "SJ205",
+        "name": "Aeon Mall Taman Equine",
+        "coordinates": "2.993277, 101.67409"
+      },
+      {
+        "code": "SJ205",
+        "name": "Aeon Jusco Equine Park (Opp)",
+        "coordinates": "2.993285, 101.674086"
+      }
+    ]
+  },
+  {
+    "distance": "1.01 meters",
+    "stops": [
+      {
+        "code": "KJ468",
+        "name": "Taman Hijau",
+        "coordinates": "2.980755, 101.78972"
+      },
+      {
+        "code": "KJ468",
+        "name": "Taman Hijau",
+        "coordinates": "2.980756, 101.789711"
+      }
+    ]
+  },
+  {
+    "distance": "1.01 meters",
+    "stops": [
+      {
+        "code": "SJ816",
+        "name": "Komersial Serdang Jaya",
+        "coordinates": "3.019382, 101.711939"
+      },
+      {
+        "code": "(no code)",
+        "name": "Komersial Serdang Jaya",
+        "coordinates": "3.019391, 101.711938"
+      }
+    ]
+  },
+  {
+    "distance": "1.01 meters",
+    "stops": [
+      {
+        "code": "PJ790",
+        "name": "Sek Rendah Agama Seksyen 5",
+        "coordinates": "3.160772, 101.587663"
+      },
+      {
+        "code": "PJ790",
+        "name": "SRA Seksyen 5",
+        "coordinates": "3.160781, 101.587662"
+      }
+    ]
+  },
+  {
+    "distance": "1.02 meters",
+    "stops": [
+      {
+        "code": "KL2424",
+        "name": "Damanlela Carpark",
+        "coordinates": "3.149055, 101.66251"
+      },
+      {
+        "code": "KL2424",
+        "name": "Damanlela Carpark",
+        "coordinates": "3.149062, 101.662504"
+      }
+    ]
+  },
+  {
+    "distance": "1.02 meters",
+    "stops": [
+      {
+        "code": "KL652",
+        "name": "Institut Latihan Makpem",
+        "coordinates": "3.178461, 101.698121"
+      },
+      {
+        "code": "KL652",
+        "name": "Makpem",
+        "coordinates": "3.178467, 101.698128"
+      }
+    ]
+  },
+  {
+    "distance": "1.03 meters",
+    "stops": [
+      {
+        "code": "SL598",
+        "name": "Taman Villa Putra",
+        "coordinates": "3.226532, 101.567566"
+      },
+      {
+        "code": "SL598",
+        "name": "Taman Villa Putra",
+        "coordinates": "3.226541, 101.567568"
+      }
+    ]
+  },
+  {
+    "distance": "1.05 meters",
+    "stops": [
+      {
+        "code": "KL756",
+        "name": "MRT Taman Mutiara Pintu B",
+        "coordinates": "3.091748, 101.74048"
+      },
+      {
+        "code": "KL756",
+        "name": "MRT Taman Mutiara Pintu B",
+        "coordinates": "3.091753, 101.740472"
+      }
+    ]
+  },
+  {
+    "distance": "1.09 meters",
+    "stops": [
+      {
+        "code": "PJ380",
+        "name": "Neo Damansara",
+        "coordinates": "3.164177, 101.611665"
+      },
+      {
+        "code": "PJ380",
+        "name": "Neo Damansara",
+        "coordinates": "3.164181, 101.611656"
+      }
+    ]
+  },
+  {
+    "distance": "1.09 meters",
+    "stops": [
+      {
+        "code": "SL209",
+        "name": "Taman Wangsa Permai",
+        "coordinates": "3.208308, 101.61141"
+      },
+      {
+        "code": "SL209",
+        "name": "Taman Wangsa Permai/Cocomart (Opp)",
+        "coordinates": "3.208317, 101.611406"
+      }
+    ]
+  },
+  {
+    "distance": "1.1 meters",
+    "stops": [
+      {
+        "code": "KL1013",
+        "name": "Taman Dato Senu",
+        "coordinates": "3.193997, 101.694054"
+      },
+      {
+        "code": "KL1013",
+        "name": "Taman Dato Senu",
+        "coordinates": "3.194004, 101.694047"
+      }
+    ]
+  },
+  {
+    "distance": "1.11 meters",
+    "stops": [
+      {
+        "code": "KL1241",
+        "name": "Pusat Penjaja Taman Gembira",
+        "coordinates": "3.077593, 101.681197"
+      },
+      {
+        "code": "KL1241",
+        "name": "Taman Bandaraya",
+        "coordinates": "3.077603, 101.681197"
+      }
+    ]
+  },
+  {
+    "distance": "1.13 meters",
+    "stops": [
+      {
+        "code": "SJ624",
+        "name": "Kampung Baru Seri Kembangan",
+        "coordinates": "3.021554, 101.704906"
+      },
+      {
+        "code": "SJ624",
+        "name": "Kg. Baru Seri Kembangan",
+        "coordinates": "3.021556, 101.704916"
+      }
+    ]
+  },
+  {
+    "distance": "1.14 meters",
+    "stops": [
+      {
+        "code": "PPJ51",
+        "name": "Lembaga Pembiayaan Perumahan",
+        "coordinates": "2.9232149106516, 101.68722591695"
+      },
+      {
+        "code": "PPJ51",
+        "name": "Lembaga Pembiayaan Perumahan (Selatan)",
+        "coordinates": "2.923217, 101.687236"
+      }
+    ]
+  },
+  {
+    "distance": "1.14 meters",
+    "stops": [
+      {
+        "code": "PPJ47",
+        "name": "Menara Perkeso",
+        "coordinates": "2.927249, 101.688175"
+      },
+      {
+        "code": "PPJ47",
+        "name": "Kementerian Kewangan (Opp)",
+        "coordinates": "2.927254, 101.688166"
+      }
+    ]
+  },
+  {
+    "distance": "1.16 meters",
+    "stops": [
+      {
+        "code": "KJ299",
+        "name": "Taman Rakan (Timur)",
+        "coordinates": "3.035489, 101.782583"
+      },
+      {
+        "code": "KJ299",
+        "name": "Taman Rakan (Timur)",
+        "coordinates": "3.035499, 101.78258"
+      }
+    ]
+  },
+  {
+    "distance": "1.18 meters",
+    "stops": [
+      {
+        "code": "KL414",
+        "name": "Flat Taman Bukit Cheras",
+        "coordinates": "3.0728377748585, 101.74941529683"
+      },
+      {
+        "code": "KL414",
+        "name": "Flat Bukit Cheras",
+        "coordinates": "3.072848, 101.749418"
+      }
+    ]
+  },
+  {
+    "distance": "1.2 meters",
+    "stops": [
+      {
+        "code": "SJ172",
+        "name": "Rumah Sejahtera Seri Kembangan",
+        "coordinates": "3.019466, 101.703775"
+      },
+      {
+        "code": "SJ172",
+        "name": "Rumah Sejahtera Seri Kembangan",
+        "coordinates": "3.01947, 101.703785"
+      }
+    ]
+  },
+  {
+    "distance": "1.23 meters",
+    "stops": [
+      {
+        "code": "PPJ49",
+        "name": "Kementerian Kewangan",
+        "coordinates": "2.927536, 101.688712"
+      },
+      {
+        "code": "PPJ49",
+        "name": "Kementerian Kewangan",
+        "coordinates": "2.927547, 101.688711"
+      }
+    ]
+  },
+  {
+    "distance": "1.23 meters",
+    "stops": [
+      {
+        "code": "PJ672",
+        "name": "Pusat Dagangan NZX",
+        "coordinates": "3.114517, 101.590901"
+      },
+      {
+        "code": "PJ672",
+        "name": "Pusat Dagangan Ara Damansara",
+        "coordinates": "3.114518, 101.590912"
+      }
+    ]
+  },
+  {
+    "distance": "1.27 meters",
+    "stops": [
+      {
+        "code": "PPJ33",
+        "name": "Kementerian Pembangunan Luar Bandar",
+        "coordinates": "2.904778, 101.681029"
+      },
+      {
+        "code": "PPJ33",
+        "name": "Kementerian Klbw (Barat)",
+        "coordinates": "2.904787, 101.681022"
+      }
+    ]
+  },
+  {
+    "distance": "1.27 meters",
+    "stops": [
+      {
+        "code": "KL141",
+        "name": "Perumahan Polis Desa Tasik (Selatan)",
+        "coordinates": "3.066838, 101.713475"
+      },
+      {
+        "code": "KL141",
+        "name": "Perumahan PDRM Desa Tasik (Pintu 1)",
+        "coordinates": "3.066847, 101.713468"
+      }
+    ]
+  },
+  {
+    "distance": "1.27 meters",
+    "stops": [
+      {
+        "code": "KL2500",
+        "name": "Masjid Amru Sentul",
+        "coordinates": "3.179908, 101.698141"
+      },
+      {
+        "code": "KL2500",
+        "name": "Masjid Amru Ibn Al'as B.b.s",
+        "coordinates": "3.179919, 101.698138"
+      }
+    ]
+  },
+  {
+    "distance": "1.34 meters",
+    "stops": [
+      {
+        "code": "SJ763",
+        "name": "Perumahan Bs 9",
+        "coordinates": "3.03744, 101.69426"
+      },
+      {
+        "code": "(no code)",
+        "name": "Signature Bs9",
+        "coordinates": "3.037441, 101.694248"
+      }
+    ]
+  },
+  {
+    "distance": "1.34 meters",
+    "stops": [
+      {
+        "code": "KL2200",
+        "name": "Percetakan Nasional (Opp)",
+        "coordinates": "3.124576, 101.714053"
+      },
+      {
+        "code": "KL2200",
+        "name": "Percetakan Nasional (Opp)",
+        "coordinates": "3.124585, 101.714045"
+      }
+    ]
+  },
+  {
+    "distance": "1.34 meters",
+    "stops": [
+      {
+        "code": "(no code)",
+        "name": "Pasar Seni (Platform B3 - B4)",
+        "coordinates": "3.1424, 101.695304"
+      },
+      {
+        "code": "KL2213",
+        "name": "Pasar Seni (Platform B5)",
+        "coordinates": "3.142408, 101.695313"
+      }
+    ]
+  },
+  {
+    "distance": "1.35 meters",
+    "stops": [
+      {
+        "code": "KJ469",
+        "name": "MRT Kajang (Opp)",
+        "coordinates": "2.983779, 101.789783"
+      },
+      {
+        "code": "KJ469",
+        "name": "Kuil",
+        "coordinates": "2.983781, 101.789795"
+      }
+    ]
+  },
+  {
+    "distance": "1.36 meters",
+    "stops": [
+      {
+        "code": "KJ185",
+        "name": "Simpang Jln. Sarjan Mat",
+        "coordinates": "3.025799, 101.77391"
+      },
+      {
+        "code": "KJ185",
+        "name": "Jalan Sarjan Mat",
+        "coordinates": "3.025809, 101.773917"
+      }
+    ]
+  },
+  {
+    "distance": "1.38 meters",
+    "stops": [
+      {
+        "code": "KJ341",
+        "name": "Plaza Kasturi (Opp)",
+        "coordinates": "3.038177, 101.76926"
+      },
+      {
+        "code": "KJ341",
+        "name": "Plaza Kasturi (Opp)",
+        "coordinates": "3.038189, 101.769263"
+      }
+    ]
+  },
+  {
+    "distance": "1.38 meters",
+    "stops": [
+      {
+        "code": "KL1869",
+        "name": "Taman Lawa",
+        "coordinates": "3.198669, 101.665383"
+      },
+      {
+        "code": "KL1869",
+        "name": "Taman Lawa",
+        "coordinates": "3.198681, 101.66538"
+      }
+    ]
+  },
+  {
+    "distance": "1.38 meters",
+    "stops": [
+      {
+        "code": "SL629",
+        "name": "Pasar Moden Taman Ehsan",
+        "coordinates": "3.220903, 101.62478"
+      },
+      {
+        "code": "SL629",
+        "name": "Pasar Moden Taman Ehsan",
+        "coordinates": "3.220915, 101.624777"
+      }
+    ]
+  },
+  {
+    "distance": "1.41 meters",
+    "stops": [
+      {
+        "code": "SA762",
+        "name": "Pangsapuri Melati, Taman Bukit Subang",
+        "coordinates": "3.171297, 101.51691"
+      },
+      {
+        "code": "SA762",
+        "name": "Pangsapuri Melati",
+        "coordinates": "3.171309, 101.516914"
+      }
+    ]
+  },
+  {
+    "distance": "1.45 meters",
+    "stops": [
+      {
+        "code": "KL1815",
+        "name": "Kawasan Perindustrian Salak Selatan",
+        "coordinates": "3.11204, 101.706677"
+      },
+      {
+        "code": "KL1815",
+        "name": "Kampung Sri Indah",
+        "coordinates": "3.112053, 101.706678"
+      }
+    ]
+  },
+  {
+    "distance": "1.45 meters",
+    "stops": [
+      {
+        "code": "PJ525",
+        "name": "Komersial Mutiara Tropicana",
+        "coordinates": "3.129196, 101.599069"
+      },
+      {
+        "code": "PJ525",
+        "name": "Komersial Mutiara Tropicana",
+        "coordinates": "3.129197, 101.599082"
+      }
+    ]
+  },
+  {
+    "distance": "1.48 meters",
+    "stops": [
+      {
+        "code": "PPJ46",
+        "name": "Perbendaharaan 2 (Utara)",
+        "coordinates": "2.924972, 101.687394"
+      },
+      {
+        "code": "PPJ46",
+        "name": "Perbendaharaan 2 (Opp)",
+        "coordinates": "2.924975, 101.687381"
+      }
+    ]
+  },
+  {
+    "distance": "1.48 meters",
+    "stops": [
+      {
+        "code": "AJ234",
+        "name": "Taman Lembah Maju (Utara)",
+        "coordinates": "3.125998, 101.75561"
+      },
+      {
+        "code": "AJ234",
+        "name": "Taman Lembah Maju (Utara)",
+        "coordinates": "3.126011, 101.755607"
+      }
+    ]
+  },
+  {
+    "distance": "1.49 meters",
+    "stops": [
+      {
+        "code": "KJ330",
+        "name": "Taman Rakan (Barat)",
+        "coordinates": "3.034862, 101.78055"
+      },
+      {
+        "code": "KJ330",
+        "name": "Taman Rakan (Barat)",
+        "coordinates": "3.034874, 101.780544"
+      }
+    ]
+  },
+  {
+    "distance": "1.49 meters",
+    "stops": [
+      {
+        "code": "KL144",
+        "name": "Flat Desa Tasik Fasa 6a (Blok 2)",
+        "coordinates": "3.067509, 101.713868"
+      },
+      {
+        "code": "KL144",
+        "name": "Pangsapuri Desa Tasik",
+        "coordinates": "3.067521, 101.713874"
+      }
+    ]
+  },
+  {
+    "distance": "1.49 meters",
+    "stops": [
+      {
+        "code": "PJ660",
+        "name": "Komersial Sepah Puteri",
+        "coordinates": "3.156235, 101.583059"
+      },
+      {
+        "code": "PJ660",
+        "name": "Persimpangan Sepah Puteri 5/2",
+        "coordinates": "3.156247, 101.583053"
+      }
+    ]
+  },
+  {
+    "distance": "1.51 meters",
+    "stops": [
+      {
+        "code": "KJ700",
+        "name": "Shell Taming Jaya",
+        "coordinates": "3.025295, 101.735395"
+      },
+      {
+        "code": "KJ700",
+        "name": "Shell Taming Jaya",
+        "coordinates": "3.025299, 101.735408"
+      }
+    ]
+  },
+  {
+    "distance": "1.51 meters",
+    "stops": [
+      {
+        "code": "KL1739",
+        "name": "Dewan Kampung Salak Selatan",
+        "coordinates": "3.0893115697914, 101.70283535922"
+      },
+      {
+        "code": "KL1739",
+        "name": "Dewan Kampung Baru Salak Selatan",
+        "coordinates": "3.089314, 101.702822"
+      }
+    ]
+  },
+  {
+    "distance": "1.54 meters",
+    "stops": [
+      {
+        "code": "KL451",
+        "name": "MRT Metro Prima Pintu A",
+        "coordinates": "3.214387, 101.639283"
+      },
+      {
+        "code": "KL451",
+        "name": "MRT Metro Prima Pintu A",
+        "coordinates": "3.214399, 101.639276"
+      }
+    ]
+  },
+  {
+    "distance": "1.55 meters",
+    "stops": [
+      {
+        "code": "KJ472",
+        "name": "Komersial Bandar Kajang",
+        "coordinates": "2.993141, 101.790184"
+      },
+      {
+        "code": "KJ472",
+        "name": "Komersial Bandar Kajang",
+        "coordinates": "2.993154, 101.790179"
+      }
+    ]
+  },
+  {
+    "distance": "1.59 meters",
+    "stops": [
+      {
+        "code": "(no code)",
+        "name": "Bukit Serdang 6",
+        "coordinates": "3.021233, 101.696605"
+      },
+      {
+        "code": "SJ802",
+        "name": "Persimpangan Bs 6/9",
+        "coordinates": "3.021246, 101.696611"
+      }
+    ]
+  },
+  {
+    "distance": "1.59 meters",
+    "stops": [
+      {
+        "code": "PJ217",
+        "name": "Padang Srk Sri Damai",
+        "coordinates": "3.121181, 101.633833"
+      },
+      {
+        "code": "PJ217",
+        "name": "SK Sri Damai (Selatan)",
+        "coordinates": "3.121187, 101.633846"
+      }
+    ]
+  },
+  {
+    "distance": "1.68 meters",
+    "stops": [
+      {
+        "code": "SA1055",
+        "name": "Kampung Merbau Sempak Bt17",
+        "coordinates": "3.217563, 101.518905"
+      },
+      {
+        "code": "SA1055",
+        "name": "Bt. 17 Kg. Merbau Sempak",
+        "coordinates": "3.217565, 101.51892"
+      }
+    ]
+  },
+  {
+    "distance": "1.7 meters",
+    "stops": [
+      {
+        "code": "KL2065",
+        "name": "Capers Sentul",
+        "coordinates": "3.181716, 101.693199"
+      },
+      {
+        "code": "KL2065",
+        "name": "Capers Sentul",
+        "coordinates": "3.181731, 101.693202"
+      }
+    ]
+  },
+  {
+    "distance": "1.7 meters",
+    "stops": [
+      {
+        "code": "SL278",
+        "name": "Majlis Peperiksaan Malaysia (Opp)",
+        "coordinates": "3.260833, 101.652626"
+      },
+      {
+        "code": "SL278",
+        "name": "Majlis Peperiksaan Msia",
+        "coordinates": "3.260836, 101.652611"
+      }
+    ]
+  },
+  {
+    "distance": "1.71 meters",
+    "stops": [
+      {
+        "code": "SA672",
+        "name": "Komersial Subang Perdana",
+        "coordinates": "3.149769, 101.543583"
+      },
+      {
+        "code": "SA672",
+        "name": "Komersial Subang Perdana (Barat)",
+        "coordinates": "3.149777, 101.5435962"
+      }
+    ]
+  },
+  {
+    "distance": "1.76 meters",
+    "stops": [
+      {
+        "code": "PPJ34",
+        "name": "Dataran Gemilang",
+        "coordinates": "2.903404, 101.681176"
+      },
+      {
+        "code": "PPJ34",
+        "name": "Dataran Gemilang",
+        "coordinates": "2.903409, 101.681191"
+      }
+    ]
+  },
+  {
+    "distance": "1.78 meters",
+    "stops": [
+      {
+        "code": "PJ722",
+        "name": "SMK Damansara Utama",
+        "coordinates": "3.137431, 101.624458"
+      },
+      {
+        "code": "PJ722",
+        "name": "SMK Damansara Utama",
+        "coordinates": "3.137431, 101.624474"
+      }
+    ]
+  },
+  {
+    "distance": "1.79 meters",
+    "stops": [
+      {
+        "code": "PJ516",
+        "name": "Bayu Puteri Apartment",
+        "coordinates": "3.131942, 101.597402"
+      },
+      {
+        "code": "PJ516",
+        "name": "Bayu Puteri Apartment",
+        "coordinates": "3.131948, 101.597387"
+      }
+    ]
+  },
+  {
+    "distance": "1.79 meters",
+    "stops": [
+      {
+        "code": "PJ647",
+        "name": "Sd Apartment 2",
+        "coordinates": "3.187658, 101.603106"
+      },
+      {
+        "code": "PJ647",
+        "name": "Sd Apartment 2",
+        "coordinates": "3.187666, 101.60312"
+      }
+    ]
+  },
+  {
+    "distance": "1.79 meters",
+    "stops": [
+      {
+        "code": "SL282",
+        "name": "Pej. JKR Daerah Gombak (Opp)",
+        "coordinates": "3.255508, 101.65489"
+      },
+      {
+        "code": "SL282",
+        "name": "Selayang 18 Residences (Opp)",
+        "coordinates": "3.255524, 101.654888"
+      }
+    ]
+  },
+  {
+    "distance": "1.81 meters",
+    "stops": [
+      {
+        "code": "KL789",
+        "name": "Plaza Sg Besi",
+        "coordinates": "3.089197, 101.698388"
+      },
+      {
+        "code": "KL789",
+        "name": "Plaza Sg Besi",
+        "coordinates": "3.089209, 101.698377"
+      }
+    ]
+  },
+  {
+    "distance": "1.86 meters",
+    "stops": [
+      {
+        "code": "KL1245",
+        "name": "Taman Yarl (Timur)",
+        "coordinates": "3.075363, 101.670712"
+      },
+      {
+        "code": "KL1245",
+        "name": "Taman Yarl (Timur)",
+        "coordinates": "3.075379, 101.670717"
+      }
+    ]
+  },
+  {
+    "distance": "1.97 meters",
+    "stops": [
+      {
+        "code": "KJ504",
+        "name": "Taman Lembah Mewah",
+        "coordinates": "2.990019, 101.800207"
+      },
+      {
+        "code": "KJ504",
+        "name": "Taman Lembah Mewah",
+        "coordinates": "2.990024, 101.800224"
+      }
+    ]
+  },
+  {
+    "distance": "1.99 meters",
+    "stops": [
+      {
+        "code": "PPJ54",
+        "name": "Istana Kehakiman (Selatan)",
+        "coordinates": "2.916473, 101.684966"
+      },
+      {
+        "code": "PPJ54",
+        "name": "Perbadanan Putrajaya (Opp)",
+        "coordinates": "2.916489, 101.684958"
+      }
+    ]
+  },
+  {
+    "distance": "1.99 meters",
+    "stops": [
+      {
+        "code": "KL1213",
+        "name": "SJK (C) Choong Wen",
+        "coordinates": "3.091315, 101.676611"
+      },
+      {
+        "code": "KL1213",
+        "name": "Kuchai Business Centre",
+        "coordinates": "3.0913213800017, 101.67659427669"
+      }
+    ]
+  },
+  {
+    "distance": "2.03 meters",
+    "stops": [
+      {
+        "code": "PJ233",
+        "name": "Shell 17/22",
+        "coordinates": "3.124703, 101.636736"
+      },
+      {
+        "code": "PJ233",
+        "name": "Shell Seksyen 17 (Opp)",
+        "coordinates": "3.124721, 101.636739"
+      }
+    ]
+  },
+  {
+    "distance": "2.04 meters",
+    "stops": [
+      {
+        "code": "PJ54",
+        "name": "Apt Permai",
+        "coordinates": "3.194242, 101.588228"
+      },
+      {
+        "code": "PJ54",
+        "name": "Apartment Permai",
+        "coordinates": "3.194259, 101.588235"
+      }
+    ]
+  },
+  {
+    "distance": "2.05 meters",
+    "stops": [
+      {
+        "code": "KL1735",
+        "name": "Pasar Penjaja Salak Selatan",
+        "coordinates": "3.0897005303433, 101.70631841591"
+      },
+      {
+        "code": "KL1735",
+        "name": "Pasar & Pusat Penjaja Salak Selatan",
+        "coordinates": "3.089714, 101.706331"
+      }
+    ]
+  },
+  {
+    "distance": "2.07 meters",
+    "stops": [
+      {
+        "code": "KL2338",
+        "name": "Plaza Crystelville",
+        "coordinates": "3.163064, 101.651408"
+      },
+      {
+        "code": "KL2338",
+        "name": "Plaza Crystelville",
+        "coordinates": "3.163079, 101.651397"
+      }
+    ]
+  },
+  {
+    "distance": "2.08 meters",
+    "stops": [
+      {
+        "code": "KJ506",
+        "name": "Pejabat Air Selangor",
+        "coordinates": "2.992459, 101.793035"
+      },
+      {
+        "code": "KJ506",
+        "name": "Pejabat Air Selangor",
+        "coordinates": "2.992477, 101.79304"
+      }
+    ]
+  },
+  {
+    "distance": "2.08 meters",
+    "stops": [
+      {
+        "code": "SA699",
+        "name": "Pasar Malam Jalan Utarid (Opp)",
+        "coordinates": "3.17721, 101.53633"
+      },
+      {
+        "code": "SA699",
+        "name": "Hab Bas U5",
+        "coordinates": "3.177228, 101.536335"
+      }
+    ]
+  },
+  {
+    "distance": "2.12 meters",
+    "stops": [
+      {
+        "code": "SA660",
+        "name": "Kampung Baru Subang (Utara)",
+        "coordinates": "3.142582, 101.53292"
+      },
+      {
+        "code": "SA660",
+        "name": "Kampung Baru Subang (Utara)",
+        "coordinates": "3.142596, 101.532907"
+      }
+    ]
+  },
+  {
+    "distance": "2.12 meters",
+    "stops": [
+      {
+        "code": "KL560",
+        "name": "MRT Metro Prima Pintu B",
+        "coordinates": "3.214108, 101.639657"
+      },
+      {
+        "code": "KL560",
+        "name": "Aeon Mall Metro Prima",
+        "coordinates": "3.2141254189443, 101.63966473584"
+      }
+    ]
+  },
+  {
+    "distance": "2.15 meters",
+    "stops": [
+      {
+        "code": "SJ214",
+        "name": "Komersial Putra Permai 9",
+        "coordinates": "2.996404, 101.669648"
+      },
+      {
+        "code": "SJ214",
+        "name": "Komersial Putra Permai 1a",
+        "coordinates": "2.996422, 101.669655"
+      }
+    ]
+  },
+  {
+    "distance": "2.16 meters",
+    "stops": [
+      {
+        "code": "KL1136",
+        "name": "Bsc (Utara)",
+        "coordinates": "3.142383, 101.667967"
+      },
+      {
+        "code": "KL1136",
+        "name": "Bangsar Shopping Center (Opp)",
+        "coordinates": "3.142399, 101.667978"
+      }
+    ]
+  },
+  {
+    "distance": "2.16 meters",
+    "stops": [
+      {
+        "code": "SL281",
+        "name": "Majlis Peperiksaan Msia",
+        "coordinates": "3.260809, 101.652854"
+      },
+      {
+        "code": "SL281",
+        "name": "Majlis Peperiksaan Malaysia",
+        "coordinates": "3.260828, 101.65285"
+      }
+    ]
+  },
+  {
+    "distance": "2.22 meters",
+    "stops": [
+      {
+        "code": "KL1251",
+        "name": "Taman Gembira (Selatan)",
+        "coordinates": "3.084112, 101.682025"
+      },
+      {
+        "code": "KL1251",
+        "name": "Taman Gembira",
+        "coordinates": "3.084113, 101.682045"
+      }
+    ]
+  },
+  {
+    "distance": "2.24 meters",
+    "stops": [
+      {
+        "code": "KL1861",
+        "name": "SK Segambut (Opp)",
+        "coordinates": "3.187117, 101.668405"
+      },
+      {
+        "code": "KL1861",
+        "name": "SK Segambut (Opp)",
+        "coordinates": "3.187135, 101.668396"
+      }
+    ]
+  },
+  {
+    "distance": "2.27 meters",
+    "stops": [
+      {
+        "code": "PJ850",
+        "name": "The Zizz",
+        "coordinates": "3.198234, 101.596464"
+      },
+      {
+        "code": "PJ850",
+        "name": "The Zizz",
+        "coordinates": "3.198254, 101.59646"
+      }
+    ]
+  },
+  {
+    "distance": "2.31 meters",
+    "stops": [
+      {
+        "code": "KJ438",
+        "name": "Sg Long Golf & Country Club",
+        "coordinates": "3.041695, 101.801437"
+      },
+      {
+        "code": "KJ438",
+        "name": "Sg. Long Club House",
+        "coordinates": "3.041707, 101.80142"
+      }
+    ]
+  },
+  {
+    "distance": "2.34 meters",
+    "stops": [
+      {
+        "code": "KJ480",
+        "name": "Persimpangan Sg. Jelok",
+        "coordinates": "2.991073, 101.79942"
+      },
+      {
+        "code": "KJ480",
+        "name": "Taman Sg Jelok",
+        "coordinates": "2.991094, 101.799421"
+      }
+    ]
+  },
+  {
+    "distance": "2.34 meters",
+    "stops": [
+      {
+        "code": "PJ210",
+        "name": "Hotel Lisa De Inn",
+        "coordinates": "3.118231, 101.63065"
+      },
+      {
+        "code": "PJ210",
+        "name": "Hotel Lisa De Inn",
+        "coordinates": "3.118249, 101.630639"
+      }
+    ]
+  },
+  {
+    "distance": "2.35 meters",
+    "stops": [
+      {
+        "code": "KJ919",
+        "name": "Simpang 4/8e",
+        "coordinates": "2.951895, 101.778636"
+      },
+      {
+        "code": "KJ919",
+        "name": "Spg 4/8e",
+        "coordinates": "2.951902, 101.778656"
+      }
+    ]
+  },
+  {
+    "distance": "2.36 meters",
+    "stops": [
+      {
+        "code": "KL146",
+        "name": "Komersial Desa Tasik (Utara)",
+        "coordinates": "3.072213, 101.714941"
+      },
+      {
+        "code": "KL146",
+        "name": "Komersial Desa Tasik",
+        "coordinates": "3.072228, 101.714956"
+      }
+    ]
+  },
+  {
+    "distance": "2.38 meters",
+    "stops": [
+      {
+        "code": "SL2",
+        "name": "Desa Aman Puri (Utara)",
+        "coordinates": "3.211352, 101.616918"
+      },
+      {
+        "code": "SL2",
+        "name": "Desa Aman Puri (Utara)",
+        "coordinates": "3.211369, 101.616905"
+      }
+    ]
+  },
+  {
+    "distance": "2.56 meters",
+    "stops": [
+      {
+        "code": "KJ300",
+        "name": "Taman Rakan (Barat)",
+        "coordinates": "3.034676, 101.780743"
+      },
+      {
+        "code": "KJ300",
+        "name": "Taman Rakan (Barat)",
+        "coordinates": "3.034695, 101.78073"
+      }
+    ]
+  },
+  {
+    "distance": "2.6 meters",
+    "stops": [
+      {
+        "code": "PPJ50",
+        "name": "Perbendaharaan 2 (Selatan)",
+        "coordinates": "2.925327, 101.687956"
+      },
+      {
+        "code": "PPJ50",
+        "name": "Perbendaharaan 2",
+        "coordinates": "2.925345, 101.687941"
+      }
+    ]
+  },
+  {
+    "distance": "2.61 meters",
+    "stops": [
+      {
+        "code": "KL1150",
+        "name": "Rumah No 164",
+        "coordinates": "3.1380614131037, 101.67342031975"
+      },
+      {
+        "code": "KL1150",
+        "name": "Junc Jalan Limau Besar",
+        "coordinates": "3.138083, 101.673411"
+      }
+    ]
+  },
+  {
+    "distance": "2.62 meters",
+    "stops": [
+      {
+        "code": "KJ507",
+        "name": "Komersial Bandar Kajang",
+        "coordinates": "2.992967, 101.790135"
+      },
+      {
+        "code": "KJ507",
+        "name": "Komersial Bandar Kajang",
+        "coordinates": "2.99299, 101.79014"
+      }
+    ]
+  },
+  {
+    "distance": "2.62 meters",
+    "stops": [
+      {
+        "code": "KL1267",
+        "name": "Taman Skyline",
+        "coordinates": "3.089008, 101.674332"
+      },
+      {
+        "code": "KL1267",
+        "name": "Plaza Prima",
+        "coordinates": "3.0890109519977, 101.67435542147"
+      }
+    ]
+  },
+  {
+    "distance": "2.62 meters",
+    "stops": [
+      {
+        "code": "PJ818",
+        "name": "SMK Damansara Jaya (Opp)",
+        "coordinates": "3.130064, 101.616797"
+      },
+      {
+        "code": "PJ818",
+        "name": "SMK Damansara Jaya (Opp)",
+        "coordinates": "3.130083, 101.616811"
+      }
+    ]
+  },
+  {
+    "distance": "2.67 meters",
+    "stops": [
+      {
+        "code": "KJ512",
+        "name": "Taman Reko Jaya (Opp)",
+        "coordinates": "2.979053, 101.78985"
+      },
+      {
+        "code": "KJ512",
+        "name": "Taman Sri Reko",
+        "coordinates": "2.979076, 101.789857"
+      }
+    ]
+  },
+  {
+    "distance": "2.69 meters",
+    "stops": [
+      {
+        "code": "SA668",
+        "name": "Kampung Melayu Subang",
+        "coordinates": "3.144081, 101.535904"
+      },
+      {
+        "code": "SA668",
+        "name": "Kampung Melayu Subang (Selatan)",
+        "coordinates": "3.144093, 101.535883"
+      }
+    ]
+  },
+  {
+    "distance": "2.7 meters",
+    "stops": [
+      {
+        "code": "KL2150",
+        "name": "Perumahan Hujan Emas",
+        "coordinates": "3.074126, 101.677774"
+      },
+      {
+        "code": "KL2150",
+        "name": "Perumahan Hujan Emas",
+        "coordinates": "3.074134, 101.677751"
+      }
+    ]
+  },
+  {
+    "distance": "2.7 meters",
+    "stops": [
+      {
+        "code": "KL1185",
+        "name": "Balai Bomba Taman Desa",
+        "coordinates": "3.096829, 101.677487"
+      },
+      {
+        "code": "KL1185",
+        "name": "Balai Bomba Taman Desa",
+        "coordinates": "3.096833, 101.677511"
+      }
+    ]
+  },
+  {
+    "distance": "2.73 meters",
+    "stops": [
+      {
+        "code": "SL630",
+        "name": "Perumahan Taman Ehsan Jalan E5/1",
+        "coordinates": "3.222979, 101.62766"
+      },
+      {
+        "code": "SL630",
+        "name": "Perumahan Taman Ehsan Jalan E5/1",
+        "coordinates": "3.223003, 101.627665"
+      }
+    ]
+  },
+  {
+    "distance": "2.75 meters",
+    "stops": [
+      {
+        "code": "KJ331",
+        "name": "Taman Rakan (Timur)",
+        "coordinates": "3.035531, 101.78209"
+      },
+      {
+        "code": "KJ331",
+        "name": "Taman Rakan (Timur)",
+        "coordinates": "3.035554, 101.782081"
+      }
+    ]
+  },
+  {
+    "distance": "2.83 meters",
+    "stops": [
+      {
+        "code": "KL1895",
+        "name": "Kompleks Mahkamah KL",
+        "coordinates": "3.176083, 101.671433"
+      },
+      {
+        "code": "KL1895",
+        "name": "Kompleks Mahkamah Kuala Lumpur",
+        "coordinates": "3.176106, 101.671422"
+      }
+    ]
+  },
+  {
+    "distance": "2.83 meters",
+    "stops": [
+      {
+        "code": "SL17",
+        "name": "Taman Bidara (Utara)",
+        "coordinates": "3.243532, 101.643183"
+      },
+      {
+        "code": "SL17",
+        "name": "Taman Bidara (Utara)",
+        "coordinates": "3.243551, 101.643166"
+      }
+    ]
+  },
+  {
+    "distance": "2.89 meters",
+    "stops": [
+      {
+        "code": "PPJ53",
+        "name": "Istana Kehakiman (Utara)",
+        "coordinates": "2.918378, 101.685599"
+      },
+      {
+        "code": "PPJ53",
+        "name": "Istana Kehakiman",
+        "coordinates": "2.918403, 101.685606"
+      }
+    ]
+  },
+  {
+    "distance": "2.89 meters",
+    "stops": [
+      {
+        "code": "SL596",
+        "name": "Spg Brp 8/2",
+        "coordinates": "3.230569, 101.564936"
+      },
+      {
+        "code": "SL596",
+        "name": "Persimpangan Brp 8/2",
+        "coordinates": "3.230579, 101.56496"
+      }
+    ]
+  },
+  {
+    "distance": "2.95 meters",
+    "stops": [
+      {
+        "code": "KL1813",
+        "name": "Taman Salak Jaya (Opp)",
+        "coordinates": "3.095892, 101.702535"
+      },
+      {
+        "code": "KL1813",
+        "name": "Taman Salak Jaya",
+        "coordinates": "3.0959184006134, 101.70253749544"
+      }
+    ]
+  },
+  {
+    "distance": "3 meters",
+    "stops": [
+      {
+        "code": "KJ666",
+        "name": "Jejantas Taman Sri Indah",
+        "coordinates": "3.032102, 101.766107"
+      },
+      {
+        "code": "KJ666",
+        "name": "Jejantas Taman Sri Indah",
+        "coordinates": "3.032123, 101.76609"
+      }
+    ]
+  },
+  {
+    "distance": "3 meters",
+    "stops": [
+      {
+        "code": "PJ52",
+        "name": "Apt Idaman",
+        "coordinates": "3.190659, 101.592366"
+      },
+      {
+        "code": "PJ52",
+        "name": "Apartment Idaman",
+        "coordinates": "3.190686, 101.592366"
+      }
+    ]
+  },
+  {
+    "distance": "3.01 meters",
+    "stops": [
+      {
+        "code": "KJ885",
+        "name": "SMK Jalan Empat",
+        "coordinates": "2.961828, 101.781703"
+      },
+      {
+        "code": "KJ885",
+        "name": "SMK Jalan Empat (Pintu Depan)",
+        "coordinates": "2.96183, 101.78173"
+      }
+    ]
+  },
+  {
+    "distance": "3.07 meters",
+    "stops": [
+      {
+        "code": "KJ921",
+        "name": "Pangsapuri Anggun",
+        "coordinates": "2.955512, 101.77971"
+      },
+      {
+        "code": "KJ921",
+        "name": "Pangsapuri Anggun",
+        "coordinates": "2.955532, 101.779691"
+      }
+    ]
+  },
+  {
+    "distance": "3.07 meters",
+    "stops": [
+      {
+        "code": "KL366",
+        "name": "Warisan City View (Opp)",
+        "coordinates": "3.128942, 101.72052"
+      },
+      {
+        "code": "KL366",
+        "name": "Warisan Cityview (Opp)",
+        "coordinates": "3.128962, 101.720501"
+      }
+    ]
+  },
+  {
+    "distance": "3.09 meters",
+    "stops": [
+      {
+        "code": "PJ805",
+        "name": "Mutiara Tropicana",
+        "coordinates": "3.128731, 101.599738"
+      },
+      {
+        "code": "PJ805",
+        "name": "Mutiara Tropicana (1)",
+        "coordinates": "3.128753, 101.599721"
+      }
+    ]
+  },
+  {
+    "distance": "3.12 meters",
+    "stops": [
+      {
+        "code": "PJ373",
+        "name": "Ritze Perdana",
+        "coordinates": "3.164513, 101.611072"
+      },
+      {
+        "code": "PJ373",
+        "name": "Ritze Perdana 2",
+        "coordinates": "3.164541, 101.61107"
+      }
+    ]
+  },
+  {
+    "distance": "3.16 meters",
+    "stops": [
+      {
+        "code": "PJ510",
+        "name": "KDU",
+        "coordinates": "3.126906, 101.622453"
+      },
+      {
+        "code": "PJ510",
+        "name": "KDU College",
+        "coordinates": "3.126934, 101.622458"
+      }
+    ]
+  },
+  {
+    "distance": "3.16 meters",
+    "stops": [
+      {
+        "code": "PJ665",
+        "name": "Masjid Kota Damansara",
+        "coordinates": "3.161584, 101.586864"
+      },
+      {
+        "code": "PJ665",
+        "name": "Masjid Kota Damansara",
+        "coordinates": "3.161602, 101.586886"
+      }
+    ]
+  },
+  {
+    "distance": "3.19 meters",
+    "stops": [
+      {
+        "code": "KJ43",
+        "name": "Kilang Papan",
+        "coordinates": "3.0620392931633, 101.77498546239"
+      },
+      {
+        "code": "KJ43",
+        "name": "Masjid Besar Bt. 9",
+        "coordinates": "3.062064, 101.775"
+      }
+    ]
+  },
+  {
+    "distance": "3.24 meters",
+    "stops": [
+      {
+        "code": "SL633",
+        "name": "SMK Kepong (Opp)",
+        "coordinates": "3.226324, 101.63549"
+      },
+      {
+        "code": "SL633",
+        "name": "SMK Kepong (Opp)",
+        "coordinates": "3.226353, 101.635487"
+      }
+    ]
+  },
+  {
+    "distance": "3.31 meters",
+    "stops": [
+      {
+        "code": "KL1043",
+        "name": "Masjid Al-Qurtubi",
+        "coordinates": "3.194611, 101.656705"
+      },
+      {
+        "code": "KL1043",
+        "name": "Masjid Al-Qurtubi",
+        "coordinates": "3.194639, 101.656715"
+      }
+    ]
+  },
+  {
+    "distance": "3.39 meters",
+    "stops": [
+      {
+        "code": "KL1308",
+        "name": "Sri Petaling (Timur)",
+        "coordinates": "3.067649, 101.70077"
+      },
+      {
+        "code": "KL1308",
+        "name": "Zon G, Sri Petaling (Timur)",
+        "coordinates": "3.0676795159265, 101.70077002231"
+      }
+    ]
+  },
+  {
+    "distance": "3.42 meters",
+    "stops": [
+      {
+        "code": "PJ817",
+        "name": "Perdana Exclusive Condo",
+        "coordinates": "3.169383, 101.605336"
+      },
+      {
+        "code": "PJ817",
+        "name": "Perdana Exclusive Condo",
+        "coordinates": "3.169401, 101.605361"
+      }
+    ]
+  },
+  {
+    "distance": "3.43 meters",
+    "stops": [
+      {
+        "code": "PJ348",
+        "name": "Jejantas SS2/24 (Utara)",
+        "coordinates": "3.118025, 101.62525"
+      },
+      {
+        "code": "PJ348",
+        "name": "Seksyen 19",
+        "coordinates": "3.118055, 101.625243"
+      }
+    ]
+  },
+  {
+    "distance": "3.49 meters",
+    "stops": [
+      {
+        "code": "KL2003",
+        "name": "Tasik Heights Apartmen (Opp)",
+        "coordinates": "3.075462, 101.717977"
+      },
+      {
+        "code": "KL2003",
+        "name": "Tasik Heights Apartment (Opp)",
+        "coordinates": "3.075474, 101.717948"
+      }
+    ]
+  },
+  {
+    "distance": "3.53 meters",
+    "stops": [
+      {
+        "code": "PJ822",
+        "name": "Oasis Bandar Utama",
+        "coordinates": "3.150298, 101.610138"
+      },
+      {
+        "code": "PJ822",
+        "name": "Oasis Bandar Utama",
+        "coordinates": "3.150327, 101.610151"
+      }
+    ]
+  },
+  {
+    "distance": "3.56 meters",
+    "stops": [
+      {
+        "code": "KJ336",
+        "name": "Plaza Kasturi",
+        "coordinates": "3.037962, 101.769"
+      },
+      {
+        "code": "KJ336",
+        "name": "Plaza Kasturi",
+        "coordinates": "3.037993, 101.768992"
+      }
+    ]
+  },
+  {
+    "distance": "3.64 meters",
+    "stops": [
+      {
+        "code": "KL1660",
+        "name": "Padang Bola Taman Batu",
+        "coordinates": "3.200044, 101.66525"
+      },
+      {
+        "code": "KL1660",
+        "name": "Padang Bola Segambut",
+        "coordinates": "3.200076, 101.665257"
+      }
+    ]
+  },
+  {
+    "distance": "3.68 meters",
+    "stops": [
+      {
+        "code": "KJ673",
+        "name": "Kampung Baru Balakong",
+        "coordinates": "3.026557, 101.749516"
+      },
+      {
+        "code": "KJ673",
+        "name": "Kg. Baru Balakong",
+        "coordinates": "3.026587, 101.74953"
+      }
+    ]
+  },
+  {
+    "distance": "3.71 meters",
+    "stops": [
+      {
+        "code": "PPJ44",
+        "name": "Jabatan Pendaftaran Negara",
+        "coordinates": "2.920393, 101.685857"
+      },
+      {
+        "code": "PPJ44",
+        "name": "Jabatan Pendaftaran Negara",
+        "coordinates": "2.920426, 101.685852"
+      }
+    ]
+  },
+  {
+    "distance": "3.71 meters",
+    "stops": [
+      {
+        "code": "PJ780",
+        "name": "Masjid Kayu Ara (Opp)",
+        "coordinates": "3.135421, 101.612393"
+      },
+      {
+        "code": "PJ780",
+        "name": "Masjid Kayu Ara",
+        "coordinates": "3.135442, 101.612419"
+      }
+    ]
+  },
+  {
+    "distance": "3.73 meters",
+    "stops": [
+      {
+        "code": "KL139",
+        "name": "Desa Tasik",
+        "coordinates": "3.072054, 101.715227"
+      },
+      {
+        "code": "KL139",
+        "name": "Komersial Desa Tasik (Selatan)",
+        "coordinates": "3.072071, 101.715198"
+      }
+    ]
+  },
+  {
+    "distance": "3.77 meters",
+    "stops": [
+      {
+        "code": "SA775",
+        "name": "E-Boulevard Denai Alam",
+        "coordinates": "3.163326, 101.512687"
+      },
+      {
+        "code": "SA775",
+        "name": "E-Boulevard, Denai Alam",
+        "coordinates": "3.163334, 101.51272"
+      }
+    ]
+  },
+  {
+    "distance": "3.78 meters",
+    "stops": [
+      {
+        "code": "KL1493",
+        "name": "Desa Hill Villas",
+        "coordinates": "3.086797, 101.703838"
+      },
+      {
+        "code": "KL1492",
+        "name": "Desa Petaling (Utara)",
+        "coordinates": "3.086831, 101.703837"
+      }
+    ]
+  },
+  {
+    "distance": "3.8 meters",
+    "stops": [
+      {
+        "code": "SA690",
+        "name": "Apartment Jasmine Blok 4",
+        "coordinates": "3.163214, 101.535467"
+      },
+      {
+        "code": "SA690",
+        "name": "Apartment Jasmin (Opp)",
+        "coordinates": "3.163223, 101.5355"
+      }
+    ]
+  },
+  {
+    "distance": "3.83 meters",
+    "stops": [
+      {
+        "code": "SL572",
+        "name": "Perumahan Brp 7",
+        "coordinates": "3.229163, 101.558528"
+      },
+      {
+        "code": "SL572",
+        "name": "Perumahan Brp 7",
+        "coordinates": "3.229196, 101.558538"
+      }
+    ]
+  },
+  {
+    "distance": "3.86 meters",
+    "stops": [
+      {
+        "code": "SJ186",
+        "name": "SK Taman Universiti",
+        "coordinates": "3.004992, 101.690552"
+      },
+      {
+        "code": "SJ186",
+        "name": "SK Taman Universiti",
+        "coordinates": "3.0050238519771, 101.69056572622"
+      }
+    ]
+  },
+  {
+    "distance": "3.88 meters",
+    "stops": [
+      {
+        "code": "KL145",
+        "name": "Flat Desa Tasik (Utara)",
+        "coordinates": "3.0698601321722, 101.71570242832"
+      },
+      {
+        "code": "KL145",
+        "name": "Apartment Desa Tasik Fasa 1a",
+        "coordinates": "3.069895, 101.715701"
+      }
+    ]
+  },
+  {
+    "distance": "3.9 meters",
+    "stops": [
+      {
+        "code": "KJ479",
+        "name": "Sek. Men. Tinggi Kajang",
+        "coordinates": "2.9919577, 101.79521"
+      },
+      {
+        "code": "KJ479",
+        "name": "Kompleks Metro Point (Opp)",
+        "coordinates": "2.991985, 101.795188"
+      }
+    ]
+  },
+  {
+    "distance": "3.95 meters",
+    "stops": [
+      {
+        "code": "KL152",
+        "name": "LRT Bandar Tasik Selatan",
+        "coordinates": "3.0761056, 101.71206"
+      },
+      {
+        "code": "KL152",
+        "name": "LRT Bandar Tasik Selatan",
+        "coordinates": "3.076112, 101.712025"
+      }
+    ]
+  },
+  {
+    "distance": "3.96 meters",
+    "stops": [
+      {
+        "code": "AJ157",
+        "name": "Pandan Mewah Height",
+        "coordinates": "3.1309135, 101.7621734"
+      },
+      {
+        "code": "AJ157",
+        "name": "Pandan Mewah Heights",
+        "coordinates": "3.130923, 101.762139"
+      }
+    ]
+  },
+  {
+    "distance": "3.96 meters",
+    "stops": [
+      {
+        "code": "PJ62",
+        "name": "Apt Lestari (Opp)",
+        "coordinates": "3.1972, 101.593986"
+      },
+      {
+        "code": "PJ62",
+        "name": "Apartment Lestari (Opp)",
+        "coordinates": "3.197228, 101.594008"
+      }
+    ]
+  },
+  {
+    "distance": "4 meters",
+    "stops": [
+      {
+        "code": "AJ254",
+        "name": "Taman Seraya (Timur)",
+        "coordinates": "3.115456, 101.76324"
+      },
+      {
+        "code": "AJ254",
+        "name": "Taman Seraya (Timur)",
+        "coordinates": "3.115468, 101.763206"
+      }
+    ]
+  },
+  {
+    "distance": "4.04 meters",
+    "stops": [
+      {
+        "code": "KL1312",
+        "name": "Endah Parade",
+        "coordinates": "3.063831, 101.695399"
+      },
+      {
+        "code": "KL1312",
+        "name": "Endah Parade",
+        "coordinates": "3.063836, 101.695435"
+      }
+    ]
+  },
+  {
+    "distance": "4.08 meters",
+    "stops": [
+      {
+        "code": "KJ403",
+        "name": "Bdr Sg. Long 7 (Timur)",
+        "coordinates": "3.049375, 101.79891"
+      },
+      {
+        "code": "KJ403",
+        "name": "Perumahan Sekyen 7",
+        "coordinates": "3.049393, 101.798878"
+      }
+    ]
+  },
+  {
+    "distance": "4.09 meters",
+    "stops": [
+      {
+        "code": "KL1328",
+        "name": "Bandar Baru Sri Petaling",
+        "coordinates": "3.0670949316121, 101.68613487437"
+      },
+      {
+        "code": "KL1328",
+        "name": "Bandar Baru Sri Petaling (Barat)",
+        "coordinates": "3.067127, 101.686153"
+      }
+    ]
+  },
+  {
+    "distance": "4.1 meters",
+    "stops": [
+      {
+        "code": "PJ28",
+        "name": "Apartment Sri Meranti",
+        "coordinates": "3.1914528021826, 101.60315810867"
+      },
+      {
+        "code": "PJ28",
+        "name": "Pangsapuri Sri Meranti",
+        "coordinates": "3.191453, 101.603195"
+      }
+    ]
+  },
+  {
+    "distance": "4.11 meters",
+    "stops": [
+      {
+        "code": "KJ303",
+        "name": "Institut Veterinar (Opp)",
+        "coordinates": "3.035442, 101.775498"
+      },
+      {
+        "code": "KJ303",
+        "name": "Institut Pengurusan Veterinar",
+        "coordinates": "3.035477, 101.77551"
+      }
+    ]
+  },
+  {
+    "distance": "4.16 meters",
+    "stops": [
+      {
+        "code": "KL1485",
+        "name": "Plaza Prisma Ville",
+        "coordinates": "3.161178, 101.649658"
+      },
+      {
+        "code": "KL1485",
+        "name": "Plaza Prisma Ville",
+        "coordinates": "3.161209, 101.649637"
+      }
+    ]
+  },
+  {
+    "distance": "4.17 meters",
+    "stops": [
+      {
+        "code": "PJ381",
+        "name": "Lotus Mutiara Damansara",
+        "coordinates": "3.160333, 101.612264"
+      },
+      {
+        "code": "PJ381",
+        "name": "Tesco Mutiara Damansara",
+        "coordinates": "3.160358, 101.612236"
+      }
+    ]
+  },
+  {
+    "distance": "4.19 meters",
+    "stops": [
+      {
+        "code": "SL631",
+        "name": "Perumahan Taman Ehsan Jalan E5/2 (Opp)",
+        "coordinates": "3.224169, 101.63101"
+      },
+      {
+        "code": "SL631",
+        "name": "Perumahan Taman Ehsan Jalan E5/1",
+        "coordinates": "3.224206, 101.631003"
+      }
+    ]
+  },
+  {
+    "distance": "4.23 meters",
+    "stops": [
+      {
+        "code": "KL1214",
+        "name": "Taman Lien Ho",
+        "coordinates": "3.090819, 101.679588"
+      },
+      {
+        "code": "KL1214",
+        "name": "Taman Lien Hoe",
+        "coordinates": "3.090821, 101.67955"
+      }
+    ]
+  },
+  {
+    "distance": "4.26 meters",
+    "stops": [
+      {
+        "code": "KL1246",
+        "name": "Taman OUG (Barat)",
+        "coordinates": "3.074168, 101.671433"
+      },
+      {
+        "code": "KL1246",
+        "name": "BHP (Opp)",
+        "coordinates": "3.074173, 101.671395"
+      }
+    ]
+  },
+  {
+    "distance": "4.32 meters",
+    "stops": [
+      {
+        "code": "KJ920",
+        "name": "Jalan 4/2",
+        "coordinates": "2.95379, 101.77916"
+      },
+      {
+        "code": "KJ920",
+        "name": "Surau Jubli Perak Al-Ikhwan",
+        "coordinates": "2.953822, 101.779138"
+      }
+    ]
+  },
+  {
+    "distance": "4.37 meters",
+    "stops": [
+      {
+        "code": "KL2202",
+        "name": "Perindustrian Trisegi",
+        "coordinates": "3.120338, 101.711014"
+      },
+      {
+        "code": "KL2202",
+        "name": "Kawasan Perindustrian Chan Sow Lin",
+        "coordinates": "3.120343, 101.710975"
+      }
+    ]
+  },
+  {
+    "distance": "4.42 meters",
+    "stops": [
+      {
+        "code": "KJ484",
+        "name": "Kajang Prima",
+        "coordinates": "2.9842138, 101.81513"
+      },
+      {
+        "code": "KJ484",
+        "name": "Kajang Prima",
+        "coordinates": "2.984252, 101.815141"
+      }
+    ]
+  },
+  {
+    "distance": "4.43 meters",
+    "stops": [
+      {
+        "code": "SA624",
+        "name": "Spg Jalan Merbau Sempak",
+        "coordinates": "3.218708, 101.515697"
+      },
+      {
+        "code": "SA624",
+        "name": "Persimpangan Jln. Merbau Sempak",
+        "coordinates": "3.218723, 101.51566"
+      }
+    ]
+  },
+  {
+    "distance": "4.44 meters",
+    "stops": [
+      {
+        "code": "PJ671",
+        "name": "LRT Lembah Subang",
+        "coordinates": "3.112072, 101.590682"
+      },
+      {
+        "code": "PJ671",
+        "name": "LRT Lembah Subang",
+        "coordinates": "3.112106, 101.590661"
+      }
+    ]
+  },
+  {
+    "distance": "4.47 meters",
+    "stops": [
+      {
+        "code": "PJ666",
+        "name": "Komersial Sepah Puteri",
+        "coordinates": "3.156067, 101.583167"
+      },
+      {
+        "code": "PJ666",
+        "name": "Komersial Sepah Puteri 5/1b",
+        "coordinates": "3.156105, 101.583154"
+      }
+    ]
+  },
+  {
+    "distance": "4.47 meters",
+    "stops": [
+      {
+        "code": "PJ792",
+        "name": "Komersial Sek 6 (Timur)",
+        "coordinates": "3.161039, 101.581525"
+      },
+      {
+        "code": "PJ792",
+        "name": "Komersial Seksyen 6 (Timur)",
+        "coordinates": "3.161077, 101.581512"
+      }
+    ]
+  },
+  {
+    "distance": "4.54 meters",
+    "stops": [
+      {
+        "code": "KJ672",
+        "name": "Taman Taming Jaya",
+        "coordinates": "3.026247, 101.738358"
+      },
+      {
+        "code": "KJ672",
+        "name": "Taman Taming Jaya",
+        "coordinates": "3.0262877504306, 101.73835993014"
+      }
+    ]
+  },
+  {
+    "distance": "4.6 meters",
+    "stops": [
+      {
+        "code": "KL787",
+        "name": "Pusat Industri Capital",
+        "coordinates": "3.076898, 101.70455"
+      },
+      {
+        "code": "KL787",
+        "name": "Kampung Malaysia Tambahan",
+        "coordinates": "3.076938940479, 101.70455603294"
+      }
+    ]
+  },
+  {
+    "distance": "4.65 meters",
+    "stops": [
+      {
+        "code": "SA938",
+        "name": "Balai Polis Seksyen 15",
+        "coordinates": "3.0596818439679, 101.52167521309"
+      },
+      {
+        "code": "(no code)",
+        "name": "Balai Polis Shah Alam",
+        "coordinates": "3.0596833333333, 101.52163333333"
+      }
+    ]
+  },
+  {
+    "distance": "4.66 meters",
+    "stops": [
+      {
+        "code": "KL1210",
+        "name": "Taman Desa Medical Centre",
+        "coordinates": "3.096434, 101.677702"
+      },
+      {
+        "code": "KL1210",
+        "name": "Taman Desa Medical Centre",
+        "coordinates": "3.096435, 101.677744"
+      }
+    ]
+  },
+  {
+    "distance": "4.67 meters",
+    "stops": [
+      {
+        "code": "PJ103",
+        "name": "Pangsapuri Tanjung Sek 6",
+        "coordinates": "3.15537372, 101.5756544"
+      },
+      {
+        "code": "PJ103",
+        "name": "Pangsapuri Tanjung",
+        "coordinates": "3.155381, 101.575613"
+      }
+    ]
+  },
+  {
+    "distance": "4.72 meters",
+    "stops": [
+      {
+        "code": "KJ693",
+        "name": "Aeon Cheras Selatan",
+        "coordinates": "3.032198, 101.765559"
+      },
+      {
+        "code": "KJ693",
+        "name": "Jejantas Aeon Cheras Selatan",
+        "coordinates": "3.032229, 101.76553"
+      }
+    ]
+  },
+  {
+    "distance": "4.82 meters",
+    "stops": [
+      {
+        "code": "KL1243",
+        "name": "SK Seri Mega",
+        "coordinates": "3.077568, 101.670605"
+      },
+      {
+        "code": "KL1243",
+        "name": "SK Seri Mega",
+        "coordinates": "3.077587, 101.670644"
+      }
+    ]
+  },
+  {
+    "distance": "4.83 meters",
+    "stops": [
+      {
+        "code": "PPJ244",
+        "name": "Monumen Milenium (Selatan)",
+        "coordinates": "2.923934, 101.685065"
+      },
+      {
+        "code": "PPJ244",
+        "name": "Monumen Alaf Baru",
+        "coordinates": "2.923977, 101.685071"
+      }
+    ]
+  },
+  {
+    "distance": "4.93 meters",
+    "stops": [
+      {
+        "code": "KL1812",
+        "name": "Midfields Square",
+        "coordinates": "3.094023, 101.701545"
+      },
+      {
+        "code": "KL1812",
+        "name": "Midfields Square",
+        "coordinates": "3.094064, 101.701528"
+      }
+    ]
+  },
+  {
+    "distance": "5 meters",
+    "stops": [
+      {
+        "code": "SJ188",
+        "name": "Taman Universiti Indah (Timur)",
+        "coordinates": "3.008324, 101.693212"
+      },
+      {
+        "code": "SJ188",
+        "name": "Taman Universiti Indah (Timur)",
+        "coordinates": "3.008325, 101.693167"
+      }
+    ]
+  },
+  {
+    "distance": "5.02 meters",
+    "stops": [
+      {
+        "code": "KJ206",
+        "name": "Saville Kajang (Opp)",
+        "coordinates": "2.9718, 101.78982"
+      },
+      {
+        "code": "KJ206",
+        "name": "Saville Kajang (Opp)",
+        "coordinates": "2.971819, 101.789861"
+      }
+    ]
+  },
+  {
+    "distance": "5.08 meters",
+    "stops": [
+      {
+        "code": "AJ270",
+        "name": "Cheras Indah Night Market",
+        "coordinates": "3.128708, 101.742922"
+      },
+      {
+        "code": "AJ270",
+        "name": "Rest Nanyang",
+        "coordinates": "3.12875, 101.74294"
+      }
+    ]
+  },
+  {
+    "distance": "5.17 meters",
+    "stops": [
+      {
+        "code": "AJ158",
+        "name": "Flat Pandan Indah",
+        "coordinates": "3.1304325, 101.760368"
+      },
+      {
+        "code": "AJ158",
+        "name": "Flat 610",
+        "coordinates": "3.130479, 101.760369"
+      }
+    ]
+  },
+  {
+    "distance": "5.17 meters",
+    "stops": [
+      {
+        "code": "SA656",
+        "name": "Kampung Melayu Subang (Selatan)",
+        "coordinates": "3.144167, 101.53637"
+      },
+      {
+        "code": "SA656",
+        "name": "Kampung Melayu Subang (Selatan)",
+        "coordinates": "3.144174, 101.536324"
+      }
+    ]
+  },
+  {
+    "distance": "5.2 meters",
+    "stops": [
+      {
+        "code": "PJ523",
+        "name": "Asrama Tropicana",
+        "coordinates": "3.131893, 101.600374"
+      },
+      {
+        "code": "PJ523",
+        "name": "Pangsapuri Damai",
+        "coordinates": "3.131928, 101.600343"
+      }
+    ]
+  },
+  {
+    "distance": "5.34 meters",
+    "stops": [
+      {
+        "code": "SL566",
+        "name": "Kampung Melayu Bt 13",
+        "coordinates": "3.217213, 101.57548"
+      },
+      {
+        "code": "SL566",
+        "name": "Kampung Melayu Bt 13 (1)",
+        "coordinates": "3.217254, 101.575505"
+      }
+    ]
+  },
+  {
+    "distance": "5.35 meters",
+    "stops": [
+      {
+        "code": "PJ219",
+        "name": "Happy Mansion Apartment",
+        "coordinates": "3.12339254, 101.634025"
+      },
+      {
+        "code": "PJ219",
+        "name": "Apartment Happy Mansion",
+        "coordinates": "3.123407, 101.634071"
+      }
+    ]
+  },
+  {
+    "distance": "5.42 meters",
+    "stops": [
+      {
+        "code": "SA763",
+        "name": "Taman Bukit Subang (Timur)",
+        "coordinates": "3.169287, 101.517274"
+      },
+      {
+        "code": "SA763",
+        "name": "Taman Bukit Subang (Timur)",
+        "coordinates": "3.169322, 101.51724"
+      }
+    ]
+  },
+  {
+    "distance": "5.45 meters",
+    "stops": [
+      {
+        "code": "KJ499",
+        "name": "Taman Maju Kajang",
+        "coordinates": "2.979664, 101.820014"
+      },
+      {
+        "code": "KJ499",
+        "name": "Taman Maju Kajang",
+        "coordinates": "2.9797056, 101.82004"
+      }
+    ]
+  },
+  {
+    "distance": "5.47 meters",
+    "stops": [
+      {
+        "code": "KJ450",
+        "name": "Reko Sentral",
+        "coordinates": "2.965738, 101.78933"
+      },
+      {
+        "code": "KJ450",
+        "name": "Reko Sentral",
+        "coordinates": "2.965787, 101.789334"
+      }
+    ]
+  },
+  {
+    "distance": "5.48 meters",
+    "stops": [
+      {
+        "code": "KL1310",
+        "name": "Endah Ria Condominium",
+        "coordinates": "3.064168, 101.699606"
+      },
+      {
+        "code": "KL1310",
+        "name": "Endah Ria Condo",
+        "coordinates": "3.064216, 101.699617"
+      }
+    ]
+  },
+  {
+    "distance": "5.49 meters",
+    "stops": [
+      {
+        "code": "KL1266",
+        "name": "Taman Goodwood",
+        "coordinates": "3.091165, 101.675965"
+      },
+      {
+        "code": "KL1266",
+        "name": "Kuchai Business Park",
+        "coordinates": "3.091183, 101.676011"
+      }
+    ]
+  },
+  {
+    "distance": "5.5 meters",
+    "stops": [
+      {
+        "code": "SA764",
+        "name": "Pangsapuri Lily (Opp)",
+        "coordinates": "3.168747, 101.515623"
+      },
+      {
+        "code": "SA764",
+        "name": "Pangsapuri Lili, Taman Bukit Subang",
+        "coordinates": "3.168796, 101.51563"
+      }
+    ]
+  },
+  {
+    "distance": "5.51 meters",
+    "stops": [
+      {
+        "code": "(no code)",
+        "name": "Pangsapuri Sri Indah",
+        "coordinates": "2.999578, 101.664741"
+      },
+      {
+        "code": "SJ839",
+        "name": "Pangsapuri Sri Indah Blok 11",
+        "coordinates": "2.999586, 101.66479"
+      }
+    ]
+  },
+  {
+    "distance": "5.51 meters",
+    "stops": [
+      {
+        "code": "PJ312",
+        "name": "Medan Selera Seksyen 19",
+        "coordinates": "3.118849, 101.628699"
+      },
+      {
+        "code": "PJ349",
+        "name": "Komersial Ss19/8",
+        "coordinates": "3.1188983, 101.628694"
+      }
+    ]
+  },
+  {
+    "distance": "5.62 meters",
+    "stops": [
+      {
+        "code": "KJ923",
+        "name": "Jalan 4/3",
+        "coordinates": "2.960731, 101.778052"
+      },
+      {
+        "code": "KJ923",
+        "name": "Jalan 4/3",
+        "coordinates": "2.960747, 101.7781"
+      }
+    ]
+  },
+  {
+    "distance": "5.64 meters",
+    "stops": [
+      {
+        "code": "SA703",
+        "name": "Komersial Mutiara Subang (Opp)",
+        "coordinates": "3.178657, 101.5358"
+      },
+      {
+        "code": "SA703",
+        "name": "Komersial Subang U5",
+        "coordinates": "3.178706, 101.535787"
+      }
+    ]
+  },
+  {
+    "distance": "5.68 meters",
+    "stops": [
+      {
+        "code": "AJ260",
+        "name": "Dataran Mestika",
+        "coordinates": "3.113255, 101.755013"
+      },
+      {
+        "code": "AJ260",
+        "name": "Dataran Mestika",
+        "coordinates": "3.113294, 101.75498"
+      }
+    ]
+  },
+  {
+    "distance": "5.74 meters",
+    "stops": [
+      {
+        "code": "KJ209",
+        "name": "Plaza Perabot (Opp)",
+        "coordinates": "2.9609315, 101.79235"
+      },
+      {
+        "code": "KJ209",
+        "name": "Plaza Perabot (Opp)",
+        "coordinates": "2.960963, 101.792391"
+      }
+    ]
+  },
+  {
+    "distance": "5.74 meters",
+    "stops": [
+      {
+        "code": "KL1104",
+        "name": "Jabatan Bioperubatan UM",
+        "coordinates": "3.119083, 101.655587"
+      },
+      {
+        "code": "KL1104",
+        "name": "Fakulti Kejuruteraan (Utara)",
+        "coordinates": "3.119097, 101.6555372"
+      }
+    ]
+  },
+  {
+    "distance": "5.78 meters",
+    "stops": [
+      {
+        "code": "SL516",
+        "name": "Shell Taman Bidara",
+        "coordinates": "3.241402, 101.644149"
+      },
+      {
+        "code": "SL516",
+        "name": "Shell Taman Bidara",
+        "coordinates": "3.241454, 101.64415"
+      }
+    ]
+  },
+  {
+    "distance": "5.83 meters",
+    "stops": [
+      {
+        "code": "KL1491",
+        "name": "Taman Kok Doh",
+        "coordinates": "3.194768, 101.66537"
+      },
+      {
+        "code": "KL1491",
+        "name": "Pekan Kok Doh",
+        "coordinates": "3.194812824857, 101.66539727846"
+      }
+    ]
+  },
+  {
+    "distance": "5.86 meters",
+    "stops": [
+      {
+        "code": "SA638",
+        "name": "Bandar Baru Sungai Buloh",
+        "coordinates": "3.208805, 101.565862"
+      },
+      {
+        "code": "SA638",
+        "name": "Bandar Baru Sg Buloh",
+        "coordinates": "3.208814, 101.565914"
+      }
+    ]
+  },
+  {
+    "distance": "5.95 meters",
+    "stops": [
+      {
+        "code": "KJ722",
+        "name": "Persimpangan Sg. Long",
+        "coordinates": "3.0362, 101.7719"
+      },
+      {
+        "code": "KJ722",
+        "name": "Spg Sg Long",
+        "coordinates": "3.0362484782274, 101.7718772234"
+      }
+    ]
+  },
+  {
+    "distance": "6.01 meters",
+    "stops": [
+      {
+        "code": "SA686",
+        "name": "Pangsapuri Sri Pelangi",
+        "coordinates": "3.169037, 101.53431"
+      },
+      {
+        "code": "SA686",
+        "name": "Pangsapuri Sri Pelangi",
+        "coordinates": "3.1690848350424, 101.53428487918"
+      }
+    ]
+  },
+  {
+    "distance": "6.02 meters",
+    "stops": [
+      {
+        "code": "SA659",
+        "name": "Econsave Pekan Subang (Opp)",
+        "coordinates": "3.138786, 101.52924"
+      },
+      {
+        "code": "SA659",
+        "name": "Econsave Pekan Subang (Opp)",
+        "coordinates": "3.1388397403585, 101.52924679071"
+      }
+    ]
+  },
+  {
+    "distance": "6.02 meters",
+    "stops": [
+      {
+        "code": "KL1149",
+        "name": "Kondo Bangsar Indah",
+        "coordinates": "3.140239, 101.672719"
+      },
+      {
+        "code": "KL1149",
+        "name": "Apt Bangsar Indah",
+        "coordinates": "3.1402867373031, 101.67274448637"
+      }
+    ]
+  },
+  {
+    "distance": "6.02 meters",
+    "stops": [
+      {
+        "code": "SA704",
+        "name": "Perumahan Mutiara Subang (Opp)",
+        "coordinates": "3.183025, 101.53579"
+      },
+      {
+        "code": "SA704",
+        "name": "Mutiara Subang",
+        "coordinates": "3.183078, 101.535779"
+      }
+    ]
+  },
+  {
+    "distance": "6.08 meters",
+    "stops": [
+      {
+        "code": "KL1789",
+        "name": "Razak Mansion (Opp)",
+        "coordinates": "3.106102, 101.707047"
+      },
+      {
+        "code": "KL1789",
+        "name": "Razak Mansion (Opp)",
+        "coordinates": "3.106122, 101.706996"
+      }
+    ]
+  },
+  {
+    "distance": "6.16 meters",
+    "stops": [
+      {
+        "code": "(no code)",
+        "name": "Wisma Ck Rahim",
+        "coordinates": "2.970108, 101.772791"
+      },
+      {
+        "code": "KJ439",
+        "name": "Pusat Komersial Sek 7 (Selatan)",
+        "coordinates": "2.970134, 101.77284"
+      }
+    ]
+  },
+  {
+    "distance": "6.16 meters",
+    "stops": [
+      {
+        "code": "KJ53",
+        "name": "Pejabat Pos (Caw. Serahan) Batu 9",
+        "coordinates": "3.068595, 101.77221"
+      },
+      {
+        "code": "KJ53",
+        "name": "Pos Malaysia Bt 9 (Opp)",
+        "coordinates": "3.068602, 101.772155"
+      }
+    ]
+  },
+  {
+    "distance": "6.48 meters",
+    "stops": [
+      {
+        "code": "PJ89",
+        "name": "Apt Carlina (Selatan)",
+        "coordinates": "3.158228, 101.587199"
+      },
+      {
+        "code": "PJ89",
+        "name": "Pangsapuri Carlina",
+        "coordinates": "3.158282, 101.587221"
+      }
+    ]
+  },
+  {
+    "distance": "6.54 meters",
+    "stops": [
+      {
+        "code": "KL807",
+        "name": "Toyota Sg Besi",
+        "coordinates": "3.1186642043651, 101.70963517856"
+      },
+      {
+        "code": "KL807",
+        "name": "Perindustrian Chan Sow Lin (Selatan)",
+        "coordinates": "3.118688, 101.709689"
+      }
+    ]
+  },
+  {
+    "distance": "6.56 meters",
+    "stops": [
+      {
+        "code": "KL762",
+        "name": "Vantage Point (Opp)",
+        "coordinates": "3.085934, 101.701405"
+      },
+      {
+        "code": "KL762",
+        "name": "Vantage Point (Opp)",
+        "coordinates": "3.0859874673942, 101.70142995203"
+      }
+    ]
+  },
+  {
+    "distance": "6.58 meters",
+    "stops": [
+      {
+        "code": "KJ501",
+        "name": "Kolej Vokasional Kajang (Opp)",
+        "coordinates": "2.985768, 101.812394"
+      },
+      {
+        "code": "KJ501",
+        "name": "Kolej Vokasional Kajang",
+        "coordinates": "2.985825, 101.81241"
+      }
+    ]
+  },
+  {
+    "distance": "6.67 meters",
+    "stops": [
+      {
+        "code": "AJ54",
+        "name": "Hub Sri Nilam",
+        "coordinates": "3.139297, 101.769531"
+      },
+      {
+        "code": "AJ54",
+        "name": "Hab Bandar Baru Ampang",
+        "coordinates": "3.139356, 101.76952"
+      }
+    ]
+  },
+  {
+    "distance": "6.68 meters",
+    "stops": [
+      {
+        "code": "AJ428",
+        "name": "Paragon Point (Utara)",
+        "coordinates": "3.120681, 101.762941"
+      },
+      {
+        "code": "AJ428",
+        "name": "Paragon Point (Utara)",
+        "coordinates": "3.120738, 101.76296"
+      }
+    ]
+  },
+  {
+    "distance": "6.73 meters",
+    "stops": [
+      {
+        "code": "KL761",
+        "name": "Klinik Salak Selatan",
+        "coordinates": "3.0909961530594, 101.70203455277"
+      },
+      {
+        "code": "KL761",
+        "name": "Klinik Kesihatan Salak Selatan",
+        "coordinates": "3.091051, 101.702009"
+      }
+    ]
+  },
+  {
+    "distance": "6.76 meters",
+    "stops": [
+      {
+        "code": "KJ516",
+        "name": "Petronas Seksyen 16 (Opp)",
+        "coordinates": "2.944489, 101.765526"
+      },
+      {
+        "code": "KJ516",
+        "name": "Bandar Baru Bangi Seksyen 2 (Utara)",
+        "coordinates": "2.944499, 101.765586"
+      }
+    ]
+  },
+  {
+    "distance": "6.76 meters",
+    "stops": [
+      {
+        "code": "SL632",
+        "name": "Kampung Kepong Ulu",
+        "coordinates": "3.224542, 101.63317"
+      },
+      {
+        "code": "SL632",
+        "name": "Kampung Kepong Ulu",
+        "coordinates": "3.224597, 101.633144"
+      }
+    ]
+  },
+  {
+    "distance": "6.77 meters",
+    "stops": [
+      {
+        "code": "KJ643",
+        "name": "Kajang Plaza Medical Centre",
+        "coordinates": "2.995466, 101.787812"
+      },
+      {
+        "code": "KJ643",
+        "name": "Kajang Plaza",
+        "coordinates": "2.995506, 101.787766"
+      }
+    ]
+  },
+  {
+    "distance": "6.78 meters",
+    "stops": [
+      {
+        "code": "KJ39",
+        "name": "S.r.k. Batu 9 Cheras (Opp)",
+        "coordinates": "3.070424, 101.768745"
+      },
+      {
+        "code": "KJ39",
+        "name": "SK Bt 9 (Opp)",
+        "coordinates": "3.070484956708, 101.76874376578"
+      }
+    ]
+  },
+  {
+    "distance": "6.78 meters",
+    "stops": [
+      {
+        "code": "PJ53",
+        "name": "Apt Impian",
+        "coordinates": "3.191975, 101.588519"
+      },
+      {
+        "code": "PJ53",
+        "name": "Apartment Impian",
+        "coordinates": "3.191978, 101.588458"
+      }
+    ]
+  },
+  {
+    "distance": "6.85 meters",
+    "stops": [
+      {
+        "code": "PJ91",
+        "name": "Pangsapuri Siantan",
+        "coordinates": "3.156103, 101.585074"
+      },
+      {
+        "code": "PJ91",
+        "name": "Apt Siantan (Barat)",
+        "coordinates": "3.156112, 101.585013"
+      }
+    ]
+  },
+  {
+    "distance": "6.86 meters",
+    "stops": [
+      {
+        "code": "(no code)",
+        "name": "Impact Futsal Court",
+        "coordinates": "3.0867097819879, 101.70635489286"
+      },
+      {
+        "code": "KL1493",
+        "name": "Kampung Baru Salak Selatan (Selatan)",
+        "coordinates": "3.086762, 101.706322"
+      }
+    ]
+  },
+  {
+    "distance": "6.97 meters",
+    "stops": [
+      {
+        "code": "KL1531",
+        "name": "Taman Continental (Utara)",
+        "coordinates": "3.0899787628094, 101.68087230078"
+      },
+      {
+        "code": "KL1531",
+        "name": "Taman Continental (Utara)",
+        "coordinates": "3.090017, 101.680922"
+      }
+    ]
+  },
+  {
+    "distance": "6.98 meters",
+    "stops": [
+      {
+        "code": "AJ273",
+        "name": "SK Pandan Perdana",
+        "coordinates": "3.115781, 101.741784"
+      },
+      {
+        "code": "AJ273",
+        "name": "SK Pandan Perdana",
+        "coordinates": "3.115839, 101.74176"
+      }
+    ]
+  },
+  {
+    "distance": "6.99 meters",
+    "stops": [
+      {
+        "code": "KJ502",
+        "name": "Taman Damai Indah",
+        "coordinates": "2.987309, 101.807557"
+      },
+      {
+        "code": "KJ502",
+        "name": "Taman Restu 7",
+        "coordinates": "2.9873695, 101.80754"
+      }
+    ]
+  },
+  {
+    "distance": "7.03 meters",
+    "stops": [
+      {
+        "code": "KL2201",
+        "name": "Perindustrian Chan Sow Lin (Tengah)",
+        "coordinates": "3.122435, 101.712482"
+      },
+      {
+        "code": "KL2201",
+        "name": "Hyundai Services (Opp)",
+        "coordinates": "3.122441, 101.712545"
+      }
+    ]
+  },
+  {
+    "distance": "7.22 meters",
+    "stops": [
+      {
+        "code": "KJ481",
+        "name": "Kawasan Perniagaan Nilam",
+        "coordinates": "2.9883518, 101.803474"
+      },
+      {
+        "code": "KJ481",
+        "name": "Taman Zamrud Kajang",
+        "coordinates": "2.988403, 101.803434"
+      }
+    ]
+  },
+  {
+    "distance": "7.23 meters",
+    "stops": [
+      {
+        "code": "SJ762",
+        "name": "32 Avenue Bukit Serdang",
+        "coordinates": "3.038075, 101.697826"
+      },
+      {
+        "code": "(no code)",
+        "name": "Komersial Bukit Serdang",
+        "coordinates": "3.038119, 101.697874"
+      }
+    ]
+  },
+  {
+    "distance": "7.24 meters",
+    "stops": [
+      {
+        "code": "KJ923",
+        "name": "Jalan 4/3",
+        "coordinates": "2.960747, 101.7781"
+      },
+      {
+        "code": "(no code)",
+        "name": "Jalan 4/5d",
+        "coordinates": "2.960752, 101.778165"
+      }
+    ]
+  },
+  {
+    "distance": "7.29 meters",
+    "stops": [
+      {
+        "code": "SL623",
+        "name": "Sek. Keb. Desa Amanpuri",
+        "coordinates": "3.216227, 101.61378"
+      },
+      {
+        "code": "SL623",
+        "name": "SK Amanpuri",
+        "coordinates": "3.216236, 101.613845"
+      }
+    ]
+  },
+  {
+    "distance": "7.31 meters",
+    "stops": [
+      {
+        "code": "PJ236",
+        "name": "Perumahan Seksyen 16",
+        "coordinates": "3.1207204265, 101.63841073829"
+      },
+      {
+        "code": "PJ236",
+        "name": "UIA PJ (Barat)",
+        "coordinates": "3.120783, 101.638431"
+      }
+    ]
+  },
+  {
+    "distance": "7.41 meters",
+    "stops": [
+      {
+        "code": "PJ104",
+        "name": "Pangsapuri Cempaka 6",
+        "coordinates": "3.156663, 101.574355"
+      },
+      {
+        "code": "PJ104",
+        "name": "Pangsapuri Cempaka Sek 6",
+        "coordinates": "3.156714, 101.574312"
+      }
+    ]
+  },
+  {
+    "distance": "7.59 meters",
+    "stops": [
+      {
+        "code": "KL1702",
+        "name": "Stadium Badminton KL (Opp)",
+        "coordinates": "3.119263, 101.728402"
+      },
+      {
+        "code": "KL1702",
+        "name": "Stadium Badminton Cheras",
+        "coordinates": "3.1192918, 101.72834"
+      }
+    ]
+  },
+  {
+    "distance": "7.6 meters",
+    "stops": [
+      {
+        "code": "PJ31",
+        "name": "Medan Selera Sri Damansara",
+        "coordinates": "3.19341, 101.607121"
+      },
+      {
+        "code": "PJ31",
+        "name": "Komersial Bandar Sri Damansara 12",
+        "coordinates": "3.193441, 101.60706"
+      }
+    ]
+  },
+  {
+    "distance": "7.63 meters",
+    "stops": [
+      {
+        "code": "KL786",
+        "name": "Taman Castlefield",
+        "coordinates": "3.072796, 101.70419"
+      },
+      {
+        "code": "KL786",
+        "name": "Kampung Malaysia Raya",
+        "coordinates": "3.072861, 101.704212"
+      }
+    ]
+  },
+  {
+    "distance": "7.64 meters",
+    "stops": [
+      {
+        "code": "KL869",
+        "name": "LRT Maluri",
+        "coordinates": "3.123475, 101.728087"
+      },
+      {
+        "code": "KL869",
+        "name": "MRT Maluri Pintu B",
+        "coordinates": "3.1235027, 101.72815"
+      }
+    ]
+  },
+  {
+    "distance": "7.65 meters",
+    "stops": [
+      {
+        "code": "KL1138",
+        "name": "Bsc (Selatan)",
+        "coordinates": "3.143067, 101.667969"
+      },
+      {
+        "code": "KL1138",
+        "name": "Bangsar Shopping Center (Timur)",
+        "coordinates": "3.143125, 101.668006"
+      }
+    ]
+  },
+  {
+    "distance": "7.68 meters",
+    "stops": [
+      {
+        "code": "SA694",
+        "name": "Perumahan Subang Galaksi",
+        "coordinates": "3.169308, 101.53405"
+      },
+      {
+        "code": "SA694",
+        "name": "Perumahan Subang Galaksi",
+        "coordinates": "3.169365, 101.534011"
+      }
+    ]
+  },
+  {
+    "distance": "7.68 meters",
+    "stops": [
+      {
+        "code": "PJ864",
+        "name": "Sd Apartment",
+        "coordinates": "3.189707, 101.60538"
+      },
+      {
+        "code": "PJ864",
+        "name": "Sd Apartment",
+        "coordinates": "3.189776, 101.605382"
+      }
+    ]
+  },
+  {
+    "distance": "7.69 meters",
+    "stops": [
+      {
+        "code": "KL780",
+        "name": "Taman Castlefield",
+        "coordinates": "3.0690635889596, 101.70600990163"
+      },
+      {
+        "code": "KL780",
+        "name": "Taman Castlefield (Selatan)",
+        "coordinates": "3.069132, 101.70602"
+      }
+    ]
+  },
+  {
+    "distance": "7.76 meters",
+    "stops": [
+      {
+        "code": "SJ799",
+        "name": "Olive Hill Business Park",
+        "coordinates": "3.013883, 101.697243"
+      },
+      {
+        "code": "(no code)",
+        "name": "Komersial Sri Kembangan",
+        "coordinates": "3.013945, 101.697211"
+      }
+    ]
+  },
+  {
+    "distance": "7.84 meters",
+    "stops": [
+      {
+        "code": "KL1750",
+        "name": "The Scott Garden",
+        "coordinates": "3.0953143908189, 101.67572573982"
+      },
+      {
+        "code": "KL1750",
+        "name": "Scott Garden (Opp)",
+        "coordinates": "3.09538, 101.6757"
+      }
+    ]
+  },
+  {
+    "distance": "7.93 meters",
+    "stops": [
+      {
+        "code": "(no code)",
+        "name": "Apt Vista Serdang (Opp)",
+        "coordinates": "3.037442, 101.690313"
+      },
+      {
+        "code": "SJ764",
+        "name": "Apartment Vista Serdang (Opp)",
+        "coordinates": "3.03745, 101.690242"
+      }
+    ]
+  },
+  {
+    "distance": "7.94 meters",
+    "stops": [
+      {
+        "code": "KL1736",
+        "name": "Kampung Baru Salak Selatan (Timur)",
+        "coordinates": "3.087426, 101.708495"
+      },
+      {
+        "code": "KL1736",
+        "name": "Kampung Baru Salak Selatan (Timur)",
+        "coordinates": "3.0874691903578, 101.70855193115"
+      }
+    ]
+  },
+  {
+    "distance": "8.01 meters",
+    "stops": [
+      {
+        "code": "KL354",
+        "name": "Kompleks Darul Puteri",
+        "coordinates": "3.1167028, 101.72793"
+      },
+      {
+        "code": "KL354",
+        "name": "Kompleks Darul Puteri (Opp)",
+        "coordinates": "3.116736, 101.727994"
+      }
+    ]
+  },
+  {
+    "distance": "8.04 meters",
+    "stops": [
+      {
+        "code": "PJ263",
+        "name": "SMK Sultan Abd Samad",
+        "coordinates": "3.118222, 101.645127"
+      },
+      {
+        "code": "PJ263",
+        "name": "SMK Sultan Abd Samad (Barat)",
+        "coordinates": "3.118271, 101.6450737"
+      }
+    ]
+  },
+  {
+    "distance": "8.09 meters",
+    "stops": [
+      {
+        "code": "KL1786",
+        "name": "Pangsapuri Desa Tun Razak",
+        "coordinates": "3.0781815563023, 101.71764474828"
+      },
+      {
+        "code": "KL1786",
+        "name": "DTR Apartment",
+        "coordinates": "3.0782528, 101.71763"
+      }
+    ]
+  },
+  {
+    "distance": "8.15 meters",
+    "stops": [
+      {
+        "code": "SL624",
+        "name": "Apartment Desa Satu",
+        "coordinates": "3.214151, 101.61497"
+      },
+      {
+        "code": "SL624",
+        "name": "Apartment Desa Satu",
+        "coordinates": "3.214185, 101.615035"
+      }
+    ]
+  },
+  {
+    "distance": "8.22 meters",
+    "stops": [
+      {
+        "code": "KL535",
+        "name": "Menara Tkss (Opp)",
+        "coordinates": "3.183277, 101.676332"
+      },
+      {
+        "code": "KL535",
+        "name": "Menara Tkss (Opp)",
+        "coordinates": "3.1832872879497, 101.67625871322"
+      }
+    ]
+  },
+  {
+    "distance": "8.25 meters",
+    "stops": [
+      {
+        "code": "SL1",
+        "name": "Apartment Desa Dua",
+        "coordinates": "3.212391, 101.615622"
+      },
+      {
+        "code": "SL1",
+        "name": "Apartment Desa Dua",
+        "coordinates": "3.212463, 101.61564"
+      }
+    ]
+  },
+  {
+    "distance": "8.3 meters",
+    "stops": [
+      {
+        "code": "KL785",
+        "name": "Taman Castlefield (Utara)",
+        "coordinates": "3.069452, 101.70554"
+      },
+      {
+        "code": "KL785",
+        "name": "Taman Castlefield",
+        "coordinates": "3.069518, 101.705575"
+      }
+    ]
+  },
+  {
+    "distance": "8.36 meters",
+    "stops": [
+      {
+        "code": "KL2137",
+        "name": "Fakulti Undang-Undang",
+        "coordinates": "3.118615, 101.6610244"
+      },
+      {
+        "code": "KL2137",
+        "name": "Fakulti Undang-Undang UM",
+        "coordinates": "3.118674, 101.661071"
+      }
+    ]
+  },
+  {
+    "distance": "8.36 meters",
+    "stops": [
+      {
+        "code": "KL1160",
+        "name": "Bukit Bandaraya",
+        "coordinates": "3.139244, 101.672175"
+      },
+      {
+        "code": "KL1160",
+        "name": "Taman Bandaraya",
+        "coordinates": "3.139263868803, 101.67210240492"
+      }
+    ]
+  },
+  {
+    "distance": "8.39 meters",
+    "stops": [
+      {
+        "code": "KJ186",
+        "name": "Premis Lot 4291",
+        "coordinates": "3.024644, 101.77446"
+      },
+      {
+        "code": "KJ186",
+        "name": "Lot 4291",
+        "coordinates": "3.024653, 101.774385"
+      }
+    ]
+  },
+  {
+    "distance": "8.48 meters",
+    "stops": [
+      {
+        "code": "(no code)",
+        "name": "Apartment Waja",
+        "coordinates": "3.057335, 101.757667"
+      },
+      {
+        "code": "KJ298",
+        "name": "Pangsapuri Waja",
+        "coordinates": "3.057408, 101.757645"
+      }
+    ]
+  },
+  {
+    "distance": "8.62 meters",
+    "stops": [
+      {
+        "code": "KL811",
+        "name": "Kampung Sri Indah",
+        "coordinates": "3.1120556256043, 101.70700813411"
+      },
+      {
+        "code": "KL811",
+        "name": "Kawasan Perindustrian Salak Selatan",
+        "coordinates": "3.112129, 101.706983"
+      }
+    ]
+  },
+  {
+    "distance": "8.68 meters",
+    "stops": [
+      {
+        "code": "PJ375",
+        "name": "Perdana Shopping Centre",
+        "coordinates": "3.16754, 101.606431"
+      },
+      {
+        "code": "PJ375",
+        "name": "Perdana Shopping Centre",
+        "coordinates": "3.16759, 101.606371"
+      }
+    ]
+  },
+  {
+    "distance": "8.7 meters",
+    "stops": [
+      {
+        "code": "KL1311",
+        "name": "Endah Promenade",
+        "coordinates": "3.0639369330267, 101.69740585285"
+      },
+      {
+        "code": "KL1311",
+        "name": "Endah Promenade Condo",
+        "coordinates": "3.064015, 101.697401"
+      }
+    ]
+  },
+  {
+    "distance": "8.71 meters",
+    "stops": [
+      {
+        "code": "KJ698",
+        "name": "Taman Taming Jaya",
+        "coordinates": "3.026695, 101.74578"
+      },
+      {
+        "code": "KJ698",
+        "name": "Taman Taming Jaya",
+        "coordinates": "3.026726, 101.745708"
+      }
+    ]
+  },
+  {
+    "distance": "8.79 meters",
+    "stops": [
+      {
+        "code": "KL801",
+        "name": "Velodrom Business Park",
+        "coordinates": "3.110251, 101.729706"
+      },
+      {
+        "code": "KL801",
+        "name": "Velodrom Business Park",
+        "coordinates": "3.1102656106837, 101.72978378843"
+      }
+    ]
+  },
+  {
+    "distance": "8.82 meters",
+    "stops": [
+      {
+        "code": "KJ208",
+        "name": "Shell (Opp)",
+        "coordinates": "2.9639277, 101.79134"
+      },
+      {
+        "code": "KJ208",
+        "name": "Shell (Opp)",
+        "coordinates": "2.963936, 101.791419"
+      }
+    ]
+  },
+  {
+    "distance": "8.82 meters",
+    "stops": [
+      {
+        "code": "KJ500",
+        "name": "Kajang Prima",
+        "coordinates": "2.983647, 101.815753"
+      },
+      {
+        "code": "KJ500",
+        "name": "Kajang Prima",
+        "coordinates": "2.9836555, 101.815674"
+      }
+    ]
+  },
+  {
+    "distance": "8.82 meters",
+    "stops": [
+      {
+        "code": "AJ230",
+        "name": "Taman Muda (Barat)",
+        "coordinates": "3.119856, 101.756687"
+      },
+      {
+        "code": "AJ230",
+        "name": "Taman Muda (Barat)",
+        "coordinates": "3.11992, 101.75664"
+      }
+    ]
+  },
+  {
+    "distance": "8.82 meters",
+    "stops": [
+      {
+        "code": "AJ236",
+        "name": "Taman Lembah Maju",
+        "coordinates": "3.123595, 101.755247"
+      },
+      {
+        "code": "AJ236",
+        "name": "Taman Lembah Maju (Selatan)",
+        "coordinates": "3.123674, 101.75524"
+      }
+    ]
+  },
+  {
+    "distance": "8.85 meters",
+    "stops": [
+      {
+        "code": "SL610",
+        "name": "Apartment Seri Mawar (Opp)",
+        "coordinates": "3.251065, 101.558297"
+      },
+      {
+        "code": "SL612",
+        "name": "Apartment Seri Mawar",
+        "coordinates": "3.251097, 101.55837"
+      }
+    ]
+  },
+  {
+    "distance": "8.9 meters",
+    "stops": [
+      {
+        "code": "KL1293",
+        "name": "Apartment Arena Green",
+        "coordinates": "3.053789, 101.688308"
+      },
+      {
+        "code": "KL1293",
+        "name": "Arena Green Apartment",
+        "coordinates": "3.053861, 101.688273"
+      }
+    ]
+  },
+  {
+    "distance": "9.12 meters",
+    "stops": [
+      {
+        "code": "(no code)",
+        "name": "Taska Bestari Sek 8",
+        "coordinates": "2.968784, 101.772868"
+      },
+      {
+        "code": "KJ436",
+        "name": "Pusat Komersial Sek 7 (Utara)",
+        "coordinates": "2.968789, 101.77295"
+      }
+    ]
+  },
+  {
+    "distance": "9.13 meters",
+    "stops": [
+      {
+        "code": "SA698",
+        "name": "Komersial Mutiara Subang",
+        "coordinates": "3.178638, 101.53588"
+      },
+      {
+        "code": "SA703",
+        "name": "Komersial Mutiara Subang (Opp)",
+        "coordinates": "3.178657, 101.5358"
+      },
+      {
+        "code": "SA698",
+        "name": "Komersial Subang U5",
+        "coordinates": "3.1786948145849, 101.5359274709"
+      }
+    ]
+  },
+  {
+    "distance": "9.14 meters",
+    "stops": [
+      {
+        "code": "KJ701",
+        "name": "Juta Mines Condominium",
+        "coordinates": "3.024336, 101.730337"
+      },
+      {
+        "code": "KJ701",
+        "name": "Wisma Tanjung Balai",
+        "coordinates": "3.024359, 101.730258"
+      }
+    ]
+  },
+  {
+    "distance": "9.25 meters",
+    "stops": [
+      {
+        "code": "SL607",
+        "name": "SK Sg Buloh",
+        "coordinates": "3.215013, 101.577659"
+      },
+      {
+        "code": "SL607",
+        "name": "Sek. Keb. Sg. Buloh",
+        "coordinates": "3.215092, 101.577633"
+      }
+    ]
+  },
+  {
+    "distance": "9.34 meters",
+    "stops": [
+      {
+        "code": "KL1026",
+        "name": "Wisma Hasil",
+        "coordinates": "3.173448, 101.67297"
+      },
+      {
+        "code": "KL1026",
+        "name": "Wisma Hasil",
+        "coordinates": "3.173453, 101.672886"
+      }
+    ]
+  },
+  {
+    "distance": "9.49 meters",
+    "stops": [
+      {
+        "code": "KL1175",
+        "name": "Hp Towers",
+        "coordinates": "3.151841, 101.663715"
+      },
+      {
+        "code": "KL1175",
+        "name": "Hp Tower",
+        "coordinates": "3.151882, 101.66379"
+      }
+    ]
+  },
+  {
+    "distance": "9.5 meters",
+    "stops": [
+      {
+        "code": "PPJ189",
+        "name": "Kompleks Kerajaan Parcel D",
+        "coordinates": "2.939138, 101.701795"
+      },
+      {
+        "code": "PPJ188",
+        "name": "Kementerian Dalam Negeri",
+        "coordinates": "2.9391821237369, 101.70172175545"
+      }
+    ]
+  },
+  {
+    "distance": "9.6 meters",
+    "stops": [
+      {
+        "code": "AJ446",
+        "name": "Warta Perdana",
+        "coordinates": "3.119817, 101.74167"
+      },
+      {
+        "code": "AJ279",
+        "name": "Pandan Warta",
+        "coordinates": "3.119833, 101.741585"
+      }
+    ]
+  },
+  {
+    "distance": "9.63 meters",
+    "stops": [
+      {
+        "code": "KL1268",
+        "name": "Pearl Suria",
+        "coordinates": "3.086565, 101.673832"
+      },
+      {
+        "code": "KL1268",
+        "name": "Wisma Teoh Chin Kee",
+        "coordinates": "3.0866355709206, 101.67388225873"
+      }
+    ]
+  },
+  {
+    "distance": "9.63 meters",
+    "stops": [
+      {
+        "code": "KL1703",
+        "name": "Kompleks Darul Puteri",
+        "coordinates": "3.116648, 101.728274"
+      },
+      {
+        "code": "KL1703",
+        "name": "Kompleks Darul Puteri",
+        "coordinates": "3.1166694, 101.72819"
+      }
+    ]
+  },
+  {
+    "distance": "9.79 meters",
+    "stops": [
+      {
+        "code": "(no code)",
+        "name": "Bengkel Goodyear",
+        "coordinates": "3.195642, 101.762172"
+      },
+      {
+        "code": "(no code)",
+        "name": "Bengkel Goodyear (Opp)",
+        "coordinates": "3.19573, 101.76217"
+      }
+    ]
+  },
+  {
+    "distance": "9.8 meters",
+    "stops": [
+      {
+        "code": "KL562",
+        "name": "Caltex",
+        "coordinates": "3.213001, 101.633043"
+      },
+      {
+        "code": "KL562",
+        "name": "Kompleks Desa Jaya (Opp)",
+        "coordinates": "3.213081, 101.63308"
+      }
+    ]
+  },
+  {
+    "distance": "9.82 meters",
+    "stops": [
+      {
+        "code": "KL1240",
+        "name": "Zon P1, Bbsp",
+        "coordinates": "3.072514, 101.682417"
+      },
+      {
+        "code": "KL1240",
+        "name": "Perumahan Jalan Perisa",
+        "coordinates": "3.0725999211481, 101.68239640296"
+      }
+    ]
+  },
+  {
+    "distance": "9.85 meters",
+    "stops": [
+      {
+        "code": "KJ665",
+        "name": "Cheras Selatan 118",
+        "coordinates": "3.0356302960955, 101.76848442738"
+      },
+      {
+        "code": "KJ665",
+        "name": "Cheras Selatan 118",
+        "coordinates": "3.035684, 101.768555"
+      }
+    ]
+  },
+  {
+    "distance": "9.87 meters",
+    "stops": [
+      {
+        "code": "PJ630",
+        "name": "Jejantas Damansara Utama",
+        "coordinates": "3.135094, 101.624479"
+      },
+      {
+        "code": "PJ630",
+        "name": "Jejantas LDP SS 21 Utara",
+        "coordinates": "3.13517887, 101.6245051"
+      }
+    ]
+  },
+  {
+    "distance": "9.87 meters",
+    "stops": [
+      {
+        "code": "KL1855",
+        "name": "Komersial Taman Lawa (Opp)",
+        "coordinates": "3.198102, 101.66625"
+      },
+      {
+        "code": "KL1855",
+        "name": "Spg Jalan Jambu Golok",
+        "coordinates": "3.198178, 101.666296"
+      }
+    ]
+  },
+  {
+    "distance": "9.99 meters",
+    "stops": [
+      {
+        "code": "KJ510",
+        "name": "MRT Kajang",
+        "coordinates": "2.982685, 101.790098"
+      },
+      {
+        "code": "KJ510",
+        "name": "MRT Kajang Pintu A",
+        "coordinates": "2.9827022, 101.7900097"
+      }
+    ]
+  }
+]

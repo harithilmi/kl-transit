@@ -1,58 +1,62 @@
 import { Card } from '~/components/ui/card'
 import { notFound } from 'next/navigation'
 import { RouteStopList } from '~/app/components/route-stop-list'
-import bundledData from '~/data/bundled-data.json'
-import servicesData from '~/data/services.json'
-import type { RouteStopWithData, Stop } from '~/app/types/routes'
+import { db } from '~/server/db'
+import { eq } from 'drizzle-orm'
+import { routes, services } from '~/server/db/schema'
+import type { RouteStopWithData } from '~/app/types/routes'
 
 export default async function RoutePage({
   params,
 }: {
   params: { routeId: string }
 }) {
-  const { routeId } = params
+  const { routeId } = await Promise.resolve(params)
   if (!routeId) {
     notFound()
   }
 
-  // Get route info from services.json
-  const routeInfo = servicesData[routeId]
+  // Get route info from database
+  const routeInfo = await db.query.routes.findFirst({
+    where: eq(routes.routeNumber, routeId),
+  })
+
   if (!routeInfo) {
     notFound()
   }
 
-  // Using the bundled data
-  const routeServices = bundledData.services
-    .filter((service) => String(service.route_number) === routeId)
-    .sort((a, b) => Number(a.sequence) - Number(b.sequence))
-
-  // Enrich services with stop data
-  const servicesWithStops = routeServices
-    .map((service) => {
-      const stop = bundledData.stops.find(
-        (stop) => stop.stop_id === service.stop_id,
-      )
-      return stop
-        ? {
-            ...service,
-            stop_code: stop.stop_code,
-            stop,
-            sequence: Number(service.sequence),
-          }
-        : null
-    })
-    .filter(
-      (
-        service,
-      ): service is Omit<RouteStopWithData, 'stop' | 'sequence'> & {
-        stop: Stop
-        sequence: number
-      } => service !== null,
-    )
+  // Get services with stops for this route
+  const servicesWithStops = await db.query.services.findMany({
+    where: eq(services.routeNumber, routeId),
+    with: {
+      stop: true,
+    },
+    orderBy: (services, { asc }) => [asc(services.sequence)],
+  })
 
   if (servicesWithStops.length === 0) {
     notFound()
   }
+
+  // Transform to match RouteStopWithData type
+  const transformedServices: RouteStopWithData[] = servicesWithStops.map(
+    (service) => ({
+      route_number: service.routeNumber,
+      stop_id: service.stopId,
+      stop_code: service.stop.stopCode ?? '',
+      direction: service.direction,
+      zone: service.zone,
+      sequence: service.sequence,
+      stop: {
+        stop_id: service.stop.stopId,
+        stop_code: service.stop.stopCode ?? '',
+        stop_name: service.stop.stopName,
+        street_name: service.stop.streetName ?? '',
+        latitude: Number(service.stop.latitude),
+        longitude: Number(service.stop.longitude),
+      },
+    }),
+  )
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#2e026d] to-[#15162c] px-2 py-8 text-white sm:px-4 sm:py-16">
@@ -88,7 +92,7 @@ export default async function RoutePage({
                 Route {routeId}
               </h1>
               <p className="text-lg text-center text-white/80">
-                {routeInfo.route_name}
+                {routeInfo.routeName}
               </p>
             </div>
           </Card>
@@ -97,7 +101,7 @@ export default async function RoutePage({
         {/* Main content */}
         <div className="flex w-full max-w-4xl flex-col gap-6 sm:gap-8">
           <Card className="w-full overflow-hidden text-white">
-            <RouteStopList services={servicesWithStops} />
+            <RouteStopList services={transformedServices} />
           </Card>
 
           {/* Map placeholder */}

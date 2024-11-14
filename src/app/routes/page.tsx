@@ -1,8 +1,7 @@
 import { Card } from '~/components/ui/card'
 import { SearchForm } from './search-form'
 import Link from 'next/link'
-import bundledData from '~/data/bundled-data.json'
-import servicesData from '~/data/services.json'
+import { db } from '~/server/db'
 import type { Route } from '../types/routes'
 
 export default async function RoutesPage({
@@ -10,26 +9,26 @@ export default async function RoutesPage({
 }: {
   searchParams: { q?: string }
 }) {
-  const search = searchParams.q?.toLowerCase() ?? ''
+  const searchQuery = await Promise.resolve(searchParams.q)
+  const search = searchQuery?.toLowerCase() ?? ''
 
-  // Get unique routes
-  const routeNumbers = [
-    ...new Set(bundledData.services.map((s) => s.route_number)),
-  ]
-
-  // Create route objects with route names from services.json
-  const routes: Route[] = routeNumbers.map((routeNumber) => {
-    return {
-      routeId: routeNumber,
-      routeShortName: routeNumber,
-      routeLongName: servicesData[routeNumber]?.route_name ?? routeNumber,
-    }
+  // Get routes from database
+  const dbRoutes = await db.query.routes.findMany({
+    orderBy: (routes, { asc }) => [asc(routes.routeNumber)],
   })
+
+  // Create route objects
+  const routes: Route[] = dbRoutes.map((route) => ({
+    route_id: Number(route.id),
+    route_number: route.routeNumber,
+    route_name: route.routeName,
+    route_type: route.routeType,
+  }))
 
   const filteredRoutes = routes.filter(
     (route) =>
-      route.routeShortName.toLowerCase().includes(search) ||
-      route.routeLongName.toLowerCase().includes(search),
+      route.route_number.toLowerCase().includes(search) ||
+      route.route_name.toLowerCase().includes(search),
   )
 
   return (
@@ -54,14 +53,14 @@ export default async function RoutesPage({
           {filteredRoutes.map((route) => (
             <Link
               className="transition-transform hover:scale-105"
-              href={`/routes/${route.routeId}`}
-              key={route.routeId}
+              href={`/routes/${route.route_number}`}
+              key={route.route_id}
             >
               <Card className="flex flex-col p-4">
                 <div className="flex flex-col">
-                  <span className="font-semibold">{route.routeShortName}</span>
+                  <span className="font-semibold">{route.route_number}</span>
                   <span className="text-sm text-white/70">
-                    {route.routeLongName}
+                    {route.route_name}
                   </span>
                 </div>
               </Card>
