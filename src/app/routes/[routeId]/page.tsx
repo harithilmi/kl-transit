@@ -5,6 +5,7 @@ import { db } from '~/server/db'
 import { eq } from 'drizzle-orm'
 import { routes, services } from '~/server/db/schema'
 import type { RouteStopWithData } from '~/app/types/routes'
+import { RouteMap } from '~/app/components/route-map'
 
 export default async function RoutePage({
   params,
@@ -98,17 +99,15 @@ export default async function RoutePage({
           </Card>
         </div>
 
+        {/* Map */}
+        <Card className="w-full h-[400px] overflow-hidden">
+          <RouteMap services={transformedServices} />
+        </Card>
+
         {/* Main content */}
         <div className="flex w-full max-w-xl flex-col gap-6 sm:gap-8">
           <Card className="w-full overflow-hidden text-white">
             <RouteStopList services={transformedServices} />
-          </Card>
-
-          {/* Map placeholder */}
-          <Card className="aspect-video w-full text-white">
-            <div className="flex h-full items-center justify-center text-white/50">
-              Map coming soon
-            </div>
           </Card>
         </div>
       </div>
