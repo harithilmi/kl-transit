@@ -99,7 +99,7 @@ export default async function RoutePage({
         </div>
 
         {/* Main content */}
-        <div className="flex w-full max-w-4xl flex-col gap-6 sm:gap-8">
+        <div className="flex w-full max-w-xl flex-col gap-6 sm:gap-8">
           <Card className="w-full overflow-hidden text-white">
             <RouteStopList services={transformedServices} />
           </Card>
