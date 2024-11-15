@@ -6,6 +6,11 @@ export interface Stop {
   street_name: string
   latitude: number
   longitude: number
+  connecting_routes: Array<{
+    route_number: string
+    route_name: string
+    service_id: number
+  }>
 }
 
 export interface Service {

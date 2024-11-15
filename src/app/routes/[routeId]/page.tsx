@@ -39,6 +39,27 @@ export default async function RoutePage({
     notFound()
   }
 
+  // Get all services for each stop to find connecting routes
+  const allStopServices = await Promise.all(
+    servicesWithStops.map(async (service) => {
+      const stopServices = await db.query.services.findMany({
+        where: eq(services.stopId, service.stopId),
+        with: {
+          route: true,
+        },
+      })
+      return {
+        stopId: service.stopId,
+        services: stopServices,
+      }
+    }),
+  )
+
+  // Create a Map for quick lookup
+  const stopServicesMap = new Map(
+    allStopServices.map(({ stopId, services }) => [stopId, services]),
+  )
+
   // Transform to match RouteStopWithData type
   const transformedServices: RouteStopWithData[] = servicesWithStops.map(
     (service) => ({
@@ -55,6 +76,13 @@ export default async function RoutePage({
         street_name: service.stop.streetName ?? '',
         latitude: Number(service.stop.latitude),
         longitude: Number(service.stop.longitude),
+        connecting_routes: (stopServicesMap.get(service.stopId) ?? []).map(
+          (s) => ({
+            route_number: s.routeNumber,
+            route_name: s.route.routeName,
+            service_id: s.id,
+          }),
+        ),
       },
     }),
   )
@@ -100,7 +128,7 @@ export default async function RoutePage({
         </div>
 
         {/* Map */}
-        <Card className="w-full h-[400px] overflow-hidden">
+        <Card className="w-full h-[600px] sm:h-[800px] overflow-hidden">
           <RouteMap services={transformedServices} />
         </Card>
 

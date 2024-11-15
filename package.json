@@ -9,7 +9,7 @@
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
-    "dev": "next dev --turbo",
+    "dev": "next dev --turbo --hostname 0.0.0.0",
     "lint": "next lint",
     "start": "next start",
     "db:upload": "tsx scripts/upload-to-db.ts"
@@ -21,6 +21,7 @@
     "@types/papaparse": "^5.3.15",
     "@types/pg": "^8.11.10",
     "@vercel/postgres": "^0.10.0",
+    "@vercel/speed-insights": "^1.1.0",
     "csv-parse": "^5.5.6",
     "csv-stringify": "^6.5.1",
     "dotenv": "^16.4.5",

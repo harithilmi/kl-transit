@@ -54,20 +54,20 @@ export function RouteStopList({ services }: RouteStopListProps) {
         {/* Show first terminal stop if shared */}
         {isSharedFirstStop && (
           <div className="flex flex-col py-4 hover:bg-white/10 rounded-lg transition-colors duration-300">
-            <h3 className="text-md text-gray-400 text-center">
+            <h3 className="text-lg text-gray-400 text-center">
               {direction1First?.stop_code}
             </h3>
-            <h2 className="text-xl font-medium text-center">
+            <h2 className="text-lg font-medium text-center">
               {direction1First?.stop?.stop_name}
             </h2>
-            <h3 className="text-md text-gray-300 text-center">
+            <h3 className="text-lg text-gray-300 text-center">
               {direction1First?.stop?.street_name}
             </h3>
           </div>
         )}
 
         {/* Start Half Circle */}
-        <div className="relative  top-0 left-1/2 w-12 h-8 -translate-x-1/2 rounded-t-full border-t-4 border-l-4 border-r-4 border-indigo-600"></div>
+        <div className="relative top-0 left-1/2 w-[1.375rem] h-8 -translate-x-1/2 rounded-t-full border-t-[0.2rem] border-l-[0.2rem] border-r-[0.2rem] border-indigo-600"></div>
 
         <div className="flex w-full justify-between">
           {/* First direction */}
@@ -79,13 +79,13 @@ export function RouteStopList({ services }: RouteStopListProps) {
                 (!isSharedLastStop ||
                   service.stop_id !== direction1Last?.stop_id) && (
                   <div
-                    className="hover:bg-white/10 px-6 rounded-lg transition-colors duration-300 pr-10 py-4 relative after:absolute after:top-0 after:right-0 after:w-1 after:h-full after:bg-indigo-600 after:translate-x-[-1.25rem] grow min-h-0 before:absolute before:top-1/2 before:right-0 before:w-2 before:h-2 before:border-t-2 before:border-r-2 before:border-white before:z-10 before:translate-x-[-1.125rem] before:-translate-y-1/2 before:rotate-[135deg] flex flex-col justify-center"
+                    className="hover:bg-white/10 rounded-lg transition-colors duration-300 pr-5 py-4 relative after:absolute after:top-0 after:right-0 after:w-[0.2rem] after:h-full after:bg-indigo-600 after:translate-x-[-0.5rem] grow min-h-0 before:absolute before:top-1/2 before:right-0 before:w-2 before:h-2 before:border-t-2 before:border-r-2 before:border-white before:z-10 before:translate-x-[-0.35rem] before:-translate-y-1/2 before:rotate-[135deg] flex flex-col justify-center"
                     key={service.stop_id}
                   >
                     <h3 className="text-sm text-gray-400 text-right">
                       {service.stop_code}
                     </h3>
-                    <h2 className="text-md font-medium text-right">
+                    <h2 className="text-sm font-medium text-right">
                       {service.stop?.stop_name}
                     </h2>
                     <h3 className="text-sm text-gray-300 text-right">
@@ -104,13 +104,13 @@ export function RouteStopList({ services }: RouteStopListProps) {
                 (!isSharedLastStop ||
                   service.stop_id !== direction2First?.stop_id) && (
                   <div
-                    className="hover:bg-white/10 px-6 rounded-lg transition-colors duration-300 pl-10 py-4 relative after:absolute after:top-0 after:left-0 after:w-1 after:h-full after:bg-indigo-600 after:translate-x-[1.25rem] grow before:absolute before:top-1/2 before:left-0 before:w-2 before:h-2 before:border-t-2 before:border-r-2 before:border-white before:z-10 before:translate-x-[1.125rem] before:rotate-[-45deg] flex flex-col justify-center"
+                    className="hover:bg-white/10 rounded-lg transition-colors duration-300 pl-5 py-4 relative after:absolute after:top-0 after:left-0 after:w-[0.2rem] after:h-full after:bg-indigo-600 after:translate-x-[0.5rem] grow before:absolute before:top-1/2 before:left-0 before:w-2 before:h-2 before:border-t-2 before:border-r-2 before:border-white before:z-10 before:translate-x-[0.35rem] before:rotate-[-45deg] flex flex-col justify-center"
                     key={service.stop_id}
                   >
                     <h3 className="text-sm text-gray-400 text-left">
                       {service.stop_code}
                     </h3>
-                    <h2 className="text-md font-medium text-left">
+                    <h2 className="text-sm font-medium text-left">
                       {service.stop?.stop_name}
                     </h2>
                     <h3 className="text-sm text-gray-300 text-left">
@@ -123,18 +123,18 @@ export function RouteStopList({ services }: RouteStopListProps) {
         </div>
 
         {/* Ending Half Circle */}
-        <div className="relative top-0 left-1/2 w-12 h-8 -translate-x-1/2 rounded-b-full border-b-4 border-l-4 border-r-4 border-indigo-600"></div>
+        <div className="relative top-0 left-1/2 w-[1.375rem] h-8 -translate-x-1/2 rounded-b-full border-b-[0.2rem] border-l-[0.2rem] border-r-[0.2rem] border-indigo-600"></div>
 
         {/* Show last terminal stop if shared */}
         {isSharedLastStop && (
           <div className="flex flex-col py-4 hover:bg-white/10 rounded-lg transition-colors duration-300">
-            <h3 className="text-md text-gray-400 text-center">
+            <h3 className="text-lg text-gray-400 text-center">
               {direction1Last?.stop_code}
             </h3>
-            <h2 className="text-xl font-medium text-center">
+            <h2 className="text-lg font-medium text-center">
               {direction1Last?.stop?.stop_name}
             </h2>
-            <h3 className="text-md text-gray-300 text-center">
+            <h3 className="text-lg text-gray-300 text-center">
               {direction1Last?.stop?.street_name}
             </h3>
           </div>
