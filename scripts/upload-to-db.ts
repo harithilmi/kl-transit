@@ -91,7 +91,8 @@ async function uploadData() {
       const existing = await db.query.services.findFirst({
         where: and(
           eq(services.stopId, service.stop_id),
-          eq(services.routeNumber, service.route_number)
+          eq(services.routeNumber, service.route_number),
+          eq(services.direction, service.direction)
         )
       })
 

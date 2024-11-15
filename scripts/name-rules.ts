@@ -129,6 +129,7 @@ export const UPPERCASE_WORDS = new Set([
 export const STREET_TYPES = {
   JLN: 'Jalan',
   LBH: 'Lebuh',
+  LPGN: 'Lapangan',
   LRG: 'Lorong',
   TMN: 'Taman',
   PER: 'Persiaran',

@@ -33,6 +33,10 @@ export interface RouteStop {
   sequence: number
 }
 
+export interface ServiceWithStop extends Omit<Service, 'service_id'> {
+  stop: Stop
+}
+
 export type RouteStopWithData = RouteStop & {
   stop: Stop | undefined
 }
