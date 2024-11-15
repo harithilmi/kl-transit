@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react'
 import type { RouteStopWithData } from '../types/routes'
 
 // Initialize mapbox access token
-mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN ?? ''
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN ?? ''
 
 interface RouteMapProps {
   services: RouteStopWithData[]
