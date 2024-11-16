@@ -26,27 +26,27 @@ export function RouteStopList({ services }: RouteStopListProps) {
   const isSharedFirstStop = direction1First?.stop_id === direction2Last?.stop_id
   const isSharedLastStop = direction1Last?.stop_id === direction2First?.stop_id
 
-  console.log('Direction 1:', {
-    first: {
-      stop_id: direction1First?.stop_id,
-      stop_name: direction1First?.stop?.stop_name,
-    },
-    last: {
-      stop_id: direction1Last?.stop_id,
-      stop_name: direction1Last?.stop?.stop_name,
-    },
-  })
+  //   console.log('Direction 1:', {
+  //     first: {
+  //       stop_id: direction1First?.stop_id,
+  //       stop_name: direction1First?.stop?.stop_name,
+  //     },
+  //     last: {
+  //       stop_id: direction1Last?.stop_id,
+  //       stop_name: direction1Last?.stop?.stop_name,
+  //     },
+  //   })
 
-  console.log('Direction 2:', {
-    first: {
-      stop_id: direction2First?.stop_id,
-      stop_name: direction2First?.stop?.stop_name,
-    },
-    last: {
-      stop_id: direction2Last?.stop_id,
-      stop_name: direction2Last?.stop?.stop_name,
-    },
-  })
+  //   console.log('Direction 2:', {
+  //     first: {
+  //       stop_id: direction2First?.stop_id,
+  //       stop_name: direction2First?.stop?.stop_name,
+  //     },
+  //     last: {
+  //       stop_id: direction2Last?.stop_id,
+  //       stop_name: direction2Last?.stop?.stop_name,
+  //     },
+  //   })
 
   return (
     <div className="flex p-4 h-full">

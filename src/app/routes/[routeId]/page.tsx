@@ -114,7 +114,7 @@ export default async function RoutePage({
         </div>
 
         {/* Route header */}
-        <div className="flex w-full max-w-4xl flex-col gap-6 sm:gap-8">
+        <div className="flex w-full max-w-xl flex-col gap-6 sm:gap-8">
           <Card className="w-full p-4">
             <div className="flex flex-col gap-2">
               <h1 className="text-3xl text-center font-bold">
@@ -125,10 +125,10 @@ export default async function RoutePage({
               </p>
             </div>
           </Card>
-        </div>
+        </div>	
 
         {/* Map */}
-        <Card className="w-full h-[600px] sm:h-[800px] overflow-hidden">
+        <Card className="w-full max-w-xl h-36 sm:h-96 overflow-hidden">
           <RouteMap services={transformedServices} />
         </Card>
 
