@@ -155,16 +155,19 @@ export function RouteMap({ services }: RouteMapProps) {
     coopGestureEl.style.pointerEvents = 'none'
     mapContainer.current.appendChild(coopGestureEl)
 
-    map.current.on('cooperative-gesture-warning', (e: CooperativeGestureEvent) => {
-      coopGestureEl.innerHTML = `
+    map.current.on(
+      'cooperative-gesture-warning',
+      (e: CooperativeGestureEvent) => {
+        coopGestureEl.innerHTML = `
         <div class="gesture-warning">
           ${gestureText[e.type]}
         </div>
       `
-      setTimeout(() => {
-        coopGestureEl.innerHTML = ''
-      }, 1000)
-    })
+        setTimeout(() => {
+          coopGestureEl.innerHTML = ''
+        }, 1000)
+      },
+    )
 
     // Combine all styles
     styleElement.textContent = `
@@ -251,32 +254,6 @@ export function RouteMap({ services }: RouteMapProps) {
       })
     })
 
-    return () => {
-      document.head.removeChild(styleElement)
-      if (map.current) {
-        map.current.remove()
-        map.current = null
-      }
-    }
-  }, [services])
-
-  useEffect(() => {
-    if (!map.current) return
-
-    // Clear existing markers
-    markersRef.current.forEach((marker) => marker.remove())
-    markersRef.current = []
-
-    const validServices = services.filter(
-      (
-        service,
-      ): service is RouteStopWithData & {
-        stop: NonNullable<RouteStopWithData['stop']>
-      } => service.stop !== undefined,
-    )
-
-    if (validServices.length === 0) return
-
     // Add markers
     validServices.forEach((service) => {
       const el = document.createElement('div')
@@ -299,6 +276,7 @@ export function RouteMap({ services }: RouteMapProps) {
       markersRef.current.push(marker)
 
       el.addEventListener('click', () => {
+        // Clear previous selection
         document
           .querySelectorAll('.custom-marker')
           .forEach((m) => m.classList.remove('selected'))
@@ -326,7 +304,16 @@ export function RouteMap({ services }: RouteMapProps) {
         })
       })
     })
-  }, [services, handleStopSelect])
+
+    return () => {
+      document.head.removeChild(styleElement)
+      markersRef.current.forEach((marker) => marker.remove())
+      if (map.current) {
+        map.current.remove()
+        map.current = null
+      }
+    }
+  }, [services])
 
   return (
     <div className="relative h-full w-full">
@@ -392,7 +379,7 @@ export function RouteMap({ services }: RouteMapProps) {
                     <Link
                       key={route.service_id}
                       href={`/routes/${route.route_number}`}
-                      className="text-sm text-white/70 px-2 py-1 bg-white/10 rounded"
+                      className="text-sm text-white/70 hover:text-white hover:bg-white/20 px-2 py-1 bg-white/10 rounded transition-colors duration-300"
                     >
                       {route.route_number}
                     </Link>
