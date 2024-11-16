@@ -1,30 +1,61 @@
 import { Card } from '~/components/ui/card'
 
 export default function LoadingPage() {
+  // Create arrays with specific lengths for our loading skeletons
+  const leftStops = Array.from({ length: 4 }, (_, i) => i)
+  const rightStops = Array.from({ length: 4 }, (_, i) => i)
+
   return (
-    <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] px-4 py-16 text-white">
-      <div className="container flex max-w-6xl flex-col items-center gap-12">
-        <div className="flex flex-col items-center gap-4 bg-white/5 p-4 rounded-lg">
-          <div className="h-10 w-48 animate-pulse rounded-lg bg-white/10" />
-          <div className="h-6 w-72 animate-pulse rounded-lg bg-white/10" />
+    <main className="min-h-screen bg-gradient-to-b from-[#2e026d] to-[#15162c] px-2 py-8 text-white sm:px-4 sm:py-16">
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-6 sm:gap-12">
+        {/* Back button */}
+        <div className="w-full max-w-4xl px-2">
+          <div className="h-6 w-24 animate-pulse rounded bg-white/10" />
         </div>
 
-        <Card className="w-full">
-          <div className="p-6 space-y-4">
-            {[...Array<number>(6)].map((_, i) => (
-              <div key={i} className="space-y-3">
-                <div className="h-6 w-24 animate-pulse rounded bg-white/10" />
-                <div className="h-12 animate-pulse rounded bg-white/5" />
-              </div>
-            ))}
+        {/* Route header */}
+        <div className="flex w-full max-w-xl flex-col gap-6 sm:gap-8">
+          <Card className="w-full p-4">
+            <div className="flex flex-col gap-2">
+              <div className="h-8 w-32 mx-auto animate-pulse rounded bg-white/10" />
+              <div className="h-6 w-64 mx-auto animate-pulse rounded bg-white/10" />
+            </div>
+          </Card>
+        </div>
+
+        {/* Map */}
+        <Card className="w-full max-w-xl h-36 sm:h-96 overflow-hidden">
+          <div className="h-full w-full flex items-center justify-center bg-white/5">
+            <div className="h-8 w-32 animate-pulse rounded bg-white/10" />
           </div>
         </Card>
 
-        <Card className="aspect-video w-full max-w-2xl">
-          <div className="flex h-full items-center justify-center">
-            <div className="h-6 w-32 animate-pulse rounded bg-white/10" />
-          </div>
-        </Card>
+        {/* Main content */}
+        <div className="flex w-full max-w-xl flex-col gap-6 sm:gap-8">
+          <Card className="w-full overflow-hidden">
+            <div className="p-4 space-y-4">
+              {/* Loading skeleton for stops */}
+              <div className="flex justify-between gap-8">
+                <div className="flex-1 space-y-4">
+                  {leftStops.map((i) => (
+                    <div key={`left-${i}`} className="space-y-2">
+                      <div className="h-4 w-16 animate-pulse rounded bg-white/10" />
+                      <div className="h-6 w-full animate-pulse rounded bg-white/5" />
+                    </div>
+                  ))}
+                </div>
+                <div className="flex-1 space-y-4">
+                  {rightStops.map((i) => (
+                    <div key={`right-${i}`} className="space-y-2">
+                      <div className="h-4 w-16 animate-pulse rounded bg-white/10" />
+                      <div className="h-6 w-full animate-pulse rounded bg-white/5" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
       </div>
     </main>
   )

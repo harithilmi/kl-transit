@@ -29,6 +29,11 @@ interface RouteMapProps {
   services: RouteStopWithData[]
 }
 
+// Add type for gesture event
+interface CooperativeGestureEvent {
+  type: 'scroll' | 'touch'
+}
+
 function getUniqueRoutes(routes: Route[]): Route[] {
   const seen = new Set()
   return routes.filter((route) => {
@@ -150,10 +155,10 @@ export function RouteMap({ services }: RouteMapProps) {
     coopGestureEl.style.pointerEvents = 'none'
     mapContainer.current.appendChild(coopGestureEl)
 
-    map.current.on('cooperative-gesture-warning', (e) => {
+    map.current.on('cooperative-gesture-warning', (e: CooperativeGestureEvent) => {
       coopGestureEl.innerHTML = `
         <div class="gesture-warning">
-          ${gestureText[e.type as keyof typeof gestureText]}
+          ${gestureText[e.type]}
         </div>
       `
       setTimeout(() => {

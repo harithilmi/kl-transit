@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { RouteStopList } from '~/app/components/route-stop-list'
 import { db } from '~/server/db'
 import { eq } from 'drizzle-orm'
-import { routes, services } from '~/server/db/schema'
+import { routes } from '~/server/db/schema'
 import type { RouteStopWithData } from '~/app/types/routes'
 import { RouteMap } from '~/app/components/route-map'
 
@@ -17,51 +17,42 @@ export default async function RoutePage({
     notFound()
   }
 
-  // Get route info from database
-  const routeInfo = await db.query.routes.findFirst({
+  // Get route info and services in a single query
+  const routeWithServices = await db.query.routes.findFirst({
     where: eq(routes.routeNumber, routeId),
-  })
-
-  if (!routeInfo) {
-    notFound()
-  }
-
-  // Get services with stops for this route
-  const servicesWithStops = await db.query.services.findMany({
-    where: eq(services.routeNumber, routeId),
     with: {
-      stop: true,
+      services: {
+        with: {
+          stop: true,
+        },
+        orderBy: (services, { asc }) => [asc(services.sequence)],
+      },
     },
-    orderBy: (services, { asc }) => [asc(services.sequence)],
   })
 
-  if (servicesWithStops.length === 0) {
+  if (!routeWithServices || routeWithServices.services.length === 0) {
     notFound()
   }
 
-  // Get all services for each stop to find connecting routes
-  const allStopServices = await Promise.all(
-    servicesWithStops.map(async (service) => {
-      const stopServices = await db.query.services.findMany({
-        where: eq(services.stopId, service.stopId),
-        with: {
-          route: true,
-        },
-      })
-      return {
-        stopId: service.stopId,
-        services: stopServices,
-      }
-    }),
-  )
+  // Get all connecting services in a single query instead of multiple queries
+  const uniqueStopIds = [...new Set(routeWithServices.services.map(s => s.stopId))]
+  const allStopServices = await db.query.services.findMany({
+    where: (services, { inArray }) => inArray(services.stopId, uniqueStopIds),
+    with: {
+      route: true,
+    },
+  })
 
-  // Create a Map for quick lookup
-  const stopServicesMap = new Map(
-    allStopServices.map(({ stopId, services }) => [stopId, services]),
-  )
+  // Create lookup map for services by stopId
+  const stopServicesMap = allStopServices.reduce((acc, service) => {
+    const services = acc.get(service.stopId) ?? []
+    services.push(service)
+    acc.set(service.stopId, services)
+    return acc
+  }, new Map<string, typeof allStopServices>())
 
   // Transform to match RouteStopWithData type
-  const transformedServices: RouteStopWithData[] = servicesWithStops.map(
+  const transformedServices: RouteStopWithData[] = routeWithServices.services.map(
     (service) => ({
       route_number: service.routeNumber,
       stop_id: service.stopId,
@@ -121,7 +112,7 @@ export default async function RoutePage({
                 Route {routeId}
               </h1>
               <p className="text-lg text-center text-white/80">
-                {routeInfo.routeName}
+                {routeWithServices.routeName}
               </p>
             </div>
           </Card>
