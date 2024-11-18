@@ -3,9 +3,16 @@ import { notFound } from 'next/navigation'
 import { RouteStopList } from '~/app/components/route-stop-list'
 import { db } from '~/server/db'
 import { eq } from 'drizzle-orm'
-import { routes } from '~/server/db/schema'
+import { routes, routeShapes } from '~/server/db/schema'
 import type { RouteStopWithData } from '~/app/types/routes'
 import { RouteMap } from '~/app/components/route-map'
+
+// Add type for the route shape
+type RouteShape = {
+  routeNumber: string
+  direction: number
+  coordinates: [number, number][]
+}
 
 export default async function RoutePage({
   params,
@@ -35,7 +42,9 @@ export default async function RoutePage({
   }
 
   // Get all connecting services in a single query instead of multiple queries
-  const uniqueStopIds = [...new Set(routeWithServices.services.map(s => s.stopId))]
+  const uniqueStopIds = [
+    ...new Set(routeWithServices.services.map((s) => s.stopId)),
+  ]
   const allStopServices = await db.query.services.findMany({
     where: (services, { inArray }) => inArray(services.stopId, uniqueStopIds),
     with: {
@@ -78,6 +87,11 @@ export default async function RoutePage({
     }),
   )
 
+  // Get route shapes for both directions - Fix the query to use the table from schema
+  const shapes = (await db.query.routeShapes.findMany({
+    where: eq(routeShapes.routeNumber, routeId),
+  })) as RouteShape[]
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#2e026d] to-[#15162c] px-2 py-8 text-white sm:px-4 sm:py-16">
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-6 sm:gap-12">
@@ -116,11 +130,11 @@ export default async function RoutePage({
               </p>
             </div>
           </Card>
-        </div>	
+        </div>
 
         {/* Map */}
-        <Card className="w-full max-w-xl h-36 sm:h-96 overflow-hidden">
-          <RouteMap services={transformedServices} />
+        <Card className="w-full max-w-xl h-96 overflow-hidden">
+          <RouteMap services={transformedServices} routeShapes={shapes} />
         </Card>
 
         {/* Main content */}

@@ -1,10 +1,23 @@
 import 'dotenv/config'
 import { db } from '~/server/db'
-import { stops, services, routes } from '~/server/db/schema'
+import { routes, routeShapes } from '~/server/db/schema'
+import { sql, eq } from 'drizzle-orm'
 import fs from 'fs'
 import path from 'path'
-import { eq, and } from 'drizzle-orm'
-import routesData from '../src/data/raw/routes.json'
+
+function shouldExcludeRoute(routeNumber: string): boolean {
+  return (
+    routeNumber.endsWith('B') || // Skip routes ending with B
+    routeNumber.includes('(OS)') || // Skip routes with (OS)
+    routeNumber.startsWith('SEWA') || // Skip SEWA routes
+    routeNumber.startsWith('KTM') || // Skip KTM routes
+    routeNumber.startsWith('GP') || // Skip GP routes
+    routeNumber.includes('MAHA') || // Skip MAHA event shuttles
+    routeNumber === 'PARASUKMA SARAWAK 2024' || // Skip specific event route
+    routeNumber === 'MS04' || // Skip MS04 route
+    routeNumber === 'MS05' // Skip MS05 route
+  )
+}
 
 async function uploadData() {
   if (!process.env.POSTGRES_URL) {
@@ -12,113 +25,89 @@ async function uploadData() {
   }
 
   const dataDir = path.join(process.cwd(), 'src/data/processed')
+  const rawDir = path.join(process.cwd(), 'src/data/raw')
   
-  // Read processed data
-  const stopsData = JSON.parse(
-    fs.readFileSync(path.join(dataDir, 'stops.json'), 'utf-8')
+  // First, get all valid routes from routes.json
+  console.log('Reading routes data...')
+  const routesData = JSON.parse(
+    fs.readFileSync(path.join(rawDir, 'routes.json'), 'utf-8')
   )
-  const servicesData = JSON.parse(
-    fs.readFileSync(path.join(dataDir, 'services.json'), 'utf-8')
+  const validRouteNumbers = new Set(Object.keys(routesData))
+
+  console.log('Uploading route shapes...')
+  const shapesData = JSON.parse(
+    fs.readFileSync(path.join(dataDir, 'shapes.json'), 'utf-8')
   )
 
-  console.log('Uploading stops...')
-  
-  // Upload or update stops
-  for (const stop of stopsData) {
-    try {
-      const existing = await db.query.stops.findFirst({
-        where: eq(stops.stopId, stop.stop_id)
-      })
+  // Filter out excluded routes, routes with names too long, and routes not in routes.json
+  const validShapes = shapesData.filter((shape: any) => {
+    const isValid = 
+      shape.routeNumber && 
+      shape.routeNumber.length <= 20 && 
+      typeof shape.direction === 'number' && 
+      Array.isArray(shape.coordinates) &&
+      shape.coordinates.length > 0 &&
+      !shouldExcludeRoute(shape.routeNumber) &&
+      validRouteNumbers.has(shape.routeNumber)
 
-      if (existing) {
-        await db.update(stops)
-          .set({
-            stopCode: stop.stop_code,
-            stopName: stop.stop_name,
-            streetName: stop.street_name,
-            latitude: stop.latitude,
-            longitude: stop.longitude,
-          })
-          .where(eq(stops.stopId, stop.stop_id))
-      } else {
-        await db.insert(stops).values({
-          stopId: stop.stop_id,
-          stopCode: stop.stop_code,
-          stopName: stop.stop_name,
-          streetName: stop.street_name,
-          latitude: stop.latitude,
-          longitude: stop.longitude,
-        })
-      }
-    } catch (error) {
-      console.error(`Error processing stop ${stop.stop_id}:`, error)
+    if (!isValid) {
+      console.log('Skipping invalid/excluded shape:', shape.routeNumber)
     }
-  }
 
-  console.log('Uploading routes...')
-  
-  // Upload or update routes
-  for (const [routeNumber, routeInfo] of Object.entries(routesData)) {
-    try {
-      const existing = await db.query.routes.findFirst({
-        where: eq(routes.routeNumber, routeNumber)
-      })
+    return isValid
+  })
 
-      if (existing) {
-        await db.update(routes)
-          .set({
-            routeName: routeInfo.route_name,
-            routeType: routeInfo.route_type,
-          })
-          .where(eq(routes.routeNumber, routeNumber))
-      } else {
+  try {
+    console.log(`Processing ${validShapes.length} valid shapes out of ${shapesData.length} total`)
+
+    // First ensure all routes exist
+    for (const shape of validShapes) {
+      const routeInfo = routesData[shape.routeNumber]
+      if (routeInfo) {
         await db.insert(routes).values({
-          routeNumber: routeNumber,
+          routeNumber: shape.routeNumber,
           routeName: routeInfo.route_name,
           routeType: routeInfo.route_type,
-        })
+        }).onConflictDoNothing()
       }
-    } catch (error) {
-      console.error(`Error processing route ${routeNumber}:`, error)
     }
-  }
 
-  console.log('Uploading services...')
-  
-  // Upload or update services
-  for (const service of servicesData) {
-    try {
-      const existing = await db.query.services.findFirst({
-        where: and(
-          eq(services.stopId, service.stop_id),
-          eq(services.routeNumber, service.route_number),
-          eq(services.direction, service.direction)
-        )
+    // Then insert shapes
+    await db.insert(routeShapes).values(validShapes)
+      .onConflictDoUpdate({
+        target: [routeShapes.routeNumber, routeShapes.direction],
+        set: {
+          coordinates: sql`EXCLUDED.coordinates`
+        }
       })
+    console.log(`Successfully uploaded ${validShapes.length} route shapes`)
 
-      if (existing) {
-        await db.update(services)
-          .set({
-            direction: service.direction,
-            zone: service.zone,
-            sequence: service.sequence,
-          })
-          .where(and(
-            eq(services.stopId, service.stop_id),
-            eq(services.routeNumber, service.route_number)
-          ))
-      } else {
-        await db.insert(services).values({
-          routeNumber: service.route_number,
-          stopId: service.stop_id,
-          direction: service.direction,
-          zone: service.zone,
-          sequence: service.sequence,
-        })
+    // Clean up any existing excluded routes
+    const existingShapes = await db.select({
+      routeNumber: routeShapes.routeNumber
+    }).from(routeShapes)
+
+    const routesToRemove = existingShapes
+      .filter(shape => shouldExcludeRoute(shape.routeNumber))
+      .map(shape => shape.routeNumber)
+
+    if (routesToRemove.length > 0) {
+      console.log(`Found ${routesToRemove.length} existing routes to remove:`)
+      console.log(routesToRemove)
+
+      for (const routeNumber of routesToRemove) {
+        try {
+          await db.delete(routeShapes)
+            .where(eq(routeShapes.routeNumber, routeNumber))
+          console.log(`Deleted route: ${routeNumber}`)
+        } catch (error) {
+          console.error(`Error deleting route ${routeNumber}:`, error)
+        }
       }
-    } catch (error) {
-      console.error(`Error processing service for stop ${service.stop_id}, route ${service.route_number}:`, error)
     }
+
+  } catch (error) {
+    console.error('Error processing shapes:', error)
   }
 
   console.log('Upload complete!')

@@ -27,6 +27,11 @@ interface SelectedStop {
 
 interface RouteMapProps {
   services: RouteStopWithData[]
+  routeShapes?: {
+    routeNumber: string
+    direction: number
+    coordinates: [number, number][]
+  }[]
 }
 
 // Add type for gesture event
@@ -62,15 +67,17 @@ function getRoutesForStop(
 }
 
 function updateMarkerSize(marker: HTMLElement, zoom: number) {
-  marker.classList.remove('zoom-md', 'zoom-lg')
+  marker.classList.remove('zoom-sm', 'zoom-md', 'zoom-lg')
   if (zoom >= 15) {
     marker.classList.add('zoom-lg')
   } else if (zoom >= 13) {
     marker.classList.add('zoom-md')
+  } else {
+    marker.classList.add('zoom-sm')
   }
 }
 
-export function RouteMap({ services }: RouteMapProps) {
+export function RouteMap({ services, routeShapes }: RouteMapProps) {
   const mapContainer = useRef<HTMLDivElement>(null)
   const map = useRef<mapboxgl.Map | null>(null)
   const markersRef = useRef<mapboxgl.Marker[]>([])
@@ -79,18 +86,13 @@ export function RouteMap({ services }: RouteMapProps) {
 
   const handleStopSelect = useCallback(
     (stop: SelectedStop) => {
-      if (selectedStop) {
-        setIsVisible(false)
-        setTimeout(() => {
-          setSelectedStop(stop)
-          setIsVisible(true)
-        }, 200)
-      } else {
+      setIsVisible(false)
+      setTimeout(() => {
         setSelectedStop(stop)
         setIsVisible(true)
-      }
+      }, 200)
     },
-    [selectedStop],
+    [],
   )
 
   useEffect(() => {
@@ -120,7 +122,7 @@ export function RouteMap({ services }: RouteMapProps) {
     const bounds = new mapboxgl.LngLatBounds()
     coordinates.forEach((coord) => bounds.extend(coord))
 
-    // Initialize map with the center of the bounds
+    // Create map instance
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/dark-v11',
@@ -138,12 +140,170 @@ export function RouteMap({ services }: RouteMapProps) {
       },
     })
 
-    // Add navigation controls with dark theme
-    const nav = new mapboxgl.NavigationControl({
-      showCompass: false,
-      visualizePitch: false,
+    // Wait for map style to load before adding sources and layers
+    map.current.on('style.load', () => {
+      // Add navigation controls
+      const nav = new mapboxgl.NavigationControl({
+        showCompass: false,
+        visualizePitch: false,
+      })
+      map.current?.addControl(nav, 'top-right')
+
+      // Add markers
+      validServices.forEach((service) => {
+        const el = document.createElement('div')
+        el.className = 'custom-marker'
+
+        // Apply initial size based on current zoom
+        if (map.current) {
+          updateMarkerSize(el, map.current.getZoom())
+        }
+
+        const marker = new mapboxgl.Marker({
+          element: el,
+          anchor: 'center',
+          pitchAlignment: 'map',
+          rotationAlignment: 'map',
+        })
+          .setLngLat([service.stop.longitude, service.stop.latitude])
+          .addTo(map.current!)
+
+        markersRef.current.push(marker)
+
+        el.addEventListener('click', () => {
+          // Clear previous selection
+          document
+            .querySelectorAll('.custom-marker')
+            .forEach((m) => m.classList.remove('selected'))
+          el.classList.add('selected')
+
+          // Add fly animation
+          map.current?.flyTo({
+            center: [service.stop.longitude, service.stop.latitude],
+            zoom: 15,
+            duration: 1500,
+            essential: true,
+            padding: { top: 100, bottom: 50, left: 50, right: 50 },
+          })
+
+          const routes = getRoutesForStop(service)
+
+          handleStopSelect({
+            name: service.stop.stop_name,
+            code: service.stop.stop_code,
+            sequence: service.sequence,
+            streetName: service.stop.street_name,
+            latitude: service.stop.latitude,
+            longitude: service.stop.longitude,
+            routes: routes,
+          })
+        })
+      })
+
+      // Add route shapes if available
+      if (routeShapes && routeShapes.length > 0 && map.current) {
+        // First remove any existing route layers and sources
+        routeShapes.forEach((shape) => {
+          const layerId = `route-line-${shape.direction}`
+          const sourceId = `route-${shape.direction}`
+          const arrowsId = `route-arrows-${shape.direction}`
+          
+          if (map.current?.getLayer(layerId)) {
+            map.current.removeLayer(layerId)
+          }
+          if (map.current?.getLayer(arrowsId)) {
+            map.current.removeLayer(arrowsId)
+          }
+          if (map.current?.getSource(sourceId)) {
+            map.current.removeSource(sourceId)
+          }
+        })
+
+        // Then add the new layers
+        routeShapes.forEach((shape) => {
+          const sourceId = `route-${shape.direction}`
+          const layerId = `route-line-${shape.direction}`
+          const arrowsId = `route-arrows-${shape.direction}`
+
+          map.current?.addSource(sourceId, {
+            type: 'geojson',
+            data: {
+              type: 'Feature',
+              properties: {},
+              geometry: {
+                type: 'LineString',
+                coordinates: shape.coordinates,
+              },
+            },
+          })
+
+          const lineColor = Number(shape.direction) === 1 ? '#4f46e5' : '#818cf8'
+
+          // Add the main route line
+          map.current?.addLayer({
+            id: layerId,
+            type: 'line',
+            source: sourceId,
+            layout: {
+              'line-join': 'round',
+              'line-cap': 'round',
+            },
+            paint: {
+              'line-color': lineColor,
+              'line-width': 4,
+              'line-opacity': 0.8,
+            },
+          })
+
+          // Create custom arrow image - a simple arrow pointing up (90 degrees counterclockwise from right)
+          const arrowSvg = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19V5M12 5L6 11M12 5L18 11" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 19V5M12 5L6 11M12 5L18 11" stroke="${lineColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>`
+
+          // Convert SVG to data URL
+          const arrowUrl = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(arrowSvg)
+
+          // Load the arrow image
+          const arrowImage = new Image()
+          arrowImage.src = arrowUrl
+          arrowImage.onload = () => {
+            if (!map.current?.hasImage(`arrow-${shape.direction}`)) {
+              map.current?.addImage(`arrow-${shape.direction}`, arrowImage as HTMLImageElement)
+            }
+
+            // Add the arrows layer with updated settings
+            map.current?.addLayer({
+              id: arrowsId,
+              type: 'symbol',
+              source: sourceId,
+              layout: {
+                'symbol-placement': 'line',
+                'symbol-spacing': 80,
+                'icon-image': `arrow-${shape.direction}`,
+                'icon-size': [
+                  'interpolate',
+                  ['linear'],
+                  ['zoom'],
+                  10, 0.5,
+                  15, 1.0
+                ],
+                'icon-allow-overlap': true,
+                'icon-ignore-placement': true,
+                'icon-padding': 0,
+                'icon-rotation-alignment': 'map',
+                'icon-pitch-alignment': 'viewport',
+                'icon-offset': [-10, 0],
+                'icon-rotate': 90
+              },
+              paint: {
+                'icon-opacity': 1
+              },
+            })
+          }
+        })
+      }
     })
-    map.current.addControl(nav, 'top-right')
 
     // Add cooperative gestures warning
     const gestureText = {
@@ -195,10 +355,10 @@ export function RouteMap({ services }: RouteMapProps) {
         filter: invert(1);
       }
       .custom-marker {
-        width: 12px;
-        height: 12px;
+        width: 8px;
+        height: 8px;
         background-color: #ffffff;
-        border: 1.5px solid #1d4ed8;
+        border: 1px solid #1d4ed8;
         border-radius: 50%;
         cursor: pointer;
         transition: all 0.2s ease;
@@ -212,15 +372,20 @@ export function RouteMap({ services }: RouteMapProps) {
         border-color: #ffffff;
         transform: scale(1.3);
       }
+      .custom-marker.zoom-sm {
+        width: 6px;
+        height: 6px;
+        border-width: 1px;
+      }
       .custom-marker.zoom-md {
-        width: 12px;
-        height: 12px;
-        border-width: 2px;
+        width: 10px;
+        height: 10px;
+        border-width: 1.5px;
       }
       .custom-marker.zoom-lg {
-        width: 20px;
-        height: 20px;
-        border-width: 2.5px;
+        width: 16px;
+        height: 16px;
+        border-width: 2px;
       }
 
       /* Hide zoom controls on mobile */
@@ -254,66 +419,33 @@ export function RouteMap({ services }: RouteMapProps) {
       })
     })
 
-    // Add markers
-    validServices.forEach((service) => {
-      const el = document.createElement('div')
-      el.className = 'custom-marker'
-
-      // Apply initial size based on current zoom
-      if (map.current) {
-        updateMarkerSize(el, map.current.getZoom())
-      }
-
-      const marker = new mapboxgl.Marker({
-        element: el,
-        anchor: 'center',
-        pitchAlignment: 'map',
-        rotationAlignment: 'map',
-      })
-        .setLngLat([service.stop.longitude, service.stop.latitude])
-        .addTo(map.current!)
-
-      markersRef.current.push(marker)
-
-      el.addEventListener('click', () => {
-        // Clear previous selection
-        document
-          .querySelectorAll('.custom-marker')
-          .forEach((m) => m.classList.remove('selected'))
-        el.classList.add('selected')
-
-        // Add fly animation
-        map.current?.flyTo({
-          center: [service.stop.longitude, service.stop.latitude],
-          zoom: 15,
-          duration: 1500,
-          essential: true,
-          padding: { top: 100, bottom: 50, left: 50, right: 50 },
-        })
-
-        const routes = getRoutesForStop(service)
-
-        handleStopSelect({
-          name: service.stop.stop_name,
-          code: service.stop.stop_code,
-          sequence: service.sequence,
-          streetName: service.stop.street_name,
-          latitude: service.stop.latitude,
-          longitude: service.stop.longitude,
-          routes: routes,
-        })
-      })
-    })
-
     return () => {
       document.head.removeChild(styleElement)
       markersRef.current.forEach((marker) => marker.remove())
       if (map.current) {
+        routeShapes?.forEach((shape) => {
+          const layerId = `route-line-${shape.direction}`
+          const sourceId = `route-${shape.direction}`
+          const arrowsId = `route-arrows-${shape.direction}`
+          
+          if (map.current?.getLayer(layerId)) {
+            map.current.removeLayer(layerId)
+          }
+          if (map.current?.getLayer(arrowsId)) {
+            map.current.removeLayer(arrowsId)
+          }
+          if (map.current?.getSource(sourceId)) {
+            map.current.removeSource(sourceId)
+          }
+          if (map.current?.hasImage(`arrow-${shape.direction}`)) {
+            map.current.removeImage(`arrow-${shape.direction}`)
+          }
+        })
         map.current.remove()
         map.current = null
       }
     }
-  }, [services])
+  }, [services, routeShapes])
 
   return (
     <div className="relative h-full w-full">

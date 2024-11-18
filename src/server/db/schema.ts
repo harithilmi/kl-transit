@@ -10,6 +10,8 @@ import {
   varchar,
   integer,
   decimal,
+  primaryKey,
+  jsonb,
 } from 'drizzle-orm/pg-core'
 import { relations } from 'drizzle-orm'
 
@@ -92,6 +94,21 @@ export const routes = createTable(
   }),
 )
 
+export const routeShapes = createTable(
+  'route_shape',
+  {
+    routeNumber: varchar('route_number', { length: 20 })
+      .notNull()
+      .references(() => routes.routeNumber),
+    direction: integer('direction').notNull(),
+    coordinates: jsonb('coordinates').notNull(),
+  },
+  (table) => ({
+    pk: primaryKey(table.routeNumber, table.direction),
+    routeIdx: index('route_shape_idx').on(table.routeNumber),
+  }),
+)
+
 // Define relations
 export const stopsRelations = relations(stops, ({ many }) => ({
   services: many(services),
@@ -110,4 +127,12 @@ export const servicesRelations = relations(services, ({ one }) => ({
 
 export const routesRelations = relations(routes, ({ many }) => ({
   services: many(services),
+  shapes: many(routeShapes),
+}))
+
+export const routeShapesRelations = relations(routeShapes, ({ one }) => ({
+  route: one(routes, {
+    fields: [routeShapes.routeNumber],
+    references: [routes.routeNumber],
+  }),
 }))
