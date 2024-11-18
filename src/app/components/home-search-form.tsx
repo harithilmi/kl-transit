@@ -16,14 +16,21 @@ export function HomeSearchForm() {
     }
   }
 
+  function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'Enter') {
+      handleSearch(searchTerm)
+    }
+  }
+
   return (
     <div className="flex flex-col gap-4">
       <div className="flex gap-2">
         <input
           type="text"
-          placeholder="Search for a bus route or destination..."
+          placeholder="Search for a bus route"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyPress={handleKeyPress}
           className={`w-full rounded-lg bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/20 ${
             isPending ? 'opacity-50' : ''
           }`}
