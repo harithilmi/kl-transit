@@ -37,28 +37,30 @@ async function processShapes() {
 
   // Group shapes by route and direction
   const shapesMap = new Map<string, [number, number][]>()
-  
+
   rawShapes.forEach((shape) => {
     const key = `${shape.route_number}-${shape.direction}`
     if (!shapesMap.has(key)) {
       shapesMap.set(key, [])
     }
-    
+
     // Store as [longitude, latitude] for GeoJSON compatibility
-    shapesMap.get(key)?.push([
-      parseFloat(shape.longitude),
-      parseFloat(shape.latitude)
-    ])
+    shapesMap
+      .get(key)
+      ?.push([parseFloat(shape.longitude), parseFloat(shape.latitude)])
   })
 
   // Convert to final format
   const processedShapes: ProcessedShape[] = Array.from(shapesMap.entries())
     .map(([key, coordinates]) => {
-      const [routeNumber, direction] = key.split('-')
+      const [routeNum, directionStr] = key.split('-')
+      if (!routeNum || !directionStr) {
+        throw new Error(`Invalid key format: ${key}`)
+      }
       return {
-        routeNumber,
-        direction: parseInt(direction),
-        coordinates
+        routeNumber: routeNum,
+        direction: parseInt(directionStr),
+        coordinates,
       }
     })
     .sort((a, b) => {
@@ -70,7 +72,7 @@ async function processShapes() {
   // Write processed shapes as JSON
   fs.writeFileSync(
     path.join(outputDir, 'shapes.json'),
-    JSON.stringify(processedShapes, null, 2)
+    JSON.stringify(processedShapes, null, 2),
   )
 
   console.log(`Processed ${processedShapes.length} route shapes`)
