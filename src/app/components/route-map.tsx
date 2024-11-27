@@ -26,6 +26,15 @@ interface SelectedStop {
 // Initialize mapbox access token
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN ?? ''
 
+// Add this helper function at the top of the file, outside the component
+function createArrowImage(color: string) {
+  const svg = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 19V5M12 5L6 11M12 5L18 11" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12 19V5M12 5L6 11M12 5L18 11" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`
+  return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg)
+}
+
 export function RouteMap({
   services = [],
   shape = {
@@ -121,7 +130,7 @@ export function RouteMap({
         filter: ['==', ['get', 'stop_id'], ''],
       })
 
-      // Add route lines
+      // Add route lines and arrows for direction 1
       if (shape?.direction1?.coordinates?.length > 0) {
         map.addSource('route-direction1', {
           type: 'geojson',
@@ -135,6 +144,7 @@ export function RouteMap({
           },
         })
 
+        // Add the route line
         map.addLayer({
           id: 'route-direction1',
           type: 'line',
@@ -150,9 +160,45 @@ export function RouteMap({
           },
         })
 
+        // Create and load arrow image for direction 1
+        const arrowImage1 = new Image()
+        arrowImage1.src = createArrowImage('#4f46e5')
+        arrowImage1.onload = () => {
+          map.addImage('arrow-direction1', arrowImage1)
+          
+          map.addLayer({
+            id: 'route-direction1-arrows',
+            type: 'symbol',
+            source: 'route-direction1',
+            layout: {
+              'symbol-placement': 'line',
+              'symbol-spacing': 80,
+              'icon-image': 'arrow-direction1',
+              'icon-size': [
+                'interpolate',
+                ['linear'],
+                ['zoom'],
+                10, 0.5,
+                15, 1.0
+              ],
+              'icon-allow-overlap': true,
+              'icon-ignore-placement': true,
+              'icon-padding': 0,
+              'icon-rotation-alignment': 'map',
+              'icon-pitch-alignment': 'viewport',
+              'icon-rotate': 90,
+              'icon-offset': [-10, 0]
+            },
+            paint: {
+              'icon-opacity': 0.8
+            }
+          })
+        }
+
         shape.direction1.coordinates.forEach((coord) => bounds.extend(coord))
       }
 
+      // Add route lines and arrows for direction 2
       if (shape?.direction2?.coordinates?.length > 0) {
         map.addSource('route-direction2', {
           type: 'geojson',
@@ -166,6 +212,7 @@ export function RouteMap({
           },
         })
 
+        // Add the route line
         map.addLayer({
           id: 'route-direction2',
           type: 'line',
@@ -180,6 +227,41 @@ export function RouteMap({
             'line-opacity': 0.8,
           },
         })
+
+        // Create and load arrow image for direction 2
+        const arrowImage2 = new Image()
+        arrowImage2.src = createArrowImage('#818cf8')
+        arrowImage2.onload = () => {
+          map.addImage('arrow-direction2', arrowImage2)
+          
+          map.addLayer({
+            id: 'route-direction2-arrows',
+            type: 'symbol',
+            source: 'route-direction2',
+            layout: {
+              'symbol-placement': 'line',
+              'symbol-spacing': 80,
+              'icon-image': 'arrow-direction2',
+              'icon-size': [
+                'interpolate',
+                ['linear'],
+                ['zoom'],
+                10, 0.5,
+                15, 1.0
+              ],
+              'icon-allow-overlap': true,
+              'icon-ignore-placement': true,
+              'icon-padding': 0,
+              'icon-rotation-alignment': 'map',
+              'icon-pitch-alignment': 'viewport',
+              'icon-rotate': 90,
+              'icon-offset': [-10, 0]
+            },
+            paint: {
+              'icon-opacity': 0.8
+            }
+          })
+        }
 
         shape.direction2.coordinates.forEach((coord) => bounds.extend(coord))
       }
