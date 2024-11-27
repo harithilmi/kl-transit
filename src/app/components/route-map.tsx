@@ -2,8 +2,10 @@
 
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { Service, RouteShape } from '../types/routes'
+import { Card } from '~/components/ui/card'
+import servicesData from '~/data/from_db/kl-transit_service.json'
 
 interface RouteMapProps {
   services: Service[]
@@ -11,6 +13,14 @@ interface RouteMapProps {
     direction1: RouteShape
     direction2: RouteShape
   }
+}
+
+interface SelectedStop {
+  name: string
+  code: string
+  coordinates: [number, number]
+  street_name?: string
+  routes: string[]
 }
 
 // Initialize mapbox access token
@@ -32,6 +42,8 @@ export function RouteMap({
   },
 }: RouteMapProps) {
   const mapContainer = useRef<HTMLDivElement>(null)
+  const mapInstance = useRef<mapboxgl.Map | null>(null)
+  const [selectedStop, setSelectedStop] = useState<SelectedStop | null>(null)
 
   useEffect(() => {
     const map = new mapboxgl.Map({
@@ -41,6 +53,8 @@ export function RouteMap({
       zoom: 11,
       maxZoom: 18,
     })
+
+    mapInstance.current = map
 
     // Add navigation controls
     map.addControl(
@@ -72,6 +86,8 @@ export function RouteMap({
             properties: {
               name: service.stop.stop_name,
               code: service.stop.stop_code,
+              street_name: service.stop.street_name,
+              stop_id: service.stop_id,
             },
           })),
         },
@@ -83,46 +99,26 @@ export function RouteMap({
         type: 'circle',
         source: 'stops',
         paint: {
-          'circle-radius': [
-            'interpolate',
-            ['linear'],
-            ['zoom'],
-            10,
-            3,
-            13,
-            5,
-            15,
-            8,
-          ],
+          'circle-radius': 6,
           'circle-color': '#ffffff',
           'circle-stroke-color': '#1d4ed8',
-          'circle-stroke-width': 1,
-          'circle-opacity': 1,
+          'circle-stroke-width': 1.5,
         },
       })
 
-      // Add hover effect layer
+      // Add selection ring layer
       map.addLayer({
-        id: 'stops-hover',
+        id: 'stops-selected',
         type: 'circle',
         source: 'stops',
         paint: {
-          'circle-radius': [
-            'interpolate',
-            ['linear'],
-            ['zoom'],
-            10,
-            4,
-            13,
-            6,
-            15,
-            10,
-          ],
-          'circle-color': '#3b82f6',
-          'circle-stroke-color': '#ffffff',
-          'circle-stroke-width': 1,
+          'circle-radius': 12,
+          'circle-color': 'transparent',
+          'circle-stroke-color': '#1d4ed8',
+          'circle-stroke-width': 2,
           'circle-opacity': 0,
         },
+        filter: ['==', ['get', 'code'], ''],
       })
 
       // Add route lines
@@ -188,25 +184,80 @@ export function RouteMap({
         shape.direction2.coordinates.forEach((coord) => bounds.extend(coord))
       }
 
-      // Add hover interactivity
+      // Update click handler to show selection ring
       map.on(
-        'mousemove',
+        'click',
         'stops',
-        (e: mapboxgl.MapMouseEvent & { features?: GeoJSON.Feature[] }) => {
+        (
+          e: mapboxgl.MapMouseEvent & {
+            features?: mapboxgl.GeoJSONFeature[]
+          },
+        ) => {
           if (e.features && e.features.length > 0) {
-            map.setPaintProperty('stops-hover', 'circle-opacity', 1)
-            map.setFilter('stops-hover', [
-              '==',
-              ['get', 'code'],
-              e.features[0]?.properties?.code,
-            ])
+            const feature = e.features[0]
+            const stopId = feature?.properties?.stop_id as string
+            const stopCode = feature?.properties?.code as string
+            const coordinates = (feature?.geometry as GeoJSON.Point).coordinates
+
+            // Fly to the clicked stop
+            map.flyTo({
+              center: [coordinates[0]!, coordinates[1]!] as [number, number],
+              zoom: 15,
+              duration: 1000,
+              padding: { left: 320 },
+            })
+
+            // Update selection ring
+            map.setFilter('stops-selected', ['==', ['get', 'code'], stopCode])
+            map.setPaintProperty('stops-selected', 'circle-opacity', 1)
+
+            // Get routes for this stop
+            const routes = servicesData
+              .filter((service) => service.stop_id === stopId)
+              .map((service) => service.route_number)
+            const uniqueRoutes = Array.from(new Set(routes))
+
+            // Set selected stop info
+            setSelectedStop({
+              name: feature?.properties?.name as string,
+              code: feature?.properties?.code as string,
+              coordinates: [
+                (feature?.geometry as GeoJSON.Point).coordinates[0]!,
+                (feature?.geometry as GeoJSON.Point).coordinates[1]!,
+              ],
+              street_name: feature?.properties?.street_name as
+                | string
+                | undefined,
+              routes: uniqueRoutes,
+            })
           }
         },
       )
 
+      // Update background click handler
+      map.on('click', (e) => {
+        const features = map.queryRenderedFeatures(e.point, {
+          layers: ['stops'],
+        })
+        if (features.length === 0) {
+          setSelectedStop(null)
+          map.setFilter('stops-selected', ['==', ['get', 'code'], ''])
+          map.setPaintProperty('stops-selected', 'circle-opacity', 0)
+          // Zoom out
+          map.flyTo({
+            zoom: 11,
+            duration: 1000,
+          })
+        }
+      })
+
+      // Add cursor style change
+      map.on('mouseenter', 'stops', () => {
+        map.getCanvas().style.cursor = 'pointer'
+      })
+
       map.on('mouseleave', 'stops', () => {
-        map.setPaintProperty('stops-hover', 'circle-opacity', 0)
-        map.setFilter('stops-hover', null)
+        map.getCanvas().style.cursor = ''
       })
 
       // Extend bounds with stop coordinates
@@ -219,8 +270,15 @@ export function RouteMap({
 
       // Fit bounds after all elements are added
       if (bounds.getNorthEast() && bounds.getSouthWest()) {
-        map.fitBounds(bounds, { padding: 50 })
+        map.fitBounds(bounds, { 
+          padding: { top: 50, bottom: 50, left: 50, right: 50 },
+          duration: 0 // Instant fit without animation
+        })
       }
+
+      // Clear any selected stop on init
+      map.setFilter('stops-selected', ['==', ['get', 'code'], ''])
+      map.setPaintProperty('stops-selected', 'circle-opacity', 0)
     })
 
     // Add zoom handler
@@ -241,8 +299,76 @@ export function RouteMap({
     return () => {
       map.remove()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [services, shape])
 
-  return <div ref={mapContainer} className="w-full h-full" />
+  return (
+    <div className="relative">
+      <div ref={mapContainer} className="w-full h-96" />
+      {selectedStop && (
+        <Card className="absolute top-4 left-4 p-4 max-w-sm bg-white/95 backdrop-blur">
+          <div className="flex justify-between items-start">
+            <div className="space-y-2">
+              <h3 className="text-lg text-black font-semibold">
+                {selectedStop.name}
+              </h3>
+              <p className="text-sm text-black/70">
+                Stop Code: {selectedStop.code}
+              </p>
+              <p className="text-sm text-black/70">
+                Coordinates: {selectedStop.coordinates[1].toFixed(6)},{' '}
+                {selectedStop.coordinates[0].toFixed(6)}
+              </p>
+              {selectedStop.street_name && (
+                <p className="text-sm text-black/70">
+                  Street: {selectedStop.street_name}
+                </p>
+              )}
+              {selectedStop.routes.length > 0 && (
+                <div className="mt-2">
+                  <p className="text-sm text-black/70 font-medium mb-1">
+                    Routes:
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedStop.routes.map((route) => (
+                      <a
+                        key={route}
+                        href={`/routes/${route}`}
+                        className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-indigo-100 text-indigo-800 hover:bg-indigo-200 transition-colors cursor-pointer"
+                      >
+                        {route}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+            <button
+              onClick={() => {
+                setSelectedStop(null)
+                // Clear selection ring
+                mapInstance.current?.setFilter('stops-selected', [
+                  '==',
+                  ['get', 'code'],
+                  '',
+                ])
+                mapInstance.current?.setPaintProperty(
+                  'stops-selected',
+                  'circle-opacity',
+                  0,
+                )
+                // Zoom out
+                mapInstance.current?.flyTo({
+                  zoom: 11,
+                  duration: 1000,
+                })
+              }}
+              className="text-black/50 hover:text-black/70"
+            >
+              ✕
+            </button>
+          </div>
+        </Card>
+      )}
+    </div>
+  )
 }
