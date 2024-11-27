@@ -1,96 +1,28 @@
 import { Card } from '~/components/ui/card'
 import { notFound } from 'next/navigation'
 import { RouteStopList } from '~/app/components/route-stop-list'
-import { db } from '~/server/db'
-import { eq } from 'drizzle-orm'
-import { routes, routeShapes } from '~/server/db/schema'
-import type { RouteStopWithData } from '~/app/types/routes'
 import { RouteMap } from '~/app/components/route-map'
+import type { RouteDetails } from '~/app/types/routes'
 
-// Add type for the route shape
-type RouteShape = {
-  routeNumber: string
-  direction: number
-  coordinates: [number, number][]
-}
+const baseUrl =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000'
+    : process.env.NEXT_PUBLIC_APP_URL
 
 export default async function RoutePage({
   params,
 }: {
   params: { routeId: string }
 }) {
-  const { routeId } = await Promise.resolve(params)
-  if (!routeId) {
+  if (!baseUrl) throw new Error('NEXT_PUBLIC_APP_URL is not defined')
+
+  const res = await fetch(`${baseUrl}/api/routes/${params.routeId}`)
+
+  if (!res.ok) {
     notFound()
   }
 
-  // Get route info and services in a single query
-  const routeWithServices = await db.query.routes.findFirst({
-    where: eq(routes.routeNumber, routeId),
-    with: {
-      services: {
-        with: {
-          stop: true,
-        },
-        orderBy: (services, { asc }) => [asc(services.sequence)],
-      },
-    },
-  })
-
-  if (!routeWithServices || routeWithServices.services.length === 0) {
-    notFound()
-  }
-
-  // Get all connecting services in a single query instead of multiple queries
-  const uniqueStopIds = [
-    ...new Set(routeWithServices.services.map((s) => s.stopId)),
-  ]
-  const allStopServices = await db.query.services.findMany({
-    where: (services, { inArray }) => inArray(services.stopId, uniqueStopIds),
-    with: {
-      route: true,
-    },
-  })
-
-  // Create lookup map for services by stopId
-  const stopServicesMap = allStopServices.reduce((acc, service) => {
-    const services = acc.get(service.stopId) ?? []
-    services.push(service)
-    acc.set(service.stopId, services)
-    return acc
-  }, new Map<string, typeof allStopServices>())
-
-  // Transform to match RouteStopWithData type
-  const transformedServices: RouteStopWithData[] = routeWithServices.services.map(
-    (service) => ({
-      route_number: service.routeNumber,
-      stop_id: service.stopId,
-      stop_code: service.stop.stopCode ?? '',
-      direction: service.direction,
-      zone: service.zone,
-      sequence: service.sequence,
-      stop: {
-        stop_id: service.stop.stopId,
-        stop_code: service.stop.stopCode ?? '',
-        stop_name: service.stop.stopName,
-        street_name: service.stop.streetName ?? '',
-        latitude: Number(service.stop.latitude),
-        longitude: Number(service.stop.longitude),
-        connecting_routes: (stopServicesMap.get(service.stopId) ?? []).map(
-          (s) => ({
-            route_number: s.routeNumber,
-            route_name: s.route.routeName,
-            service_id: s.id,
-          }),
-        ),
-      },
-    }),
-  )
-
-  // Get route shapes for both directions - Fix the query to use the table from schema
-  const shapes = (await db.query.routeShapes.findMany({
-    where: eq(routeShapes.routeNumber, routeId),
-  })) as RouteShape[]
+  const routeData = (await res.json()) as RouteDetails
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#2e026d] to-[#15162c] px-2 py-8 text-white sm:px-4 sm:py-16">
@@ -123,10 +55,10 @@ export default async function RoutePage({
           <Card className="w-full p-4">
             <div className="flex flex-col gap-2">
               <h1 className="text-3xl text-center font-bold">
-                Route {routeId}
+                Route {routeData.route_number}
               </h1>
               <p className="text-lg text-center text-white/80">
-                {routeWithServices.routeName}
+                {routeData.route_name}
               </p>
             </div>
           </Card>
@@ -134,13 +66,13 @@ export default async function RoutePage({
 
         {/* Map */}
         <Card className="w-full max-w-xl h-96 overflow-hidden">
-          <RouteMap services={transformedServices} routeShapes={shapes} />
+          <RouteMap services={routeData.services} shape={routeData.shape} />
         </Card>
 
         {/* Main content */}
         <div className="flex w-full max-w-xl flex-col gap-6 sm:gap-8">
           <Card className="w-full overflow-hidden text-white">
-            <RouteStopList services={transformedServices} />
+            <RouteStopList services={routeData.services} />
           </Card>
         </div>
       </div>

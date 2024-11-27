@@ -1,35 +1,29 @@
 import { Card } from '~/components/ui/card'
 import { SearchForm } from './search-form'
 import Link from 'next/link'
-import { db } from '~/server/db'
-import type { Route } from '../types/routes'
+import type { Route } from '~/app/types/routes'
+
+const baseUrl =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000'
+    : process.env.NEXT_PUBLIC_APP_URL
 
 export default async function RoutesPage({
   searchParams,
 }: {
   searchParams: { q?: string }
 }) {
-  const searchQuery = await Promise.resolve(searchParams.q)
-  const search = searchQuery?.toLowerCase() ?? ''
-
-  // Get routes from database
-  const dbRoutes = await db.query.routes.findMany({
-    orderBy: (routes, { asc }) => [asc(routes.routeNumber)],
-  })
-
-  // Create route objects
-  const routes: Route[] = dbRoutes.map((route) => ({
-    route_id: Number(route.id),
-    route_number: route.routeNumber,
-    route_name: route.routeName,
-    route_type: route.routeType,
-  }))
-
-  const filteredRoutes = routes.filter(
-    (route) =>
-      route.route_number.toLowerCase().includes(search) ||
-      route.route_name.toLowerCase().includes(search),
+  if (!baseUrl) throw new Error('NEXT_PUBLIC_APP_URL is not defined')
+  const searchQuery = searchParams.q ?? ''
+  const res = await fetch(
+    `${baseUrl}/api/routes${
+      searchQuery ? `?q=${encodeURIComponent(searchQuery)}` : ''
+    }`,
+    {
+      next: { revalidate: 3600 }, // Cache for 1 hour
+    },
   )
+  const routes = (await res.json()) as Route[]
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] px-4 py-16 text-white">
@@ -44,17 +38,17 @@ export default async function RoutesPage({
         {/* Search and Filter */}
         <Card className="w-full max-w-2xl">
           <div className="flex flex-col gap-4 p-4">
-            <SearchForm initialSearch={search} />
+            <SearchForm initialSearch={searchQuery} />
           </div>
         </Card>
 
         {/* Routes Grid */}
         <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {filteredRoutes.map((route) => (
+          {routes.map((route) => (
             <Link
               className="transition-transform hover:scale-105"
               href={`/routes/${route.route_number}`}
-              key={route.route_id}
+              key={route.route_id || `route-${route.route_number}`}
             >
               <Card className="flex flex-col p-4">
                 <div className="flex flex-col">
