@@ -99,7 +99,7 @@ export function RouteMap({
         type: 'circle',
         source: 'stops',
         paint: {
-          'circle-radius': 6,
+          'circle-radius': 4,
           'circle-color': '#ffffff',
           'circle-stroke-color': '#1d4ed8',
           'circle-stroke-width': 1.5,
@@ -112,13 +112,13 @@ export function RouteMap({
         type: 'circle',
         source: 'stops',
         paint: {
-          'circle-radius': 12,
+          'circle-radius': 10,
           'circle-color': 'transparent',
           'circle-stroke-color': '#1d4ed8',
           'circle-stroke-width': 2,
           'circle-opacity': 0,
         },
-        filter: ['==', ['get', 'code'], ''],
+        filter: ['==', ['get', 'stop_id'], ''],
       })
 
       // Add route lines
@@ -196,7 +196,6 @@ export function RouteMap({
           if (e.features && e.features.length > 0) {
             const feature = e.features[0]
             const stopId = feature?.properties?.stop_id as string
-            const stopCode = feature?.properties?.code as string
             const coordinates = (feature?.geometry as GeoJSON.Point).coordinates
 
             // Fly to the clicked stop
@@ -207,8 +206,8 @@ export function RouteMap({
               padding: { left: 320 },
             })
 
-            // Update selection ring
-            map.setFilter('stops-selected', ['==', ['get', 'code'], stopCode])
+            // Update selection ring using stop_id
+            map.setFilter('stops-selected', ['==', ['get', 'stop_id'], stopId])
             map.setPaintProperty('stops-selected', 'circle-opacity', 1)
 
             // Get routes for this stop
@@ -241,7 +240,7 @@ export function RouteMap({
         })
         if (features.length === 0) {
           setSelectedStop(null)
-          map.setFilter('stops-selected', ['==', ['get', 'code'], ''])
+          map.setFilter('stops-selected', ['==', ['get', 'stop_id'], ''])
           map.setPaintProperty('stops-selected', 'circle-opacity', 0)
           // Zoom out
           map.flyTo({
@@ -270,14 +269,14 @@ export function RouteMap({
 
       // Fit bounds after all elements are added
       if (bounds.getNorthEast() && bounds.getSouthWest()) {
-        map.fitBounds(bounds, { 
+        map.fitBounds(bounds, {
           padding: { top: 50, bottom: 50, left: 50, right: 50 },
-          duration: 0 // Instant fit without animation
+          duration: 0, // Instant fit without animation
         })
       }
 
       // Clear any selected stop on init
-      map.setFilter('stops-selected', ['==', ['get', 'code'], ''])
+      map.setFilter('stops-selected', ['==', ['get', 'stop_id'], ''])
       map.setPaintProperty('stops-selected', 'circle-opacity', 0)
     })
 
@@ -305,26 +304,29 @@ export function RouteMap({
     <div className="relative">
       <div ref={mapContainer} className="w-full h-96" />
       {selectedStop && (
-        <Card className="absolute top-4 left-4 p-4 max-w-sm bg-white/95 backdrop-blur">
-          <div className="flex justify-between items-start">
-            <div className="space-y-2">
-              <h3 className="text-lg text-black font-semibold">
-                {selectedStop.name}
-              </h3>
-              <p className="text-sm text-black/70">
-                Stop Code: {selectedStop.code}
-              </p>
-              <p className="text-sm text-black/70">
-                Coordinates: {selectedStop.coordinates[1].toFixed(6)},{' '}
-                {selectedStop.coordinates[0].toFixed(6)}
-              </p>
-              {selectedStop.street_name && (
-                <p className="text-sm text-black/70">
-                  Street: {selectedStop.street_name}
-                </p>
-              )}
+        <Card className="absolute top-4 left-4 p-4 bg-white/95 backdrop-blur w-fit max-w-sm">
+          <div className="flex justify-between items-start gap-4">
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-2">
+                {selectedStop.code && (
+                  <span className="shrink-0 px-2 py-0.5 bg-indigo-100 text-indigo-800 text-sm rounded-md">
+                    {selectedStop.code}
+                  </span>
+                )}
+                <div className="flex flex-col">
+                  <h3 className="text-lg text-black font-semibold">
+                    {selectedStop.name}
+                  </h3>
+                  {selectedStop.street_name && (
+                    <p className="text-sm text-black/70">
+                      {selectedStop.street_name}
+                    </p>
+                  )}
+                </div>
+              </div>
+
               {selectedStop.routes.length > 0 && (
-                <div className="mt-2">
+                <div>
                   <p className="text-sm text-black/70 font-medium mb-1">
                     Routes:
                   </p>
@@ -345,10 +347,9 @@ export function RouteMap({
             <button
               onClick={() => {
                 setSelectedStop(null)
-                // Clear selection ring
                 mapInstance.current?.setFilter('stops-selected', [
                   '==',
-                  ['get', 'code'],
+                  ['get', 'stop_id'],
                   '',
                 ])
                 mapInstance.current?.setPaintProperty(
@@ -356,7 +357,6 @@ export function RouteMap({
                   'circle-opacity',
                   0,
                 )
-                // Zoom out
                 mapInstance.current?.flyTo({
                   zoom: 11,
                   duration: 1000,
