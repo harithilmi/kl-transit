@@ -34,7 +34,7 @@ npm run dev
 
 - [x] Make it deploy
 - [x] Scaffold basic ui with mock data
-- [ ] Add map integration
+- [x] Add map integration
 - [ ] Add realtime bus location from GTFS-RT
 - [ ] Error management (sentry)
 - [ ] Routing/routes page (parallel route)
