@@ -30,7 +30,7 @@ export function HomeSearchForm() {
           placeholder="Search for a bus route"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyPress}
           className={`w-full rounded-lg bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/20 ${
             isPending ? 'opacity-50' : ''
           }`}

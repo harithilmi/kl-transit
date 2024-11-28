@@ -20,7 +20,12 @@ export async function GET(request: Request) {
         route.route_name.toLowerCase().includes(query),
     )
 
-    return NextResponse.json(filteredRoutes)
+    return new NextResponse(JSON.stringify(filteredRoutes), {
+      headers: {
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+        'Content-Type': 'application/json',
+      },
+    })
   } catch (error) {
     console.error('Error in routes API:', error)
     return NextResponse.json(

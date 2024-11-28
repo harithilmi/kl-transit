@@ -16,7 +16,11 @@ export default async function RoutePage({
 }) {
   if (!baseUrl) throw new Error('NEXT_PUBLIC_APP_URL is not defined')
 
-  const res = await fetch(`${baseUrl}/api/routes/${params.routeId}`)
+  const res = await fetch(`${baseUrl}/api/routes/${params.routeId}`, {
+    next: {
+      revalidate: 86400,
+    },
+  })
 
   if (!res.ok) {
     notFound()

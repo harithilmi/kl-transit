@@ -2,7 +2,7 @@
 
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useMemo } from 'react'
 import type { Service, RouteShape } from '../types/routes'
 import { Card } from '~/components/ui/card'
 import servicesData from '~/data/from_db/kl-transit_service.json'
@@ -26,14 +26,24 @@ interface SelectedStop {
 // Initialize mapbox access token
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN ?? ''
 
-// Add this helper function at the top of the file, outside the component
+// Cache the arrow images to avoid recreating them
+const arrowImageCache = new Map<string, string>()
 function createArrowImage(color: string) {
+  if (arrowImageCache.has(color)) {
+    return arrowImageCache.get(color)!
+  }
+
   const svg = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M12 19V5M12 5L6 11M12 5L18 11" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M12 19V5M12 5L6 11M12 5L18 11" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>`
-  return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg)
+  const dataUrl = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg)
+  arrowImageCache.set(color, dataUrl)
+  return dataUrl
 }
+
+// Cache map instances to avoid memory leaks
+const mapInstanceCache = new Map<string, mapboxgl.Map>()
 
 export function RouteMap({
   services = [],
@@ -54,14 +64,87 @@ export function RouteMap({
   const mapInstance = useRef<mapboxgl.Map | null>(null)
   const [selectedStop, setSelectedStop] = useState<SelectedStop | null>(null)
 
+  // Memoize the GeoJSON data to prevent unnecessary recalculations
+  const stopsGeoJSON = useMemo(
+    () => ({
+      type: 'FeatureCollection',
+      features: services.map((service) => ({
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [
+            parseFloat(service.stop.longitude),
+            parseFloat(service.stop.latitude),
+          ],
+        },
+        properties: {
+          name: service.stop.stop_name,
+          code: service.stop.stop_code,
+          street_name: service.stop.street_name,
+          stop_id: service.stop_id,
+        },
+      })),
+    }),
+    [services],
+  )
+
+  // Memoize route shapes to prevent unnecessary recalculations
+  const routeShapes = useMemo(
+    () => ({
+      direction1:
+        shape.direction1.coordinates.length > 0
+          ? {
+              type: 'Feature',
+              properties: {},
+              geometry: {
+                type: 'LineString',
+                coordinates: shape.direction1.coordinates,
+              },
+            }
+          : null,
+      direction2:
+        shape.direction2.coordinates.length > 0
+          ? {
+              type: 'Feature',
+              properties: {},
+              geometry: {
+                type: 'LineString',
+                coordinates: shape.direction2.coordinates,
+              },
+            }
+          : null,
+    }),
+    [shape],
+  )
+
   useEffect(() => {
-    const map = new mapboxgl.Map({
-      container: mapContainer.current!,
-      style: 'mapbox://styles/mapbox/streets-v12',
-      center: [101.6958, 3.1466],
-      zoom: 11,
-      maxZoom: 18,
-    })
+    if (!mapContainer.current) return
+
+    // Use cached map instance if available
+    const cacheKey = `${services[0]?.route_number ?? 'default'}`
+    let map = mapInstanceCache.get(cacheKey)
+
+    if (!map) {
+      map = new mapboxgl.Map({
+        container: mapContainer.current,
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [101.6958, 3.1466],
+        zoom: 11,
+        maxZoom: 18,
+        transformRequest: (url, resourceType) => {
+          // Add cache headers for tile requests
+          if (resourceType === 'Tile') {
+            return {
+              url,
+              headers: {
+                'Cache-Control': 'public, max-age=86400',
+              },
+            }
+          }
+        },
+      })
+      mapInstanceCache.set(cacheKey, map)
+    }
 
     mapInstance.current = map
 
@@ -81,25 +164,7 @@ export function RouteMap({
       // Add stops as a source
       map.addSource('stops', {
         type: 'geojson',
-        data: {
-          type: 'FeatureCollection',
-          features: services.map((service) => ({
-            type: 'Feature',
-            geometry: {
-              type: 'Point',
-              coordinates: [
-                parseFloat(service.stop.longitude),
-                parseFloat(service.stop.latitude),
-              ],
-            },
-            properties: {
-              name: service.stop.stop_name,
-              code: service.stop.stop_code,
-              street_name: service.stop.street_name,
-              stop_id: service.stop_id,
-            },
-          })),
-        },
+        data: stopsGeoJSON,
       })
 
       // Add stops layer
@@ -131,17 +196,10 @@ export function RouteMap({
       })
 
       // Add route lines and arrows for direction 1
-      if (shape?.direction1?.coordinates?.length > 0) {
+      if (routeShapes.direction1) {
         map.addSource('route-direction1', {
           type: 'geojson',
-          data: {
-            type: 'Feature',
-            properties: {},
-            geometry: {
-              type: 'LineString',
-              coordinates: shape.direction1.coordinates,
-            },
-          },
+          data: routeShapes.direction1,
         })
 
         // Add the route line
@@ -165,7 +223,7 @@ export function RouteMap({
         arrowImage1.src = createArrowImage('#4f46e5')
         arrowImage1.onload = () => {
           map.addImage('arrow-direction1', arrowImage1)
-          
+
           map.addLayer({
             id: 'route-direction1-arrows',
             type: 'symbol',
@@ -178,8 +236,10 @@ export function RouteMap({
                 'interpolate',
                 ['linear'],
                 ['zoom'],
-                10, 0.5,
-                15, 1.0
+                10,
+                0.5,
+                15,
+                1.0,
               ],
               'icon-allow-overlap': true,
               'icon-ignore-placement': true,
@@ -187,29 +247,24 @@ export function RouteMap({
               'icon-rotation-alignment': 'map',
               'icon-pitch-alignment': 'viewport',
               'icon-rotate': 90,
-              'icon-offset': [-10, 0]
+              'icon-offset': [-10, 0],
             },
             paint: {
-              'icon-opacity': 0.8
-            }
+              'icon-opacity': 0.8,
+            },
           })
         }
 
-        shape.direction1.coordinates.forEach((coord) => bounds.extend(coord))
+        routeShapes.direction1.geometry.coordinates.forEach((coord) =>
+          bounds.extend(coord),
+        )
       }
 
       // Add route lines and arrows for direction 2
-      if (shape?.direction2?.coordinates?.length > 0) {
+      if (routeShapes.direction2) {
         map.addSource('route-direction2', {
           type: 'geojson',
-          data: {
-            type: 'Feature',
-            properties: {},
-            geometry: {
-              type: 'LineString',
-              coordinates: shape.direction2.coordinates,
-            },
-          },
+          data: routeShapes.direction2,
         })
 
         // Add the route line
@@ -233,7 +288,7 @@ export function RouteMap({
         arrowImage2.src = createArrowImage('#818cf8')
         arrowImage2.onload = () => {
           map.addImage('arrow-direction2', arrowImage2)
-          
+
           map.addLayer({
             id: 'route-direction2-arrows',
             type: 'symbol',
@@ -246,8 +301,10 @@ export function RouteMap({
                 'interpolate',
                 ['linear'],
                 ['zoom'],
-                10, 0.5,
-                15, 1.0
+                10,
+                0.5,
+                15,
+                1.0,
               ],
               'icon-allow-overlap': true,
               'icon-ignore-placement': true,
@@ -255,15 +312,17 @@ export function RouteMap({
               'icon-rotation-alignment': 'map',
               'icon-pitch-alignment': 'viewport',
               'icon-rotate': 90,
-              'icon-offset': [-10, 0]
+              'icon-offset': [-10, 0],
             },
             paint: {
-              'icon-opacity': 0.8
-            }
+              'icon-opacity': 0.8,
+            },
           })
         }
 
-        shape.direction2.coordinates.forEach((coord) => bounds.extend(coord))
+        routeShapes.direction2.geometry.coordinates.forEach((coord) =>
+          bounds.extend(coord),
+        )
       }
 
       // Update click handler to show selection ring
@@ -378,9 +437,13 @@ export function RouteMap({
     })
 
     return () => {
-      map.remove()
+      // Only remove the map if we're unmounting completely
+      if (mapContainer.current === null) {
+        map?.remove()
+        mapInstanceCache.delete(cacheKey)
+      }
     }
-  }, [services, shape])
+  }, [services, stopsGeoJSON, routeShapes])
 
   return (
     <div className="relative">

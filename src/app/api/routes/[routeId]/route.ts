@@ -66,7 +66,13 @@ export async function GET(
       },
     }
 
-    return NextResponse.json(routeDetails)
+    return new NextResponse(JSON.stringify(routeDetails), {
+      headers: {
+        'Cache-Control':
+          'public, s-maxage=86400, stale-while-revalidate=604800',
+        'Content-Type': 'application/json',
+      },
+    })
   } catch (error) {
     console.error('Error in route detail API:', error)
     return NextResponse.json(
