@@ -1,26 +1,17 @@
 import { type ReactNode } from "react";
 import { HomeSearchForm } from "~/app/components/home-search-form";
 import Link from "next/link";
-
-function Card({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return (
-		<div
-			className={`rounded-lg bg-card/50 p-6 shadow-xl backdrop-blur-sm ${className}`}
-		>
-			{children}
-		</div>
-	);
-}
+import { Card } from "~/components/ui/card";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center bg-background px-4 py-16 text-foreground">
-      <div className="container flex max-w-6xl flex-col items-center gap-12">
+    <main className="min-h-screen bg-background px-2 py-8 text-foreground sm:px-4 sm:py-16">
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-6 sm:gap-8">
         {/* Hero Section */}
-        <div className="flex flex-col items-center gap-4 text-center">
-          <h1 className="text-5xl font-bold tracking-tight sm:text-[5rem]">
+        <div className="flex w-full max-w-xl flex-col gap-4 text-center">
+          <h1 className="text-3xl font-bold sm:text-5xl">
             KL Transit
           </h1>
           <p className="text-lg text-muted-foreground">
@@ -29,14 +20,12 @@ export default async function HomePage() {
         </div>
 
         {/* Search Section */}
-        <Card className="w-full max-w-2xl">
-          <div className="flex flex-col gap-4">
-            <HomeSearchForm />
-          </div>
+        <Card className="w-full max-w-xl p-4">
+          <HomeSearchForm />
         </Card>
 
         {/* About Section */}
-        <Card className="w-full max-w-2xl">
+        <Card className="w-full max-w-xl p-4">
           <div className="flex flex-col gap-4">
             <h2 className="text-xl font-semibold">About This Project</h2>
             <p className="text-muted-foreground">

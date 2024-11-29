@@ -30,24 +30,23 @@ export default async function RoutesPage({
   const routes = (await res.json()) as Route[]
 
   return (
-    <main className="flex min-h-screen flex-col items-center bg-background py-16">
-      <div className="container flex max-w-6xl flex-col items-center gap-12">
-        <div className="flex flex-col items-center gap-4 text-center">
-          <h1 className="text-5xl font-bold tracking-tight">Bus Routes</h1>
+    <main className="min-h-screen bg-background px-2 py-8 text-foreground sm:px-4 sm:py-16">
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-6 sm:gap-8">
+        {/* Header Section */}
+        <div className="flex w-full max-w-xl flex-col gap-4 text-center">
+          <h1 className="text-3xl font-bold sm:text-5xl">Bus Routes</h1>
           <p className="text-lg text-muted-foreground">
             Find detailed information about KL bus routes
           </p>
         </div>
 
         {/* Search and Filter */}
-        <Card className="w-full max-w-2xl">
-          <CardContent className="p-4">
-            <SearchForm initialSearch={searchQuery} />
-          </CardContent>
+        <Card className="w-full max-w-xl p-4">
+          <SearchForm initialSearch={searchQuery} />
         </Card>
 
         {/* Routes Grid */}
-        <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid w-full max-w-7xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {routes.map((route) => (
             <Link
               href={`/routes/${route.route_number}`}
