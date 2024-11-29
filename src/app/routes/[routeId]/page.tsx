@@ -1,22 +1,51 @@
 import { Card } from '~/components/ui/card'
 import { notFound } from 'next/navigation'
 import { RouteStopList } from '~/app/components/route-stop-list'
-import { RouteMap } from '~/app/components/route-map'
 import type { RouteDetails } from '~/app/types/routes'
+import { type Metadata } from 'next'
+import { RouteMapWrapper } from '~/app/components/route-page-client'
+// import { RouteMap } from '~/app/components/route-map'
 
 const baseUrl =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000'
     : process.env.NEXT_PUBLIC_APP_URL
 
-export default async function RoutePage({
-  params,
-}: {
+type Props = {
   params: { routeId: string }
-}) {
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!baseUrl) throw new Error('NEXT_PUBLIC_APP_URL is not defined')
 
   const res = await fetch(`${baseUrl}/api/routes/${params.routeId}`, {
+    next: {
+      revalidate: 86400,
+    },
+  })
+
+  if (!res.ok) {
+    return {
+      title: 'Route Not Found - KL Transit',
+      description: 'The requested route could not be found.',
+    }
+  }
+
+  const routeData = (await res.json()) as RouteDetails
+  return {
+    title: `Route ${routeData.route_number} - KL Transit`,
+    description: `View details, stops and map for bus route ${routeData.route_number} (${routeData.route_name})`,
+  }
+}
+
+export default async function RoutePage({
+  params,
+}: Props) {
+  if (!baseUrl) throw new Error('NEXT_PUBLIC_APP_URL is not defined')
+
+  // eslint-disable-next-line @typescript-eslint/await-thenable
+  const { routeId } = await params
+  const res = await fetch(`${baseUrl}/api/routes/${routeId}`, {
     next: {
       revalidate: 86400,
     },
@@ -70,7 +99,11 @@ export default async function RoutePage({
 
         {/* Map */}
         <Card className="w-full max-w-xl h-96 overflow-hidden">
-          <RouteMap services={routeData.services} shape={routeData.shape} />
+          <RouteMapWrapper
+            routeId={routeId}
+            services={routeData.services}
+            shape={routeData.shape}
+          />
         </Card>
 
         {/* Main content */}

@@ -14,7 +14,11 @@ export default async function RoutesPage({
   searchParams: { q?: string }
 }) {
   if (!baseUrl) throw new Error('NEXT_PUBLIC_APP_URL is not defined')
-  const searchQuery = searchParams.q ?? ''
+
+  // eslint-disable-next-line @typescript-eslint/await-thenable
+  const { q } = await searchParams
+  const searchQuery = q ?? ''
+
   const res = await fetch(
     `${baseUrl}/api/routes${
       searchQuery ? `?q=${encodeURIComponent(searchQuery)}` : ''

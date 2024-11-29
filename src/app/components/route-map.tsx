@@ -3,17 +3,9 @@
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { useEffect, useRef, useState, useMemo } from 'react'
-import type { Service, RouteShape } from '../types/routes'
 import { Card } from '~/components/ui/card'
 import servicesData from '~/data/from_db/kl-transit_service.json'
-
-interface RouteMapProps {
-  services: Service[]
-  shape: {
-    direction1: RouteShape
-    direction2: RouteShape
-  }
-}
+import type { RouteMapProps } from '../types/routes'
 
 interface SelectedStop {
   name: string
@@ -117,6 +109,35 @@ export function RouteMap({
     [shape],
   )
 
+  // Update the close function to use the refs
+  const handleCloseSelectedStop = () => {
+    setSelectedStop(null)
+    if (mapInstance.current) {
+      const map = mapInstance.current
+      map.setFilter('stops-selected', ['==', ['get', 'stop_id'], ''])
+      map.setPaintProperty('stops-selected', 'circle-opacity', 0)
+
+      //   // Create new bounds
+      //   const bounds = new mapboxgl.LngLatBounds()
+
+      //   // Extend bounds with stop coordinates
+      //   services.forEach((service) => {
+      //     bounds.extend([
+      //       parseFloat(service.stop.longitude),
+      //       parseFloat(service.stop.latitude),
+      //     ])
+      //   })
+
+      //   // Fit bounds after all elements are added
+      //   if (bounds.getNorthEast() && bounds.getSouthWest()) {
+      //     map.fitBounds(bounds, {
+      //       padding: { top: 50, bottom: 50, left: 50, right: 50 },
+      //       duration: 1000,
+      //     })
+      //   }
+    }
+  }
+
   useEffect(() => {
     if (!mapContainer.current) return
 
@@ -156,40 +177,6 @@ export function RouteMap({
 
     // Wait for style to load before adding sources and layers
     map.once('style.load', () => {
-      // Add stops as a source
-      map.addSource('stops', {
-        type: 'geojson',
-        data: stopsGeoJSON,
-      })
-
-      // Add stops layer
-      map.addLayer({
-        id: 'stops',
-        type: 'circle',
-        source: 'stops',
-        paint: {
-          'circle-radius': 4,
-          'circle-color': '#ffffff',
-          'circle-stroke-color': '#1d4ed8',
-          'circle-stroke-width': 1.5,
-        },
-      })
-
-      // Add selection ring layer
-      map.addLayer({
-        id: 'stops-selected',
-        type: 'circle',
-        source: 'stops',
-        paint: {
-          'circle-radius': 10,
-          'circle-color': 'transparent',
-          'circle-stroke-color': '#1d4ed8',
-          'circle-stroke-width': 2,
-          'circle-opacity': 0,
-        },
-        filter: ['==', ['get', 'stop_id'], ''],
-      })
-
       // Add route lines and arrows for direction 1
       if (routeShapes.direction1) {
         map.addSource('route-direction1', {
@@ -274,7 +261,7 @@ export function RouteMap({
           paint: {
             'line-color': '#818cf8',
             'line-width': 4,
-            'line-opacity': 0.8,
+            'line-opacity': 1,
           },
         })
 
@@ -319,6 +306,71 @@ export function RouteMap({
           bounds.extend(coord),
         )
       }
+      // Add stops as a source
+      map.addSource('stops', {
+        type: 'geojson',
+        data: stopsGeoJSON,
+      })
+
+      // Add stops layer
+      map.addLayer({
+        id: 'stops',
+        type: 'circle',
+        source: 'stops',
+        paint: {
+          'circle-radius': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            10,
+            2, // When zoomed out (zoom level 10 or less), radius is 2px
+            13,
+            4, // When zoomed in (zoom level 13 or more), radius is 4px
+          ],
+          'circle-color': '#ffffff',
+          'circle-stroke-color': '#1d4ed8',
+          'circle-stroke-width': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            10,
+            0.5, // Thinner stroke when zoomed out
+            13,
+            1.5, // Normal stroke when zoomed in
+          ],
+        },
+      })
+
+      // Add selection ring layer
+      map.addLayer({
+        id: 'stops-selected',
+        type: 'circle',
+        source: 'stops',
+        paint: {
+          'circle-radius': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            10,
+            5, // Smaller selection ring when zoomed out
+            13,
+            10, // Normal selection ring when zoomed in
+          ],
+          'circle-color': 'transparent',
+          'circle-stroke-color': '#1d4ed8',
+          'circle-stroke-width': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            10,
+            1, // Thinner stroke when zoomed out
+            13,
+            2, // Normal stroke when zoomed in
+          ],
+          'circle-opacity': 0,
+        },
+        filter: ['==', ['get', 'stop_id'], ''],
+      })
 
       // Update click handler to show selection ring
       map.on(
@@ -369,20 +421,29 @@ export function RouteMap({
         },
       )
 
-      // Update background click handler
+      // Update background click handler to use new function
       map.on('click', (e) => {
         const features = map.queryRenderedFeatures(e.point, {
           layers: ['stops'],
         })
         if (features.length === 0) {
-          setSelectedStop(null)
-          map.setFilter('stops-selected', ['==', ['get', 'stop_id'], ''])
-          map.setPaintProperty('stops-selected', 'circle-opacity', 0)
-          // Zoom out
-          map.flyTo({
-            zoom: 11,
-            duration: 1000,
-          })
+          handleCloseSelectedStop()
+
+          // // Extend bounds with stop coordinates
+          // services.forEach((service) => {
+          //   bounds.extend([
+          //     parseFloat(service.stop.longitude),
+          //     parseFloat(service.stop.latitude),
+          //   ])
+          // })
+
+          // // Fit bounds after all elements are added
+          // if (bounds.getNorthEast() && bounds.getSouthWest()) {
+          //   map.fitBounds(bounds, {
+          //     padding: { top: 50, bottom: 50, left: 50, right: 50 },
+          //     duration: 1000, // Instant fit without animation
+          //   })
+          // }
         }
       })
 
@@ -432,9 +493,23 @@ export function RouteMap({
     })
 
     return () => {
-      // Only remove the map if we're unmounting completely
-      if (mapContainer.current === null) {
-        map?.remove()
+      // Clean up map instance and remove from cache
+      if (map) {
+        // Remove specific layers and sources
+        if (map.getLayer('route-direction1-arrows'))
+          map.removeLayer('route-direction1-arrows')
+        if (map.getLayer('route-direction2-arrows'))
+          map.removeLayer('route-direction2-arrows')
+        if (map.getLayer('route-direction1'))
+          map.removeLayer('route-direction1')
+        if (map.getLayer('route-direction2'))
+          map.removeLayer('route-direction2')
+        if (map.getSource('route-direction1'))
+          map.removeSource('route-direction1')
+        if (map.getSource('route-direction2'))
+          map.removeSource('route-direction2')
+
+        map.remove()
         mapInstanceCache.delete(cacheKey)
       }
     }
@@ -444,7 +519,7 @@ export function RouteMap({
     <div className="relative">
       <div ref={mapContainer} className="w-full h-96" />
       {selectedStop && (
-        <Card className="absolute top-4 left-4 p-4 bg-white/95 backdrop-blur w-fit max-w-sm">
+        <Card className="absolute top-2 left-2 p-4 bg-white/95 backdrop-blur w-fit max-w-sm">
           <div className="flex justify-between items-start gap-4">
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2">
@@ -485,23 +560,7 @@ export function RouteMap({
               )}
             </div>
             <button
-              onClick={() => {
-                setSelectedStop(null)
-                mapInstance.current?.setFilter('stops-selected', [
-                  '==',
-                  ['get', 'stop_id'],
-                  '',
-                ])
-                mapInstance.current?.setPaintProperty(
-                  'stops-selected',
-                  'circle-opacity',
-                  0,
-                )
-                mapInstance.current?.flyTo({
-                  zoom: 11,
-                  duration: 1000,
-                })
-              }}
+              onClick={handleCloseSelectedStop}
               className="text-black/50 hover:text-black/70"
             >
               ✕

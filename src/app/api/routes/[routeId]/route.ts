@@ -10,14 +10,16 @@ export async function GET(
   { params }: { params?: { routeId?: string } },
 ) {
   try {
-    if (!params?.routeId) {
+    // eslint-disable-next-line @typescript-eslint/await-thenable
+    const { routeId } = (await params) ?? {}
+
+    if (!routeId) {
       return NextResponse.json(
         { error: 'Route ID is required' },
         { status: 400 },
       )
     }
 
-    const routeId = params.routeId
     const route = routes.find((r) => r.route_number === routeId)
 
     if (!route) {

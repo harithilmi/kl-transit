@@ -42,3 +42,15 @@ export interface RouteDetails extends Route {
     direction2: RouteShape
   }
 }
+
+export interface RouteMapProps {
+  services: Service[]
+  shape: {
+    direction1: RouteShape
+    direction2: RouteShape
+  }
+}
+
+export interface RouteMapWrapperProps extends RouteMapProps {
+  routeId: string
+}
