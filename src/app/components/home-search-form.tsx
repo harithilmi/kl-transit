@@ -31,14 +31,14 @@ export function HomeSearchForm() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={handleKeyPress}
-          className={`w-full rounded-lg bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/20 ${
+          className={`w-full rounded-lg bg-secondary px-4 py-3 text-secondary-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring ${
             isPending ? 'opacity-50' : ''
           }`}
         />
         <button
           onClick={() => handleSearch(searchTerm)}
           disabled={isPending}
-          className="rounded-lg bg-white/10 px-6 py-3 font-medium text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/20 disabled:opacity-50"
+          className="rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-50"
         >
           Search
         </button>

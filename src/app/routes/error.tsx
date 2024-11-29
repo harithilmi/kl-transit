@@ -15,15 +15,15 @@ export default function ErrorPage({
   }, [error])
 
   return (
-    <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] px-4 py-16 text-white">
+    <main className="flex min-h-screen flex-col items-center bg-background px-4 py-16 text-foreground">
       <Card className="flex max-w-xl flex-col gap-4 p-6 text-center">
         <h2 className="text-2xl font-bold">Something went wrong!</h2>
-        <p className="text-white/80">
+        <p className="text-muted-foreground">
           We encountered an error while loading the routes. Please try again.
         </p>
         <button
           onClick={reset}
-          className="rounded-lg bg-white px-4 py-2 font-semibold text-[#2e026d] hover:bg-white/90"
+          className="rounded-lg bg-primary px-4 py-2 font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
         >
           Try again
         </button>

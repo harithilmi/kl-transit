@@ -8,7 +8,7 @@ export function SearchForm({ initialSearch }: { initialSearch: string }) {
   const [isPending, startTransition] = useTransition()
 
   return (
-    <div className="flex gap-2">
+    <div className="flex flex-col sm:flex-row gap-2">
       <input
         type="text"
         placeholder="Search for a bus route or destination..."
@@ -18,7 +18,7 @@ export function SearchForm({ initialSearch }: { initialSearch: string }) {
             router.push(`/routes?q=${encodeURIComponent(e.target.value)}`)
           })
         }}
-        className={`w-full rounded-lg bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/20 ${
+        className={`w-full rounded-lg bg-secondary px-4 py-3 text-secondary-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring ${
           isPending ? 'opacity-50' : ''
         }`}
       />
@@ -30,7 +30,7 @@ export function SearchForm({ initialSearch }: { initialSearch: string }) {
           })
         }}
         disabled={isPending}
-        className="rounded-lg bg-white/10 px-6 py-3 font-medium text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/20 disabled:opacity-50"
+        className="rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-50"
       >
         Search
       </button>

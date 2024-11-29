@@ -72,13 +72,13 @@ const endpoints: Endpoint[] = [
 
 export default function ApiDocsPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] px-4 py-16 text-white">
+    <main className="flex min-h-screen flex-col items-center bg-background px-4 py-16 text-foreground">
       <div className="container flex max-w-4xl flex-col items-center gap-8">
         <div className="flex flex-col items-center gap-4 text-center">
           <h1 className="text-5xl font-bold tracking-tight">
             API Documentation
           </h1>
-          <p className="text-lg text-white/80">
+          <p className="text-lg text-muted-foreground">
             Access KL Transit data through our REST API
           </p>
         </div>
@@ -87,27 +87,27 @@ export default function ApiDocsPage() {
           {endpoints.map((endpoint) => (
             <Card
               key={endpoint.path}
-              className="w-full overflow-hidden bg-white/5 p-6"
+              className="w-full overflow-hidden bg-card"
             >
-              <div className="space-y-4">
+              <div className="space-y-4 p-6">
                 <div className="flex items-center gap-3">
-                  <span className="rounded bg-blue-500 px-2 py-1 text-sm font-medium">
+                  <span className="rounded bg-primary px-2 py-1 text-sm font-medium text-primary-foreground">
                     {endpoint.method}
                   </span>
-                  <code className="rounded bg-white/10 px-2 py-1 font-mono">
+                  <code className="rounded bg-muted px-2 py-1 font-mono text-muted-foreground">
                     {endpoint.path}
                   </code>
                 </div>
 
-                <p className="text-white/80">{endpoint.description}</p>
+                <p className="text-muted-foreground">{endpoint.description}</p>
 
                 {endpoint.parameters && endpoint.parameters.length > 0 && (
                   <div className="space-y-2">
                     <h3 className="font-semibold">Parameters</h3>
-                    <div className="rounded-lg border border-white/10 overflow-hidden">
+                    <div className="rounded-lg border overflow-hidden">
                       <table className="w-full">
                         <thead>
-                          <tr className="border-b border-white/10 bg-white/5">
+                          <tr className="border-b bg-muted/50">
                             <th className="p-2 text-left">Name</th>
                             <th className="p-2 text-left">Type</th>
                             <th className="p-2 text-left">Required</th>
@@ -118,7 +118,7 @@ export default function ApiDocsPage() {
                           {endpoint.parameters.map((param) => (
                             <tr
                               key={param.name}
-                              className="border-b border-white/10"
+                              className="border-b"
                             >
                               <td className="p-2 font-mono text-sm">
                                 {param.name}
@@ -127,7 +127,7 @@ export default function ApiDocsPage() {
                               <td className="p-2 text-sm">
                                 {param.required ? 'Yes' : 'No'}
                               </td>
-                              <td className="p-2 text-sm text-white/80">
+                              <td className="p-2 text-sm text-muted-foreground">
                                 {param.description}
                               </td>
                             </tr>
@@ -143,15 +143,15 @@ export default function ApiDocsPage() {
                     <h3 className="font-semibold">Example</h3>
                     {endpoint.example.request && (
                       <div className="space-y-1">
-                        <p className="text-sm text-white/60">Request:</p>
-                        <code className="block rounded bg-white/10 p-2 font-mono text-sm">
+                        <p className="text-sm text-muted-foreground">Request:</p>
+                        <code className="block rounded bg-muted p-2 font-mono text-sm">
                           {endpoint.example.request}
                         </code>
                       </div>
                     )}
                     <div className="space-y-1">
-                      <p className="text-sm text-white/60">Response:</p>
-                      <pre className="overflow-x-auto rounded bg-white/10 p-2">
+                      <p className="text-sm text-muted-foreground">Response:</p>
+                      <pre className="overflow-x-auto rounded bg-muted p-2">
                         <code className="font-mono text-sm">
                           {endpoint.example.response}
                         </code>

@@ -6,6 +6,12 @@ import { useEffect, useRef, useState, useMemo } from 'react'
 import { Card } from '~/components/ui/card'
 import servicesData from '~/data/from_db/kl-transit_service.json'
 import type { RouteMapProps } from '../types/routes'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '~/components/ui/tooltip'
 
 interface SelectedStop {
   name: string
@@ -55,6 +61,7 @@ export function RouteMap({
   const mapContainer = useRef<HTMLDivElement>(null)
   const mapInstance = useRef<mapboxgl.Map | null>(null)
   const [selectedStop, setSelectedStop] = useState<SelectedStop | null>(null)
+  const [isTouchDevice, setIsTouchDevice] = useState(false)
   const [hoverInfo, setHoverInfo] = useState<{
     x: number
     y: number
@@ -62,14 +69,19 @@ export function RouteMap({
     code?: string
   } | null>(null)
 
+  // Add touch detection on mount
+  useEffect(() => {
+    setIsTouchDevice('ontouchstart' in window)
+  }, [])
+
   // Memoize the GeoJSON data to prevent unnecessary recalculations
   const stopsGeoJSON = useMemo(
     () => ({
-      type: 'FeatureCollection',
+      type: 'FeatureCollection' as const,
       features: services.map((service) => ({
-        type: 'Feature',
+        type: 'Feature' as const,
         geometry: {
-          type: 'Point',
+          type: 'Point' as const,
           coordinates: [
             parseFloat(service.stop.longitude),
             parseFloat(service.stop.latitude),
@@ -92,10 +104,10 @@ export function RouteMap({
       direction1:
         shape.direction1.coordinates.length > 0
           ? {
-              type: 'Feature',
+              type: 'Feature' as const,
               properties: {},
               geometry: {
-                type: 'LineString',
+                type: 'LineString' as const,
                 coordinates: shape.direction1.coordinates,
               },
             }
@@ -103,10 +115,10 @@ export function RouteMap({
       direction2:
         shape.direction2.coordinates.length > 0
           ? {
-              type: 'Feature',
+              type: 'Feature' as const,
               properties: {},
               geometry: {
-                type: 'LineString',
+                type: 'LineString' as const,
                 coordinates: shape.direction2.coordinates,
               },
             }
@@ -177,6 +189,12 @@ export function RouteMap({
       }),
       'top-right',
     )
+
+    // Hide navigation controls on small screens
+    const navControl = document.querySelector('.mapboxgl-ctrl-top-right')
+    if (navControl) {
+      navControl.classList.add('hidden', 'sm:block')
+    }
 
     // Create bounds object
     const bounds = new mapboxgl.LngLatBounds()
@@ -387,17 +405,29 @@ export function RouteMap({
             features?: mapboxgl.GeoJSONFeature[]
           },
         ) => {
-          if (e.features && e.features.length > 0) {
-            const feature = e.features[0]
+          // Prevent default touch behavior
+          e.preventDefault?.()
+
+          // Get features at click/touch point with a larger radius for touch devices
+          const features = map.queryRenderedFeatures(e.point, {
+            layers: ['stops'],
+            radius: isTouchDevice ? 50 : 10, // Larger hit area for touch devices
+          })
+
+          if (features.length > 0) {
+            const feature = features[0]
             const stopId = feature?.properties?.stop_id as string
             const coordinates = (feature?.geometry as GeoJSON.Point).coordinates
 
-            // Fly to the clicked stop
+            // Adjust the center point slightly lower to account for the info box
             map.flyTo({
-              center: [coordinates[0]!, coordinates[1]!] as [number, number],
+              center: [
+                coordinates[0]!,
+                coordinates[1]! - 0.00008, // Shift slightly south to account for info box
+              ] as [number, number],
               zoom: 15,
               duration: 1000,
-              padding: { left: 320 },
+              padding: { top: 100, bottom: 50, left: 50, right: 50 }, // Add padding to top for info box
             })
 
             // Update selection ring using stop_id
@@ -453,45 +483,38 @@ export function RouteMap({
         }
       })
 
-      // Update mouseenter handler to show hover info
-      map.on('mouseenter', 'stops', (e) => {
-        map.getCanvas().style.cursor = 'pointer'
+      // Only add hover handlers if not a touch device
+      if (!isTouchDevice) {
+        map.on('mouseenter', 'stops', (e) => {
+          map.getCanvas().style.cursor = 'pointer'
+          if (e.features?.[0]) {
+            const feature = e.features[0]
+            setHoverInfo({
+              x: e.point.x,
+              y: e.point.y,
+              name: feature.properties?.name as string,
+              code: feature.properties?.code as string | undefined,
+            })
+          }
+        })
 
-        if (e.features && e.features[0]) {
-          const feature = e.features[0]
-          const name = feature.properties?.name as string
-          const code = feature.properties?.code as string | undefined
+        map.on('mouseleave', 'stops', () => {
+          map.getCanvas().style.cursor = ''
+          setHoverInfo(null)
+        })
 
-          setHoverInfo({
-            x: e.point.x,
-            y: e.point.y,
-            name,
-            code,
-          })
-        }
-      })
-
-      // Update mouseleave handler
-      map.on('mouseleave', 'stops', () => {
-        map.getCanvas().style.cursor = ''
-        setHoverInfo(null)
-      })
-
-      // Add mousemove handler to update tooltip position
-      map.on('mousemove', 'stops', (e) => {
-        if (e.features && e.features[0]) {
-          const feature = e.features[0]
-          const name = feature.properties?.name as string
-          const code = feature.properties?.code as string | undefined
-
-          setHoverInfo({
-            x: e.point.x,
-            y: e.point.y,
-            name,
-            code,
-          })
-        }
-      })
+        map.on('mousemove', 'stops', (e) => {
+          if (e.features?.[0]) {
+            const feature = e.features[0]
+            setHoverInfo({
+              x: e.point.x,
+              y: e.point.y - 10,
+              name: feature.properties?.name as string,
+              code: feature.properties?.code as string | undefined,
+            })
+          }
+        })
+      }
 
       // Extend bounds with stop coordinates
       services.forEach((service) => {
@@ -512,21 +535,6 @@ export function RouteMap({
       // Clear any selected stop on init
       map.setFilter('stops-selected', ['==', ['get', 'stop_id'], ''])
       map.setPaintProperty('stops-selected', 'circle-opacity', 0)
-    })
-
-    // Add zoom handler
-    map.on('zoom', () => {
-      const zoom = map.getZoom()
-      document.querySelectorAll('.custom-marker').forEach((marker) => {
-        marker.classList.remove('zoom-sm', 'zoom-md', 'zoom-lg')
-        if (zoom >= 15) {
-          marker.classList.add('zoom-lg')
-        } else if (zoom >= 13) {
-          marker.classList.add('zoom-md')
-        } else {
-          marker.classList.add('zoom-sm')
-        }
-      })
     })
 
     return () => {
@@ -550,27 +558,27 @@ export function RouteMap({
         mapInstanceCache.delete(cacheKey)
       }
     }
-  }, [services, stopsGeoJSON, routeShapes])
+  }, [services, stopsGeoJSON, routeShapes, isTouchDevice])
 
   return (
     <div className="relative">
       <div ref={mapContainer} className="w-full h-96" />
       {selectedStop && (
-        <Card className="absolute top-2 left-2 p-4 bg-white/95 backdrop-blur w-fit max-w-sm">
+        <Card className="absolute top-2 left-2 p-4 bg-background/95 backdrop-blur sm:w-fit sm:max-w-sm w-[calc(100%-1rem)]">
           <div className="flex justify-between items-start gap-4">
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2">
                 {selectedStop.code && (
-                  <span className="shrink-0 px-2 py-0.5 bg-indigo-100 text-indigo-800 text-sm rounded-md">
+                  <span className="shrink-0 px-2 py-0.5 bg-primary text-primary-foreground text-sm font-medium rounded-md">
                     {selectedStop.code}
                   </span>
                 )}
                 <div className="flex flex-col">
-                  <h3 className="text-lg text-black font-semibold">
+                  <h3 className="text-lg text-foreground font-semibold">
                     {selectedStop.name}
                   </h3>
                   {selectedStop.street_name && (
-                    <p className="text-sm text-black/70">
+                    <p className="text-sm text-muted-foreground">
                       {selectedStop.street_name}
                     </p>
                   )}
@@ -579,7 +587,7 @@ export function RouteMap({
 
               {selectedStop.routes.length > 0 && (
                 <div>
-                  <p className="text-sm text-black/70 font-medium mb-1">
+                  <p className="text-sm text-muted-foreground font-medium mb-1">
                     Routes:
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -587,7 +595,7 @@ export function RouteMap({
                       <a
                         key={route}
                         href={`/routes/${route}`}
-                        className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-indigo-100 text-indigo-800 hover:bg-indigo-200 transition-colors cursor-pointer"
+                        className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors cursor-pointer"
                       >
                         {route}
                       </a>
@@ -598,7 +606,7 @@ export function RouteMap({
             </div>
             <button
               onClick={handleCloseSelectedStop}
-              className="text-black/50 hover:text-black/70"
+              className="text-muted-foreground hover:text-foreground"
             >
               ✕
             </button>
@@ -606,27 +614,39 @@ export function RouteMap({
         </Card>
       )}
 
-      {/* Hover tooltip */}
-      {hoverInfo && (
-        <div
-          className="absolute pointer-events-none z-10 bg-white/95 backdrop-blur rounded-md shadow-lg p-2"
-          style={{
-            left: hoverInfo.x,
-            top: hoverInfo.y,
-            transform: 'translate(-50%, -130%)',
-          }}
-        >
-          <div className="flex flex-row items-center gap-2">
-            {hoverInfo.code && (
-              <span className="px-2 py-0.5 bg-indigo-100 text-black text-xs rounded-md">
-                {hoverInfo.code}
-              </span>
-            )}
-            <span className="text-sm text-black/70 font-medium">
-              {hoverInfo.name}
-            </span>
-          </div>
-        </div>
+      {/* Only show tooltip on non-touch devices */}
+      {!isTouchDevice && hoverInfo && (
+        <TooltipProvider>
+          <Tooltip open={true}>
+            <TooltipTrigger asChild>
+              <div
+                style={{
+                  position: 'absolute',
+                  left: hoverInfo.x,
+                  top: hoverInfo.y,
+                  width: '1px',
+                  height: '1px',
+                }}
+              />
+            </TooltipTrigger>
+            <TooltipContent
+              className="bg-background/95 backdrop-blur"
+              side="top"
+              sideOffset={5}
+            >
+              <div className="flex flex-row items-center gap-2 pr-1">
+                {hoverInfo.code && (
+                  <span className="px-2 py-0.5 bg-primary text-primary-foreground text-xs font-medium rounded-sm">
+                    {hoverInfo.code}
+                  </span>
+                )}
+                <span className="text-sm text-muted-foreground font-medium">
+                  {hoverInfo.name}
+                </span>
+              </div>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       )}
     </div>
   )

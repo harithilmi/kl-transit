@@ -58,13 +58,13 @@ export default async function RoutePage({
   const routeData = (await res.json()) as RouteDetails
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-[#2e026d] to-[#15162c] px-2 py-8 text-white sm:px-4 sm:py-16">
-      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-6 sm:gap-12">
+    <main className="min-h-screen bg-background px-2 py-8 text-foreground sm:px-4 sm:py-16">
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-3">
         {/* Back button */}
         <div className="w-full max-w-4xl px-2">
           <a
             href="/routes"
-            className="inline-flex items-center text-sm text-white/70 hover:text-white"
+            className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
           >
             <svg
               className="mr-2 h-4 w-4"
@@ -90,7 +90,7 @@ export default async function RoutePage({
               <h1 className="text-3xl text-center font-bold">
                 Route {routeData.route_number}
               </h1>
-              <p className="text-lg text-center text-white/80">
+              <p className="text-lg text-center text-muted-foreground">
                 {routeData.route_name}
               </p>
             </div>
@@ -108,7 +108,7 @@ export default async function RoutePage({
 
         {/* Main content */}
         <div className="flex w-full max-w-xl flex-col gap-6 sm:gap-8">
-          <Card className="w-full overflow-hidden text-white">
+          <Card className="w-full overflow-hidden">
             <RouteStopList services={routeData.services} />
           </Card>
         </div>
