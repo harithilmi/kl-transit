@@ -590,12 +590,12 @@ export function RouteMap({
                   <p className="text-sm text-muted-foreground font-medium mb-1">
                     Routes:
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 ">
                     {selectedStop.routes.map((route) => (
                       <a
                         key={route}
                         href={`/routes/${route}`}
-                        className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors cursor-pointer"
+                        className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors cursor-pointer active:ring-2 active:ring-ring active:ring-offset-2 active:ring-offset-background"
                       >
                         {route}
                       </a>
