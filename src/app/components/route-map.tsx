@@ -55,6 +55,12 @@ export function RouteMap({
   const mapContainer = useRef<HTMLDivElement>(null)
   const mapInstance = useRef<mapboxgl.Map | null>(null)
   const [selectedStop, setSelectedStop] = useState<SelectedStop | null>(null)
+  const [hoverInfo, setHoverInfo] = useState<{
+    x: number
+    y: number
+    name: string
+    code?: string
+  } | null>(null)
 
   // Memoize the GeoJSON data to prevent unnecessary recalculations
   const stopsGeoJSON = useMemo(
@@ -447,13 +453,44 @@ export function RouteMap({
         }
       })
 
-      // Add cursor style change
-      map.on('mouseenter', 'stops', () => {
+      // Update mouseenter handler to show hover info
+      map.on('mouseenter', 'stops', (e) => {
         map.getCanvas().style.cursor = 'pointer'
+
+        if (e.features && e.features[0]) {
+          const feature = e.features[0]
+          const name = feature.properties?.name as string
+          const code = feature.properties?.code as string | undefined
+
+          setHoverInfo({
+            x: e.point.x,
+            y: e.point.y,
+            name,
+            code,
+          })
+        }
       })
 
+      // Update mouseleave handler
       map.on('mouseleave', 'stops', () => {
         map.getCanvas().style.cursor = ''
+        setHoverInfo(null)
+      })
+
+      // Add mousemove handler to update tooltip position
+      map.on('mousemove', 'stops', (e) => {
+        if (e.features && e.features[0]) {
+          const feature = e.features[0]
+          const name = feature.properties?.name as string
+          const code = feature.properties?.code as string | undefined
+
+          setHoverInfo({
+            x: e.point.x,
+            y: e.point.y,
+            name,
+            code,
+          })
+        }
       })
 
       // Extend bounds with stop coordinates
@@ -567,6 +604,29 @@ export function RouteMap({
             </button>
           </div>
         </Card>
+      )}
+
+      {/* Hover tooltip */}
+      {hoverInfo && (
+        <div
+          className="absolute pointer-events-none z-10 bg-white/95 backdrop-blur rounded-md shadow-lg p-2"
+          style={{
+            left: hoverInfo.x,
+            top: hoverInfo.y,
+            transform: 'translate(-50%, -130%)',
+          }}
+        >
+          <div className="flex flex-row items-center gap-2">
+            {hoverInfo.code && (
+              <span className="px-2 py-0.5 bg-indigo-100 text-black text-xs rounded-md">
+                {hoverInfo.code}
+              </span>
+            )}
+            <span className="text-sm text-black/70 font-medium">
+              {hoverInfo.name}
+            </span>
+          </div>
+        </div>
       )}
     </div>
   )
