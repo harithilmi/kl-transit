@@ -131,18 +131,13 @@ export function RouteMap({
         center: [101.6958, 3.1466],
         zoom: 11,
         maxZoom: 18,
-        transformRequest: (url, resourceType) => {
-          // Add cache headers for tile requests
-          if (resourceType === 'Tile') {
-            return {
-              url,
-              headers: {
-                'Cache-Control': 'public, max-age=86400',
-              },
-            }
-          }
-        },
       })
+
+      // Add error handling
+      map.on('error', (e) => {
+        console.error('Mapbox error:', e.error)
+      })
+
       mapInstanceCache.set(cacheKey, map)
     }
 
