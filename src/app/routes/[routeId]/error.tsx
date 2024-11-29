@@ -21,7 +21,8 @@ export default function ErrorPage({
         <Card className="p-6 text-center">
           <h2 className="text-2xl font-bold mb-4">Something went wrong!</h2>
           <p className="text-white/70 mb-6">
-            {error.message || 'There was an error loading the route information.'}
+            {error.message ||
+              'There was an error loading the route information.'}
           </p>
           <button
             onClick={reset}
@@ -33,4 +34,4 @@ export default function ErrorPage({
       </div>
     </main>
   )
-} 
+}

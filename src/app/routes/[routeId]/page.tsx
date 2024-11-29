@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation'
 import { RouteStopList } from '~/app/components/route-stop-list'
 import { RouteMap } from '~/app/components/route-map'
 import type { RouteDetails } from '~/app/types/routes'
+import LeafletRouteMap from '~/app/components/leaflet-route-map'
+import dynamic from 'next/dynamic'
 
 const baseUrl =
   process.env.NODE_ENV === 'development'
@@ -69,8 +71,16 @@ export default async function RoutePage({
         </div>
 
         {/* Map */}
-        <Card className="w-full max-w-xl h-96 overflow-hidden">
+        {/* <Card className="w-full max-w-xl h-96 overflow-hidden">
           <RouteMap services={routeData.services} shape={routeData.shape} />
+        </Card> */}
+
+        {/* Leaflet Map */}
+        <Card className="w-full max-w-xl h-96 overflow-hidden">
+          <LeafletRouteMap
+            services={routeData.services}
+            shape={routeData.shape}
+          />
         </Card>
 
         {/* Main content */}
