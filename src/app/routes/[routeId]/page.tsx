@@ -5,6 +5,7 @@ import type { RouteDetails } from '~/app/types/routes'
 import { type Metadata } from 'next'
 import { RouteMapWrapper } from '~/app/components/route-page-client'
 // import { RouteMap } from '~/app/components/route-map'
+import { ROUTE_TYPE_LABELS } from '~/app/constants/routes'
 
 const baseUrl =
   process.env.NODE_ENV === 'development'
@@ -93,6 +94,11 @@ export default async function RoutePage({
               <p className="text-lg text-center text-muted-foreground">
                 {routeData.route_name}
               </p>
+              <div className="flex justify-center">
+                <span className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-sm font-medium text-muted-foreground">
+                  {ROUTE_TYPE_LABELS[routeData.route_type] ?? routeData.route_type}
+                </span>
+              </div>
             </div>
           </Card>
         </div>

@@ -2,6 +2,7 @@ import { Card, CardContent } from '~/components/ui/card'
 import { SearchForm } from './search-form'
 import Link from 'next/link'
 import type { Route } from '~/app/types/routes'
+import { ROUTE_TYPE_LABELS } from '~/app/constants/routes'
 
 const baseUrl =
   process.env.NODE_ENV === 'development'
@@ -54,8 +55,16 @@ export default async function RoutesPage({
             >
               <Card className="h-24 transition-colors hover:bg-accent hover:text-accent-foreground active:ring-2 active:ring-ring active:ring-offset-2 active:ring-offset-background">
                 <CardContent className="flex h-full items-center p-4">
-                  <div className="flex flex-col">
-                    <span className="font-semibold">{route.route_number}</span>
+                  <div className="flex flex-col gap-1">
+                    <div className="flex items-center gap-1">
+                      <span className="font-semibold">
+                        {route.route_number}
+                      </span>
+                      <span className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-sm font-medium text-muted-foreground">
+                        {ROUTE_TYPE_LABELS[route.route_type] ??
+                          route.route_type}
+                      </span>
+                    </div>
                     <span className="text-sm text-muted-foreground text-pretty">
                       {route.route_name}
                     </span>
