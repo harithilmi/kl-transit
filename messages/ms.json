@@ -50,10 +50,21 @@
     "routes": "Laluan",
     "streetName": "Nama Jalan"
   },
-  "APIPage": {
+  "APIDocsPage": {
     "title": "Dokumentasi API",
     "subtitle": "Akses data KL Transit melalui API REST",
     "parameters": "Parameter",
+    "routeDetailsGETDescription": "Dapatkan maklumat terperinci mengenai laluan tertentu",
+    "routesGETDescription": "Dapatkan semua laluan bas, dengan pilihan untuk mencari laluan berdasarkan nombor atau nama",
+    "routesGETParameterQDescription": "Kueri pencarian untuk menyaring laluan berdasarkan nombor atau nama",
+    "routeDetailsGETParameterRouteIdDescription": "Nombor laluan untuk mendapatkan maklumat",
+    "tableHeaderTitle": "Parameter",
+    "tableHeaderName": "Nama",
+    "tableHeaderType": "Jenis",
+    "tableHeaderRequired": "Diperlukan",
+    "tableHeaderDescription": "Deskripsi",
+    "requiredTrue": "Ya",
+    "requiredFalse": "Tidak",
     "example": "Contoh",
     "request": "Permintaan",
     "response": "Respons",

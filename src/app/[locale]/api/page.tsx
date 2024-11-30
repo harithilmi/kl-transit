@@ -1,4 +1,5 @@
 import { Card } from '@/app/components/ui/card'
+import { getTranslations } from 'next-intl/server'
 
 interface Endpoint {
   method: string
@@ -16,22 +17,25 @@ interface Endpoint {
   }
 }
 
-const endpoints: Endpoint[] = [
-  {
-    method: 'GET',
-    path: '/api/routes',
-    description: 'Get all bus routes, optionally filtered by search query',
-    parameters: [
-      {
-        name: 'q',
-        type: 'string',
-        description: 'Search query to filter routes by number or name',
-        required: false,
-      },
-    ],
-    example: {
-      request: '/api/routes?q=damansara',
-      response: `[
+export default async function ApiDocsPage() {
+  const t = await getTranslations('APIDocsPage')
+
+  const endpoints: Endpoint[] = [
+    {
+      method: 'GET',
+      path: '/api/routes',
+      description: t('routesGETDescription'),
+      parameters: [
+        {
+          name: 'q',
+          type: 'string',
+          description: t('routesGETParameterQDescription'),
+          required: false,
+        },
+      ],
+      example: {
+        request: '/api/routes?q=damansara',
+        response: `[
   {
     "route_id": "780",
     "route_number": "780",
@@ -39,23 +43,23 @@ const endpoints: Endpoint[] = [
     "route_type": "utama"
   }
 ]`,
-    },
-  },
-  {
-    method: 'GET',
-    path: '/api/routes/[routeId]',
-    description: 'Get detailed information about a specific route',
-    parameters: [
-      {
-        name: 'routeId',
-        type: 'string',
-        description: 'The route number to get details for',
-        required: true,
       },
-    ],
-    example: {
-      request: '/api/routes/780',
-      response: `{
+    },
+    {
+      method: 'GET',
+      path: '/api/routes/[routeId]',
+      description: t('routeDetailsGETDescription'),
+      parameters: [
+        {
+          name: 'routeId',
+          type: 'string',
+          description: t('routeDetailsGETParameterRouteIdDescription'),
+          required: true,
+        },
+      ],
+      example: {
+        request: '/api/routes/780',
+        response: `{
   "route_id": "780",
   "route_number": "780",
   "route_name": "Kota Damansara ⇌ Hab Pasar Seni",
@@ -66,21 +70,16 @@ const endpoints: Endpoint[] = [
     "direction2": {...}
   }
 }`,
+      },
     },
-  },
-]
+  ]
 
-export default function ApiDocsPage() {
   return (
     <main className="flex min-h-screen flex-col items-center bg-background px-4 py-16 text-foreground">
       <div className="container flex max-w-4xl flex-col items-center gap-8">
         <div className="flex flex-col items-center gap-4 text-center">
-          <h1 className="text-5xl font-bold tracking-tight">
-            API Documentation
-          </h1>
-          <p className="text-lg text-muted-foreground">
-            Access KL Transit data through our REST API
-          </p>
+          <h1 className="text-5xl font-bold tracking-tight">{t('title')}</h1>
+          <p className="text-lg text-muted-foreground">{t('subtitle')}</p>
         </div>
 
         <div className="w-full space-y-6">
@@ -103,15 +102,23 @@ export default function ApiDocsPage() {
 
                 {endpoint.parameters && endpoint.parameters.length > 0 && (
                   <div className="space-y-2">
-                    <h3 className="font-semibold">Parameters</h3>
+                    <h3 className="font-semibold">{t('tableHeaderTitle')}</h3>
                     <div className="rounded-lg border overflow-hidden">
                       <table className="w-full">
                         <thead>
                           <tr className="border-b bg-muted/50">
-                            <th className="p-2 text-left">Name</th>
-                            <th className="p-2 text-left">Type</th>
-                            <th className="p-2 text-left">Required</th>
-                            <th className="p-2 text-left">Description</th>
+                            <th className="p-2 text-left">
+                              {t('tableHeaderName')}
+                            </th>
+                            <th className="p-2 text-left">
+                              {t('tableHeaderType')}
+                            </th>
+                            <th className="p-2 text-left">
+                              {t('tableHeaderRequired')}
+                            </th>
+                            <th className="p-2 text-left">
+                              {t('tableHeaderDescription')}
+                            </th>
                           </tr>
                         </thead>
                         <tbody>
@@ -122,7 +129,9 @@ export default function ApiDocsPage() {
                               </td>
                               <td className="p-2 text-sm">{param.type}</td>
                               <td className="p-2 text-sm">
-                                {param.required ? 'Yes' : 'No'}
+                                {param.required
+                                  ? t('requiredTrue')
+                                  : t('requiredFalse')}
                               </td>
                               <td className="p-2 text-sm text-muted-foreground">
                                 {param.description}
@@ -137,11 +146,11 @@ export default function ApiDocsPage() {
 
                 {endpoint.example && (
                   <div className="space-y-2">
-                    <h3 className="font-semibold">Example</h3>
+                    <h3 className="font-semibold">{t('example')}</h3>
                     {endpoint.example.request && (
                       <div className="space-y-1">
                         <p className="text-sm text-muted-foreground">
-                          Request:
+                          {t('request')}:
                         </p>
                         <code className="block rounded bg-muted p-2 font-mono text-sm">
                           {endpoint.example.request}

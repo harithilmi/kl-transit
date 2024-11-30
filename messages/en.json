@@ -48,10 +48,21 @@
     "routes": "Routes",
     "streetName": "Street Name"
   },
-  "APIPage": {
+  "APIDocsPage": {
     "title": "API Documentation",
     "subtitle": "Access KL Transit data through our REST API",
     "parameters": "Parameters",
+    "routeDetailsGETDescription": "Get detailed information about a specific route",
+    "routesGETDescription": "Get all bus routes, optionally filtered by search query",
+    "routesGETParameterQDescription": "Search query to filter routes by number or name",
+    "routeDetailsGETParameterRouteIdDescription": "Route number to get details for",
+    "tableHeaderTitle": "Parameters",
+    "tableHeaderName": "Name",
+    "tableHeaderType": "Type",
+    "tableHeaderRequired": "Required",
+    "tableHeaderDescription": "Description",
+    "requiredTrue": "Yes",
+    "requiredFalse": "No",
     "example": "Example",
     "request": "Request",
     "response": "Response",
