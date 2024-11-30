@@ -1,13 +1,12 @@
 import '@/styles/globals.css'
 import { Inter } from 'next/font/google'
 import { type Metadata } from 'next'
-import Link from "next/link";
-import { ThemeToggle } from '@/app/components/theme-toggle'
 import { ThemeProvider } from '@/app/components/theme-provider'
 import { notFound } from 'next/navigation';
 import { routing } from '@/i8n/routing';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
+import { Navbar } from '@/app/components/navbar';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -57,20 +56,8 @@ export default async function LocaleLayout({
           <NextIntlClientProvider
             messages={messages}
           >
-            <div className="fixed top-4 right-4 z-50">
-              <ThemeToggle />
-            </div>
+            <Navbar />
             {children}
-            <footer className="fixed bottom-0 left-0 right-0 p-4 text-center text-muted-foreground">
-              <Link 
-                href="https://github.com/harithilmi/kl-transit"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-foreground transition-colors"
-              >
-                Contribute on GitHub
-              </Link>
-            </footer>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

@@ -41,6 +41,10 @@
     },
     "meta": {
       "routeDescription": "Get detailed information about KL bus route"
+    },
+    "error": {
+      "routeNotFound": "Route Not Found",
+      "routeNotFoundDescription": "The requested route could not be found."
     }
   },
   "StopsPage": {
@@ -71,5 +75,9 @@
   "ErrorPage": {
     "routeNotFound": "Route Not Found",
     "routeNotFoundDescription": "The requested route could not be found."
+  },
+  "Languages": {
+    "en": "English",
+    "ms": "Malay"
   }
 }

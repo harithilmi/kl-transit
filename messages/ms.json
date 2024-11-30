@@ -9,7 +9,6 @@
     "search": "Cari",
     "searchPlaceholder": "Cari laluan bas"
   },
-
   "RoutesPage": {
     "title": "Laluan Bas",
     "routes": "Laluan",
@@ -73,5 +72,9 @@
   "ErrorPage": {
     "routeNotFound": "Laluan Tidak Ditemui",
     "routeNotFoundDescription": "Laluan yang diminta tidak dapat ditemui."
+  },
+  "Languages": {
+    "en": "Bahasa Inggeris",
+    "ms": "Bahasa Melayu"
   }
 }

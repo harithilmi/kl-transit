@@ -16,7 +16,7 @@ export default async function RoutesPage({
   searchParams: { q?: string }
 }) {
   const locale = await getLocale()
-  const t = await getTranslations('RoutesPage')
+  const t = await getTranslations()
   if (!baseUrl) throw new Error('NEXT_PUBLIC_APP_URL is not defined')
 
   const { q } = searchParams
@@ -37,8 +37,12 @@ export default async function RoutesPage({
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-6 sm:gap-8">
         {/* Header Section */}
         <div className="flex w-full max-w-xl flex-col gap-4 text-center">
-          <h1 className="text-3xl font-bold sm:text-5xl">{t('title')}</h1>
-          <p className="text-lg text-muted-foreground">{t('subtitle')}</p>
+          <h1 className="text-3xl font-bold sm:text-5xl">
+            {t('RoutesPage.title')}
+          </h1>
+          <p className="text-lg text-muted-foreground">
+            {t('RoutesPage.subtitle')}
+          </p>
         </div>
 
         {/* Search and Filter */}
@@ -61,7 +65,7 @@ export default async function RoutesPage({
                         {route.route_number}
                       </span>
                       <span className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-sm font-medium text-muted-foreground">
-                        {t('routeTypes.' + route.route_type)}
+                        {t(`RoutesPage.routeTypes.${route.route_type}`)}
                       </span>
                     </div>
                     <span className="text-sm text-muted-foreground text-pretty">

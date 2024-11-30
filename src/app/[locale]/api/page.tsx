@@ -18,18 +18,18 @@ interface Endpoint {
 }
 
 export default async function ApiDocsPage() {
-  const t = await getTranslations('APIDocsPage')
+  const t = await getTranslations()
 
   const endpoints: Endpoint[] = [
     {
       method: 'GET',
       path: '/api/routes',
-      description: t('routesGETDescription'),
+      description: t('APIDocsPage.routesGETDescription'),
       parameters: [
         {
           name: 'q',
           type: 'string',
-          description: t('routesGETParameterQDescription'),
+          description: t('APIDocsPage.routesGETParameterQDescription'),
           required: false,
         },
       ],
@@ -48,12 +48,14 @@ export default async function ApiDocsPage() {
     {
       method: 'GET',
       path: '/api/routes/[routeId]',
-      description: t('routeDetailsGETDescription'),
+      description: t('APIDocsPage.routeDetailsGETDescription'),
       parameters: [
         {
           name: 'routeId',
           type: 'string',
-          description: t('routeDetailsGETParameterRouteIdDescription'),
+          description: t(
+            'APIDocsPage.routeDetailsGETParameterRouteIdDescription',
+          ),
           required: true,
         },
       ],
@@ -78,8 +80,12 @@ export default async function ApiDocsPage() {
     <main className="flex min-h-screen flex-col items-center bg-background px-4 py-16 text-foreground">
       <div className="container flex max-w-4xl flex-col items-center gap-8">
         <div className="flex flex-col items-center gap-4 text-center">
-          <h1 className="text-5xl font-bold tracking-tight">{t('title')}</h1>
-          <p className="text-lg text-muted-foreground">{t('subtitle')}</p>
+          <h1 className="text-5xl font-bold tracking-tight">
+            {t('APIDocsPage.title')}
+          </h1>
+          <p className="text-lg text-muted-foreground">
+            {t('APIDocsPage.subtitle')}
+          </p>
         </div>
 
         <div className="w-full space-y-6">
@@ -102,22 +108,24 @@ export default async function ApiDocsPage() {
 
                 {endpoint.parameters && endpoint.parameters.length > 0 && (
                   <div className="space-y-2">
-                    <h3 className="font-semibold">{t('tableHeaderTitle')}</h3>
+                    <h3 className="font-semibold">
+                      {t('APIDocsPage.tableHeaderTitle')}
+                    </h3>
                     <div className="rounded-lg border overflow-hidden">
                       <table className="w-full">
                         <thead>
                           <tr className="border-b bg-muted/50">
                             <th className="p-2 text-left">
-                              {t('tableHeaderName')}
+                              {t('APIDocsPage.tableHeaderName')}
                             </th>
                             <th className="p-2 text-left">
-                              {t('tableHeaderType')}
+                              {t('APIDocsPage.tableHeaderType')}
                             </th>
                             <th className="p-2 text-left">
-                              {t('tableHeaderRequired')}
+                              {t('APIDocsPage.tableHeaderRequired')}
                             </th>
                             <th className="p-2 text-left">
-                              {t('tableHeaderDescription')}
+                              {t('APIDocsPage.tableHeaderDescription')}
                             </th>
                           </tr>
                         </thead>
@@ -130,8 +138,8 @@ export default async function ApiDocsPage() {
                               <td className="p-2 text-sm">{param.type}</td>
                               <td className="p-2 text-sm">
                                 {param.required
-                                  ? t('requiredTrue')
-                                  : t('requiredFalse')}
+                                  ? t('APIDocsPage.requiredTrue')
+                                  : t('APIDocsPage.requiredFalse')}
                               </td>
                               <td className="p-2 text-sm text-muted-foreground">
                                 {param.description}
@@ -146,11 +154,13 @@ export default async function ApiDocsPage() {
 
                 {endpoint.example && (
                   <div className="space-y-2">
-                    <h3 className="font-semibold">{t('example')}</h3>
+                    <h3 className="font-semibold">
+                      {t('APIDocsPage.example')}
+                    </h3>
                     {endpoint.example.request && (
                       <div className="space-y-1">
                         <p className="text-sm text-muted-foreground">
-                          {t('request')}:
+                          {t('APIDocsPage.request')}:
                         </p>
                         <code className="block rounded bg-muted p-2 font-mono text-sm">
                           {endpoint.example.request}
@@ -158,7 +168,9 @@ export default async function ApiDocsPage() {
                       </div>
                     )}
                     <div className="space-y-1">
-                      <p className="text-sm text-muted-foreground">Response:</p>
+                      <p className="text-sm text-muted-foreground">
+                        {t('APIDocsPage.response')}:
+                      </p>
                       <pre className="overflow-x-auto rounded bg-muted p-2">
                         <code className="font-mono text-sm">
                           {endpoint.example.response}

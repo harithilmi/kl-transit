@@ -17,6 +17,8 @@
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.8",
     "@libsql/client": "^0.14.0",
+    "@radix-ui/react-hover-card": "^1.1.2",
+    "@radix-ui/react-select": "^2.1.2",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.4",
     "@t3-oss/env-nextjs": "^0.10.1",
