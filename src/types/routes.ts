@@ -54,3 +54,5 @@ export interface RouteMapProps {
 export interface RouteMapWrapperProps extends RouteMapProps {
   routeId: string
 }
+
+export type Dict = Record<string, string>

@@ -1,4 +1,4 @@
-import { Card } from '~/components/ui/card'
+import { Card } from '@/app/components/ui/card'
 
 interface Endpoint {
   method: string
@@ -116,10 +116,7 @@ export default function ApiDocsPage() {
                         </thead>
                         <tbody>
                           {endpoint.parameters.map((param) => (
-                            <tr
-                              key={param.name}
-                              className="border-b"
-                            >
+                            <tr key={param.name} className="border-b">
                               <td className="p-2 font-mono text-sm">
                                 {param.name}
                               </td>
@@ -143,7 +140,9 @@ export default function ApiDocsPage() {
                     <h3 className="font-semibold">Example</h3>
                     {endpoint.example.request && (
                       <div className="space-y-1">
-                        <p className="text-sm text-muted-foreground">Request:</p>
+                        <p className="text-sm text-muted-foreground">
+                          Request:
+                        </p>
                         <code className="block rounded bg-muted p-2 font-mono text-sm">
                           {endpoint.example.request}
                         </code>

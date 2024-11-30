@@ -1,0 +1,64 @@
+{
+  "HomePage": {
+    "subtitle": "Your guide to public transportation in Kuala Lumpur",
+    "about": {
+      "title": "About This Project",
+      "description": "KL Transit is an open-source project aimed at making public transportation in Kuala Lumpur more accessible. It provides easy access to bus routes, stops, and service information.",
+      "github": "Contribute on GitHub"
+    },
+    "search": "Search",
+    "searchPlaceholder": "Search for a bus route"
+  },
+  "RoutesPage": {
+    "title": "Bus Routes",
+    "routes": "Routes",
+    "subtitle": "Find detailed information about KL bus routes",
+    "searchPlaceholder": "Search for a bus route or destination",
+    "search": "Search",
+    "backToRoutes": "Back to Routes",
+    "routeTypes": {
+      "utama": "Rapid Bus (Trunk)",
+      "tempatan": "Rapid Bus (Local)",
+      "nadiputra": "Nadi Putra",
+      "bet": "Express/Limited Stop Bus (BET)",
+      "drt": "Demand Responsive Transport (DRT)",
+      "mbpj": "PJ City Bus (MBPJ)",
+      "mbsa": "Smart Selangor (MBSA)",
+      "mpaj": "Smart Selangor (MPAJ)",
+      "mpkl": "Smart Selangor (MPKL)",
+      "mbsj": "Smart Selangor (MBSJ)",
+      "mbdk": "Smart Selangor (MBDK)",
+      "mpkj": "Smart Selangor (MPKJ)",
+      "mps": "Smart Selangor (MPS)",
+      "lrt_feeder": "LRT Feeder",
+      "mrt_feeder": "MRT Feeder",
+      "shuttle": "Event Shuttle",
+      "batu_caves_shuttle": "Batu Caves Shuttle",
+      "mall_shuttle": "Mall Shuttle",
+      "merdeka_shuttle": "Merdeka Express",
+      "gokl": "GOKL",
+      "unknown": "Unknown"
+    },
+    "meta": {
+      "routeDescription": "Get detailed information about KL bus route"
+    }
+  },
+  "StopsPage": {
+    "code": "Code",
+    "routes": "Routes",
+    "streetName": "Street Name"
+  },
+  "APIPage": {
+    "title": "API Documentation",
+    "subtitle": "Access KL Transit data through our REST API",
+    "parameters": "Parameters",
+    "example": "Example",
+    "request": "Request",
+    "response": "Response",
+    "required": "Required"
+  },
+  "ErrorPage": {
+    "routeNotFound": "Route Not Found",
+    "routeNotFoundDescription": "The requested route could not be found."
+  }
+}

@@ -1,4 +1,4 @@
-import { Card } from '~/components/ui/card'
+import { Card } from '@/app/components/ui/card'
 
 export default function LoadingPage() {
   const leftStops = Array.from({ length: 4 }, (_, i) => i)

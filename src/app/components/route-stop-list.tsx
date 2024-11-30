@@ -1,6 +1,6 @@
 'use client'
 
-import type { Service } from '../types/routes'
+import type { Service } from '../../types/routes'
 
 interface RouteStopListProps {
   services: Service[]

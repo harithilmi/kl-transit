@@ -1,11 +1,10 @@
-import { Card } from '~/components/ui/card'
+import { Card } from '@/app/components/ui/card'
 import { notFound } from 'next/navigation'
-import { RouteStopList } from '~/app/components/route-stop-list'
-import type { RouteDetails } from '~/app/types/routes'
+import { RouteStopList } from '@/app/components/route-stop-list'
+import type { RouteDetails } from '@/types/routes'
 import { type Metadata } from 'next'
-import { RouteMapWrapper } from '~/app/components/route-page-client'
-// import { RouteMap } from '~/app/components/route-map'
-import { ROUTE_TYPE_LABELS } from '~/app/constants/routes'
+import { RouteMapWrapper } from '@/app/components/route-page-client'
+import { getTranslations } from 'next-intl/server'
 
 const baseUrl =
   process.env.NODE_ENV === 'development'
@@ -13,12 +12,13 @@ const baseUrl =
     : process.env.NEXT_PUBLIC_APP_URL
 
 type Props = {
-  params: { routeId: string }
+  params: { locale: string; routeId: string }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!baseUrl) throw new Error('NEXT_PUBLIC_APP_URL is not defined')
 
+  const t = await getTranslations('RoutesPage')
   const res = await fetch(`${baseUrl}/api/routes/${params.routeId}`, {
     next: {
       revalidate: 86400,
@@ -27,15 +27,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!res.ok) {
     return {
-      title: 'Route Not Found - KL Transit',
-      description: 'The requested route could not be found.',
+      title: `${t('error.routeNotFound')} - KL Transit`,
+      description: t('error.routeNotFoundDescription'),
     }
   }
 
   const routeData = (await res.json()) as RouteDetails
   return {
-    title: `Route ${routeData.route_number} - KL Transit`,
-    description: `View details, stops and map for bus route ${routeData.route_number} (${routeData.route_name})`,
+		title: `${t('routes')} ${params.routeId} - KL Transit`,
+    description: `${t('meta.routeDescription')} ${params.routeId} (${routeData.route_name})`,
   }
 }
 
@@ -44,9 +44,9 @@ export default async function RoutePage({
 }: Props) {
   if (!baseUrl) throw new Error('NEXT_PUBLIC_APP_URL is not defined')
 
-  // eslint-disable-next-line @typescript-eslint/await-thenable
-  const { routeId } = await params
-  const res = await fetch(`${baseUrl}/api/routes/${routeId}`, {
+  const t = await getTranslations('RoutesPage')
+  
+  const res = await fetch(`${baseUrl}/api/routes/${params.routeId}`, {
     next: {
       revalidate: 86400,
     },
@@ -64,7 +64,7 @@ export default async function RoutePage({
         {/* Back button */}
         <div className="w-full max-w-4xl px-2">
           <a
-            href="/routes"
+            href={`/routes`}
             className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
           >
             <svg
@@ -80,7 +80,7 @@ export default async function RoutePage({
                 d="M10 19l-7-7m0 0l7-7m-7 7h18"
               />
             </svg>
-            Back to Routes
+            {t('backToRoutes')}
           </a>
         </div>
 
@@ -89,14 +89,15 @@ export default async function RoutePage({
           <Card className="w-full p-4">
             <div className="flex flex-col gap-2">
               <h1 className="text-3xl text-center font-bold">
-                Route {routeData.route_number}
+                {t('routes')} {routeData.route_number}
               </h1>
               <p className="text-lg text-center text-muted-foreground">
                 {routeData.route_name}
               </p>
               <div className="flex justify-center">
-                <span className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-sm font-medium text-muted-foreground">
-                  {ROUTE_TYPE_LABELS[routeData.route_type] ?? routeData.route_type}
+                <span className="inline-flex items-center rounded-md bg-muted text-muted-background py-0.5 px-2 text-sm font-medium">
+                  {t('routeTypes.' + routeData.route_type) ?? 
+                   t('routeTypes.unknown')}
                 </span>
               </div>
             </div>
@@ -106,7 +107,6 @@ export default async function RoutePage({
         {/* Map */}
         <Card className="w-full max-w-xl h-96 overflow-hidden">
           <RouteMapWrapper
-            routeId={routeId}
             services={routeData.services}
             shape={routeData.shape}
           />

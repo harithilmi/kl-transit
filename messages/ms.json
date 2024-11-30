@@ -1,0 +1,66 @@
+{
+  "HomePage": {
+    "subtitle": "Panduan pengangkutan awam di Kuala Lumpur",
+    "about": {
+      "title": "Mengenai Projek Ini",
+      "description": "KL Transit adalah projek sumber terbuka yang bertujuan untuk memudahkan akses kepada pengangkutan awam di Kuala Lumpur. Ia menyediakan akses mudah kepada laluan bas, perhentian, dan maklumat perkhidmatan.",
+      "github": "Sumbang di GitHub"
+    },
+    "search": "Cari",
+    "searchPlaceholder": "Cari laluan bas"
+  },
+
+  "RoutesPage": {
+    "title": "Laluan Bas",
+    "routes": "Laluan",
+    "subtitle": "Cari maklumat terperinci mengenai laluan bas KL",
+    "searchPlaceholder": "Cari laluan bas atau destinasi",
+    "search": "Cari",
+    "backToRoutes": "Kembali ke Senarai Laluan",
+    "bus": "Bas",
+    "routeTypes": {
+      "utama": "Rapid Bus (Utama)",
+      "tempatan": "Rapid Bus (Tempatan)",
+      "nadiputra": "Nadi Putra",
+      "bet": "Ekspres/Hentian Terhad (BET)",
+      "drt": "Transit Atas Permintaan (DRT)",
+      "mbpj": "PJ City Bus (MBPJ)",
+      "mbsa": "Smart Selangor (MBSA)",
+      "mpaj": "Smart Selangor (MPAJ)",
+      "mpkl": "Smart Selangor (MPKL)",
+      "mbsj": "Smart Selangor (MBSJ)",
+      "mbdk": "Smart Selangor (MBDK)",
+      "mpkj": "Smart Selangor (MPKJ)",
+      "mps": "Smart Selangor (MPS)",
+      "lrt_feeder": "Pengantara LRT",
+      "mrt_feeder": "Pengantara MRT",
+      "shuttle": "Shuttle Event",
+      "mall_shuttle": "Pengantara Mall",
+      "merdeka_shuttle": "Perantara Merdeka",
+      "batu_caves_shuttle": "Perantara Batu Caves",
+      "gokl": "GOKL",
+      "unknown": "Tidak Diketahui"
+    },
+    "meta": {
+      "routeDescription": "Dapatkan informasi mengenai laluan bas"
+    }
+  },
+  "StopsPage": {
+    "code": "Kod",
+    "routes": "Laluan",
+    "streetName": "Nama Jalan"
+  },
+  "APIPage": {
+    "title": "Dokumentasi API",
+    "subtitle": "Akses data KL Transit melalui API REST",
+    "parameters": "Parameter",
+    "example": "Contoh",
+    "request": "Permintaan",
+    "response": "Respons",
+    "required": "Diperlukan"
+  },
+  "ErrorPage": {
+    "routeNotFound": "Laluan Tidak Ditemui",
+    "routeNotFoundDescription": "Laluan yang diminta tidak dapat ditemui."
+  }
+}

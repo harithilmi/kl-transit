@@ -1,8 +1,9 @@
-import { Card, CardContent } from '~/components/ui/card'
-import { SearchForm } from './search-form'
-import Link from 'next/link'
-import type { Route } from '~/app/types/routes'
-import { ROUTE_TYPE_LABELS } from '~/app/constants/routes'
+import { Card, CardContent } from '@/app/components/ui/card'
+import { SearchForm } from '@/app/[locale]/routes/search-form'
+import { Link } from '@/i8n/routing'
+
+import type { Route } from '@/types/routes'
+import { getLocale, getTranslations } from 'next-intl/server'
 
 const baseUrl =
   process.env.NODE_ENV === 'development'
@@ -14,14 +15,15 @@ export default async function RoutesPage({
 }: {
   searchParams: { q?: string }
 }) {
+  const locale = await getLocale()
+  const t = await getTranslations('RoutesPage')
   if (!baseUrl) throw new Error('NEXT_PUBLIC_APP_URL is not defined')
 
-  // eslint-disable-next-line @typescript-eslint/await-thenable
-  const { q } = await searchParams
+  const { q } = searchParams
   const searchQuery = q ?? ''
 
   const res = await fetch(
-    `${baseUrl}/api/routes${
+    `${baseUrl}/${locale}/api/routes${
       searchQuery ? `?q=${encodeURIComponent(searchQuery)}` : ''
     }`,
     {
@@ -35,10 +37,8 @@ export default async function RoutesPage({
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-6 sm:gap-8">
         {/* Header Section */}
         <div className="flex w-full max-w-xl flex-col gap-4 text-center">
-          <h1 className="text-3xl font-bold sm:text-5xl">Bus Routes</h1>
-          <p className="text-lg text-muted-foreground">
-            Find detailed information about KL bus routes
-          </p>
+          <h1 className="text-3xl font-bold sm:text-5xl">{t('title')}</h1>
+          <p className="text-lg text-muted-foreground">{t('subtitle')}</p>
         </div>
 
         {/* Search and Filter */}
@@ -61,8 +61,7 @@ export default async function RoutesPage({
                         {route.route_number}
                       </span>
                       <span className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-sm font-medium text-muted-foreground">
-                        {ROUTE_TYPE_LABELS[route.route_type] ??
-                          route.route_type}
+                        {t('routeTypes.' + route.route_type)}
                       </span>
                     </div>
                     <span className="text-sm text-muted-foreground text-pretty">

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
-import type { Route } from '~/app/types/routes'
-import routes from '~/data/from_db/kl-transit_route.json'
+import type { Route } from '@/types/routes'
+import routes from '@/data/from_db/kl-transit_route.json'
 
 export async function GET(request: Request) {
   try {

@@ -4,6 +4,11 @@
  */
 await import("./src/env.js");
 
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin('./src/i8n/request.ts');
+
+/** @type {import("next").NextConfig} */
 /** @type {import("next").NextConfig} */
 const config = {
 	typescript: {
@@ -14,4 +19,4 @@ const config = {
 	},
 };
 
-export default config;
+export default withNextIntl(config);

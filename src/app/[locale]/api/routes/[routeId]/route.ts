@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server'
-import type { RouteDetails, RouteShape } from '~/app/types/routes'
-import routes from '~/data/from_db/kl-transit_route.json'
-import stops from '~/data/from_db/kl-transit_stop.json'
-import services from '~/data/from_db/kl-transit_service.json'
-import shapesData from '~/data/from_db/kl-transit_route_shape.json'
+import type { RouteDetails, RouteShape } from '@/app/types/routes'
+import routes from '@/data/from_db/kl-transit_route.json'
+import stops from '@/data/from_db/kl-transit_stop.json'
+import services from '@/data/from_db/kl-transit_service.json'
+import shapesData from '@/data/from_db/kl-transit_route_shape.json'
 
 export async function GET(
   request: Request,

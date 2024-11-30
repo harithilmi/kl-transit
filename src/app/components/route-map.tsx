@@ -3,15 +3,16 @@
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { useEffect, useRef, useState, useMemo } from 'react'
-import { Card } from '~/components/ui/card'
-import servicesData from '~/data/from_db/kl-transit_service.json'
-import type { RouteMapProps } from '../types/routes'
+import { Card } from '@/app/components/ui/card'
+import servicesData from '@/data/from_db/kl-transit_service.json'
+import type { RouteMapProps } from '@/types/routes'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '~/components/ui/tooltip'
+} from '@/app/components/ui/tooltip'
+import { Link } from '@/i8n/routing'
 
 interface SelectedStop {
   name: string
@@ -408,14 +409,8 @@ export function RouteMap({
           // Prevent default touch behavior
           e.preventDefault?.()
 
-          // Get features at click/touch point with a larger radius for touch devices
-          const features = map.queryRenderedFeatures(e.point, {
-            layers: ['stops'],
-            radius: isTouchDevice ? 50 : 10, // Larger hit area for touch devices
-          })
-
-          if (features.length > 0) {
-            const feature = features[0]
+          if (e.features && e.features.length > 0) {
+            const feature = e.features[0]
             const stopId = feature?.properties?.stop_id as string
             const coordinates = (feature?.geometry as GeoJSON.Point).coordinates
 
@@ -587,18 +582,15 @@ export function RouteMap({
 
               {selectedStop.routes.length > 0 && (
                 <div>
-                  <p className="text-sm text-muted-foreground font-medium mb-1">
-                    Routes:
-                  </p>
-                  <div className="flex flex-wrap gap-2 ">
+                  <div className="flex flex-wrap gap-2">
                     {selectedStop.routes.map((route) => (
-                      <a
+                      <Link
                         key={route}
                         href={`/routes/${route}`}
                         className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors cursor-pointer active:ring-2 active:ring-ring active:ring-offset-2 active:ring-offset-background"
                       >
                         {route}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -636,9 +628,11 @@ export function RouteMap({
             >
               <div className="flex flex-row items-center gap-2 pr-1">
                 {hoverInfo.code && (
-                  <span className="px-2 py-0.5 bg-primary text-primary-foreground text-xs font-medium rounded-sm">
-                    {hoverInfo.code}
-                  </span>
+                  <div className="text-xs text-muted-foreground">
+                    <span className="inline-flex items-center rounded-md bg-primary/90 text-primary-foreground px-2.5 py-0.5 text-sm font-medium">
+                      {hoverInfo.code}
+                    </span>
+                  </div>
                 )}
                 <span className="text-sm text-muted-foreground font-medium">
                   {hoverInfo.name}

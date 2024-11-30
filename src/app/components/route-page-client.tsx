@@ -1,31 +1,16 @@
 'use client'
 
-import { useEffect } from 'react'
 import { RouteMap } from './route-map'
-import { Card } from '~/components/ui/card'
-import type { RouteMapWrapperProps } from '../types/routes'
+import type { Service, RouteShape } from '../../types/routes'
 
-const clearMapCache = () => {
-  if (typeof window !== 'undefined') {
-    const mapInstanceCache = new Map()
-    mapInstanceCache.clear()
+interface RouteMapWrapperProps {
+  services: Service[]
+  shape: {
+    direction1: RouteShape
+    direction2: RouteShape
   }
 }
 
-export function RouteMapWrapper({
-  routeId,
-  services,
-  shape,
-}: RouteMapWrapperProps) {
-  useEffect(() => {
-    return () => {
-      clearMapCache()
-    }
-  }, [routeId])
-
-  return (
-    <Card className="w-full max-w-xl h-96 overflow-hidden">
-      <RouteMap services={services} shape={shape} />
-    </Card>
-  )
+export function RouteMapWrapper({ services, shape }: RouteMapWrapperProps) {
+  return <RouteMap services={services} shape={shape} />
 }
