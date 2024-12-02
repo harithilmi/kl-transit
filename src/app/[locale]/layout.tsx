@@ -7,7 +7,7 @@ import { routing } from '@/i8n/routing';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
 import { Navbar } from '@/app/components/navbar';
-
+import { ClerkProvider } from '@clerk/nextjs';
 const inter = Inter({ subsets: ['latin'] })
 
 // Define the Locale type based on your supported locales
@@ -30,16 +30,16 @@ export async function generateStaticParams() {
 
 export default async function LocaleLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: React.ReactNode
   params: { locale: string }
 }) {
-	// Ensure that the incoming `locale` is valid
-	if (!routing.locales.includes(locale as Locale)) {
-		notFound();
-	}
-	 
+  const { locale } = params;
+  // Ensure that the incoming `locale` is valid
+  if (!routing.locales.includes(locale as Locale)) {
+    notFound();
+  }
   // Enable static rendering
   setRequestLocale(locale);
 
@@ -48,18 +48,21 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-        >
-          <NextIntlClientProvider
-            messages={messages}
+        <ClerkProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
           >
-            <Navbar />
-            {children}
-          </NextIntlClientProvider>
-        </ThemeProvider>
+            <NextIntlClientProvider
+              messages={messages}
+            >
+              <Navbar />
+              {children}
+            </NextIntlClientProvider>
+          </ThemeProvider>
+        </ClerkProvider>
       </body>
     </html>
   );

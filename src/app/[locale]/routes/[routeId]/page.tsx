@@ -20,7 +20,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!baseUrl) throw new Error('NEXT_PUBLIC_APP_URL is not defined')
 
   const t = await getTranslations()
-  const res = await fetch(`${baseUrl}/api/routes/${params.routeId}`, {
+  const { routeId } = params
+
+  const res = await fetch(`${baseUrl}/api/routes/${routeId}`, {
     next: {
       revalidate: 86400,
     },
@@ -35,8 +37,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const routeData = (await res.json()) as RouteDetails
   return {
-		title: `${t('RoutesPage.routes')} ${params.routeId} - KL Transit`,
-    description: `${t('RoutesPage.meta.routeDescription')} ${params.routeId} (${routeData.route_name})`,
+    title: `${t('RoutesPage.routes')} ${routeId} - KL Transit`,
+    description: `${t('RoutesPage.meta.routeDescription')} ${routeId} (${routeData.route_name})`,
   }
 }
 
@@ -46,8 +48,8 @@ export default async function RoutePage({
   if (!baseUrl) throw new Error('NEXT_PUBLIC_APP_URL is not defined')
 
   const t = await getTranslations()
-  
-  const res = await fetch(`${baseUrl}/api/routes/${params.routeId}`, {
+  const { routeId } = params
+  const res = await fetch(`${baseUrl}/api/routes/${routeId}`, {
     next: {
       revalidate: 86400,
     },

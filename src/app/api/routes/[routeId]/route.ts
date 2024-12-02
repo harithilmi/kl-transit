@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import type { RouteDetails, RouteShape } from '@/app/types/routes'
+import type { RouteDetails, RouteShape } from '@/types/routes'
 import routes from '@/data/from_db/kl-transit_route.json'
 import stops from '@/data/from_db/kl-transit_stop.json'
 import services from '@/data/from_db/kl-transit_service.json'

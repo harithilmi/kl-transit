@@ -3,7 +3,7 @@ import { SearchForm } from '@/app/[locale]/routes/search-form'
 import { Link } from '@/i8n/routing'
 
 import type { Route } from '@/types/routes'
-import { getLocale, getTranslations } from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
 
 const baseUrl =
   process.env.NODE_ENV === 'development'
@@ -15,7 +15,7 @@ export default async function RoutesPage({
 }: {
   searchParams: { q?: string }
 }) {
-  const locale = await getLocale()
+  //   const locale = await getLocale()
   const t = await getTranslations()
   if (!baseUrl) throw new Error('NEXT_PUBLIC_APP_URL is not defined')
 
@@ -23,7 +23,7 @@ export default async function RoutesPage({
   const searchQuery = q ?? ''
 
   const res = await fetch(
-    `${baseUrl}/${locale}/api/routes${
+    `${baseUrl}/api/routes${
       searchQuery ? `?q=${encodeURIComponent(searchQuery)}` : ''
     }`,
     {

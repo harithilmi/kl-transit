@@ -5,11 +5,9 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from '@/app/components/ui/select'
-import { Languages } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useRouter, usePathname } from 'next/navigation'
 import * as React from 'react'

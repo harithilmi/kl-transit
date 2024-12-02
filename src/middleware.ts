@@ -1,28 +1,35 @@
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 import createMiddleware from 'next-intl/middleware'
-import { routing } from '@/i8n/routing'
-import { type NextRequest, NextResponse } from 'next/server'
+import { routing } from './i8n/routing'
 
-export default createMiddleware(routing)
+const handleI18nRouting = createMiddleware(routing)
 
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
+const isProtectedRoute = createRouteMatcher(['/:locale/dashboard(.*)'])
 
-  // Check if the pathname is missing a locale
-  if (!pathname.startsWith('/en') && !pathname.startsWith('/ms')) {
-    // Redirect to the default locale (e.g., 'en')
-    return NextResponse.redirect(new URL(`/en${pathname}`, request.url))
+export default clerkMiddleware(async (auth, req) => {
+  if (isProtectedRoute(req)) await auth.protect()
+
+  if (req.nextUrl.pathname.startsWith('/api')) {
+    return
   }
 
-  return NextResponse.next()
-}
+  return handleI18nRouting(req)
+})
 
 export const config = {
-  // Match both internationalized and API pathnames
+  // Match internationalized pathnames and API routes
   matcher: [
-    '/',
-    '/routes',
-    '/routes/:routeId',
-    '/api/:path*',
-    '/(ms|en)/:path*',
+    // Match all API routes
+    // '/api/:path*',
+    // Match all pages
+    // '/',
+    // '/(ms|en)/:path*',
+
+    //   from  https://clerk.com/docs/upgrade-guides/core-2/nextjs#migrating-to-clerk-middleware
+    // Skip Next.js internals and all static files, unless found in search params
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Always run for API routes
+    '/(api|trpc)(.*)',
   ],
+  // Remove excludedRoutes if present
 }
