@@ -9,12 +9,11 @@ export function HomeSearchForm() {
   const router = useRouter()
   const [isPending, startTransition] = useTransition()
   const [searchTerm, setSearchTerm] = useState('')
-  const locale = useLocale()
 
   function handleSearch(term: string) {
     if (term) {
       startTransition(() => {
-        router.push(`/${locale}/routes?q=${encodeURIComponent(term)}`)
+        router.push(`/routes?q=${encodeURIComponent(term)}`)
       })
     }
   }
