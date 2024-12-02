@@ -7,7 +7,6 @@ import { useTransition } from 'react'
 export function SearchForm({ initialSearch }: { initialSearch: string }) {
   const t = useTranslations('RoutesPage')
   const router = useRouter()
-  const locale = useLocale()
   const [isPending, startTransition] = useTransition()
 
   return (
@@ -18,9 +17,7 @@ export function SearchForm({ initialSearch }: { initialSearch: string }) {
         defaultValue={initialSearch}
         onChange={(e) => {
           startTransition(() => {
-            router.push(
-              `/${locale}/routes?q=${encodeURIComponent(e.target.value)}`,
-            )
+            router.push(`/routes?q=${encodeURIComponent(e.target.value)}`)
           })
         }}
         className={`w-full rounded-lg bg-secondary px-4 py-3 text-secondary-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring ${
@@ -31,9 +28,7 @@ export function SearchForm({ initialSearch }: { initialSearch: string }) {
         onClick={() => {
           const input = document.querySelector('input')!
           startTransition(() => {
-            router.push(
-              `/${locale}/routes?q=${encodeURIComponent(input.value)}`,
-            )
+            router.push(`/routes?q=${encodeURIComponent(input.value)}`)
           })
         }}
         disabled={isPending}
