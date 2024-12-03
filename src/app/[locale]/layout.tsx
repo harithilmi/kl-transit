@@ -8,11 +8,10 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
 import { Navbar } from '@/app/components/navbar';
 import { ClerkProvider } from '@clerk/nextjs';
+import type { Locale } from '@/i8n/request';
 const inter = Inter({ subsets: ['latin'] })
 
-// Define the Locale type based on your supported locales
-type Locale = 'en' | 'ms';
-
+	
 export const metadata: Metadata = {
   title: "KL Transit",
   description: "KL Transit",

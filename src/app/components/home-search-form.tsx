@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import { useTransition, useState } from 'react'
-import { useLocale, useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl'
 
 export function HomeSearchForm() {
   const t = useTranslations('HomePage')

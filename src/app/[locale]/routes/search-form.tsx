@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { useTranslations, useLocale } from 'next-intl'
+import { useTranslations } from 'next-intl'
 import { useTransition } from 'react'
 
 export function SearchForm({ initialSearch }: { initialSearch: string }) {
