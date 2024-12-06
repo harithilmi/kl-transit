@@ -8,8 +8,12 @@ import { getTranslations } from 'next-intl/server'
 
 export const dynamic = 'force-dynamic'
 
-export async function generateMetadata(): Promise<Metadata> {
-  //   setRequestLocale(locale)
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string }
+}): Promise<Metadata> {
+  setRequestLocale(locale)
   const t = await getTranslations()
 
   return {
