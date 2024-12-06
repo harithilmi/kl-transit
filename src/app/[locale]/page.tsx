@@ -3,8 +3,39 @@ import { Card } from '@/app/components/ui/card'
 import { Link } from '@/i8n/routing'
 import { useTranslations } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
+import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 
 export const dynamic = 'force-dynamic'
+
+export async function generateMetadata(): Promise<Metadata> {
+  //   setRequestLocale(locale)
+  const t = await getTranslations()
+
+  return {
+    title: t('HomePage.meta.title'),
+    description: t('HomePage.meta.description'),
+    alternates: {
+      canonical: '/',
+      languages: {
+        en: '/en',
+        ms: '/ms',
+      },
+    },
+    openGraph: {
+      title: t('HomePage.meta.title'),
+      description: t('HomePage.meta.description'),
+      type: 'website',
+      url: '/',
+      siteName: 'KL Transit',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('HomePage.meta.title'),
+      description: t('HomePage.meta.description'),
+    },
+  }
+}
 
 export default function HomePage({
   params: { locale },
