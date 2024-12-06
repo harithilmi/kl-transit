@@ -13,12 +13,19 @@ export async function generateMetadata({
 }: {
   params: { locale: string }
 }): Promise<Metadata> {
-  setRequestLocale(locale)
-  const t = await getTranslations()
+  const title =
+    locale === 'ms'
+      ? 'KL Transit - Panduan Pengangkutan Awam KL'
+      : 'KL Transit - KL Public Transport Guide'
+
+  const description =
+    locale === 'ms'
+      ? 'Panduan komprehensif untuk pengangkutan awam di Kuala Lumpur'
+      : 'Your comprehensive guide to public transportation in Kuala Lumpur'
 
   return {
-    title: t('HomePage.meta.title'),
-    description: t('HomePage.meta.description'),
+    title,
+    description,
     alternates: {
       canonical: '/',
       languages: {
@@ -27,16 +34,16 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: t('HomePage.meta.title'),
-      description: t('HomePage.meta.description'),
+      title,
+      description,
       type: 'website',
       url: '/',
       siteName: 'KL Transit',
     },
     twitter: {
       card: 'summary_large_image',
-      title: t('HomePage.meta.title'),
-      description: t('HomePage.meta.description'),
+      title,
+      description,
     },
   }
 }
