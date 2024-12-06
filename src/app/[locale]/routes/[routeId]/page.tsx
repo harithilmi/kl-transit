@@ -41,12 +41,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: `${t('ErrorPage.routeNotFound')} - KL Transit`,
       description: t('ErrorPage.routeNotFoundDescription'),
+      openGraph: {
+        title: `${t('ErrorPage.routeNotFound')} - KL Transit`,
+        description: t('ErrorPage.routeNotFoundDescription'),
+        type: 'website',
+        siteName: 'KL Transit',
+      },
     }
   }
 
+  const title = `${t('RoutesPage.routes')} ${routeId} - KL Transit`
+  const description = `${t('RoutesPage.meta.routeDescription')} ${routeId} (${routeData.route_name})`
+
   return {
-    title: `${t('RoutesPage.routes')} ${routeId} - KL Transit`,
-    description: `${t('RoutesPage.meta.routeDescription')} ${routeId} (${routeData.route_name})`,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      siteName: 'KL Transit',
+    },
+    twitter: {
+      card: 'summary',
+      title,
+      description,
+    },
+    alternates: {
+      canonical: `/routes/${routeId}`,
+    },
   }
 }
 
@@ -101,7 +124,7 @@ export default async function RoutePage({ params }: Props) {
                    t('RoutesPage.routeTypes.unknown')}
                 </span>
                 <Link
-                  href={`/routes/${routeId}/feedback/`}
+                  href={`/routes/${routeId}/edit/`}
                   className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
                 >
                   <svg
