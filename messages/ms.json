@@ -7,7 +7,11 @@
       "github": "Sumbang di GitHub"
     },
     "search": "Cari",
-    "searchPlaceholder": "Cari laluan bas"
+    "searchPlaceholder": "Cari laluan bas",
+    "meta": {
+      "title": "KL Transit - Panduan Pengangkutan Awam KL",
+      "description": "Panduan komprehensif untuk pengangkutan awam di Kuala Lumpur. Cari laluan bas, perhentian, dan maklumat perkhidmatan dengan mudah."
+    }
   },
   "RoutesPage": {
     "title": "Laluan Bas",
@@ -76,5 +80,10 @@
   "Languages": {
     "en": "Bahasa Inggeris",
     "ms": "Bahasa Melayu"
+  },
+  "Common": {
+    "back": "Balik",
+    "edit": "Sunting",
+    "suggestEdit": "Cadangkan Suntingan"
   }
 }

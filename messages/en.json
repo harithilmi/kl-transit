@@ -7,7 +7,11 @@
       "github": "Contribute on GitHub"
     },
     "search": "Search",
-    "searchPlaceholder": "Search for a bus route"
+    "searchPlaceholder": "Search for a bus route",
+    "meta": {
+      "title": "KL Transit - KL Public Transport Guide",
+      "description": "Your comprehensive guide to public transportation in Kuala Lumpur. Find bus routes, stops, and service information easily."
+    }
   },
   "RoutesPage": {
     "title": "Bus Routes",
@@ -45,7 +49,8 @@
     "error": {
       "routeNotFound": "Route Not Found",
       "routeNotFoundDescription": "The requested route could not be found."
-    }
+    },
+    "suggestEdit": "Suggest Edit"
   },
   "StopsPage": {
     "code": "Code",
@@ -79,5 +84,9 @@
   "Languages": {
     "en": "English",
     "ms": "Malay"
+  },
+  "Common": {
+    "back": "Back",
+    "edit": "Edit"
   }
 }
