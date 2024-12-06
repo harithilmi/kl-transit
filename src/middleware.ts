@@ -9,6 +9,13 @@ const isProtectedRoute = createRouteMatcher(['/:locale/dashboard(.*)'])
 export default clerkMiddleware(async (auth, req) => {
   if (isProtectedRoute(req)) await auth.protect()
 
+  if (
+    req.nextUrl.pathname === '/sitemap.xml' ||
+    req.nextUrl.pathname === '/robots.txt'
+  ) {
+    return
+  }
+
   if (req.nextUrl.pathname.startsWith('/api')) {
     return
   }
@@ -17,19 +24,10 @@ export default clerkMiddleware(async (auth, req) => {
 })
 
 export const config = {
-  // Match internationalized pathnames and API routes
   matcher: [
-    // Match all API routes
-    // '/api/:path*',
-    // Match all pages
-    // '/',
-    // '/(ms|en)/:path*',
-
-    //   from  https://clerk.com/docs/upgrade-guides/core-2/nextjs#migrating-to-clerk-middleware
-    // Skip Next.js internals and all static files, unless found in search params
+    // Skip Next.js internals and static files
     '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
     // Always run for API routes
     '/(api|trpc)(.*)',
   ],
-  // Remove excludedRoutes if present
 }
