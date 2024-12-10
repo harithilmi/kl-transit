@@ -2,7 +2,7 @@ import { Card } from '@/app/components/ui/card'
 import { notFound } from 'next/navigation'
 import { RouteStopList } from '@/app/components/route-stop-list'
 import { type Metadata } from 'next'
-import { RouteMapWrapper } from '@/app/components/route-page-client'
+import { MapWrapper } from '@/app/components/map-wrapper'
 import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i8n/routing'
 import { routing } from '@/i8n/routing'
@@ -142,7 +142,7 @@ export default async function RoutePage({ params }: Props) {
         {/* TO avoid wastage of map load, only show this when needed */}
         {/* {process.env.NODE_ENV !== 'development' ? ( */}
           <Card className="w-full max-w-xl h-96 overflow-hidden">
-            <RouteMapWrapper
+            <MapWrapper
               services={routeData.services}
               shape={routeData.shape}
             />
@@ -166,3 +166,7 @@ export default async function RoutePage({ params }: Props) {
     </main>
   )
 }
+
+// Force static generation
+export const dynamic = 'force-static'
+export const revalidate = 3600 // Optional: revalidate every hour
