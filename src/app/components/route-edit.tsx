@@ -147,6 +147,7 @@ interface EditMenuProps {
   setActiveDirection: React.Dispatch<React.SetStateAction<1 | 2>>
   setReorderedStops: (stops: Service[]) => void
   setSelectedStop: (stop: SelectedStop | null) => void
+  routeId: string
 }
 
 // Add this new component
@@ -159,9 +160,13 @@ function EditMenu({
   setActiveDirection,
   setReorderedStops,
   setSelectedStop,
+  routeId,
 }: EditMenuProps) {
   const [reorderedServices, setReorderedServices] = useState(services)
   const [hasChanges, setHasChanges] = useState(false)
+  const [draggedStop, setDraggedStop] = useState<Service | null>(null)
+  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null)
+  const [isMinimized, setIsMinimized] = useState(true)
 
   // Reset reordered services when direction changes
   useEffect(() => {
@@ -180,43 +185,79 @@ function EditMenu({
     (s) => s.direction !== activeDirection,
   )
 
-  const moveStop = (direction: number, fromIndex: number, toIndex: number) => {
-    const stopsToReorder =
-      direction === activeDirection
-        ? currentDirectionServices
-        : otherDirectionServices
+  const handleDragStart = (
+    e: React.DragEvent,
+    service: Service,
+    index: number,
+  ) => {
+    e.stopPropagation()
+    setDraggedStop(service)
+    // Store the index in the dataTransfer
+    e.dataTransfer.setData('text/plain', index.toString())
+    // Add a visual effect
+    const target = e.target as HTMLElement
+    setTimeout(() => {
+      target.style.opacity = '0.4'
+    }, 0)
+  }
 
-    const newStops = [...stopsToReorder]
-    const movedStop = newStops[fromIndex]
-    if (!movedStop) return
+  const handleDragEnd = (e: React.DragEvent) => {
+    e.stopPropagation()
+    setDraggedStop(null)
+    setDragOverIndex(null)
+    // Reset opacity
+    const target = e.target as HTMLElement
+    target.style.opacity = '1'
+  }
 
-    newStops.splice(fromIndex, 1)
-    newStops.splice(toIndex, 0, movedStop)
+  const handleDragOver = (e: React.DragEvent, index: number) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setDragOverIndex(index)
+  }
 
-    // Update sequences for the specific direction
-    const updatedStops = newStops.map((stop, index) => ({
-      ...stop,
-      sequence: index + 1,
-    }))
+  const handleDrop = (e: React.DragEvent, dropIndex: number) => {
+    e.preventDefault()
+    e.stopPropagation()
 
-    // Combine with the other direction's stops
-    const otherStops =
-      direction === activeDirection
-        ? otherDirectionServices
-        : currentDirectionServices
+    const dragIndex = parseInt(e.dataTransfer.getData('text/plain'))
+    if (draggedStop && dragIndex !== dropIndex) {
+      const stopsToReorder = [...currentDirectionServices]
+      const removed = stopsToReorder[dragIndex]
+      if (!removed) return
 
-    const newServices = [...updatedStops, ...otherStops]
-    setReorderedServices(newServices)
-    setReorderedStops(newServices)
-    setHasChanges(true)
+      stopsToReorder.splice(dragIndex, 1)
+      stopsToReorder.splice(dropIndex, 0, removed)
+
+      // Update sequences
+      const updatedStops = stopsToReorder.map((stop, index) => ({
+        ...stop,
+        sequence: index + 1,
+      }))
+
+      // Combine with other direction's stops
+      const newServices = [...updatedStops, ...otherDirectionServices]
+      setReorderedServices(newServices)
+      setReorderedStops(newServices)
+      setHasChanges(true)
+    }
+
+    setDraggedStop(null)
+    setDragOverIndex(null)
   }
 
   const handleSaveChanges = () => {
-    onReorderStops(reorderedServices)
+    onReorderStops(
+      reorderedServices.map((service) => ({
+        ...service,
+        direction: service.direction as 1 | 2,
+      })),
+    )
     setHasChanges(false)
   }
 
-  const handleStopClick = (service: typeof services[0]) => {
+  const handleStopClick = (service: typeof services[0] | undefined) => {
+    if (!service) return
     fetch(`/api/services?stopId=${service.stop_id}`)
       .then((res) => res.json())
       .then((data: ServiceResponse[]) => {
@@ -241,91 +282,126 @@ function EditMenu({
   }
 
   return (
-    <Card className="absolute top-4 right-4 p-4 bg-background/95 backdrop-blur w-[400px] z-[1000] max-h-[calc(100vh-2rem)] flex flex-col">
-      <div className="flex justify-between items-center mb-4">
-        <h3 className="font-semibold">Edit Route</h3>
-        {hasChanges && (
+    <Card
+      className={`absolute p-4 bg-background/95 backdrop-blur z-[1000] 
+      w-[calc(100%-2rem)] sm:w-[400px] transition-all duration-300 ease-in-out
+      ${
+        isMinimized
+          ? 'bottom-4 right-4 h-[56px]'
+          : 'top-4 right-4 max-h-[calc(100dvh-2rem)]'
+      } 
+      flex flex-col overflow-hidden`}
+    >
+      <div className="flex justify-between items-center mb-4 shrink-0">
+        <h3 className="font-semibold">Editing Route {routeId}</h3>
+        <div className="flex items-center gap-2">
+          {hasChanges && (
+            <Button
+              onClick={handleSaveChanges}
+              size="sm"
+              className="bg-green-600 hover:bg-green-700 text-white"
+            >
+              Save Changes
+            </Button>
+          )}
           <Button
-            onClick={handleSaveChanges}
+            variant="ghost"
             size="sm"
-            className="bg-green-600 hover:bg-green-700 text-white"
+            onClick={() => setIsMinimized(!isMinimized)}
+            className="h-8 w-8 p-0"
           >
-            Save Changes
+            {isMinimized ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-4 w-4"
+              >
+                <path d="m18 15-6-6-6 6" />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-4 w-4"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            )}
+          </Button>
+        </div>
+      </div>
+
+      <div
+        className={`flex flex-col transition-all duration-300 ease-in-out overflow-hidden
+        ${isMinimized ? 'h-0' : 'h-full'}`}
+      >
+        {selectedStop && (
+          <Button
+            onClick={() => onAddStop(selectedStop)}
+            className="w-full mb-4"
+          >
+            Add Selected Stop
           </Button>
         )}
-      </div>
 
-      {selectedStop && (
-        <Button onClick={() => onAddStop(selectedStop)} className="w-full mb-4">
-          Add Selected Stop
-        </Button>
-      )}
+        <div className="flex gap-2 mb-4">
+          <Button
+            variant={activeDirection === 1 ? 'default' : 'outline'}
+            className="flex-1"
+            onClick={() => setActiveDirection(1)}
+          >
+            Direction 1
+          </Button>
+          <Button
+            variant={activeDirection === 2 ? 'default' : 'outline'}
+            className="flex-1"
+            onClick={() => setActiveDirection(2)}
+          >
+            Direction 2
+          </Button>
+        </div>
 
-      <div className="flex gap-2 mb-4">
-        <Button
-          variant={activeDirection === 1 ? 'default' : 'outline'}
-          className="flex-1"
-          onClick={() => setActiveDirection(1)}
-        >
-          Direction 1
-        </Button>
-        <Button
-          variant={activeDirection === 2 ? 'default' : 'outline'}
-          className="flex-1"
-          onClick={() => setActiveDirection(2)}
-        >
-          Direction 2
-        </Button>
-      </div>
-
-      <div className="overflow-y-auto min-h-0 flex-1">
-        {/* Active Direction Stops */}
-        <div className="space-y-2">
-          {currentDirectionServices.map((service, index) => (
-            <div
-              key={service.id}
-              className="bg-muted p-2 rounded-md group hover:bg-muted/70 transition-colors cursor-pointer"
-              onClick={() => handleStopClick(service)}
-            >
-              <div className="flex items-center gap-1">
-                <span className="text-xs shrink-0 w-4">{index + 1}</span>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium truncate">
-                    {service.stop.stop_name}
-                  </p>
-                  <p className="text-xs text-muted-foreground truncate">
-                    {service.stop.stop_code}
-                  </p>
-                </div>
-                <div className="flex flex-col gap-1 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="h-6 w-6 p-0"
-                    disabled={index === 0}
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      moveStop(activeDirection, index, index - 1)
-                    }}
-                  >
-                    ↑
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="h-6 w-6 p-0"
-                    disabled={index === currentDirectionServices.length - 1}
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      moveStop(activeDirection, index, index + 1)
-                    }}
-                  >
-                    ↓
-                  </Button>
+        <div className="overflow-y-auto min-h-0 flex-1">
+          <div className="space-y-2">
+            {currentDirectionServices.map((service, index) => (
+              <div
+                key={service.id}
+                draggable
+                onDragStart={(e) => handleDragStart(e, service, index)}
+                onDragEnd={handleDragEnd}
+                onDragOver={(e) => handleDragOver(e, index)}
+                onDrop={(e) => handleDrop(e, index)}
+                className={`bg-muted p-2 rounded-md group hover:bg-muted/70 transition-colors cursor-move
+                  ${draggedStop?.id === service.id ? 'opacity-40' : ''}
+                  ${
+                    dragOverIndex === index ? 'border-t-2 border-primary' : ''
+                  }`}
+                onClick={() => handleStopClick(service)}
+              >
+                <div className="flex items-center gap-1">
+                  <span className="text-xs shrink-0 w-4">{index + 1}</span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium truncate">
+                      {service.stop.stop_name}
+                    </p>
+                    <p className="text-xs text-muted-foreground truncate">
+                      {service.stop.stop_code}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </Card>
@@ -532,14 +608,14 @@ export default function RouteEdit({
     const fetchStops = async () => {
       try {
         const response = await fetch('/api/stops')
-        const data = await response.json()
+        const data = (await response.json()) as Stop[]
         setStops(data)
       } catch (error) {
         console.error('Error fetching stops:', error)
       }
     }
 
-    fetchStops()
+    void fetchStops()
   }, [])
 
   // Add touch detection on mount
@@ -554,7 +630,8 @@ export default function RouteEdit({
       ]
     : [3.139, 101.6869]
 
-  const handleStopClick = (service: typeof services[0]) => {
+  const handleStopClick = (service: typeof services[0] | undefined) => {
+    if (!service) return
     fetch(`/api/services?stopId=${service.stop_id}`)
       .then((res) => res.json())
       .then((data: ServiceResponse[]) => {
@@ -648,15 +725,14 @@ export default function RouteEdit({
     if (route === routeId) return
 
     if (selectedRoutes[route]) {
-      const { [route]: _, ...remainingRoutes } = selectedRoutes
-      setSelectedRoutes(remainingRoutes)
+      const { ...rest } = selectedRoutes
+      setSelectedRoutes(rest)
     } else {
       try {
-        const baseUrl =
-          process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'
+        const baseUrl = window.location.origin
         const res = await fetch(`${baseUrl}/api/routes/${route}`)
         if (!res.ok) throw new Error('Failed to fetch route data')
-        const data: RouteDetails = await res.json()
+        const data = (await res.json()) as RouteDetails
 
         if (!routeColors[route]) {
           getRouteColor(route)
@@ -710,8 +786,8 @@ export default function RouteEdit({
       })
 
       if (!response.ok) {
-        const data = await response.json()
-        throw new Error(data.error || `Server error: ${response.status}`)
+        const data = (await response.json()) as { error?: string }
+        throw new Error(data.error ?? `Server error: ${response.status}`)
       }
 
       toast({
@@ -740,7 +816,7 @@ export default function RouteEdit({
   }
 
   return (
-    <div className="relative h-screen w-screen">
+    <div className="relative h-full w-full">
       <div className="w-full h-full">
         <MapContainer
           center={position}
@@ -1040,21 +1116,25 @@ export default function RouteEdit({
 
       {/* Selected Stop Info Card */}
       {selectedStop && (
-        <Card className="absolute top-4 left-4 p-4 bg-background/95 backdrop-blur sm:w-fit sm:max-w-sm w-[calc(100%-2rem)] z-[1000]">
+        <Card
+          className="absolute top-4 left-4 p-4 bg-background/95 backdrop-blur 
+          w-[calc(100%-2rem)] sm:w-[400px] max-w-[calc(100%-2rem)] sm:max-w-[calc(100%-32px-400px)] z-[1000]
+          overflow-y-auto max-h-[calc(100dvh-2rem)]"
+        >
           <div className="flex justify-between items-start gap-4">
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2">
+            <div className="flex flex-col gap-2 min-w-0">
+              <div className="flex items-start gap-2">
                 {selectedStop.code && (
                   <span className="shrink-0 px-2 py-0.5 bg-primary text-primary-foreground text-sm font-medium rounded-md">
                     {selectedStop.code}
                   </span>
                 )}
-                <div className="flex flex-col">
-                  <h3 className="text-lg text-foreground font-semibold">
+                <div className="flex flex-col min-w-0">
+                  <h3 className="text-lg text-foreground font-semibold truncate">
                     {selectedStop.name}
                   </h3>
                   {selectedStop.street_name && (
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-muted-foreground truncate">
                       {selectedStop.street_name}
                     </p>
                   )}
@@ -1112,10 +1192,7 @@ export default function RouteEdit({
                                   </div>
                                   <button
                                     onClick={() => {
-                                      const {
-                                        [routeId]: _,
-                                        ...rest
-                                      } = selectedRoutes
+                                      const { ...rest } = selectedRoutes
                                       setSelectedRoutes(rest)
                                     }}
                                     className="text-xs text-muted-foreground hover:text-foreground"
@@ -1141,7 +1218,7 @@ export default function RouteEdit({
             </div>
             <button
               onClick={() => setSelectedStop(null)}
-              className="text-muted-foreground hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground shrink-0"
             >
               ✕
             </button>
@@ -1159,6 +1236,7 @@ export default function RouteEdit({
         setActiveDirection={setActiveDirection}
         setReorderedStops={setReorderedStops}
         setSelectedStop={setSelectedStop}
+        routeId={routeId}
       />
     </div>
   )

@@ -42,7 +42,7 @@ export default function RouteEditPage({
   if (!isLoaded || !routeData) return <p>Loading...</p>
 
   return (
-    <main className="h-screen w-screen bg-background">
+    <main className="relative h-[calc(100dvh-65px)] w-full bg-background overflow-hidden">
       <Suspense fallback={<p>Loading...</p>}>
         <LazyMap
           routeId={routeId}
