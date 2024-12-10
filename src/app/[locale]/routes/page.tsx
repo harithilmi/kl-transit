@@ -18,8 +18,8 @@ export default async function RoutesPage({
   //   const locale = await getLocale()
   const t = await getTranslations()
   if (!baseUrl) throw new Error('NEXT_PUBLIC_APP_URL is not defined')
-
-  const { q } = searchParams
+  // eslint-disable-next-line @typescript-eslint/await-thenable
+  const { q } = await searchParams
   const searchQuery = q ?? ''
 
   const res = await fetch(

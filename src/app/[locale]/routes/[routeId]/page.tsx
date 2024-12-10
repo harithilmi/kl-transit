@@ -14,8 +14,10 @@ type Props = {
 
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const t = await getTranslations()
-  const { routeId } = params
+	const t = await getTranslations()
+	
+  // eslint-disable-next-line @typescript-eslint/await-thenable
+  const { locale, routeId } = await params
 
   const routeData = await fetchRouteData(routeId)
   if (!routeData) {
@@ -49,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       type: 'website',
       siteName: 'KL Transit',
-      locale: params.locale,
+      locale,
       url: `https://kltransit.my/routes/${routeId}`,
     },
     twitter: {
@@ -152,8 +154,9 @@ export async function generateStaticParams() {
 }
 
 export default async function RoutePage({ params }: Props) {
-  const t = await getTranslations()
-  const { routeId } = params
+	const t = await getTranslations()
+	// eslint-disable-next-line @typescript-eslint/await-thenable
+  const { routeId } = await params
 
   const routeData = await fetchRouteData(routeId)
   if (!routeData) {
