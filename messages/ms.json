@@ -21,6 +21,7 @@
     "search": "Cari",
     "backToRoutes": "Kembali ke Senarai Laluan",
     "bus": "Bas",
+    "suggestEdit": "Cadangkan Suntingan",
     "routeTypes": {
       "utama": "Rapid Bus (Utama)",
       "tempatan": "Rapid Bus (Tempatan)",
@@ -83,7 +84,6 @@
   },
   "Common": {
     "back": "Balik",
-    "edit": "Sunting",
-    "suggestEdit": "Cadangkan Suntingan"
+    "edit": "Sunting"
   }
 }

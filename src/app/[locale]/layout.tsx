@@ -34,7 +34,8 @@ export default async function LocaleLayout({
   children: React.ReactNode
   params: { locale: string }
 }) {
-  const { locale } = params;
+  // eslint-disable-next-line @typescript-eslint/await-thenable
+  const { locale } = await params;
   // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as Locale)) {
     notFound();

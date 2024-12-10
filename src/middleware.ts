@@ -4,7 +4,10 @@ import { routing } from './i8n/routing'
 
 const handleI18nRouting = createMiddleware(routing)
 
-const isProtectedRoute = createRouteMatcher(['/:locale/dashboard(.*)'])
+const isProtectedRoute = createRouteMatcher([
+  '/:locale/dashboard(.*)',
+  '/:locale/routes/:id/edit',
+])
 
 export default clerkMiddleware(async (auth, req) => {
   if (isProtectedRoute(req)) await auth.protect()

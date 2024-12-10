@@ -1,0 +1,1 @@
+ALTER TABLE "kl-transit_route_suggestion" DROP COLUMN IF EXISTS "user_email";

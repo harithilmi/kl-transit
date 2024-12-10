@@ -56,3 +56,11 @@ export interface RouteMapWrapperProps extends RouteMapProps {
 }
 
 export type Dict = Record<string, string>
+
+export interface SelectedStop {
+  name: string
+  code: string
+  coordinates: [number, number]
+  street_name?: string
+  routes: string[]
+}

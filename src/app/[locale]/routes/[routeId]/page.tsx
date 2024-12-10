@@ -1,35 +1,15 @@
 import { Card } from '@/app/components/ui/card'
 import { notFound } from 'next/navigation'
 import { RouteStopList } from '@/app/components/route-stop-list'
-import type { RouteDetails } from '@/types/routes'
 import { type Metadata } from 'next'
 import { RouteMapWrapper } from '@/app/components/route-page-client'
 import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i8n/routing'
-
-const baseUrl =
-  process.env.NODE_ENV === 'development'
-    ? 'http://localhost:3000'
-    : process.env.NEXT_PUBLIC_APP_URL
+import { routing } from '@/i8n/routing'
+import { fetchRouteData } from '@/lib/routes'
 
 type Props = {
   params: { locale: string; routeId: string }
-}
-
-export async function fetchRouteData(routeId: string): Promise<RouteDetails | null> {
-  if (!baseUrl) throw new Error('NEXT_PUBLIC_APP_URL is not defined')
-
-  const res = await fetch(`${baseUrl}/api/routes/${routeId}`, {
-    next: {
-      revalidate: 86400,
-    },
-  })
-
-  if (!res.ok) {
-    return null
-  }
-
-  return res.json() as Promise<RouteDetails>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -71,6 +51,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: `/routes/${routeId}`,
     },
   }
+}
+
+export async function generateStaticParams() {
+  const routes = await import('@/data/from_db/kl-transit_route.json')
+  
+  return routing.locales.flatMap((locale) =>
+    routes.default.map((route) => ({
+      locale,
+      routeId: route.route_number,
+    }))
+  )
 }
 
 export default async function RoutePage({ params }: Props) {
@@ -140,7 +131,7 @@ export default async function RoutePage({ params }: Props) {
                       d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
                     />
                   </svg>
-                  {t('Common.suggestEdit')}
+                  {t('RoutesPage.suggestEdit')}
                 </Link>
               </div>
             </div>
@@ -166,7 +157,8 @@ export default async function RoutePage({ params }: Props) {
 
         {/* Main content */}
         <div className="flex w-full max-w-xl flex-col gap-6 sm:gap-8">
-          <Card className="w-full overflow-hidden">
+				  <Card className="w-full overflow-hidden">
+
             <RouteStopList services={routeData.services} />
           </Card>
         </div>

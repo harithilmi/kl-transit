@@ -1,9 +1,9 @@
 import { getRequestConfig } from 'next-intl/server'
 import { routing } from './routing'
 
-type Locale = typeof routing.locales[number]
-type Messages = Record<string, string>
-type MessagesModule = { default: Messages }
+export type Locale = typeof routing.locales[number]
+export type Messages = Record<string, string>
+export type MessagesModule = { default: Messages }
 
 export default getRequestConfig(async ({ requestLocale }) => {
   let locale = (await requestLocale) as Locale

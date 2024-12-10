@@ -109,6 +109,30 @@ export const routeShapes = createTable(
   }),
 )
 
+export const routeSuggestions = createTable(
+  'route_suggestion',
+  {
+    id: serial('id').primaryKey(),
+    routeNumber: varchar('route_number', { length: 20 })
+      .notNull()
+      .references(() => routes.routeNumber),
+    direction: integer('direction').notNull(),
+    userId: varchar('user_id', { length: 100 }).notNull(),
+    status: varchar('status', { length: 20 }).default('pending').notNull(),
+    stops: jsonb('stops').notNull(),
+    createdAt: timestamp('created_at', { withTimezone: true })
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+    updatedAt: timestamp('updated_at', { withTimezone: true }).$onUpdate(
+      () => new Date(),
+    ),
+  },
+  (suggestions) => ({
+    routeIdx: index('route_suggestion_idx').on(suggestions.routeNumber),
+    userIdx: index('user_suggestion_idx').on(suggestions.userId),
+  }),
+)
+
 // Define relations
 export const stopsRelations = relations(stops, ({ many }) => ({
   services: many(services),
