@@ -12,6 +12,7 @@ type Props = {
   params: { locale: string; routeId: string }
 }
 
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations()
   const { routeId } = params
@@ -135,11 +136,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         'max-image-preview': 'large',
         'max-snippet': -1,
       },
-    },
-    viewport: {
-      width: 'device-width',
-      initialScale: 1,
-      maximumScale: 1,
     },
   }
 }
