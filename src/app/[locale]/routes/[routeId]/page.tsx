@@ -30,6 +30,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
+  // Get unique stop information and filter out nulls
+  const stopKeywords = [...new Set(routeData.services.flatMap(service => [
+    service.stop.stop_name,
+    service.stop.stop_code,
+    service.stop.street_name
+  ].filter((value): value is string => value !== null && value !== undefined)))]
+
   const title = `${t('RoutesPage.routes')} ${routeId} - KL Transit`
   const description = `${t('RoutesPage.meta.routeDescription')} ${routeId} (${routeData.route_name})`
 
@@ -41,14 +48,98 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       type: 'website',
       siteName: 'KL Transit',
+      locale: params.locale,
+      url: `https://kltransit.my/routes/${routeId}`,
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title,
       description,
+      site: '@kltransit',
     },
     alternates: {
       canonical: `/routes/${routeId}`,
+      languages: Object.fromEntries(
+        routing.locales.map(locale => [
+          locale,
+          `/routes/${routeId}`,
+        ])
+      ),
+    },
+    keywords: [
+      // Transit System Name
+      'KL Transit',
+      'Rapid KL',
+      'Rapid Bus',
+      'Causeway Link',
+      'Klang Valley',
+      'Klang Valley Bus',
+      
+      // Route Specific
+      `Route ${routeId}`,
+      routeData.route_name,
+      `${routeData.route_type} route`,
+      `Laluan ${routeId}`,
+      `Laluan ${routeData.route_name}`,
+      
+      // Stop Information
+      ...stopKeywords,
+      
+      // General Transit Terms
+      'public transport',
+      'public transportation',
+      'bus route',
+      'train route',
+      'transit guide',
+      'route map',
+      'bus schedule',
+      
+      // Location Terms
+      'Kuala Lumpur',
+      'KL',
+      'Klang Valley',
+      'Lembah Klang',
+      'Selangor',
+      'Malaysia',
+      
+      // Malay Terms
+      'pengangkutan awam',
+      'laluan bas',
+      'jadual perjalanan',
+      'jadual bas',
+      
+      // Transit Types
+      'rapid bus',
+      'MRT feeder bus',
+      'LRT feeder bus',
+      'bas pengantara MRT',
+      'bas pengantara LRT',
+      'smart selangor',
+      'shuttle bus',
+      'bas GOKL',
+      'express bus',
+      'drt',
+      'demand response transport',
+      'bas nadi putra',
+    ].filter((keyword): keyword is string => 
+      keyword !== null && keyword !== undefined
+    ),
+    authors: [{ name: 'KL Transit' }],
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    viewport: {
+      width: 'device-width',
+      initialScale: 1,
+      maximumScale: 1,
     },
   }
 }
