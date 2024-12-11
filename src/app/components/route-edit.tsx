@@ -129,10 +129,6 @@ export default function RouteEdit({
     const scaleFactor = 1 + (zoom - 13) * 0.2
     return baseSize * scaleFactor
   }
-  //   console.log('Direction 1', shape.direction1)
-  //   console.log('Direction 2', shape.direction2)
-
-  //   console.log('Zoom Level', zoomLevel)
 
   const handleNonRouteStopClick = (stop: Stop) => {
     // Find all services for this stop from the API
