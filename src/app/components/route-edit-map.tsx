@@ -37,6 +37,16 @@ import { StopConnections } from '@/app/components/map/stop-connections'
 import { EditMenu } from '@/app/components/map/edit-menu'
 import { MapInteraction } from '@/app/components/map/map-interaction'
 
+// Add this function near the top of the file, after the imports
+const getBusIcon = (size: number, color: string) => {
+  return `data:image/svg+xml;base64,${btoa(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <circle cx="13" cy="13" r="13" fill="white" stroke="${color}" stroke-width="2"/>
+      <path fill="${color}" d="M17 20H7V21C7 21.5523 6.55228 22 6 22H5C4.44772 22 4 21.5523 4 21V20H3V12H2V8H3V5C3 3.89543 3.89543 3 5 3H19C20.1046 3 21 3.89543 21 5V8H22V12H21V20H20V21C20 21.5523 19.5523 22 19 22H18C17.4477 22 17 21.5523 17 21V20ZM5 5V14H19V5H5ZM5 16V18H9V16H5ZM15 16V18H19V16H15Z"/>
+    </svg>
+  `)}`
+}
+
 // Add this new component for viewport-based markers
 function ViewportMarkers({
   stops,
@@ -456,21 +466,12 @@ export default function RouteEditMap({
               }}
               icon={
                 new L.Icon({
-                  iconUrl:
-                    'data:image/svg+xml;base64,' +
-                    btoa(`
-                    <svg width="${getMarkerSize(
-                      zoomLevel,
-                    )}" height="${getMarkerSize(
-                      zoomLevel,
-                    )}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="10" cy="10" r="8" fill="white" stroke="${
-                        service.direction === activeDirection
-                          ? '#1d4ed8'
-                          : '#9ca3af'
-                      }" stroke-width="4"/>
-                    </svg>
-                  `),
+                  iconUrl: getBusIcon(
+                    getMarkerSize(zoomLevel),
+                    service.direction === activeDirection
+                      ? '#1d4ed8'
+                      : '#9ca3af',
+                  ),
                   iconSize: [
                     getMarkerSize(zoomLevel),
                     getMarkerSize(zoomLevel),
