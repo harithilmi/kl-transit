@@ -190,7 +190,7 @@ export default async function RoutePage({ params }: Props) {
         </div>
 
         {/* Route header */}
-        <div className="flex w-full max-w-xl flex-col gap-6 sm:gap-8">
+        <div className="flex w-full max-w-xl lg:max-w-none flex-col gap-6 sm:gap-8">
           <Card className="w-full p-4">
             <div className="flex flex-col gap-2">
               <h1 className="text-3xl text-center font-bold">
@@ -228,27 +228,18 @@ export default async function RoutePage({ params }: Props) {
           </Card>
         </div>
 
-        {/* Map */}
-        {/* TO avoid wastage of map load, only show this when needed */}
-        {/* {process.env.NODE_ENV !== 'development' ? ( */}
-          <Card className="w-full max-w-xl h-96 overflow-hidden">
+        {/* Map and Route Stop List Container */}
+        <div className="flex w-full max-w-xl lg:max-w-none flex-col lg:flex-row gap-6 sm:gap-8">
+          {/* Map */}
+          <Card className="w-full lg:flex-1 h-96 lg:h-[calc(100vh-20rem)] overflow-hidden">
             <MapWrapper
               services={routeData.services}
               shape={routeData.shape}
             />
           </Card>
-			{/* ) : (
-			<Card className="w-full max-w-xl h-36 sm:h-96 overflow-hidden">
-				<div className="h-full w-full flex items-center justify-center bg-muted/50">
-				<div className="h-8 w-32 animate-pulse rounded bg-muted" />
-				</div>
-			</Card>
-			)} */}
 
-        {/* Main content */}
-        <div className="flex w-full max-w-xl flex-col gap-6 sm:gap-8">
-				  <Card className="w-full overflow-hidden">
-
+          {/* Route Stop List */}
+          <Card className="w-full lg:w-[400px] h-96 lg:h-[calc(100vh-20rem)] overflow-hidden">
             <RouteStopList services={routeData.services} />
           </Card>
         </div>

@@ -550,8 +550,8 @@ export function RouteMap({
   }, [services, stopsGeoJSON, routeShapes, isTouchDevice])
 
   return (
-    <div className="relative">
-      <div ref={mapContainer} className="w-full h-96" />
+    <div className="relative h-full">
+      <div ref={mapContainer} className="w-full h-full" />
       {selectedStop && (
         <Card className="absolute top-2 left-2 p-4 bg-background/95 backdrop-blur sm:w-fit sm:max-w-sm w-[calc(100%-1rem)]">
           <div className="flex justify-between items-start gap-4">

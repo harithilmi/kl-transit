@@ -18,5 +18,9 @@ export function MapWrapper({
     direction2: RouteShape
   }
 }) {
-  return <RouteMap services={services} shape={shape} />
+  return (
+    <div className="h-full">
+      <RouteMap services={services} shape={shape} />
+    </div>
+  )
 }
