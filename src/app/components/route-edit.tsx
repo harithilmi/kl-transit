@@ -5,6 +5,17 @@ import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import 'leaflet-defaulticon-compatibility'
 import 'leaflet-polylinedecorator'
 
+import { useState, useEffect, Fragment } from 'react'
+import L from 'leaflet'
+
+import type {
+  RouteDetails,
+  RouteMapWrapperProps,
+  SelectedStop,
+  Service,
+  Stop,
+} from '@/types/routes'
+
 import {
   MapContainer,
   Marker,
@@ -12,19 +23,12 @@ import {
   Tooltip,
   LayersControl,
 } from 'react-leaflet'
-import type {
-  RouteDetails,
-  RouteMapWrapperProps,
-  SelectedStop,
-  Service,
-} from '@/types/routes'
 import { Card } from '@/app/components/ui/card'
-import { useState, useEffect } from 'react'
-import { Fragment } from 'react'
-import type { Stop } from '@/types/routes'
-import L from 'leaflet'
+import { Button } from '@/app/components/ui/button'
 import { useToast } from '@/app/hooks/use-toast'
+
 import { useUser } from '@clerk/clerk-react'
+
 import { SelectedStopMarker } from '@/app/components/map/selected-stop-marker'
 import { PolylineDecorator } from '@/app/components/map/polyline-decorator'
 import { MapInteraction } from '@/app/components/map/map-interaction'
@@ -651,15 +655,16 @@ export default function RouteEdit({
                                       </p>
                                     </div>
                                   </div>
-                                  <button
+                                  <Button
                                     onClick={() => {
                                       const { ...rest } = selectedRoutes
                                       setSelectedRoutes(rest)
                                     }}
                                     className="text-xs text-muted-foreground hover:text-foreground"
+                                    variant="destructive"
                                   >
-                                    Remove
-                                  </button>
+                                    X
+                                  </Button>
                                 </div>
                               ),
                             )}
