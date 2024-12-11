@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { ThemeToggle } from '@/app/components/theme-toggle'
 import { LanguageSwitcher } from '@/app/components/language-switcher'
 import { UserButton } from '@clerk/nextjs'
@@ -14,13 +14,13 @@ export function Navbar() {
 
   return (
     <nav className="bg-background text-foreground">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="text-lg font-bold hover:opacity-80">
             KL Transit
           </Link>
 
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-4 ml-auto">
             <ThemeToggle />
             <LanguageSwitcher />
             {!isSignedIn ? <SignInButton /> : <UserButton />}
