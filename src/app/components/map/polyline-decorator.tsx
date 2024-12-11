@@ -2,6 +2,7 @@ import { Polyline } from 'react-leaflet'
 import { useEffect } from 'react'
 import { useMap } from 'react-leaflet'
 import L from 'leaflet'
+import type { Map as LeafletMap } from 'leaflet'
 
 import 'leaflet-polylinedecorator'
 
@@ -15,7 +16,7 @@ export function PolylineDecorator({
   positions: L.LatLngExpression[]
   color: string
 }) {
-  const map = useMap()
+  const map: LeafletMap = useMap()
 
   useEffect(() => {
     if (positions.length === 0) return

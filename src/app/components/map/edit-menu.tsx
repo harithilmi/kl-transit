@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Card } from '@/app/components/ui/card'
 import { Button } from '@/app/components/ui/button'
-import type { Service, SelectedStop } from '@/types/routes'
+import type { SelectedStop, Service } from '@/types/routes'
 
 interface EditMenuProps {
   services: Service[]
@@ -32,7 +32,7 @@ export function EditMenu({
   const [dragOverIndex, setDragOverIndex] = useState<number | null>(null)
   const [isMinimized, setIsMinimized] = useState(true)
 
-  // Reset reordered services when direction changes
+  // Reset reordered services when services or direction changes
   useEffect(() => {
     setReorderedServices(services)
     setHasChanges(false)
@@ -129,14 +129,12 @@ export function EditMenu({
         const uniqueRoutes = Array.from(new Set(routes))
 
         const stopData: SelectedStop = {
-          name: service.stop.stop_name,
-          code: service.stop.stop_code,
+          ...service.stop,
+          route_number: uniqueRoutes,
           coordinates: [
-            parseFloat(service.stop.latitude),
-            parseFloat(service.stop.longitude),
+            Number(service.stop.latitude),
+            Number(service.stop.longitude),
           ],
-          street_name: service.stop.street_name ?? undefined,
-          routes: uniqueRoutes,
         }
         setSelectedStop(stopData)
       })
@@ -147,125 +145,110 @@ export function EditMenu({
 
   return (
     <Card
-      className={`absolute p-4 bg-background/95 backdrop-blur z-[1000] 
+      className={`absolute bg-background/95 backdrop-blur z-[1000] 
 		w-[calc(100%-2rem)] sm:w-[400px] transition-all duration-300 ease-in-out
 		${
       isMinimized
-        ? 'bottom-4 right-4 h-[56px]'
-        : 'top-4 right-4 max-h-[calc(100dvh-2rem)]'
+        ? 'bottom-4 right-4 h-[56px] scale-y-100 origin-bottom'
+        : 'bottom-4 right-4 h-[calc(100dvh-6rem)] scale-y-100 origin-bottom'
     } 
 		flex flex-col overflow-hidden`}
     >
-      <div className="flex justify-between items-center mb-4 shrink-0">
+      <div
+        className="flex justify-between items-center shrink-0 p-4 cursor-pointer"
+        onClick={() => setIsMinimized(!isMinimized)}
+      >
         <h3 className="font-semibold">Editing Route {routeId}</h3>
         <div className="flex items-center gap-2">
-          {hasChanges && (
-            <Button
-              onClick={handleSaveChanges}
-              size="sm"
-              className="bg-green-600 hover:bg-green-700 text-white"
-            >
-              Save Changes
-            </Button>
-          )}
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setIsMinimized(!isMinimized)}
-            className="h-8 w-8 p-0"
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-4 w-4"
           >
-            {isMinimized ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-4 w-4"
+            <path d={isMinimized ? 'm18 15-6-6-6 6' : 'm6 9 6 6 6-6'} />
+          </svg>
+        </div>
+      </div>
+
+      {!isMinimized && (
+        <>
+          <div className="flex flex-col transition-all duration-300 ease-in-out overflow-hidden h-full px-4">
+            {selectedStop && (
+              <Button
+                onClick={() => onAddStop(selectedStop)}
+                className="w-full mb-2"
               >
-                <path d="m18 15-6-6-6 6" />
-              </svg>
-            ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-4 w-4"
-              >
-                <path d="m6 9 6 6 6-6" />
-              </svg>
+                Add Selected Stop
+              </Button>
             )}
-          </Button>
-        </div>
-      </div>
 
-      <div
-        className={`flex flex-col transition-all duration-300 ease-in-out overflow-hidden
-		  ${isMinimized ? 'h-0' : 'h-full'}`}
-      >
-        {selectedStop && (
-          <Button
-            onClick={() => onAddStop(selectedStop)}
-            className="w-full mb-4"
-          >
-            Add Selected Stop
-          </Button>
-        )}
-
-        <div className="flex gap-2 mb-4">
-          <Button
-            variant={activeDirection === 1 ? 'default' : 'outline'}
-            className="flex-1"
-            onClick={() => setActiveDirection(1)}
-          >
-            Direction 1
-          </Button>
-          <Button
-            variant={activeDirection === 2 ? 'default' : 'outline'}
-            className="flex-1"
-            onClick={() => setActiveDirection(2)}
-          >
-            Direction 2
-          </Button>
-        </div>
-
-        <div className="overflow-y-auto min-h-0 flex-1">
-          <div className="space-y-2">
-            {currentDirectionServices.map((service, index) => (
-              <div
-                key={service.id}
-                draggable
-                onDragStart={(e) => handleDragStart(e, service, index)}
-                onDragEnd={handleDragEnd}
-                onDragOver={(e) => handleDragOver(e, index)}
-                onDrop={(e) => handleDrop(e, index)}
-                className={`bg-muted p-2 rounded-md group hover:bg-muted/70 transition-colors cursor-move
-					${draggedStop?.id === service.id ? 'opacity-40' : ''}
-					${dragOverIndex === index ? 'border-t-2 border-primary' : ''}`}
-                onClick={() => handleStopClick(service)}
+            {hasChanges && (
+              <Button
+                onClick={handleSaveChanges}
+                className="w-full mb-2 bg-"
+                variant="success"
               >
-                <div className="flex items-center gap-1">
-                  <span className="text-xs shrink-0 w-4">{index + 1}</span>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium truncate">
-                      {service.stop.stop_name}
-                    </p>
-                    <p className="text-xs text-muted-foreground truncate">
-                      {service.stop.stop_code}
-                    </p>
+                Save Changes
+              </Button>
+            )}
+
+            <div className="flex gap-2 mb-2 ">
+              <Button
+                variant={activeDirection === 1 ? 'default' : 'outline'}
+                className="flex-1"
+                onClick={() => setActiveDirection(1)}
+              >
+                Direction 1
+              </Button>
+              <Button
+                variant={activeDirection === 2 ? 'default' : 'outline'}
+                className="flex-1"
+                onClick={() => setActiveDirection(2)}
+              >
+                Direction 2
+              </Button>
+            </div>
+
+            <div className="overflow-y-auto min-h-0 flex-1">
+              <div className="space-y-2">
+                {currentDirectionServices.map((service, index) => (
+                  <div
+                    key={service.id}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, service, index)}
+                    onDragEnd={handleDragEnd}
+                    onDragOver={(e) => handleDragOver(e, index)}
+                    onDrop={(e) => handleDrop(e, index)}
+                    className={`bg-muted p-2 rounded-md group hover:bg-muted/70 transition-colors cursor-move
+						${draggedStop?.id === service.id ? 'opacity-40' : ''}
+						${dragOverIndex === index ? 'border-t-2 border-primary' : ''}`}
+                    onClick={() => handleStopClick(service)}
+                  >
+                    <div className="flex items-center gap-1">
+                      <span className="text-xs shrink-0 w-4 text-center">
+                        {service.sequence}
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium truncate">
+                          {service.stop.stop_name}
+                        </p>
+                        <p className="text-xs text-muted-foreground truncate">
+                          {service.stop.stop_code}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </Card>
   )
 }

@@ -1,13 +1,13 @@
 import { useEffect } from 'react'
 import { useMapEvents } from 'react-leaflet'
-import type { LatLngBounds } from 'leaflet'
+import type { Map as LeafletMap } from 'leaflet'
 
 export function BoundsHandler({
   setBounds,
 }: {
   setBounds: (bounds: L.LatLngBounds) => void
 }) {
-  const map = useMapEvents({
+  const map: LeafletMap = useMapEvents({
     moveend: () => {
       setBounds(map.getBounds())
     },
@@ -16,7 +16,6 @@ export function BoundsHandler({
     },
   })
 
-  // Set initial bounds
   useEffect(() => {
     setBounds(map.getBounds())
   }, [map, setBounds])

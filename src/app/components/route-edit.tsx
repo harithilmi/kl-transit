@@ -15,12 +15,13 @@ import {
 import type {
   RouteDetails,
   RouteMapWrapperProps,
+  SelectedStop,
   Service,
 } from '@/types/routes'
 import { Card } from '@/app/components/ui/card'
 import { useState, useEffect } from 'react'
 import { Fragment } from 'react'
-import type { SelectedStop, Stop } from '@/types/routes'
+import type { Stop } from '@/types/routes'
 import L from 'leaflet'
 import { useToast } from '@/app/hooks/use-toast'
 import { useUser } from '@clerk/clerk-react'
@@ -39,7 +40,7 @@ export default function RouteEdit({
 }: RouteMapWrapperProps) {
   const { toast } = useToast()
   const { user } = useUser()
-  const [stops, setStops] = useState<Stop[]>([])
+  const [stops, setStops] = useState<SelectedStop[]>([])
   const [selectedStop, setSelectedStop] = useState<SelectedStop | null>(null)
   const [isTouchDevice, setIsTouchDevice] = useState(false)
   const [bounds, setBounds] = useState<L.LatLngBounds | null>(null)
@@ -49,15 +50,23 @@ export default function RouteEdit({
   >({})
   const [routeColors, setRouteColors] = useState<Record<string, string>>({})
   const [activeDirection, setActiveDirection] = useState<1 | 2>(1)
-  const [reorderedStops, setReorderedStops] = useState(services)
+  const [reorderedStops, setReorderedStops] = useState<Service[]>(services)
 
   // Add stops data fetching
   useEffect(() => {
     const fetchStops = async () => {
       try {
         const response = await fetch('/api/stops')
+        if (!response.ok) {
+          throw new Error('Failed to fetch stops')
+        }
         const data = (await response.json()) as Stop[]
-        setStops(data)
+        const stopsWithRoutes: SelectedStop[] = data.map((stop) => ({
+          ...stop,
+          route_number: [],
+          coordinates: [Number(stop.latitude), Number(stop.longitude)],
+        }))
+        setStops(stopsWithRoutes)
       } catch (error) {
         console.error('Error fetching stops:', error)
       }
@@ -87,14 +96,12 @@ export default function RouteEdit({
         const uniqueRoutes = Array.from(new Set(routes))
 
         const stopData: SelectedStop = {
-          name: service.stop.stop_name,
-          code: service.stop.stop_code,
+          ...service.stop,
+          route_number: uniqueRoutes,
           coordinates: [
-            parseFloat(service.stop.latitude),
-            parseFloat(service.stop.longitude),
+            Number(service.stop.latitude),
+            Number(service.stop.longitude),
           ],
-          street_name: service.stop.street_name ?? undefined,
-          routes: uniqueRoutes,
         }
         setSelectedStop(stopData)
       })
@@ -136,11 +143,9 @@ export default function RouteEdit({
         const uniqueRoutes = Array.from(new Set(routes))
 
         setSelectedStop({
-          name: stop.stop_name,
-          code: stop.stop_code,
-          coordinates: [parseFloat(stop.latitude), parseFloat(stop.longitude)],
-          street_name: stop.street_name ?? undefined,
-          routes: uniqueRoutes,
+          ...stop,
+          route_number: uniqueRoutes,
+          coordinates: [Number(stop.latitude), Number(stop.longitude)],
         })
       })
       .catch((error) => {
@@ -202,9 +207,21 @@ export default function RouteEdit({
   }
 
   const handleAddStop = async (stop: SelectedStop) => {
-    // Here you would typically make an API call to add the stop to the route
-    console.log('Adding stop:', stop)
-    // TODO: Implement API call
+    const newService: Service = {
+      id: stop.id,
+      stop_id: stop.stop_id,
+      route_number: routeId,
+      sequence:
+        services.filter((s) => s.direction === activeDirection).length + 1,
+      direction: activeDirection,
+      zone: 1,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      stop: stop,
+    }
+
+    // Add the new service to the list
+    setReorderedStops([...services, newService])
   }
 
   const handleReorderStops = async (stops: Service[]) => {
@@ -572,14 +589,14 @@ export default function RouteEdit({
           <div className="flex justify-between items-start gap-4">
             <div className="flex flex-col gap-2 min-w-0">
               <div className="flex items-start gap-2">
-                {selectedStop.code && (
+                {selectedStop.stop_code && (
                   <span className="shrink-0 px-2 py-0.5 bg-primary text-primary-foreground text-sm font-medium rounded-md">
-                    {selectedStop.code}
+                    {selectedStop.stop_code}
                   </span>
                 )}
                 <div className="flex flex-col min-w-0">
                   <h3 className="text-lg text-foreground font-semibold truncate">
-                    {selectedStop.name}
+                    {selectedStop.stop_name}
                   </h3>
                   {selectedStop.street_name && (
                     <p className="text-sm text-muted-foreground truncate">
@@ -589,23 +606,23 @@ export default function RouteEdit({
                 </div>
               </div>
 
-              {selectedStop.routes.length > 0 && (
+              {selectedStop.route_number.length > 0 && (
                 <div>
                   <div className="flex flex-wrap gap-2">
-                    {selectedStop.routes.map((route) => (
+                    {selectedStop.route_number.map((route_number) => (
                       <button
-                        key={route}
-                        onClick={() => handleRouteClick(route)}
+                        key={route_number}
+                        onClick={() => handleRouteClick(route_number)}
                         className={`inline-flex items-center px-2 py-1 rounded-full text-xs 
                           ${
-                            selectedRoutes[route]
+                            selectedRoutes[route_number]
                               ? 'bg-primary text-primary-foreground'
                               : 'bg-secondary text-secondary-foreground'
                           } 
                           hover:bg-secondary/80 transition-colors cursor-pointer 
                           active:ring-2 active:ring-ring active:ring-offset-2 active:ring-offset-background`}
                       >
-                        {route}
+                        {route_number}
                       </button>
                     ))}
                   </div>

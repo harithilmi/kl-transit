@@ -5,7 +5,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import { useEffect, useRef, useState, useMemo } from 'react'
 import { Card } from '@/app/components/ui/card'
 import servicesData from '@/data/from_db/kl-transit_service.json'
-import type { RouteMapProps } from '@/types/routes'
+import type { RouteMapProps, SelectedStop } from '@/types/routes'
 import {
   Tooltip,
   TooltipContent,
@@ -13,14 +13,6 @@ import {
   TooltipTrigger,
 } from '@/app/components/ui/tooltip'
 import { Link } from '@/i8n/routing'
-
-interface SelectedStop {
-  name: string
-  code: string
-  coordinates: [number, number]
-  street_name?: string
-  routes: string[]
-}
 
 // Initialize mapbox access token
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN ?? ''
@@ -397,7 +389,7 @@ export function RouteMap({
         filter: ['==', ['get', 'stop_id'], ''],
       })
 
-      // Update click handler to show selection ring
+      // Update click handler to format coordinates correctly
       map.on(
         'click',
         'stops',
@@ -435,18 +427,20 @@ export function RouteMap({
               .map((service) => service.route_number)
             const uniqueRoutes = Array.from(new Set(routes))
 
-            // Set selected stop info
+            // Set selected stop info with correctly formatted coordinates
             setSelectedStop({
-              name: feature?.properties?.name as string,
-              code: feature?.properties?.code as string,
+              id: feature?.properties?.stop_id as string,
+              stop_id: feature?.properties?.stop_id as string,
+              stop_name: feature?.properties?.name as string,
+              stop_code: feature?.properties?.code as string,
+              latitude: (feature?.geometry as GeoJSON.Point).coordinates[1]!.toString(),
+              longitude: (feature?.geometry as GeoJSON.Point).coordinates[0]!.toString(),
               coordinates: [
-                (feature?.geometry as GeoJSON.Point).coordinates[0]!,
                 (feature?.geometry as GeoJSON.Point).coordinates[1]!,
-              ],
-              street_name: feature?.properties?.street_name as
-                | string
-                | undefined,
-              routes: uniqueRoutes,
+                (feature?.geometry as GeoJSON.Point).coordinates[0]!,
+              ] as [number, number],
+              street_name: feature?.properties?.street_name as string | null,
+              route_number: uniqueRoutes,
             })
           }
         },
@@ -563,14 +557,14 @@ export function RouteMap({
           <div className="flex justify-between items-start gap-4">
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2">
-                {selectedStop.code && (
+                {selectedStop.stop_code && (
                   <span className="shrink-0 px-2 py-0.5 bg-primary text-primary-foreground text-sm font-medium rounded-md">
-                    {selectedStop.code}
+                    {selectedStop.stop_code}
                   </span>
                 )}
                 <div className="flex flex-col">
                   <h3 className="text-lg text-foreground font-semibold">
-                    {selectedStop.name}
+                    {selectedStop.stop_name}
                   </h3>
                   {selectedStop.street_name && (
                     <p className="text-sm text-muted-foreground">
@@ -580,10 +574,10 @@ export function RouteMap({
                 </div>
               </div>
 
-              {selectedStop.routes.length > 0 && (
+              {selectedStop.route_number.length > 0 && (
                 <div>
                   <div className="flex flex-wrap gap-2">
-                    {selectedStop.routes.map((route) => (
+                    {selectedStop.route_number.map((route: string) => (
                       <Link
                         key={route}
                         href={`/routes/${route}`}

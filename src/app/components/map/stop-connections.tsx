@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import type { Service } from '@/types/routes'
 import L from 'leaflet'
 import { useMap } from 'react-leaflet'
+import type { Map as LeafletMap } from 'leaflet'
 
 export function StopConnections({
   services,
@@ -10,7 +11,7 @@ export function StopConnections({
   services: Service[]
   activeDirection: 1 | 2
 }) {
-  const map = useMap()
+  const map: LeafletMap = useMap()
 
   useEffect(() => {
     if (services.length < 2) return
