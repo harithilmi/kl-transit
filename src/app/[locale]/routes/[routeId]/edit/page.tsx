@@ -6,10 +6,11 @@ import { fetchRouteData } from '@/lib/routes'
 import { notFound } from 'next/navigation'
 import type { RouteDetails } from '@/types/routes'
 import { useAuth } from '@clerk/nextjs'
+import LoadingSpinner from '@/app/components/LoadingSpinner'
 
 const LazyMap = dynamic(() => import('@/app/components/route-edit'), {
   ssr: false,
-  loading: () => <p>Loading...</p>,
+  loading: () => <LoadingSpinner />,
 })
 
 export default function RouteEditPage({
@@ -39,11 +40,11 @@ export default function RouteEditPage({
     }
   }, [routeId, userId, isLoaded])
 
-  if (!isLoaded || !routeData) return <p>Loading...</p>
+  if (!isLoaded || !routeData) return <LoadingSpinner />
 
   return (
     <main className="relative h-[calc(100dvh-65px)] w-full bg-background overflow-hidden">
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<LoadingSpinner />}>
         <LazyMap
           routeId={routeId}
           services={routeData.services}
