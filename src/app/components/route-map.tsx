@@ -329,34 +329,69 @@ export function RouteMap({
         data: stopsGeoJSON,
       })
 
-      // Add stops layer
-      map.addLayer({
-        id: 'stops',
-        type: 'circle',
-        source: 'stops',
-        paint: {
-          'circle-radius': [
-            'interpolate',
-            ['linear'],
-            ['zoom'],
-            10,
-            2, // When zoomed out (zoom level 10 or less), radius is 2px
-            13,
-            4, // When zoomed in (zoom level 13 or more), radius is 4px
-          ],
-          'circle-color': '#ffffff',
-          'circle-stroke-color': '#1d4ed8',
-          'circle-stroke-width': [
-            'interpolate',
-            ['linear'],
-            ['zoom'],
-            10,
-            0.5, // Thinner stroke when zoomed out
-            13,
-            1.5, // Normal stroke when zoomed in
-          ],
-        },
-      })
+      // Add bus icon image
+      const busIcon = new Image()
+      busIcon.src = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#1d4ed8">
+          <path d="M17 20H7V21C7 21.5523 6.55228 22 6 22H5C4.44772 22 4 21.5523 4 21V20H3V12H2V8H3V5C3 3.89543 3.89543 3 5 3H19C20.1046 3 21 3.89543 21 5V8H22V12H21V20H20V21C20 21.5523 19.5523 22 19 22H18C17.4477 22 17 21.5523 17 21V20ZM5 5V14H19V5H5ZM5 16V18H9V16H5ZM15 16V18H19V16H15Z"/>
+        </svg>
+      `)}`
+
+      busIcon.onload = () => {
+        map.addImage('bus-stop', busIcon)
+
+        // Add circle background layer first (will appear behind the icon)
+        map.addLayer({
+          id: 'stops-circle',
+          type: 'circle',
+          source: 'stops',
+          paint: {
+            'circle-radius': [
+              'interpolate',
+              ['linear'],
+              ['zoom'],
+              10,
+              2,
+              15,
+              3,
+              16,
+              12,
+            ],
+            'circle-color': '#ffffff',
+            'circle-stroke-color': '#1d4ed8',
+            'circle-stroke-width': [
+              'interpolate',
+              ['linear'],
+              ['zoom'],
+              10,
+              0.5,
+              15,
+              1,
+              16,
+              2,
+            ],
+            'circle-opacity': 1, // Always visible as background
+          },
+        })
+
+        // Add icon layer on top
+        map.addLayer({
+          id: 'stops',
+          type: 'symbol',
+          source: 'stops',
+          layout: {
+            'icon-image': [
+              'step',
+              ['zoom'],
+              '',
+              16,
+              'bus-stop', // At or above zoom 14, use bus icon
+            ],
+            'icon-size': 0.1,
+            'icon-allow-overlap': true,
+          },
+        })
+      }
 
       // Add selection ring layer
       map.addLayer({
@@ -364,15 +399,7 @@ export function RouteMap({
         type: 'circle',
         source: 'stops',
         paint: {
-          'circle-radius': [
-            'interpolate',
-            ['linear'],
-            ['zoom'],
-            10,
-            5, // Smaller selection ring when zoomed out
-            13,
-            10, // Normal selection ring when zoomed in
-          ],
+          'circle-radius': ['interpolate', ['linear'], ['zoom'], 15, 5, 16, 15],
           'circle-color': 'transparent',
           'circle-stroke-color': '#1d4ed8',
           'circle-stroke-width': [
@@ -389,10 +416,17 @@ export function RouteMap({
         filter: ['==', ['get', 'stop_id'], ''],
       })
 
-      // Update click handler to format coordinates correctly
+      // Selected stop bus icon
+      map.addLayer({
+        id: 'stops-selected-bus',
+        type: 'symbol',
+        source: 'stops',
+      })
+
+      // Update click handler to listen to both layers
       map.on(
         'click',
-        'stops',
+        ['stops', 'stops-circle'],
         (
           e: mapboxgl.MapMouseEvent & {
             features?: mapboxgl.GeoJSONFeature[]
@@ -412,7 +446,7 @@ export function RouteMap({
                 coordinates[0]!,
                 coordinates[1]! - 0.00008, // Shift slightly south to account for info box
               ] as [number, number],
-              zoom: 15,
+              zoom: 17,
               duration: 1000,
               padding: { top: 100, bottom: 50, left: 50, right: 50 }, // Add padding to top for info box
             })
@@ -449,26 +483,10 @@ export function RouteMap({
       // Update background click handler to use new function
       map.on('click', (e) => {
         const features = map.queryRenderedFeatures(e.point, {
-          layers: ['stops'],
+          layers: ['stops', 'stops-circle'],
         })
         if (features.length === 0) {
           handleCloseSelectedStop()
-
-          // // Extend bounds with stop coordinates
-          // services.forEach((service) => {
-          //   bounds.extend([
-          //     parseFloat(service.stop.longitude),
-          //     parseFloat(service.stop.latitude),
-          //   ])
-          // })
-
-          // // Fit bounds after all elements are added
-          // if (bounds.getNorthEast() && bounds.getSouthWest()) {
-          //   map.fitBounds(bounds, {
-          //     padding: { top: 50, bottom: 50, left: 50, right: 50 },
-          //     duration: 1000, // Instant fit without animation
-          //   })
-          // }
         }
       })
 
