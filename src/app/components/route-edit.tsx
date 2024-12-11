@@ -426,27 +426,6 @@ function StopConnections({
     const directionServices = sortedServices.filter(
       (s) => s.direction === activeDirection,
     )
-    const otherDirectionServices = sortedServices.filter(
-      (s) => s.direction !== activeDirection,
-    )
-
-    // Get first and last stops for current direction
-    const directionFirst = directionServices[0]
-    const directionLast = directionServices[directionServices.length - 1]
-
-    // Get first and last stops for other direction
-    const otherFirst = otherDirectionServices[0]
-    const otherLast = otherDirectionServices[otherDirectionServices.length - 1]
-
-    // Check if any terminal stop is shared
-    const isSharedFirstStop =
-      activeDirection === 1
-        ? directionFirst?.stop_id === otherLast?.stop_id
-        : directionFirst?.stop_id === otherFirst?.stop_id
-    const isSharedLastStop =
-      activeDirection === 1
-        ? directionLast?.stop_id === otherFirst?.stop_id
-        : directionLast?.stop_id === otherLast?.stop_id
 
     // Create connections for active direction
     const connections = directionServices
@@ -454,14 +433,6 @@ function StopConnections({
       .map((service, index) => {
         const nextService = directionServices[index + 1]
         if (!nextService) return null
-
-        // Skip if it's a shared terminal stop
-        if (
-          (isSharedFirstStop && service.stop_id === directionFirst?.stop_id) ||
-          (isSharedLastStop && nextService.stop_id === directionLast?.stop_id)
-        ) {
-          return null
-        }
 
         return {
           from: [
