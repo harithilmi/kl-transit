@@ -5,7 +5,7 @@ import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import 'leaflet-defaulticon-compatibility'
 import 'leaflet-polylinedecorator'
 
-import { useState, useEffect, Fragment } from 'react'
+import { useState, useEffect, Fragment, useMemo } from 'react'
 import L from 'leaflet'
 
 import type {
@@ -22,6 +22,7 @@ import {
   TileLayer,
   Tooltip,
   LayersControl,
+  useMap,
 } from 'react-leaflet'
 import { Card } from '@/app/components/ui/card'
 import { Button } from '@/app/components/ui/button'
@@ -31,11 +32,122 @@ import { useUser } from '@clerk/clerk-react'
 
 import { SelectedStopMarker } from '@/app/components/map/selected-stop-marker'
 import { PolylineDecorator } from '@/app/components/map/polyline-decorator'
-import { MapInteraction } from '@/app/components/map/map-interaction'
-import { BoundsHandler } from '@/app/components/map/bounds-handler'
 import { ZoomHandler } from '@/app/components/map/zoom-handler'
-import { EditMenu } from '@/app/components/map/edit-menu'
 import { StopConnections } from '@/app/components/map/stop-connections'
+import { EditMenu } from '@/app/components/map/edit-menu'
+import { MapInteraction } from '@/app/components/map/map-interaction'
+
+// Add this new component for viewport-based markers
+function ViewportMarkers({
+  stops,
+  isTouchDevice,
+  handleNonRouteStopClick,
+  isRouteStop,
+}: {
+  stops: SelectedStop[]
+  isTouchDevice: boolean
+  handleNonRouteStopClick: (stop: Stop) => void
+  isRouteStop: (stopId: string) => boolean
+}) {
+  const map = useMap()
+  const [visibleMarkers, setVisibleMarkers] = useState<SelectedStop[]>([])
+
+  // Update visible markers when map moves
+  useEffect(() => {
+    const updateVisibleMarkers = () => {
+      const bounds = map.getBounds()
+      const zoom = map.getZoom()
+
+      // Get viewport bounds with padding
+      const padded = bounds.pad(0.2) // 20% padding around viewport
+
+      // Filter stops within bounds
+      const inBounds = stops.filter((stop) => {
+        if (isRouteStop(stop.stop_id)) return false // Skip route stops
+        return padded.contains([Number(stop.latitude), Number(stop.longitude)])
+      })
+
+      // If zoomed out, reduce marker density
+      if (zoom < 15) {
+        // Calculate grid size based on zoom
+        const gridSize = zoom < 13 ? 0.01 : 0.005 // Adjust these values as needed
+        const grid: Record<string, SelectedStop> = {}
+
+        inBounds.forEach((stop) => {
+          // Create grid cell key
+          const lat = Math.floor(Number(stop.latitude) / gridSize) * gridSize
+          const lng = Math.floor(Number(stop.longitude) / gridSize) * gridSize
+          const key = `${lat},${lng}`
+
+          // Keep one stop per grid cell
+          if (!grid[key]) {
+            grid[key] = stop
+          }
+        })
+
+        setVisibleMarkers(Object.values(grid))
+      } else {
+        setVisibleMarkers(inBounds)
+      }
+    }
+
+    // Update on map move/zoom
+    map.on('moveend', updateVisibleMarkers)
+    map.on('zoomend', updateVisibleMarkers)
+    updateVisibleMarkers() // Initial update
+
+    return () => {
+      map.off('moveend', updateVisibleMarkers)
+      map.off('zoomend', updateVisibleMarkers)
+    }
+  }, [map, stops, isRouteStop])
+
+  // Memoize marker icon creation
+  const markerIcon = useMemo(() => {
+    const size = map.getZoom() < 15 ? 12 : 16
+    return new L.Icon({
+      iconUrl:
+        'data:image/svg+xml;base64,' +
+        btoa(`
+          <svg width="${size}" height="${size}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="8" fill="white" stroke="#9ca3af" stroke-width="4"/>
+          </svg>
+        `),
+      iconSize: [size, size],
+      iconAnchor: [size / 2, size / 2],
+    })
+  }, [map])
+
+  return (
+    <>
+      {visibleMarkers.map((stop) => (
+        <Marker
+          key={stop.id}
+          position={[Number(stop.latitude), Number(stop.longitude)]}
+          icon={markerIcon}
+          eventHandlers={{
+            click: () => handleNonRouteStopClick(stop),
+          }}
+        >
+          {!isTouchDevice && (
+            <Tooltip direction="top" offset={[0, -10]} opacity={0.9}>
+              <div className="flex flex-row items-center gap-2 pr-1">
+                {stop.stop_code && (
+                  <span className="inline-flex items-center rounded-md bg-gray-400/90 text-white px-2.5 py-0.5 text-sm font-medium">
+                    {stop.stop_code}
+                  </span>
+                )}
+                <span className="text-sm font-medium text-gray-600">
+                  {stop.stop_name}
+                </span>
+              </div>
+            </Tooltip>
+          )}
+        </Marker>
+      ))}
+    </>
+  )
+}
 
 export default function RouteEditMap({
   routeId,
@@ -47,7 +159,6 @@ export default function RouteEditMap({
   const [stops, setStops] = useState<SelectedStop[]>([])
   const [selectedStop, setSelectedStop] = useState<SelectedStop | null>(null)
   const [isTouchDevice, setIsTouchDevice] = useState(false)
-  const [bounds, setBounds] = useState<L.LatLngBounds | null>(null)
   const [zoomLevel, setZoomLevel] = useState(13)
   const [selectedRoutes, setSelectedRoutes] = useState<
     Record<string, RouteDetails>
@@ -117,14 +228,6 @@ export default function RouteEditMap({
   // Add a function to check if a stop is part of the route
   const isRouteStop = (stopId: string) => {
     return services.some((service) => service.stop_id === stopId)
-  }
-
-  // Helper function to check if a stop is within current bounds
-  const isInBounds = (stop: Stop) => {
-    if (!bounds) return false
-    const lat = parseFloat(stop.latitude)
-    const lng = parseFloat(stop.longitude)
-    return bounds.contains([lat, lng])
   }
 
   // Function to calculate marker size based on zoom level
@@ -290,7 +393,6 @@ export default function RouteEditMap({
           minZoom={15}
           className="w-full h-full"
         >
-          <BoundsHandler setBounds={setBounds} />
           <ZoomHandler setZoom={setZoomLevel} />
           <LayersControl position="topright">
             <LayersControl.BaseLayer checked name="Street">
@@ -307,74 +409,13 @@ export default function RouteEditMap({
             </LayersControl.BaseLayer>
           </LayersControl>
 
-          {/* Add all stops in view */}
-          {stops
-            .filter(
-              (stop) =>
-                isInBounds(stop) &&
-                !isRouteStop(stop.stop_id) &&
-                !Object.values(selectedRoutes).some((route) =>
-                  route.services.some(
-                    (service) => service.stop_id === stop.stop_id,
-                  ),
-                ) &&
-                zoomLevel >= 13,
-            )
-            .map((stop) => (
-              <Marker
-                key={stop.id}
-                position={[
-                  parseFloat(stop.latitude),
-                  parseFloat(stop.longitude),
-                ]}
-                eventHandlers={{
-                  click: () => handleNonRouteStopClick(stop),
-                }}
-                icon={
-                  new L.Icon({
-                    iconUrl:
-                      'data:image/svg+xml;base64,' +
-                      btoa(`
-                  <svg width="${getMarkerSize(
-                    zoomLevel,
-                  )}" height="${getMarkerSize(
-                        zoomLevel,
-                      )}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="10" cy="10" r="8" fill="white" stroke="#9ca3af" stroke-width="4"/>
-                  </svg>
-                `),
-                    iconSize: [
-                      getMarkerSize(zoomLevel),
-                      getMarkerSize(zoomLevel),
-                    ],
-                    iconAnchor: [
-                      getMarkerSize(zoomLevel) / 2,
-                      getMarkerSize(zoomLevel) / 2,
-                    ],
-                  })
-                }
-              >
-                {!isTouchDevice && (
-                  <Tooltip
-                    direction="top"
-                    offset={[0, -10]}
-                    opacity={0.9}
-                    permanent={false}
-                  >
-                    <div className="flex flex-row items-center gap-2 pr-1">
-                      {stop.stop_code && (
-                        <span className="inline-flex items-center rounded-md bg-gray-400/90 text-white px-2.5 py-0.5 text-sm font-medium">
-                          {stop.stop_code}
-                        </span>
-                      )}
-                      <span className="text-sm font-medium text-gray-600">
-                        {stop.stop_name}
-                      </span>
-                    </div>
-                  </Tooltip>
-                )}
-              </Marker>
-            ))}
+          {/* Non-route stops with viewport-based rendering */}
+          <ViewportMarkers
+            stops={stops}
+            isTouchDevice={isTouchDevice}
+            handleNonRouteStopClick={handleNonRouteStopClick}
+            isRouteStop={isRouteStop}
+          />
 
           {/* Original route shape with reduced opacity */}
           {activeDirection === 1 && shape.direction1.coordinates.length > 0 && (
