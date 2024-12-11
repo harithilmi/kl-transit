@@ -257,6 +257,4 @@ export default async function RoutePage({ params }: Props) {
   )
 }
 
-// Force static generation
-export const dynamic = 'force-static'
-export const revalidate = 3600 // Optional: revalidate every hour
+

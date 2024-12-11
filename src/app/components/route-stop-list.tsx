@@ -119,3 +119,6 @@ export function RouteStopList({ services = [] }: RouteStopListProps) {
     </div>
   )
 }
+
+export const dynamic = 'force-static'
+export const revalidate = 3600
