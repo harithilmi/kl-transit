@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import LoadingSpinner from '@/app/components/LoadingSpinner'
 import type { RouteDetails } from '@/types/routes'
 
-const RouteEdit = dynamic(() => import('@/app/components/route-edit'), {
+const RouteEdit = dynamic(() => import('@/app/components/route-edit-map'), {
   ssr: false,
   loading: () => <LoadingSpinner />,
 })

@@ -37,7 +37,7 @@ import { ZoomHandler } from '@/app/components/map/zoom-handler'
 import { EditMenu } from '@/app/components/map/edit-menu'
 import { StopConnections } from '@/app/components/map/stop-connections'
 
-export default function RouteEdit({
+export default function RouteEditMap({
   routeId,
   services,
   shape,
