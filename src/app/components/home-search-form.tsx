@@ -72,7 +72,7 @@ export function HomeSearchForm() {
               <Loader2 className="h-4 w-4 animate-spin" />
             </div>
           )}
-          {!isLoading && (
+          {!isLoading && searchTerm && (
             <>
               <CommandEmpty>{t('noResults')}</CommandEmpty>
               <CommandGroup>
