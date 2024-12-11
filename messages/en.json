@@ -6,8 +6,9 @@
       "description": "KL Transit is an open-source project aimed at making public transportation in Kuala Lumpur more accessible. It provides easy access to bus routes, stops, and service information.",
       "github": "Contribute on GitHub"
     },
+    "noResults": "No routes found",
+    "searchPlaceholder": "Search for a route...",
     "search": "Search",
-    "searchPlaceholder": "Search for a bus route",
     "meta": {
       "title": "KL Transit - KL Public Transport Guide",
       "description": "Your comprehensive guide to public transportation in Kuala Lumpur. Find bus routes, stops, and service information easily."
@@ -20,6 +21,7 @@
     "searchPlaceholder": "Search for a bus route or destination",
     "search": "Search",
     "backToRoutes": "Back to Routes",
+    "noResults": "No routes found",
     "routeTypes": {
       "utama": "Rapid Bus (Trunk)",
       "tempatan": "Rapid Bus (Local)",

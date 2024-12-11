@@ -4,7 +4,6 @@ import { Link } from '@/i8n/routing'
 import { useTranslations } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
 import type { Metadata } from 'next'
-import { getTranslations } from 'next-intl/server'
 
 export const dynamic = 'force-dynamic'
 

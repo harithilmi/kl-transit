@@ -6,8 +6,9 @@
       "description": "KL Transit adalah projek sumber terbuka yang bertujuan untuk memudahkan akses kepada pengangkutan awam di Kuala Lumpur. Ia menyediakan akses mudah kepada laluan bas, perhentian, dan maklumat perkhidmatan.",
       "github": "Sumbang di GitHub"
     },
-    "search": "Cari",
+    "noResults": "Tidak ada laluan yang ditemui",
     "searchPlaceholder": "Cari laluan bas",
+    "search": "Cari",
     "meta": {
       "title": "KL Transit - Panduan Pengangkutan Awam KL",
       "description": "Panduan komprehensif untuk pengangkutan awam di Kuala Lumpur. Cari laluan bas, perhentian, dan maklumat perkhidmatan dengan mudah."
@@ -22,6 +23,7 @@
     "backToRoutes": "Kembali ke Senarai Laluan",
     "bus": "Bas",
     "suggestEdit": "Cadangkan Suntingan",
+    "noResults": "Tidak ada laluan yang ditemui",
     "routeTypes": {
       "utama": "Rapid Bus (Utama)",
       "tempatan": "Rapid Bus (Tempatan)",
