@@ -1,5 +1,5 @@
 import { getRequestConfig } from 'next-intl/server'
-import { routing } from './routing'
+import { routing } from '@/i8n/routing'
 
 export type Locale = typeof routing.locales[number]
 export type Messages = Record<string, string>

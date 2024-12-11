@@ -1,10 +1,10 @@
 'use client'
 import React from 'react'
-import { ThemeToggle } from './theme-toggle'
-import { LanguageSwitcher } from './language-switcher'
+import { ThemeToggle } from '@/app/components/theme-toggle'
+import { LanguageSwitcher } from '@/app/components/language-switcher'
 import { UserButton } from '@clerk/nextjs'
 import { useUser } from '@clerk/nextjs'
-import { SignInButton } from './auth/sign-in-button'
+import { SignInButton } from '@/app/components/auth/sign-in-button'
 import Link from 'next/link'
 
 export function Navbar() {
