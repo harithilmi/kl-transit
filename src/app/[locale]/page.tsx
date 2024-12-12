@@ -1,9 +1,9 @@
-import { HomeSearchForm } from '@/app/components/home-search-form'
 import { Card } from '@/app/components/ui/card'
 import { Link } from '@/i8n/routing'
 import { useTranslations } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
 import type { Metadata } from 'next'
+import { SearchButton } from '@/app/components/search-button'
 
 export const dynamic = 'force-dynamic'
 
@@ -67,7 +67,7 @@ export default function HomePage({
 
         {/* Search Section */}
         <Card className="w-full max-w-xl p-4">
-          <HomeSearchForm />
+          <SearchButton variant="default" />
         </Card>
 
         {/* About Section */}

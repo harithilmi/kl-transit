@@ -9,6 +9,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { Navbar } from '@/app/components/navbar';
 import { ClerkProvider } from '@clerk/nextjs';
 import type { Locale } from '@/i8n/request';
+import { CommandMenu } from '@/app/components/command-dialog';
 const inter = Inter({ subsets: ['latin'] })
 
 	
@@ -55,10 +56,9 @@ export default async function LocaleLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <NextIntlClientProvider
-              messages={messages}
-            >
+            <NextIntlClientProvider messages={messages}>
               <Navbar />
+              <CommandMenu />
               {children}
             </NextIntlClientProvider>
           </ThemeProvider>

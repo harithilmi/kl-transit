@@ -1,5 +1,5 @@
 import { Card, CardContent } from '@/app/components/ui/card'
-import { SearchForm } from '@/app/[locale]/routes/search-form'
+import { SearchButton } from '@/app/components/search-button'
 import { Link } from '@/i8n/routing'
 
 import type { Route } from '@/types/routes'
@@ -47,7 +47,7 @@ export default async function RoutesPage({
 
         {/* Search and Filter */}
         <Card className="w-full max-w-xl p-4">
-          <SearchForm initialSearch={searchQuery} />
+          <SearchButton />
         </Card>
 
         {/* Routes Grid */}

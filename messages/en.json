@@ -89,6 +89,11 @@
   },
   "Common": {
     "back": "Back",
-    "edit": "Edit"
+    "edit": "Edit",
+    "searchPlaceholder": "Search routes...",
+    "noResults": "No routes found",
+    "searchResults": "Routes",
+    "searchDialog": "Search for a bus route or destination",
+    "search": "Search"
   }
 }

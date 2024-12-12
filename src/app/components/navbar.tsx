@@ -5,12 +5,17 @@ import { LanguageSwitcher } from '@/app/components/language-switcher'
 import { UserButton } from '@clerk/nextjs'
 import { useUser } from '@clerk/nextjs'
 import { SignInButton } from '@/app/components/auth/sign-in-button'
+import { NavbarSearchButton } from '@/app/components/navbar-search-button'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 export function Navbar() {
   const { isSignedIn } = useUser()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const pathname = usePathname()
+  // Show search only on route detail pages
+  const shouldShowSearch = /^\/(?:en|ms)?\/routes\/[^/]+$/.test(pathname)
 
   return (
     <nav className="bg-background text-foreground">
@@ -21,6 +26,7 @@ export function Navbar() {
           </Link>
 
           <div className="hidden md:flex items-center gap-4 ml-auto">
+            {shouldShowSearch && <NavbarSearchButton />}
             <ThemeToggle />
             <LanguageSwitcher />
             {!isSignedIn ? <SignInButton /> : <UserButton />}
@@ -45,6 +51,7 @@ export function Navbar() {
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <div className="flex flex-col items-center gap-4 p-4">
+              {shouldShowSearch && <NavbarSearchButton />}
               <ThemeToggle />
               <LanguageSwitcher />
               {!isSignedIn ? <SignInButton /> : <UserButton />}

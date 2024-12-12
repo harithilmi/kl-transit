@@ -86,6 +86,11 @@
   },
   "Common": {
     "back": "Balik",
-    "edit": "Sunting"
+    "edit": "Sunting",
+    "searchPlaceholder": "Cari laluan...",
+    "noResults": "Tidak ada laluan yang ditemui",
+    "searchResults": "Laluan",
+    "searchDialog": "Cari laluan bas atau destinasi",
+    "search": "Cari"
   }
 }
