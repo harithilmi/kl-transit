@@ -1,36 +1,12 @@
-import { Card, CardContent } from '@/app/components/ui/card'
-import { SearchButton } from '@/app/components/search-button'
+import { Card, CardContent } from '@/components/ui/card'
+import { SearchButton } from '@/components/search/search-button'
 import { Link } from '@/i8n/routing'
-
-import type { Route } from '@/types/routes'
 import { getTranslations } from 'next-intl/server'
+import routes from '@/data/v2/routes.json'
+import type { Route } from '@/types/routes'
 
-const baseUrl =
-  process.env.NODE_ENV === 'development'
-    ? 'http://localhost:3000'
-    : process.env.NEXT_PUBLIC_APP_URL
-
-export default async function RoutesPage({
-  searchParams,
-}: {
-  searchParams: { q?: string }
-}) {
-  //   const locale = await getLocale()
+export default async function RoutesPage() {
   const t = await getTranslations()
-  if (!baseUrl) throw new Error('NEXT_PUBLIC_APP_URL is not defined')
-  // eslint-disable-next-line @typescript-eslint/await-thenable
-  const { q } = await searchParams
-  const searchQuery = q ?? ''
-
-  const res = await fetch(
-    `${baseUrl}/api/routes${
-      searchQuery ? `?q=${encodeURIComponent(searchQuery)}` : ''
-    }`,
-    {
-      next: { revalidate: 3600 }, // Cache for 1 hour
-    },
-  )
-  const routes = (await res.json()) as Route[]
 
   return (
     <main className="min-h-screen bg-background px-2 py-8 text-foreground sm:px-4 sm:py-16">
@@ -52,24 +28,24 @@ export default async function RoutesPage({
 
         {/* Routes Grid */}
         <div className="grid w-full max-w-7xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {routes.map((route) => (
+          {(routes as Route[]).map((route) => (
             <Link
-              href={`/routes/${route.route_number}`}
-              key={route.route_id || `route-${route.route_number}`}
+              href={`/routes/${route.routeShortName}`}
+              key={route.routeShortName}
             >
               <Card className="h-24 transition-colors hover:bg-accent hover:text-accent-foreground active:ring-2 active:ring-ring active:ring-offset-2 active:ring-offset-background">
                 <CardContent className="flex h-full items-center p-4">
                   <div className="flex flex-col gap-1">
                     <div className="flex items-center gap-1">
                       <span className="font-semibold">
-                        {route.route_number}
+                        {route.routeShortName}
                       </span>
                       <span className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-sm font-medium text-muted-foreground">
-                        {t(`RoutesPage.routeTypes.${route.route_type}`)}
+                        {t(`RoutesPage.routeTypes.${route.networkId}`)}
                       </span>
                     </div>
                     <span className="text-sm text-muted-foreground text-pretty">
-                      {route.route_name}
+                      {route.routeLongName}
                     </span>
                   </div>
                 </CardContent>

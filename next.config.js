@@ -18,6 +18,9 @@ const config = {
 		ignoreDuringBuilds: true,
 	},
 	reactStrictMode: false,
+	images: {
+		domains: ['api.mapbox.com'],
+	},
 };
 
 export default withNextIntl(config);

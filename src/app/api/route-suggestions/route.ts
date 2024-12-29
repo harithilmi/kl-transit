@@ -1,7 +1,22 @@
 import { auth } from '@clerk/nextjs/server'
-import { NextRequest, NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+import { NextResponse } from 'next/server'
 import { db } from '@/server/db'
 import { routeSuggestions } from '@/server/db/schema'
+import { eq, and } from 'drizzle-orm'
+
+// Define the expected request body type
+interface RouteSuggestionRequest {
+  routeNumber: string
+  direction: 1 | 2
+  stops: Array<{
+    id: number
+    stopId: string
+    sequence: number
+    direction: 1 | 2
+    zone: number
+  }>
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -21,8 +36,8 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Parse request body
-    const body = await request.json()
+    // Parse request body with type safety
+    const body = (await request.json()) as RouteSuggestionRequest
     console.log('Server: Request body:', body)
 
     const { routeNumber, direction, stops } = body
@@ -61,31 +76,31 @@ export async function POST(request: NextRequest) {
         message: 'Route suggestion submitted successfully',
       })
     } catch (dbError) {
-      console.error('Database Error:', dbError)
+      const errorMessage =
+        dbError instanceof Error ? dbError.message : 'Unknown database error'
+      console.error('Database Error:', errorMessage)
       return NextResponse.json(
         {
           success: false,
           error: 'Failed to save suggestion',
-          details:
-            dbError instanceof Error
-              ? dbError.message
-              : 'Unknown database error',
+          details: errorMessage,
         },
         { status: 500 },
       )
     }
   } catch (error) {
-    console.error('Server Error:', {
+    const errorDetails = {
       name: error instanceof Error ? error.name : 'Unknown',
       message: error instanceof Error ? error.message : String(error),
       stack: error instanceof Error ? error.stack : undefined,
-    })
+    }
+    console.error('Server Error:', errorDetails)
 
     return NextResponse.json(
       {
         success: false,
         error: 'Internal server error',
-        details: error instanceof Error ? error.message : 'Unknown error',
+        details: errorDetails.message,
       },
       { status: 500 },
     )
@@ -98,24 +113,38 @@ export async function GET(request: Request) {
     const routeId = searchParams.get('routeId')
     const status = searchParams.get('status')
 
-    // Query database using Drizzle
-    const suggestions = await db
-      .select()
-      .from(routeSuggestions)
-      .where(routeId ? { routeNumber: routeId } : {})
-      .where(status ? { status: status } : {})
+    // Start with a base query
+    const baseQuery = db.select().from(routeSuggestions)
+
+    // Build conditions array
+    const conditions = []
+
+    if (routeId) {
+      conditions.push(eq(routeSuggestions.routeNumber, routeId))
+    }
+
+    if (status) {
+      conditions.push(eq(routeSuggestions.status, status))
+    }
+
+    // Apply all conditions at once
+    const suggestions = await (conditions.length > 0
+      ? baseQuery.where(and(...conditions))
+      : baseQuery)
 
     return NextResponse.json({
       success: true,
       data: suggestions,
     })
   } catch (error) {
-    console.error('API Error:', error)
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error'
+    console.error('API Error:', errorMessage)
     return NextResponse.json(
       {
         success: false,
         error: 'Failed to fetch suggestions',
-        details: error instanceof Error ? error.message : 'Unknown error',
+        details: errorMessage,
       },
       { status: 500 },
     )

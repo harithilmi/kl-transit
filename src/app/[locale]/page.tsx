@@ -1,9 +1,9 @@
-import { Card } from '@/app/components/ui/card'
+import { Card } from '@/components/ui/card'
 import { Link } from '@/i8n/routing'
 import { useTranslations } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
 import type { Metadata } from 'next'
-import { SearchButton } from '@/app/components/search-button'
+import { SearchButton } from '@/components/search/search-button'
 
 export const dynamic = 'force-dynamic'
 

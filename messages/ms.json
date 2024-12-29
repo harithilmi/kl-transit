@@ -14,6 +14,45 @@
       "description": "Panduan komprehensif untuk pengangkutan awam di Kuala Lumpur. Cari laluan bas, perhentian, dan maklumat perkhidmatan dengan mudah."
     }
   },
+  "nav": {
+    "home": "Utama",
+    "routes": "Laluan",
+    "stops": "Perhentian",
+    "edit": "Sunting",
+    "dashboard": "Papan Pemuka",
+    "map": "Peta",
+    "trips": "Perjalanan",
+    "trip": "Perjalanan",
+    "loading": "Memuat",
+    "route": "Laluan",
+    "searchRoute": "Cari Laluan",
+    "settings": "Tetapan",
+    "searchResult": "Hasil Carian",
+    "noResults": "Tidak ada laluan yang ditemui"
+  },
+  "RouteEdit": {
+    "title": "Edit Laluan {routeId}",
+    "tabs": {
+      "details": "Butiran",
+      "trips": "Perjalanan"
+    },
+    "details": {
+      "title": "Butiran Laluan",
+      "shortName": "Nama Pendek",
+      "longName": "Nama Panjang",
+      "operator": "Pengendali",
+      "network": "Rangkaian",
+      "type": "Jenis",
+      "colors": "Warna"
+    },
+    "trips": {
+      "title": "Perjalanan",
+      "add": "Tambah Perjalanan",
+      "direction": "Arah {direction}",
+      "deleteConfirm": "Adakah anda pasti mahu memadamkan perjalanan ini?",
+      "stopCount": "hentian"
+    }
+  },
   "RoutesPage": {
     "title": "Laluan Bas",
     "routes": "Laluan",
@@ -49,7 +88,11 @@
     },
     "meta": {
       "routeDescription": "Dapatkan informasi mengenai laluan bas"
-    }
+    },
+    "notFound": "Laluan tidak dijumpai",
+    "trips": "Perjalanan",
+    "direction": "Arah",
+    "to": "Ke"
   },
   "StopsPage": {
     "code": "Kod",
@@ -85,6 +128,7 @@
     "ms": "Bahasa Melayu"
   },
   "Common": {
+    "save": "Simpan",
     "back": "Balik",
     "edit": "Sunting",
     "searchPlaceholder": "Cari laluan...",

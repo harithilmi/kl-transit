@@ -1,4 +1,4 @@
-import { Card, CardContent } from '@/app/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 
 export default function LoadingRoutes() {
   // Create array for route card skeletons

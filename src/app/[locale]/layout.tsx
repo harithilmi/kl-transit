@@ -1,15 +1,16 @@
 import '@/styles/globals.css'
 import { Inter } from 'next/font/google'
 import { type Metadata } from 'next'
-import { ThemeProvider } from '@/app/components/theme-provider'
+import { ThemeProvider } from '@/components/layout/theme/theme-provider'
 import { notFound } from 'next/navigation';
 import { routing } from '@/i8n/routing';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
-import { Navbar } from '@/app/components/navbar';
+import { Navbar } from '@/components/layout/navbar/navbar';
 import { ClerkProvider } from '@clerk/nextjs';
+import { QueryProvider } from '@/lib/query-provider';
 import type { Locale } from '@/i8n/request';
-import { CommandMenu } from '@/app/components/command-dialog';
+import { CommandMenu } from '@/components/search/command-dialog';
 const inter = Inter({ subsets: ['latin'] })
 
 	
@@ -37,7 +38,7 @@ export default async function LocaleLayout({
 }) {
   // eslint-disable-next-line @typescript-eslint/await-thenable
   const { locale } = await params;
-  // Ensure that the incoming `locale` is valid
+
   if (!routing.locales.includes(locale as Locale)) {
     notFound();
   }
@@ -56,11 +57,13 @@ export default async function LocaleLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <NextIntlClientProvider messages={messages}>
-              <Navbar />
-              <CommandMenu />
-              {children}
-            </NextIntlClientProvider>
+            <QueryProvider>
+              <NextIntlClientProvider messages={messages}>
+                <Navbar />
+                <CommandMenu />
+                {children}
+              </NextIntlClientProvider>
+            </QueryProvider>
           </ThemeProvider>
         </ClerkProvider>
       </body>

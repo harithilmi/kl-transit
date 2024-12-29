@@ -14,6 +14,45 @@
       "description": "Your comprehensive guide to public transportation in Kuala Lumpur. Find bus routes, stops, and service information easily."
     }
   },
+  "nav": {
+    "home": "Home",
+    "routes": "Routes",
+    "stops": "Stops",
+    "edit": "Edit",
+    "dashboard": "Dashboard",
+    "map": "Map",
+    "trips": "Trips",
+    "trip": "Trip",
+    "loading": "Loading",
+    "route": "Route",
+    "searchRoute": "Search Route",
+    "settings": "Settings",
+    "searchResult": "Search Results",
+    "noResults": "No routes found"
+  },
+  "RouteEdit": {
+    "title": "Edit Route {routeId}",
+    "tabs": {
+      "details": "Details",
+      "trips": "Trips"
+    },
+    "details": {
+      "title": "Route Details",
+      "shortName": "Short Name",
+      "longName": "Long Name",
+      "operator": "Operator",
+      "network": "Network",
+      "type": "Type",
+      "colors": "Colors"
+    },
+    "trips": {
+      "title": "Trips",
+      "add": "Add Trip",
+      "direction": "Direction {direction}",
+      "deleteConfirm": "Are you sure you want to delete this trip?",
+      "stopCount": "stops "
+    }
+  },
   "RoutesPage": {
     "title": "Bus Routes",
     "routes": "Routes",
@@ -52,7 +91,11 @@
       "routeNotFound": "Route Not Found",
       "routeNotFoundDescription": "The requested route could not be found."
     },
-    "suggestEdit": "Suggest Edit"
+    "suggestEdit": "Suggest Edit",
+    "notFound": "Route not found",
+    "trips": "Trips",
+    "direction": "Direction",
+    "to": "To"
   },
   "StopsPage": {
     "code": "Code",
@@ -94,6 +137,8 @@
     "noResults": "No routes found",
     "searchResults": "Routes",
     "searchDialog": "Search for a bus route or destination",
-    "search": "Search"
+    "search": "Search",
+    "saving": "Saving...",
+    "save": "Save Changes"
   }
 }

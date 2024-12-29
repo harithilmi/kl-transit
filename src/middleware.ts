@@ -6,7 +6,7 @@ const handleI18nRouting = createMiddleware(routing)
 
 const isProtectedRoute = createRouteMatcher([
   '/:locale/dashboard(.*)',
-  '/:locale/routes/:routeId/edit',
+  '/:locale/routes/:routeId/edit(.*)',
 ])
 
 export default clerkMiddleware(async (auth, req) => {
@@ -33,7 +33,7 @@ export const config = {
     // Always run for API routes
     '/(api|trpc)(.*)',
     // Make sure protected routes are included
-    '/:locale/routes/:routeId/edit',
+    '/:locale/routes/:routeId/edit(.*)',
     '/:locale/dashboard(.*)',
   ],
 }

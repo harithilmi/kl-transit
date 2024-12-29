@@ -1,62 +1,18 @@
-import type { RouteDetails, RouteShape } from '@/types/routes'
+import type { Route } from '@/types/routes'
+import { getRoutes } from '@/lib/data/access'
 
-export async function fetchRouteData(
-  routeId: string,
-): Promise<RouteDetails | null> {
+export async function getRouteData(routeId: number): Promise<Route | null> {
   try {
-    const routes = await import('@/data/from_db/kl-transit_route.json')
-    const stops = await import('@/data/from_db/kl-transit_stop.json')
-    const services = await import('@/data/from_db/kl-transit_service.json')
-    const shapesData = await import(
-      '@/data/from_db/kl-transit_route_shape.json'
-    )
+    // Get data using access functions
+    const routes = await getRoutes()
 
-    const route = routes.default.find((r) => r.route_number === routeId)
+    // Get basic route info
+    const route = routes.find((r) => r.routeId === routeId)
     if (!route) return null
 
-    // Find all services for this route and attach stop data
-    const routeServices = services.default
-      .filter((service) => service.route_number === routeId)
-      .map((service) => {
-        const stop = stops.default.find((s) => s.stop_id === service.stop_id)
-        if (!stop) {
-          throw new Error(`Stop not found for service: ${service.stop_id}`)
-        }
-        return {
-          ...service,
-          stop,
-        }
-      })
-
-    // Get shape data for both directions
-    const shapes = shapesData.default as RouteShape[]
-    const routeShapes = shapes.filter((shape) => shape.route_number === routeId)
-    const direction1Shape =
-      routeShapes.find((shape) => shape.direction === 1)?.coordinates ?? []
-    const direction2Shape =
-      routeShapes.find((shape) => shape.direction === 2)?.coordinates ?? []
-
-    return {
-      route_id: route.id,
-      route_number: route.route_number,
-      route_name: route.route_name,
-      route_type: route.route_type,
-      services: routeServices,
-      shape: {
-        direction1: {
-          route_number: routeId,
-          direction: 1,
-          coordinates: direction1Shape,
-        },
-        direction2: {
-          route_number: routeId,
-          direction: 2,
-          coordinates: direction2Shape,
-        },
-      },
-    }
+    return route
   } catch (error) {
-    console.error('Error loading route:', error)
+    console.error('Error getting route data:', error)
     return null
   }
 }

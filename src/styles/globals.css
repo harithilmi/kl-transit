@@ -75,6 +75,64 @@
   z-index: 0 !important;
 }
 
+.leaflet-popup {
+  margin: 0 !important;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  gap: 0 !important;
+}
+
+.leaflet-popup-content p {
+  margin: 0 !important;
+}
+
+.leaflet-popup-close-button {
+  margin-right: 1rem !important;
+}
+
 .leaflet-popup-content-wrapper {
   border-radius: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.leaflet-popup-tip {
+  display: none !important;
+}
+
+.route-map-popup .mapboxgl-popup-close-button {
+  @apply text-muted-foreground hover:text-foreground p-4 text-lg;
+}
+
+.route-map-popup .mapboxgl-popup-tip {
+  @apply border-t-border;
+  /* border-top-color: var(--foreground) !important;
+  border-bottom-color: var(--foreground) !important;
+  border-left-color: var(--foreground) !important;
+  border-right-color: var(--foreground) !important; */
+}
+
+/* Leaflet tooltip theming */
+.leaflet-tooltip {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.leaflet-tooltip:before {
+  display: none !important;
+}
+
+.marker-serviced {
+  color: green;
+}
+
+.marker-serviced-selected {
+  color: darkgreen;
 }
