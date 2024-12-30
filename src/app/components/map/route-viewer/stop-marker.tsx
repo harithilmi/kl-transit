@@ -1,9 +1,9 @@
 'use client'
 
 import { Marker, Tooltip as LeafletTooltip } from 'react-leaflet'
+import type { Stop } from '@/types/routes'
 import L from 'leaflet'
 import { useMemo } from 'react'
-import { useStops } from '@/app/hooks/use-stop-data'
 
 const STOP_ICON = L.divIcon({
   html: `<svg width="24" height="24" viewBox="0 0 36.352 36.352" style="opacity: 1">
@@ -17,19 +17,14 @@ const STOP_ICON = L.divIcon({
 })
 
 interface StopMarkerProps {
-  stopId: number
+  stop: Stop
 }
 
-export function StopMarker({ stopId }: StopMarkerProps) {
-  const { data: stops } = useStops()
-  const stop = stops?.find((s) => s.stop_id === stopId)
-
+export function StopMarker({ stop }: StopMarkerProps) {
   const position = useMemo(
-    () => (stop ? ([stop.latitude, stop.longitude] as [number, number]) : null),
+    () => [stop.latitude, stop.longitude] as [number, number],
     [stop],
   )
-
-  if (!position || !stop) return null
 
   return (
     <Marker position={position} icon={STOP_ICON}>

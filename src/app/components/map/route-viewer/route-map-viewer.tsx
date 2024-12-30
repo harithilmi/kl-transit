@@ -30,7 +30,7 @@ export function RouteMapViewer({
     <MapContainer
       className="h-full w-full"
       center={[3.1412, 101.68653]}
-      zoom={13}
+      zoom={14}
       scrollWheelZoom
       style={{ height: '100%', width: '100%' }}
       minZoom={12}
