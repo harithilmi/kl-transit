@@ -33,6 +33,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
+export async function generateStaticParams() {
+  return routes.map((route) => ({
+    routeId: route.routeId.toString(),
+  }))
+}
+
 export default async function RoutePage({ params }: Props) {
   const t = await getTranslations()
   const routeId = parseInt(params.routeId)
