@@ -4,7 +4,7 @@ import type { RouteDetails, Stop } from '@/types/routes'
 import { MapContainer, ZoomControl } from 'react-leaflet'
 import type { LatLngExpression } from 'leaflet'
 import { useMemo } from 'react'
-import { StopEditorTileLayer } from '@/app/components/map/tile-layer'
+import { TileLayerComponent } from '@/app/components/map/tile-layer'
 import { RouteLines } from '@/app/components/map/route-editor/route-line'
 import { StopConnections } from '@/app/components/map/route-editor/stop-connections'
 
@@ -70,7 +70,7 @@ export default function RouteMapEdit({
         scrollWheelZoom
         zoomControl={false}
       >
-        <StopEditorTileLayer isSatellite={false} />
+        <TileLayerComponent isSatellite={false} />
         {routeData?.shape && <RouteLines shape={routeData.shape} />}
 
         <StopConnections stops={routeStopsWithSequence} />

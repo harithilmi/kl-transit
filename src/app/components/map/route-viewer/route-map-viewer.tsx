@@ -3,7 +3,7 @@
 import 'leaflet/dist/leaflet.css'
 import { MapContainer } from 'react-leaflet'
 import { FitBounds } from './bound-handler'
-import { StopEditorTileLayer } from '../tile-layer'
+import { TileLayerComponent } from '../tile-layer'
 import type { Route } from '@/types/routes'
 import { RouteLines } from './route-lines'
 import { StopsLayer } from './stops-layer'
@@ -36,7 +36,7 @@ export function RouteMapViewer({
       minZoom={12}
     >
       {allCoordinates && <FitBounds allCoordinates={allCoordinates} />}
-      <StopEditorTileLayer isSatellite={isSatellite} />
+      <TileLayerComponent isSatellite={isSatellite} />
       <RouteLines routeData={routeData} />
       <StopsLayer routeData={routeData} />
     </MapContainer>

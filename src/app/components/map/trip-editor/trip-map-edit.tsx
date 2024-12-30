@@ -13,7 +13,7 @@ import type { Stop, StopPairSegment } from '@/types/routes'
 import { Button } from '@/app/components/ui/button'
 import { ScrollArea } from '@/app/components/ui/scroll-area'
 import { MapPin, Eye, EyeOff } from 'lucide-react'
-import { StopEditorTileLayer } from '@/app/components/map/tile-layer'
+import { TileLayerComponent } from '@/app/components/map/tile-layer'
 import { toast } from 'sonner'
 import { SegmentLine } from './segment-line'
 import { StopConnections } from './stop-connections'
@@ -585,7 +585,7 @@ export function TripMapEdit({
           minZoom={10}
           maxZoom={18}
         >
-          <StopEditorTileLayer isSatellite={false} />
+          <TileLayerComponent isSatellite={false} />
 
           {/* Render stop connections */}
           <StopConnections

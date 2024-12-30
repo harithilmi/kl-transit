@@ -7,7 +7,7 @@ import type { NewStop } from './stop-editor-context'
 import { Button } from '@/components/ui/button'
 import { StopEditorProvider, useStopEditor } from './stop-editor-context'
 import { StopMarker } from './stop-marker'
-import { StopEditorTileLayer } from '../tile-layer'
+import { TileLayerComponent } from '../tile-layer'
 import { LayersIcon } from 'lucide-react'
 import {
   DropdownMenu,
@@ -226,5 +226,5 @@ function MapTileLayer({ isSatellite }: { isSatellite: boolean }) {
     map.setZoom(map.getZoom()) // Refresh zoom constraints
   }, [isSatellite, map])
 
-  return <StopEditorTileLayer isSatellite={isSatellite} />
+  return <TileLayerComponent isSatellite={isSatellite} />
 }
