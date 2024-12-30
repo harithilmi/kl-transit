@@ -9,7 +9,7 @@ import {
 } from 'react-leaflet'
 import L from 'leaflet'
 import { useMemo, useState, useEffect } from 'react'
-import type { Stop, StopPairSegment } from '@/types/routes'
+import type { Stop, StopPairSegment, Trip } from '@/types/routes'
 import { Button } from '@/app/components/ui/button'
 import { ScrollArea } from '@/app/components/ui/scroll-area'
 import { MapPin, Eye, EyeOff } from 'lucide-react'
@@ -18,6 +18,7 @@ import { toast } from 'sonner'
 import { SegmentLine } from './segment-line'
 import { StopConnections } from './stop-connections'
 import { useTripEditor } from './trip-editor-context'
+import { TripList } from './trip-list'
 
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-arrowheads'
@@ -149,6 +150,9 @@ function StopTooltip({
 
 interface TripMapEditProps {
   stops: Stop[]
+  routeId: number
+  trips: Trip[]
+  onDeleteTrip: (tripId: number) => void
   onSegmentsChange?: (segments: StopPairSegment[]) => void
   onStopSequenceChange?: (
     stops: Array<{ stopId: number; fareZone: number }>,
@@ -159,6 +163,9 @@ interface TripMapEditProps {
 
 export function TripMapEdit({
   stops,
+  routeId,
+  trips,
+  onDeleteTrip,
   onSegmentsChange,
   onStopSequenceChange,
   allStops = [],
@@ -431,148 +438,151 @@ export function TripMapEdit({
   return (
     <div className="flex flex-col md:flex-row md:gap-4 h-[800px]">
       {/* Sidebar */}
-      <div className="h-[400px] md:h-full">
+      <div className="h-[400px] md:h-full md:w-[400px] flex flex-col gap-4">
+
         {/* Stop List */}
-        <div className="rounded-lg border h-full">
-          <div className="flex items-center justify-between border-b p-4">
-            <div>
-              <h2 className="font-semibold">Stops</h2>
-              <p className="text-sm text-muted-foreground">
-                {stops.length} stops in sequence
-              </p>
+        <div className="h-1/2">
+          <div className="rounded-lg border h-full">
+            <div className="flex items-center justify-between border-b p-4">
+              <div>
+                <h2 className="font-semibold">Stops</h2>
+                <p className="text-sm text-muted-foreground">
+                  {stops.length} stops in sequence
+                </p>
+              </div>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setShowNonSequenceStops(!showNonSequenceStops)}
+                title={
+                  showNonSequenceStops
+                    ? 'Hide non-sequence stops'
+                    : 'Show non-sequence stops'
+                }
+              >
+                {showNonSequenceStops ? (
+                  <EyeOff className="h-4 w-4" />
+                ) : (
+                  <Eye className="h-4 w-4" />
+                )}
+              </Button>
             </div>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => setShowNonSequenceStops(!showNonSequenceStops)}
-              title={
-                showNonSequenceStops
-                  ? 'Hide non-sequence stops'
-                  : 'Show non-sequence stops'
-              }
-            >
-              {showNonSequenceStops ? (
-                <EyeOff className="h-4 w-4" />
-              ) : (
-                <Eye className="h-4 w-4" />
-              )}
-            </Button>
-          </div>
-          <ScrollArea className="h-[calc(100vh-280px)]">
-            <div className="p-4 space-y-2">
-              {stops.length === 0 ? (
-                <div className="flex flex-col items-center justify-center p-8 text-center text-muted-foreground">
-                  <p>No stops found for this trip.</p>
-                  <p className="text-sm">
-                    Click on stops on the map to add them to the sequence
-                  </p>
-                </div>
-              ) : (
-                stops.map((stop, index) => {
-                  const nextStop =
-                    index < stops.length - 1 ? stops[index + 1] : null
-                  const hasSegmentWithNext = nextStop
-                    ? segments.some(
-                        (segment: StopPairSegment) =>
-                          (segment.fromStopId === stop.stop_id &&
-                            segment.toStopId === nextStop.stop_id) ||
-                          (segment.fromStopId === nextStop.stop_id &&
-                            segment.toStopId === stop.stop_id),
-                      )
-                    : false
+            <ScrollArea className="h-[calc(50vh-100px)]">
+              <div className="p-4 space-y-2">
+                {stops.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center p-8 text-center text-muted-foreground">
+                    <p>No stops found for this trip.</p>
+                    <p className="text-sm">
+                      Click on stops on the map to add them to the sequence
+                    </p>
+                  </div>
+                ) : (
+                  stops.map((stop, index) => {
+                    const nextStop =
+                      index < stops.length - 1 ? stops[index + 1] : null
+                    const hasSegmentWithNext = nextStop
+                      ? segments.some(
+                          (segment: StopPairSegment) =>
+                            (segment.fromStopId === stop.stop_id &&
+                              segment.toStopId === nextStop.stop_id) ||
+                            (segment.fromStopId === nextStop.stop_id &&
+                              segment.toStopId === stop.stop_id),
+                        )
+                      : false
 
-                  return (
-                    <div
-                      key={`${stop.stop_id}-${index}`}
-                      className="group rounded-lg border bg-card p-3"
-                    >
-                      <div className="flex items-start gap-2">
-                        <div className="flex-1 space-y-1">
-                          <div className="flex items-center gap-2">
-                            <div className="flex h-5 min-w-[20px] items-center justify-center rounded bg-primary px-1.5 text-xs font-medium text-primary-foreground">
-                              {index + 1}
+                    return (
+                      <div
+                        key={`${stop.stop_id}-${index}`}
+                        className="group rounded-lg border bg-card p-3"
+                      >
+                        <div className="flex items-start gap-2">
+                          <div className="flex-1 space-y-1">
+                            <div className="flex items-center gap-2">
+                              <div className="flex h-5 min-w-[20px] items-center justify-center rounded bg-primary px-1.5 text-xs font-medium text-primary-foreground">
+                                {index + 1}
+                              </div>
+                              <h3 className="font-medium leading-none">
+                                {stop.stop_name}
+                              </h3>
                             </div>
-                            <h3 className="font-medium leading-none">
-                              {stop.stop_name}
-                            </h3>
-                          </div>
-                          {stop.street_name && (
-                            <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                              <MapPin className="h-3 w-3" />
-                              {stop.street_name}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Connection to next stop */}
-                      {nextStop && (
-                        <div className="mt-2 space-y-2">
-                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                            <div className="h-px flex-1 bg-border" />
-                            <span>
-                              {hasSegmentWithNext ? (
-                                <span className="text-green-600">
-                                  Route shape added
-                                </span>
-                              ) : (
-                                <span className="text-yellow-600">
-                                  No route shape
-                                </span>
-                              )}
-                            </span>
-                            <div className="h-px flex-1 bg-border" />
-                          </div>
-
-                          <div className="flex items-center gap-2">
-                            {!hasSegmentWithNext ? (
-                              <Button
-                                size="sm"
-                                variant="outline"
-                                className="w-full"
-                                onClick={() => {
-                                  if (!nextStop) return
-                                  void handleGenerateShape(stop, nextStop)
-                                }}
-                              >
-                                Generate route shape
-                              </Button>
-                            ) : (
-                              <div className="flex w-full gap-2">
-                                <Button
-                                  size="sm"
-                                  variant="outline"
-                                  className="flex-1"
-                                  onClick={() =>
-                                    handleRemoveSegment(
-                                      stop.stop_id,
-                                      nextStop.stop_id,
-                                    )
-                                  }
-                                >
-                                  Remove shape
-                                </Button>
-                                <Button
-                                  size="sm"
-                                  variant="outline"
-                                  className="flex-1"
-                                  onClick={() => {
-                                    // TODO: Add shape editing
-                                  }}
-                                >
-                                  Edit shape
-                                </Button>
+                            {stop.street_name && (
+                              <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                                <MapPin className="h-3 w-3" />
+                                {stop.street_name}
                               </div>
                             )}
                           </div>
                         </div>
-                      )}
-                    </div>
-                  )
-                })
-              )}
-            </div>
-          </ScrollArea>
+
+                        {/* Connection to next stop */}
+                        {nextStop && (
+                          <div className="mt-2 space-y-2">
+                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                              <div className="h-px flex-1 bg-border" />
+                              <span>
+                                {hasSegmentWithNext ? (
+                                  <span className="text-green-600">
+                                    Route shape added
+                                  </span>
+                                ) : (
+                                  <span className="text-yellow-600">
+                                    No route shape
+                                  </span>
+                                )}
+                              </span>
+                              <div className="h-px flex-1 bg-border" />
+                            </div>
+
+                            <div className="flex items-center gap-2">
+                              {!hasSegmentWithNext ? (
+                                <Button
+                                  size="sm"
+                                  variant="outline"
+                                  className="w-full"
+                                  onClick={() => {
+                                    if (!nextStop) return
+                                    void handleGenerateShape(stop, nextStop)
+                                  }}
+                                >
+                                  Generate route shape
+                                </Button>
+                              ) : (
+                                <div className="flex w-full gap-2">
+                                  <Button
+                                    size="sm"
+                                    variant="outline"
+                                    className="flex-1"
+                                    onClick={() =>
+                                      handleRemoveSegment(
+                                        stop.stop_id,
+                                        nextStop.stop_id,
+                                      )
+                                    }
+                                  >
+                                    Remove shape
+                                  </Button>
+                                  <Button
+                                    size="sm"
+                                    variant="outline"
+                                    className="flex-1"
+                                    onClick={() => {
+                                      // TODO: Add shape editing
+                                    }}
+                                  >
+                                    Edit shape
+                                  </Button>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })
+                )}
+              </div>
+            </ScrollArea>
+          </div>
         </div>
       </div>
 

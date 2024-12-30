@@ -30,13 +30,7 @@ import {
 } from '@/app/components/ui/popover'
 import { cn } from '@/lib/utils'
 import { Link } from '@/i8n/routing'
-import {
-  PencilIcon,
-  PlusIcon,
-  TrashIcon,
-  ArrowLeft,
-  ArrowRight,
-} from 'lucide-react'
+import { PlusIcon } from 'lucide-react'
 
 interface ClientPageProps {
   routeData: Route
@@ -237,7 +231,7 @@ export default function ClientPage({ routeData }: ClientPageProps) {
 
         <TabsContent value="trips" className="space-y-4">
           <Card className="p-6">
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex justify-between items-center">
               <h2 className="text-xl font-semibold">
                 {t('RouteEdit.trips.title')}
               </h2>
@@ -247,45 +241,6 @@ export default function ClientPage({ routeData }: ClientPageProps) {
                   {t('RouteEdit.trips.add')}
                 </Link>
               </Button>
-            </div>
-            <div className="grid gap-4">
-              {routeData.trips.map((trip) => (
-                <Card key={trip.tripId} className="p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      {trip.direction === 0 ? (
-                        <ArrowRight className="h-4 w-4" />
-                      ) : (
-                        <ArrowLeft className="h-4 w-4" />
-                      )}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-medium">{trip.headsign}</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {t('RouteEdit.trips.stopCount', {
-                          count: trip.stopDetails.length,
-                        })}
-                      </p>
-                    </div>
-                    <div className="flex gap-2">
-                      <Button variant="outline" size="sm" asChild>
-                        <Link
-                          href={`/routes/${routeData.routeId}/edit/trips/${trip.tripId}`}
-                        >
-                          <PencilIcon className="h-4 w-4" />
-                        </Link>
-                      </Button>
-                      <Button
-                        variant="destructive"
-                        size="sm"
-                        onClick={() => handleDeleteTrip(trip.tripId)}
-                      >
-                        <TrashIcon className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                </Card>
-              ))}
             </div>
           </Card>
         </TabsContent>

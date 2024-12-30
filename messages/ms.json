@@ -138,6 +138,7 @@
     "noResults": "Tidak ada laluan yang ditemui",
     "searchResults": "Laluan",
     "searchDialog": "Cari laluan bas atau destinasi",
-    "search": "Cari"
+    "search": "Cari",
+    "loading": "Memuat..."
   }
 }

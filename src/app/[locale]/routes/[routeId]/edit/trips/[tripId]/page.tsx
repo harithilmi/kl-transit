@@ -17,7 +17,7 @@ export default function Page({ params }: PageProps) {
   return (
     <main className="relative h-[calc(100dvh-65px)] w-full bg-background overflow-hidden">
       <div className="flex h-full">
-        <EditorSidebar routeId={params.routeId} tripId={params.tripId} />
+        <EditorSidebar routeId={params.routeId}/>
         <div className="flex-1">
           <TripEditorProvider>
             <TripNavigationGuard />

@@ -50,10 +50,18 @@
     },
     "trips": {
       "title": "Trips",
+      "description": "Manage trips for this route",
       "add": "Add Trip",
-      "direction": "Direction {direction}",
+      "empty": "No trips found",
+      "stopCount": "{count} stops",
       "deleteConfirm": "Are you sure you want to delete this trip?",
-      "stopCount": "stops "
+      "deleteSuccess": "Trip deleted successfully",
+      "deleteFailed": "Failed to delete trip"
+    },
+    "errors": {
+      "fetchFailed": "Failed to load route data",
+      "notFound": "Route not found",
+      "selectRoute": "Please select a route first"
     }
   },
   "RoutesPage": {
@@ -126,8 +134,11 @@
     "required": "Required"
   },
   "ErrorPage": {
+    "title": "Something went wrong",
     "routeNotFound": "Route Not Found",
-    "routeNotFoundDescription": "The requested route could not be found."
+    "routeNotFoundDescription": "The requested route could not be found.",
+    "tryAgain": "Try Again",
+    "refresh": "Refresh Page"
   },
   "Languages": {
     "en": "English",
@@ -142,6 +153,11 @@
     "searchDialog": "Search for a bus route or destination",
     "search": "Search",
     "saving": "Saving...",
-    "save": "Save Changes"
+    "save": "Save Changes",
+    "loading": "Loading..."
+  },
+  "TripSelector": {
+    "title": "Select Trip",
+    "description": "Select a trip to edit or create a new one"
   }
 }

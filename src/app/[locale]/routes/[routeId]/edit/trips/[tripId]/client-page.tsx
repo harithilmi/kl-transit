@@ -295,6 +295,24 @@ export default function TripEditorContent({ params }: TripEditorPageProps) {
         allStops={allStops ?? []}
         onSegmentsChange={setPendingSegments}
         onStopSequenceChange={setPendingStopDetails}
+        trips={routeData?.trips ?? []}
+        routeId={Number(params.routeId)}
+        onDeleteTrip={async (tripId) => {
+          try {
+            const response = await fetch(`/api/trips/${tripId}`, {
+              method: 'DELETE',
+            })
+            if (!response.ok) {
+              throw new Error('Failed to delete trip')
+            }
+            toast.success('Trip deleted successfully')
+            // Refresh the page to show updated trips
+            window.location.reload()
+          } catch (error) {
+            console.error('Error deleting trip:', error)
+            toast.error('Failed to delete trip')
+          }
+        }}
       />
 
       <AlertDialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
