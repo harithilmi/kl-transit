@@ -30,7 +30,7 @@ export default async function RoutesPage() {
         <div className="grid w-full max-w-7xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {(routes as Route[]).map((route) => (
             <Link
-              href={`/routes/${route.routeShortName}`}
+              href={`/routes/${route.routeId}`}
               key={route.routeShortName}
             >
               <Card className="h-24 transition-colors hover:bg-accent hover:text-accent-foreground active:ring-2 active:ring-ring active:ring-offset-2 active:ring-offset-background">
