@@ -9,6 +9,8 @@ import { StopEditorProvider, useStopEditor } from './stop-editor-context'
 import { StopMarker } from './stop-marker'
 import { TileLayerComponent } from '../tile-layer'
 import { LayersIcon } from 'lucide-react'
+import { useAuth } from '@clerk/nextjs'
+import { useRouter } from 'next/navigation'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -129,6 +131,19 @@ function AddStopLayer() {
 }
 
 export default function StopMapEdit({ stops }: { stops: Stop[] }) {
+  const { isLoaded, userId } = useAuth()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (isLoaded && !userId) {
+      router.push('/sign-in')
+    }
+  }, [isLoaded, userId, router])
+
+  if (!isLoaded || !userId) {
+    return null
+  }
+
   return (
     <StopEditorProvider>
       <NavigationGuard />

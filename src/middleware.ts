@@ -7,6 +7,7 @@ const handleI18nRouting = createMiddleware(routing)
 const isProtectedRoute = createRouteMatcher([
   '/:locale/dashboard(.*)',
   '/:locale/routes/:routeId/edit(.*)',
+  '/:locale/stops/edit(.*)',
 ])
 
 export default clerkMiddleware(async (auth, req) => {
@@ -35,5 +36,6 @@ export const config = {
     // Make sure protected routes are included
     '/:locale/routes/:routeId/edit(.*)',
     '/:locale/dashboard(.*)',
+    '/:locale/stops/edit(.*)',
   ],
 }

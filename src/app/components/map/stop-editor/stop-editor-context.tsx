@@ -1,6 +1,8 @@
 'use client'
 
 import { createContext, useContext, useState } from 'react'
+import { useAuth } from '@clerk/nextjs'
+import { toast } from 'sonner'
 
 export interface StopFormValues {
   stop_code?: string
@@ -64,6 +66,7 @@ export function StopEditorProvider({
 }: {
   children: React.ReactNode
 }) {
+  const { userId } = useAuth()
   const [newStops, setNewStops] = useState<NewStop[]>([])
   const [editedStops, setEditedStops] = useState<Map<number, StopFormValues>>(
     new Map(),
@@ -72,15 +75,21 @@ export function StopEditorProvider({
   const [selectedStopId, setSelectedStopId] = useState<number | null>(null)
   const [isAddingStop, setIsAddingStop] = useState(false)
   const [isSatellite, setIsSatellite] = useState(false)
-  const [isEditMenuOpen, setIsEditMenuOpen] = useState(true)
+  const [isEditMenuOpen, setIsEditMenuOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false)
 
-  // Compute if there are any unsaved changes
-  const hasUnsavedChanges =
-    newStops.length > 0 || editedStops.size > 0 || deletedStops.size > 0
+  const checkAuth = () => {
+    if (!userId) {
+      toast.error('You must be logged in to perform this action')
+      return false
+    }
+    return true
+  }
 
-  // Handlers implementation
   const handleStopEdit = (stopId: number, values: StopFormValues) => {
+    if (!checkAuth()) return
+
     const existingValues = editedStops.get(stopId) ?? {
       rapid_stop_id: null,
       mrt_stop_id: null,
@@ -126,6 +135,8 @@ export function StopEditorProvider({
   }
 
   const handleStopDelete = (stopId: number) => {
+    if (!checkAuth()) return
+
     setDeletedStops(new Set(deletedStops.add(stopId)))
     setSelectedStopId(null)
   }
@@ -137,6 +148,8 @@ export function StopEditorProvider({
   }
 
   const handleNewStopAdd = (stop: NewStop) => {
+    if (!checkAuth()) return
+
     setNewStops([...newStops, stop])
     setIsAddingStop(false)
     setSelectedStopId(stop.stop_id)
@@ -161,6 +174,8 @@ export function StopEditorProvider({
   }
 
   const handleSubmitChanges = async () => {
+    if (!checkAuth()) return
+
     try {
       setIsSubmitting(true)
 
