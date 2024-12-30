@@ -12,10 +12,11 @@ import { getStops } from '@/lib/data/access'
 type Props = {
   params: { locale: string; routeId: string }
 }
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations()
-  const routeId = parseInt(params.routeId)
+  // eslint-disable-next-line @typescript-eslint/await-thenable
+  const { routeId: routeIdStr } = await params
+  const routeId = parseInt(routeIdStr)
   const routeData = routes.find((r) => r.routeId === routeId)
 
   if (!routeData) {

@@ -1,9 +1,10 @@
 'use client'
 
-import { Marker, Popup } from 'react-leaflet'
+import { Marker, Tooltip, Popup } from 'react-leaflet'
 import L from 'leaflet'
 import { useMemo } from 'react'
 import { useStops } from '@/app/hooks/use-stop-data'
+import { Badge } from '@/components/ui/badge'
 
 const STOP_ICON = L.divIcon({
   className: 'bg-transparent',
@@ -29,21 +30,25 @@ export function StopMarker({ stopId }: StopMarkerProps) {
 
   return (
     <Marker position={position} icon={STOP_ICON}>
-      <Popup>
-        <div className="flex flex-col gap-1">
-          {stop.stop_code && (
-            <span className="text-sm text-muted-foreground">
-              {stop.stop_code}
-            </span>
-          )}
-          <span className="font-medium">{stop.stop_name}</span>
-          {stop.street_name && (
-            <span className="text-sm text-muted-foreground">
-              {stop.street_name}
-            </span>
-          )}
+      <Tooltip direction="top">
+        <div className="flex">
+          <div className="flex flex-col bg-white p-2 rounded-md">
+            <div className="flex justify-start gap-1">
+              {stop.stop_code && (
+                <Badge variant="secondary" className="shrink-0">
+                  {stop.stop_code}
+                </Badge>
+              )}
+            </div>
+            <span className="font-medium">{stop.stop_name}</span>
+            {stop.street_name && (
+              <span className="text-muted-foreground">
+                {stop.street_name}
+              </span>
+            )}
+          </div>
         </div>
-      </Popup>
+      </Tooltip>
     </Marker>
   )
 }

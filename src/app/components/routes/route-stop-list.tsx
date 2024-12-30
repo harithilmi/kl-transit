@@ -37,11 +37,9 @@ function StopList({ stops }: { stops: (Stop | null)[] }) {
               )}
             </div>
             <div className="flex flex-col min-w-0">
-              <span className="text-sm font-medium truncate">
-                {stop.stop_name}
-              </span>
+              <span className="font-medium truncate">{stop.stop_name}</span>
               {stop.street_name && (
-                <span className="text-sm text-muted-foreground truncate">
+                <span className="text-muted-foreground truncate">
                   {stop.street_name}
                 </span>
               )}
