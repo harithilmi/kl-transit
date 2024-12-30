@@ -1,3 +1,5 @@
+'use client'
+
 import { createContext, useContext, useState, useCallback } from 'react'
 import type { StopPairSegment } from '@/types/routes'
 
@@ -6,10 +8,10 @@ interface TripEditorContextType {
   setHasUnsavedChanges: (value: boolean) => void
   pendingStopDetails: Array<{ stopId: number; fareZone: number }>
   setPendingStopDetails: (
-    stops: Array<{ stopId: number; fareZone: number }>,
+    value: Array<{ stopId: number; fareZone: number }>,
   ) => void
   pendingSegments: StopPairSegment[]
-  setPendingSegments: (segments: StopPairSegment[]) => void
+  setPendingSegments: (value: StopPairSegment[]) => void
   isSaving: boolean
   setIsSaving: (value: boolean) => void
 }
@@ -22,11 +24,11 @@ export function TripEditorProvider({
   children: React.ReactNode
 }) {
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false)
-  const [isSaving, setIsSaving] = useState(false)
   const [pendingStopDetails, setPendingStopDetails] = useState<
     Array<{ stopId: number; fareZone: number }>
   >([])
   const [pendingSegments, setPendingSegments] = useState<StopPairSegment[]>([])
+  const [isSaving, setIsSaving] = useState(false)
 
   return (
     <TripEditorContext.Provider

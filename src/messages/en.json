@@ -1,0 +1,7 @@
+{
+  "nav": {
+    "routeEditor": "Route Editor",
+    "tripEditor": "Trip Editor",
+    "stopEditor": "Stop Editor"
+  }
+}

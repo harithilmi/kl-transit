@@ -28,7 +28,10 @@
     "searchRoute": "Search Route",
     "settings": "Settings",
     "searchResult": "Search Results",
-    "noResults": "No routes found"
+    "noResults": "No routes found",
+    "tripEditor": "Trip Editor",
+    "stopEditor": "Stop Editor",
+    "routeEditor": "Route Editor"
   },
   "RouteEdit": {
     "title": "Edit Route {routeId}",

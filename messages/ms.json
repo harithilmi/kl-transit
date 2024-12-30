@@ -28,7 +28,10 @@
     "searchRoute": "Cari Laluan",
     "settings": "Tetapan",
     "searchResult": "Hasil Carian",
-    "noResults": "Tidak ada laluan yang ditemui"
+    "noResults": "Tidak ada laluan yang ditemui",
+    "tripEditor": "Suntingan Perjalanan",
+    "stopEditor": "Suntingan Hentian",
+    "routeEditor": "Suntingan Laluan"
   },
   "RouteEdit": {
     "title": "Edit Laluan {routeId}",
