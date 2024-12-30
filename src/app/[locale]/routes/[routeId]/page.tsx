@@ -1,17 +1,17 @@
 import { Card } from '@/components/ui/card'
 import { notFound } from 'next/navigation'
 import { type Metadata } from 'next'
-import { MapsContainer } from './maps-container'
 import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i8n/routing'
 import type { Route } from '@/types/routes'
-import { RouteStopList } from '@/components/routes/route-stop-list'
 import routes from '@/data/v2/routes.json'
 import { getStops } from '@/lib/data/access'
+import { RouteViewer } from './route-viewer'
 
 type Props = {
   params: { locale: string; routeId: string }
 }
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations()
   // eslint-disable-next-line @typescript-eslint/await-thenable
@@ -87,15 +87,7 @@ export default async function RoutePage({ params }: Props) {
         </div>
 
         {/* Map and Route Stop List Container */}
-        <div className="flex w-full max-w-xl lg:max-w-none flex-col lg:flex-row gap-2">
-          {/* Maps Container */}
-          <MapsContainer routeData={routeData as Route} />
-
-          {/* Route Stop List */}
-          <Card className="w-full lg:w-[400px] h-96 lg:h-[calc(100vh-20rem)] overflow-hidden">
-            <RouteStopList routeData={routeData as Route} stops={stops} />
-          </Card>
-        </div>
+        <RouteViewer routeData={routeData as Route} stops={stops} />
       </div>
     </main>
   )

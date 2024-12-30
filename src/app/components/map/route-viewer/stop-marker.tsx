@@ -1,33 +1,45 @@
 'use client'
 
-import { Marker, Tooltip as LeafletTooltip } from 'react-leaflet'
-import type { Stop } from '@/types/routes'
-import L from 'leaflet'
+import { Marker, Tooltip as LeafletTooltip, useMap } from 'react-leaflet'
 import { useMemo } from 'react'
-
-const STOP_ICON = L.divIcon({
-  html: `<svg width="24" height="24" viewBox="0 0 36.352 36.352" style="opacity: 1">
-    <path d="M36.345 33.122C36.345 34.906 34.9 36.352 33.116 36.352L3.224 36.352C1.44 36.352 0 34.906 0 33.122L0 3.237C0 1.446 1.44 0 3.224 0L33.116 0C34.9 0 36.345 1.446 36.345 3.237L36.345 33.122Z" fill="#f7a11a"/>
-    <path d="M24.7482 28.0342L11.6038 28.0342L11.6038 29.3487C11.6038 30.0746 11.0154 30.6631 10.2894 30.6631L8.97499 30.6631C8.24905 30.6631 7.66056 30.0746 7.66056 29.3487L7.66056 28.0342L6.34613 28.0342L6.34613 17.5188L5.03169 17.5188L5.03169 12.2611L6.34613 12.2611L6.34613 8.31777C6.34613 6.86589 7.52311 5.68891 8.97499 5.68891L27.377 5.68891C28.8289 5.68891 30.0059 6.86589 30.0059 8.31777L30.0059 12.2611L31.3203 12.2611L31.3203 17.5188L30.0059 17.5188L30.0059 28.0342L28.6914 28.0342L28.6914 29.3487C28.6914 30.0746 28.103 30.6631 27.377 30.6631L26.0626 30.6631C25.3366 30.6631 24.7482 30.0746 24.7482 29.3487L24.7482 28.0342ZM8.97499 8.31777L8.97499 20.1476L27.377 20.1476L27.377 8.31777L8.97499 8.31777ZM8.97499 22.7765L8.97499 25.4054L14.2327 25.4054L14.2327 22.7765L8.97499 22.7765ZM22.1193 22.7765L22.1193 25.4054L27.377 25.4054L27.377 22.7765L22.1193 22.7765Z" fill="#ffffff"/>
-  </svg>`,
-  className: '',
-  iconSize: [24, 24],
-  iconAnchor: [12, 12],
-  popupAnchor: [0, -12],
-})
+import type { Stop } from '@/types/routes'
+import { STOP_ICON, SELECTED_STOP_ICON } from '@/lib/map-utils'
+import { useSelectedStop } from './selected-stop-context'
+import type { LatLngTuple } from 'leaflet'
 
 interface StopMarkerProps {
   stop: Stop
 }
 
 export function StopMarker({ stop }: StopMarkerProps) {
+  const { selectedStop, setSelectedStop } = useSelectedStop()
+  const map = useMap()
+
   const position = useMemo(
-    () => [stop.latitude, stop.longitude] as [number, number],
+    () => [stop.latitude, stop.longitude] as LatLngTuple,
     [stop],
   )
 
+  const isSelected = selectedStop?.stop_id === stop.stop_id
+
+  const handleClick = () => {
+    if (!isSelected) {
+      map.setView(position, 16, {
+        animate: true,
+        duration: 1,
+      })
+    }
+    setSelectedStop(isSelected ? null : stop)
+  }
+
   return (
-    <Marker position={position} icon={STOP_ICON}>
+    <Marker
+      position={position}
+      icon={isSelected ? SELECTED_STOP_ICON : STOP_ICON}
+      eventHandlers={{
+        click: handleClick,
+      }}
+    >
       <LeafletTooltip
         direction="top"
         offset={[0, -15]}

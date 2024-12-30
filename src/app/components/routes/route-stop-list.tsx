@@ -7,9 +7,12 @@ import {
   TabsList,
   TabsTrigger,
 } from '@/app/components/ui/tabs'
-import { useMemo } from 'react'
+import { useMemo, useRef, useEffect, useState } from 'react'
 import type { Route, Stop } from '@/types/routes'
 import { useTranslations } from 'next-intl'
+import { useSelectedStop } from '@/app/components/map/route-viewer/selected-stop-context'
+import { useMapContext } from '@/app/components/map/route-viewer/map-context'
+import { cn } from '@/lib/utils'
 
 function useStopDetails(stops: Stop[], stopIds: number[]): (Stop | null)[] {
   return useMemo(
@@ -20,18 +23,54 @@ function useStopDetails(stops: Stop[], stopIds: number[]): (Stop | null)[] {
 }
 
 function StopList({ stops }: { stops: (Stop | null)[] }) {
+  const { selectedStop, setSelectedStop } = useSelectedStop()
+  const { map } = useMapContext()
+  const selectedRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (selectedStop && selectedRef.current) {
+      selectedRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      })
+    }
+  }, [selectedStop])
+
+  const handleStopClick = (stop: Stop) => {
+    const isSelected = selectedStop?.stop_id === stop.stop_id
+    if (!isSelected && map) {
+      map.setView([stop.latitude, stop.longitude], 16, {
+        animate: true,
+        duration: 1,
+      })
+    }
+    setSelectedStop(isSelected ? null : stop)
+  }
+
   return (
     <div className="flex flex-col gap-2">
       {stops.map((stop, index) => {
         if (!stop) return null
+        const isSelected = selectedStop?.stop_id === stop.stop_id
+
         return (
           <div
             key={`${stop.stop_id}-${index}`}
-            className="flex flex-col gap-1 p-2 hover:bg-accent/50 rounded-lg transition-colors duration-300"
+            ref={isSelected ? selectedRef : null}
+            className={cn(
+              'flex flex-col gap-1 p-2 rounded-lg transition-colors duration-300 cursor-pointer',
+              isSelected
+                ? 'bg-primary/10 hover:bg-primary/20'
+                : 'hover:bg-accent/50',
+            )}
+            onClick={() => handleStopClick(stop)}
           >
             <div className="flex justify-start">
               {stop.stop_code && (
-                <Badge variant="secondary" className="shrink-0">
+                <Badge
+                  variant={isSelected ? 'default' : 'secondary'}
+                  className="shrink-0"
+                >
                   {stop.stop_code}
                 </Badge>
               )}
@@ -59,6 +98,10 @@ export function RouteStopList({
   stops: Stop[]
 }) {
   const t = useTranslations('RoutesPage')
+  const { selectedStop } = useSelectedStop()
+  const [activeTab, setActiveTab] = useState('direction0')
+  const lastUserSelectedTabRef = useRef(activeTab)
+
   const direction0Trip = routeData.trips.find((t) => t.direction === 0)
   const direction1Trip = routeData.trips.find((t) => t.direction === 1)
 
@@ -70,6 +113,39 @@ export function RouteStopList({
     stops,
     direction1Trip?.stopDetails.map((s) => s.stopId) ?? [],
   )
+
+  // Handle manual tab changes
+  const handleTabChange = (value: string) => {
+    setActiveTab(value)
+    lastUserSelectedTabRef.current = value
+  }
+
+  // Switch to the correct tab only when a stop is selected from the map
+  useEffect(() => {
+    if (!selectedStop) {
+      // When deselecting, go back to the last user-selected tab
+      setActiveTab(lastUserSelectedTabRef.current)
+      return
+    }
+
+    const currentTabStops =
+      activeTab === 'direction0' ? direction0Stops : direction1Stops
+    const isStopInCurrentTab = currentTabStops.some(
+      (stop) => stop?.stop_id === selectedStop.stop_id,
+    )
+
+    // Only switch tabs if the selected stop is not in the current tab
+    if (!isStopInCurrentTab) {
+      const direction0HasStop = direction0Stops.some(
+        (stop) => stop?.stop_id === selectedStop.stop_id,
+      )
+      if (direction0HasStop) {
+        setActiveTab('direction0')
+      } else {
+        setActiveTab('direction1')
+      }
+    }
+  }, [selectedStop, direction0Stops, direction1Stops, activeTab])
 
   if (routeData.trips.length === 1) {
     return (
@@ -88,7 +164,11 @@ export function RouteStopList({
   return (
     <div className="h-full flex">
       <div className="flex w-full flex-col overflow-hidden">
-        <Tabs defaultValue="direction0" className="h-full flex flex-col">
+        <Tabs
+          value={activeTab}
+          onValueChange={handleTabChange}
+          className="h-full flex flex-col"
+        >
           <div className="px-4 pt-4">
             <TabsList className="w-full">
               {direction0Trip && (
