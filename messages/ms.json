@@ -103,8 +103,13 @@
   },
   "StopsPage": {
     "code": "Kod",
+    "stop": "Hentian",
     "routes": "Laluan",
-    "streetName": "Nama Jalan"
+    "streetName": "Nama Jalan",
+    "servingRoutes": "Hentian {servingRoutes} Laluan",
+    "noRoutes": "Tidak ada laluan yang ditemui di hentian ini",
+    "suggestEdit": "Cadangkan Suntingan",
+    "notFound": "Hentian tidak dijumpai"
   },
   "APIDocsPage": {
     "title": "Dokumentasi API",

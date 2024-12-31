@@ -114,8 +114,13 @@
   },
   "StopsPage": {
     "code": "Code",
+    "stop": "Stop",
     "routes": "Routes",
-    "streetName": "Street Name"
+    "streetName": "Street Name",
+    "servingRoutes": "Serving {servingRoutes} Routes",
+    "noRoutes": "No routes found at this stop",
+    "suggestEdit": "Suggest Edit",
+    "notFound": "Stop not found"
   },
   "APIDocsPage": {
     "title": "API Documentation",
