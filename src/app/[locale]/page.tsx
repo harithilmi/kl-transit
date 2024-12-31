@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
 import type { Metadata } from 'next'
 import { SearchButton } from '@/components/search/search-button'
+import { RecentRoutes } from '@/app/components/routes/recent-routes'
 
 export const dynamic = 'force-dynamic'
 
@@ -69,6 +70,9 @@ export default function HomePage({
         <Card className="w-full max-w-xl p-4">
           <SearchButton variant="default" />
         </Card>
+
+        {/* Recent Routes Section */}
+        <RecentRoutes />
 
         {/* About Section */}
         <Card className="w-full max-w-xl p-4">

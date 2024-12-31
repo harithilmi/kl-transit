@@ -6,6 +6,10 @@
       "description": "KL Transit is an open-source project aimed at making public transportation in Kuala Lumpur more accessible. It provides easy access to bus routes, stops, and service information.",
       "github": "Contribute on GitHub"
     },
+    "recentRoutes": {
+      "title": "Recently Viewed Routes",
+      "description": "View your recently viewed routes here"
+    },
     "noResults": "No routes found",
     "searchPlaceholder": "Search for a route...",
     "search": "Search",

@@ -7,6 +7,7 @@ import type { Route } from '@/types/routes'
 import routes from '@/data/v2/routes.json'
 import { getStops } from '@/lib/data/access'
 import { RouteViewer } from './route-viewer'
+import { SaveRecentRoutes } from '@/app/components/routes/save-recent-routes'
 
 type Props = {
   params: { locale: string; routeId: string }
@@ -52,6 +53,7 @@ export default async function RoutePage({ params }: Props) {
 
   return (
     <main className="bg-background px-2 py-8 text-foreground sm:px-4 h-[calc(100vh-64px)]">
+      <SaveRecentRoutes routeData={routeData} />
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-3 h-full">
         {/* Route header */}
         <div className="flex w-full max-w-xl lg:max-w-none flex-col">

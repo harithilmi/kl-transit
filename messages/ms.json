@@ -12,6 +12,10 @@
     "meta": {
       "title": "KL Transit - Panduan Pengangkutan Awam KL",
       "description": "Panduan komprehensif untuk pengangkutan awam di Kuala Lumpur. Cari laluan bas, perhentian, dan maklumat perkhidmatan dengan mudah."
+    },
+    "recentRoutes": {
+      "title": "Laluan Terakhir Diakses",
+      "description": "Lihat laluan terakhir yang anda akses di sini"
     }
   },
   "nav": {
