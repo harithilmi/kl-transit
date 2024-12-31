@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { Card } from '@/components/ui/card'
 import { Link } from '@/i8n/routing'
 import { useTranslations } from 'next-intl'
+import { Trash2Icon } from 'lucide-react'
+import { Button } from '../ui/button'
 
 interface RecentRoute {
   routeId: number
@@ -32,24 +34,30 @@ export function RecentRoutes() {
   return (
     <Card className="w-full max-w-xl p-4">
       <div className="flex flex-col gap-4">
-        <h2 className="text-xl font-semibold">
-          {t('HomePage.recentRoutes.title')}
-        </h2>
-        <div className="flex flex-col gap-2">
+        <div className="flex items-center justify-between">
+          <h2 className="text-xl font-semibold">
+            {t('HomePage.recentRoutes.title')}
+          </h2>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="text-muted-foreground hover:text-foreground"
+            onClick={() => {
+              localStorage.removeItem('recentRoutes')
+              setRecentRoutes([])
+            }}
+          >
+            <Trash2Icon className="h-4 w-4" />
+          </Button>
+        </div>
+        <div className="flex gap-2">
           {recentRoutes.map((route) => (
             <Link
               key={route.routeId}
               href={`/routes/${route.routeId}`}
-              className="flex items-center justify-between rounded-lg p-2 hover:bg-secondary/50"
+              className="flex items-center gap-2 bg-secondary/50 rounded-lg p-2 hover:bg-secondary/70 transition-colors duration-200 focus:ring-2 focus:ring-primary focus:ring-offset-2"
             >
-              <div className="flex flex-col">
-                <span className="font-medium">
-                  {t('RoutesPage.routes')} {route.routeShortName}
-                </span>
-                <span className="text-sm text-muted-foreground">
-                  {route.routeLongName}
-                </span>
-              </div>
+              <span className="font-medium">{route.routeShortName}</span>
             </Link>
           ))}
         </div>
