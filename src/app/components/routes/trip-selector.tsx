@@ -1,8 +1,4 @@
-'use client'
-
-import { useEffect, useState } from 'react'
-import { useRouter, useParams } from 'next/navigation'
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import { Card } from '@/app/components/ui/card'
 import { Button } from '@/app/components/ui/button'
 import { Link } from '@/i8n/routing'
@@ -14,114 +10,16 @@ import {
   ArrowRight,
 } from 'lucide-react'
 import type { Route, Trip } from '@/types/routes'
-import { toast } from 'sonner'
 
 interface TripSelectorProps {
-  routeId: string
+  routeData: Route
 }
 
-interface RouteResponse {
-  success: boolean
-  data?: Route
-  error?: string
-}
 
-export function TripSelector({ routeId }: TripSelectorProps) {
-  const t = useTranslations()
-  const router = useRouter()
-  const params = useParams()
-  const [isLoading, setIsLoading] = useState(true)
-  const [routeData, setRouteData] = useState<Route | null>(null)
+export async function TripSelector({ routeData }: TripSelectorProps) {
+  const t = await getTranslations()
 
-  useEffect(() => {
-    const fetchRoute = async () => {
-      try {
-        const response = await fetch(`/api/routes/${routeId}`)
-        if (!response.ok) {
-          throw new Error('Failed to fetch route')
-        }
-
-        const responseData = (await response.json()) as RouteResponse
-
-        if (!responseData.success || !responseData.data) {
-          throw new Error(responseData.error ?? 'Failed to fetch route')
-        }
-
-        const data = responseData.data
-
-        // Ensure trips array exists and is initialized
-        if (!Array.isArray(data.trips)) {
-          data.trips = []
-        }
-
-        // Ensure each trip has a stopDetails array
-        data.trips = data.trips.map((trip) => ({
-          ...trip,
-          stopDetails: Array.isArray(trip.stopDetails) ? trip.stopDetails : [],
-        }))
-
-        setRouteData(data)
-      } catch (error) {
-        console.error('Error fetching route:', error)
-        toast.error(t('RouteEdit.errors.fetchFailed'))
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    void fetchRoute()
-  }, [routeId, t])
-
-  const handleDeleteTrip = async (tripId: number) => {
-    if (!confirm(t('RouteEdit.trips.deleteConfirm'))) return
-
-    try {
-      const response = await fetch(`/api/trips/${tripId}`, {
-        method: 'DELETE',
-      })
-
-      if (!response.ok) throw new Error('Failed to delete trip')
-
-      // Refresh the route data
-      const routeResponse = await fetch(`/api/routes/${routeId}`)
-      if (!routeResponse.ok) {
-        throw new Error('Failed to refresh route data')
-      }
-
-      const responseData = (await routeResponse.json()) as RouteResponse
-
-      if (!responseData.success || !responseData.data) {
-        throw new Error(responseData.error ?? 'Failed to fetch route')
-      }
-
-      const data = responseData.data
-
-      // Ensure trips array exists and is initialized
-      if (!Array.isArray(data.trips)) {
-        data.trips = []
-      }
-
-      // Ensure each trip has a stopDetails array
-      data.trips = data.trips.map((trip) => ({
-        ...trip,
-        stopDetails: Array.isArray(trip.stopDetails) ? trip.stopDetails : [],
-      }))
-
-      setRouteData(data)
-      toast.success(t('RouteEdit.trips.deleteSuccess'))
-    } catch (error) {
-      console.error('Error deleting trip:', error)
-      toast.error(t('RouteEdit.trips.deleteFailed'))
-    }
-  }
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center h-[200px]">
-        <p className="text-muted-foreground">{t('Common.loading')}</p>
-      </div>
-    )
-  }
+  const { routeId } = routeData
 
   if (!routeData) {
     return (
@@ -136,6 +34,7 @@ export function TripSelector({ routeId }: TripSelectorProps) {
   // Ensure trips is always an array
   const trips = Array.isArray(routeData.trips) ? routeData.trips : []
 
+  console.log(trips)
   const renderTripCard = (trip: Trip) => {
     if (!trip) {
       console.warn('Received undefined trip')
@@ -173,7 +72,7 @@ export function TripSelector({ routeId }: TripSelectorProps) {
             <Button
               variant="destructive"
               size="sm"
-              onClick={() => handleDeleteTrip(trip.tripId)}
+              // TODO: Add delete trip
             >
               <TrashIcon className="h-4 w-4" />
             </Button>

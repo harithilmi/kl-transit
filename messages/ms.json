@@ -53,7 +53,7 @@
       "add": "Tambah Perjalanan",
       "direction": "Arah {direction}",
       "deleteConfirm": "Adakah anda pasti mahu memadamkan perjalanan ini?",
-      "stopCount": "hentian"
+      "stopCount": "{count} hentian"
     }
   },
   "RoutesPage": {
@@ -123,6 +123,9 @@
     "required": "Diperlukan"
   },
   "ErrorPage": {
+    "title": "Error",
+    "tryAgain": "Cuba Lagi",
+    "refresh": "Muat Semula Halaman",
     "routeNotFound": "Laluan Tidak Ditemui",
     "routeNotFoundDescription": "Laluan yang diminta tidak dapat ditemui."
   },
@@ -140,5 +143,9 @@
     "searchDialog": "Cari laluan bas atau destinasi",
     "search": "Cari",
     "loading": "Memuat..."
+  },
+  "TripSelector": {
+    "title": "Pilih Perjalanan",
+    "description": "Pilih perjalanan untuk disunting atau buat yang baru"
   }
 }
