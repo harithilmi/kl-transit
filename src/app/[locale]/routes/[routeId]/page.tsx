@@ -51,8 +51,8 @@ export default async function RoutePage({ params }: Props) {
   const stops = await getStops()
 
   return (
-    <main className="min-h-screen bg-background px-2 py-8 text-foreground sm:px-4 sm:py-16">
-      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-3">
+    <main className="bg-background px-2 py-8 text-foreground sm:px-4 h-[calc(100vh-64px)]">
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-3 h-full">
         {/* Route header */}
         <div className="flex w-full max-w-xl lg:max-w-none flex-col">
           <Card className="w-full p-4">
@@ -92,8 +92,10 @@ export default async function RoutePage({ params }: Props) {
           </Card>
         </div>
 
-        {/* Map and Route Stop List Container */}
-        <RouteViewer routeData={routeData as Route} stops={stops} />
+        {/* Map and Route Stop List Container - Add flex-1 to fill remaining space */}
+        <div className="w-full flex-1">
+          <RouteViewer routeData={routeData as Route} stops={stops} />
+        </div>
       </div>
     </main>
   )
