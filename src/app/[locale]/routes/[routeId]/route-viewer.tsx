@@ -18,7 +18,7 @@ export function RouteViewer({ routeData, stops }: RouteViewerProps) {
   const [map, setMap] = useState<Map | null>(null)
 
   return (
-    <div className="flex w-full max-w-xl lg:max-w-none flex-col lg:flex-row gap-2">
+    <div className="flex mx-auto w-full max-w-xl lg:max-w-none flex-col lg:flex-row gap-2">
       <MapProvider value={{ map, setMap }}>
         <SelectedStopProvider>
           {/* Maps Container */}
