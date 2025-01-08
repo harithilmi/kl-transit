@@ -22,7 +22,14 @@ export const metadata: Metadata = {
     { rel: "apple-touch-icon", url: "/apple-touch-icon.png" },
     { rel: "icon", type: "image/png", sizes: "32x32", url: "/favicon-32x32.png" },
     { rel: "icon", type: "image/png", sizes: "16x16", url: "/favicon-16x16.png" },
-  ],
+	],
+  alternates: {
+    canonical: 'https://kltransit.my',
+    languages: {
+      'en': 'https://kltransit.my/en',
+      'ms': 'https://kltransit.my/ms',
+    },
+  },
 };
 
 export async function generateStaticParams() {
