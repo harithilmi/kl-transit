@@ -11,6 +11,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import { QueryProvider } from '@/lib/query-provider';
 import type { Locale } from '@/i8n/request';
 import { CommandMenu } from '@/components/search/command-dialog';
+import { Analytics } from "@vercel/analytics/react"
 const inter = Inter({ subsets: ['latin'] })
 
 	
@@ -56,7 +57,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={inter.className}>
+		  <body className={inter.className}>
         <ClerkProvider>
           <ThemeProvider
             attribute="class"
@@ -69,6 +70,7 @@ export default async function LocaleLayout({
                 <Navbar />
                 <CommandMenu />
                 {children}
+			  <Analytics />
               </NextIntlClientProvider>
             </QueryProvider>
           </ThemeProvider>
