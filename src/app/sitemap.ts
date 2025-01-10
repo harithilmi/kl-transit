@@ -1,12 +1,19 @@
 import type { MetadataRoute } from 'next'
-import { routeQueries } from '@/server/db/queries'
-import type { Route } from '@/types/routes'
+import { db } from '@/server/db'
+import { kl_transit_routes } from '@/server/db/schema'
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'
 
   // Base routes that are available in both languages
   const baseRoutes = ['', '/routes']
-  const routes = await routeQueries.getRoutes()
+
+  // Get all active routes with a simpler query
+  const activeRoutes = await db
+    .select({
+      route_id: kl_transit_routes.route_id,
+    })
+    .from(kl_transit_routes)
 
   // Generate route entries for each language
   const staticPages = ['en', 'ms'].flatMap((locale) =>
@@ -20,7 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Generate dynamic route entries for bus routes
   const routePages = ['en', 'ms'].flatMap((locale) =>
-    routes.map((route: Route) => ({
+    activeRoutes.map((route) => ({
       url: `${baseUrl}/${locale}/routes/${route.route_id}`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
