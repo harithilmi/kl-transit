@@ -12,6 +12,8 @@ import { QueryProvider } from '@/lib/query-provider';
 import type { Locale } from '@/i8n/request';
 import { CommandMenu } from '@/components/search/command-dialog';
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
 const inter = Inter({ subsets: ['latin'] })
 
 	
@@ -71,6 +73,7 @@ export default async function LocaleLayout({
                 <CommandMenu />
                 {children}
 			  <Analytics />
+			  <SpeedInsights />
               </NextIntlClientProvider>
             </QueryProvider>
           </ThemeProvider>
