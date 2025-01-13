@@ -29,8 +29,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://kltransit.my',
     languages: {
-      'en': 'https://kltransit.my/en',
-      'ms': 'https://kltransit.my/ms',
+      'en-US': 'https://kltransit.my/en',
+      'ms-MY': 'https://kltransit.my/ms',
     },
   },
 };
