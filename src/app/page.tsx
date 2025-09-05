@@ -2,7 +2,7 @@
 
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const routesCoordinates = [
@@ -454,95 +454,48 @@ export default function Home() {
   ];
 
   const map = useRef<maplibregl.Map | null>(null);
+  const selectedStopId = useRef<string | number | null>(null);
   const mapContainer = useRef<HTMLDivElement | null>(null);
+  const lnglatroutes = routesCoordinates.map((route) => [
+    route[1],
+    route[0],
+  ]) as number[][];
 
-  const lnglatroutes = routesCoordinates.map((route) => [route[1], route[0]]);
-
-  const stops = [
-    {
-      stop_id: 1,
-      stop_name: "Perindustrian Bt Caves",
-      stop_code: "SL254",
-      street_name: "Jalan Sbc 5",
-      latitude: 3.2336025,
-      longitude: 101.6871332,
-      rapid_stop_id: 1000002,
-      old_stop_id: "N3233603E101687133",
-    },
-    {
-      stop_id: 2,
-      stop_name: "Taman Lawa",
-      stop_code: "KL1869",
-      street_name: "Jalan D",
-      latitude: 3.198669,
-      longitude: 101.665383,
-      rapid_stop_id: 1000003,
-      old_stop_id: "N3198669E101665383",
-    },
-    {
-      stop_id: 3,
-      stop_name: "Kampung Sri Delima",
-      stop_code: "KL199",
-      street_name: "Jalan 17/42",
-      latitude: 3.1990797,
-      longitude: 101.666604,
-      rapid_stop_id: 1000004,
-      old_stop_id: "N3199080E101666604",
-    },
-    {
-      stop_id: 4,
-      stop_name: "Merdeka Place",
-      stop_code: "AJ49",
-      street_name: "Jalan Merdeka",
-      latitude: 3.139046,
-      longitude: 101.764376,
-      rapid_stop_id: 1000005,
-      old_stop_id: "N3139046E101764376",
-    },
-    {
-      stop_id: 5,
-      stop_name: "Selayang Baru (Utara)",
-      stop_code: "SL51",
-      street_name: "Jalan 29",
-      latitude: 3.250971,
-      longitude: 101.666894,
-      rapid_stop_id: 1000007,
-      old_stop_id: "N3250971E101666894",
-    },
-    {
-      stop_id: 6,
-      stop_name: "Pandan Perdana (Timur)",
-      stop_code: "AJ272",
-      street_name: "Jalan Perdana 3/1",
-      latitude: 3.12019,
-      longitude: 101.743645,
-      rapid_stop_id: 1000009,
-      old_stop_id: "N3120190E101743645",
-    },
-  ];
-
-  const stopsGeoJson = {
-    type: "FeatureCollection",
-    features: stops.map((stop) => ({
-      type: "Feature",
-      properties: {
-        stop_id: stop.stop_id,
-        stop_name: stop.stop_name,
-        stop_code: stop.stop_code,
-        street_name: stop.street_name,
-        rapid_stop_id: stop.rapid_stop_id,
-        old_stop_id: stop.old_stop_id,
-      },
-      geometry: {
-        type: "Point",
-        coordinates: [stop.longitude, stop.latitude],
-      },
-    })),
-  };
-  console.log(stopsGeoJson);
+  const [stops, setStops] = useState<GeoJSON.FeatureCollection | null>(null);
 
   useEffect(() => {
-    if (map.current || !mapContainer.current) return;
+    fetch("/stops.json")
+      .then((res) => res.json())
+      .then((data) => {
+        // Convert array of stops to GeoJSON FeatureCollection
+        const geoJsonData: GeoJSON.FeatureCollection = {
+          type: "FeatureCollection",
+          features: data.map((stop: any) => ({
+            type: "Feature",
+            id: stop.stop_id,
+            properties: {
+              stop_id: stop.stop_id,
+              stop_name: stop.stop_name,
+              stop_code: stop.stop_code,
+              street_name: stop.street_name,
+              rapid_stop_id: stop.rapid_stop_id,
+              old_stop_id: stop.old_stop_id,
+            },
+            geometry: {
+              type: "Point",
+              coordinates: [stop.longitude, stop.latitude],
+            },
+          })),
+        };
+        setStops(geoJsonData);
+      })
+      .catch((error) => console.error("Failed to load stops:", error));
+  }, []);
+
+  const stopsGeoJson = stops;
+
+  useEffect(() => {
+    if (map.current || !mapContainer.current || !stops) return;
 
     map.current = new maplibregl.Map({
       container: mapContainer.current,
@@ -550,15 +503,19 @@ export default function Home() {
         "https://api.maptiler.com/maps/0199139f-3518-7dbb-a030-339463e9759d/style.json?key=Ob6oqyzoBDkIaOhNs9Ew",
       center: [101.665383, 3.198669],
       zoom: 15,
+      minZoom: 10,
     });
 
     map.current.on("load", () => {
       const currentMap = map.current;
+
+      // disable map controls
       currentMap?.dragRotate.disable();
       currentMap?.keyboard.disable();
       currentMap?.touchZoomRotate.disableRotation();
       currentMap?.scrollZoom.setWheelZoomRate(1 / 100);
 
+      // load route data
       currentMap?.addSource("routes", {
         type: "geojson",
         lineMetrics: true,
@@ -579,37 +536,133 @@ export default function Home() {
         },
       });
 
-      currentMap?.addSource("stops", {
-        type: "geojson",
-        data: stopsGeoJson as GeoJSON.FeatureCollection,
-      });
-
-      currentMap?.on("load", () => {
-        currentMap?.addLayer({
-          id: "routes",
-          type: "line",
-          source: "routes",
-          paint: {
-            "line-color": "red",
-            "line-opacity": 1,
-          },
+      // load stop icon
+      currentMap
+        ?.loadImage("/bus.png")
+        .then((image) => {
+          currentMap?.addImage("bus", image.data);
+        })
+        .catch((e) => {
+          console.error("Failed to load bus image:", e);
         });
 
-        currentMap?.addLayer({
-          id: "stops",
-          type: "circle",
-          source: "stops",
-          paint: {
-            "circle-color": "blue",
-            "circle-opacity": 1,
-            "circle-radius": 10,
-            "circle-stroke-width": 2,
-            "circle-stroke-color": "white",
-            "circle-stroke-opacity": 1,
-          },
+      // load stops data
+      if (stopsGeoJson) {
+        currentMap?.addSource("stops", {
+          type: "geojson",
+          data: stopsGeoJson,
         });
+      }
+
+      // stops circle icons
+      currentMap?.addLayer({
+        id: "stops",
+        type: "circle",
+        source: "stops",
+        layout: {
+          visibility: "visible",
+        },
+        paint: {
+          "circle-radius": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            10,
+            [
+              "case",
+              ["boolean", ["feature-state", "selected"], false],
+              4,
+              0.75,
+            ],
+            14,
+            4,
+            15,
+            ["case", ["boolean", ["feature-state", "selected"], false], 12, 6],
+          ],
+          "circle-color": [
+            "case",
+            ["boolean", ["feature-state", "selected"], false],
+            "#fff",
+            "#f01b48",
+          ],
+          "circle-stroke-color": [
+            "case",
+            ["boolean", ["feature-state", "selected"], false],
+            "#f01b48",
+            "#fff",
+          ],
+          "circle-stroke-width": [
+            "case",
+            ["boolean", ["feature-state", "selected"], false],
+            10,
+            1,
+          ],
+          "circle-opacity": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            10,
+            1,
+            13.9,
+            1,
+            14,
+            0.5,
+          ],
+          "circle-stroke-opacity": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            10,
+            ["case", ["boolean", ["feature-state", "selected"], false], 1, 0],
+            13.5,
+            1,
+            14,
+            0.5,
+          ],
+        },
       });
 
+      // TODO: fix the icon sizing
+      // currentMap?.addLayer({
+      //   id: "stops-icon",
+      //   type: "symbol",
+      //   source: "stops",
+      //   filter: ["any", [">=", ["zoom"], 14], ["get", "interchange"]],
+      //   layout: {
+      //     visibility: "visible",
+      //     // 'symbol-z-order': 'source',
+      //     "icon-image": "bus",
+      //     "icon-size": [
+      //       "interpolate",
+      //       ["linear"],
+      //       ["zoom"],
+      //       10,
+      //       0.75,
+      //       14,
+      //       1.5,
+      //       16,
+      //       2,
+      //     ],
+      //     "icon-padding": 0.5,
+      //     "icon-allow-overlap": true,
+      //     // 'icon-ignore-placement': true,
+      //     // ...stopText.layout,
+      //   },
+      //   paint: {
+      //     "icon-opacity": [
+      //       "interpolate",
+      //       ["linear"],
+      //       ["zoom"],
+      //       8,
+      //       ["case", ["get", "interchange"], 1, 0],
+      //       14,
+      //       1,
+      //     ],
+      //     // ...stopText.paint,
+      //   },
+      // });
+
+      // route line
       currentMap?.addLayer({
         id: "routes",
         type: "line",
@@ -664,6 +717,7 @@ export default function Home() {
         },
       });
 
+      // route bg
       currentMap?.addLayer(
         {
           id: "routes-bg",
@@ -692,6 +746,7 @@ export default function Home() {
         "routes"
       );
 
+      // route arrows
       currentMap?.addLayer({
         id: "route-arrows",
         type: "symbol",
@@ -727,6 +782,50 @@ export default function Home() {
           "text-halo-width": 2,
         },
       });
+
+      // currentMap?.on("mousemove", (e) => {
+      //   const { point } = e;
+      //   console.log(
+      //     currentMap?.queryRenderedFeatures(point, { layers: ["stops"] })
+      //   );
+      // });
+
+      currentMap?.on("mouseenter", "stops", () => {
+        currentMap.getCanvas().style.cursor = "pointer";
+      });
+
+      currentMap?.on("mouseleave", "stops", () => {
+        currentMap.getCanvas().style.cursor = "";
+      });
+
+      currentMap?.on("click", "stops", (e) => {
+        if (
+          !e.features ||
+          e.features.length === 0 ||
+          e.features[0]?.id === undefined
+        ) {
+          console.log("no features");
+          return;
+        }
+        const clickedStopId = e.features[0].id;
+
+        if (selectedStopId.current) {
+          currentMap?.setFeatureState(
+            { source: "stops", id: selectedStopId.current },
+            { selected: false }
+          );
+        }
+
+        currentMap?.setFeatureState(
+          { source: "stops", id: clickedStopId },
+          { selected: true }
+        );
+
+        console.log("clickedStopId", clickedStopId);
+        selectedStopId.current = clickedStopId;
+
+        console.log("selectedStopId.current", selectedStopId.current);
+      });
     });
 
     return () => {
@@ -735,7 +834,7 @@ export default function Home() {
         map.current = null;
       }
     };
-  }, []);
+  }, [stops]);
 
   return (
     <>
