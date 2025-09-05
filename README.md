@@ -1,110 +1,36 @@
-# KL Transit
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A modern, multilingual web application for tracking public transportation routes in Kuala Lumpur, Malaysia.
+## Getting Started
 
-## Live Demo
-
-[https://kltransit.my/](https://kltransit.my/)
-
-## Features
-
-- Multilingual support (English & Bahasa Malaysia)
-- Detailed stop information with street names and coordinates
-- Interactive route maps
-- Comprehensive transit data for Klang Valley
-- User authentication with Clerk
-- Responsive design for all devices
-- Dark/Light theme support
-- Suggestion for editing routes using our route editor
-- Suggestion for adding new routes (soon)
-- Creating fantasy routes (soon)
-
-## Tech Stack
-
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Database**: PostgreSQL with Drizzle ORM
-- **Authentication**: Clerk
-- **Maps**: Mapbox GL JS
-- **Internationalization**: next-intl
-- **Deployment**: Vercel
-
-## Development
-
-### Prerequisites
-
-- Node.js 18+
-- PostgreSQL
-- Mapbox API key
-- Clerk account
-
-### Environment Setup
-
-1. Clone the repository:
+First, run the development server:
 
 ```bash
-git clone https://github.com/yourusername/kl-transit.git
-cd kl-transit
-```
-
-2. Copy the example .env file and create a new .env file:
-
-```bash
-cp .env.example .env
-```
-
-3. Configure environment variables:
-
-- Mapbox API key
-- Clerk API key
-- ORS API key
-
-4. Run the development server:
-
-```bash
-# Install dependencies
-npm install
-
-# Run database migrations
-npm run db:push
-
-# Run development server
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## Internationalization
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-The app supports multiple languages through Next.js's app router and next-intl:
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- 🇬🇧 English (`/en/*`)
-- 🇲🇾 Bahasa Malaysia (`/ms/*`)
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-Add translations in `src/i18n/locales/`.
+## Learn More
 
-## Database Management
+To learn more about Next.js, take a look at the following resources:
 
-```bash
-# Generate migration
-npm run db:generate
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-# Push schema changes
-npm run db:push
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-# Start Drizzle Studio
-npm run db:studio
-```
+## Deploy on Vercel
 
-## Roadmap
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-- [x] Make it deploy
-- [x] Scaffold basic ui with mock data
-- [x] Add map integration
-- [x] Implement internationalization
-- [ ] Add realtime bus location from GTFS-RT
-- [ ] Analytics page (posthog)
-- [ ] Ratelimiting (upstash)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
