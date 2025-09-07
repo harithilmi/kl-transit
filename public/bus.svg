@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="26.57424pt"
+   stroke-miterlimit="10"
+   style="clip-rule:evenodd;fill-rule:nonzero;stroke-linecap:round;stroke-linejoin:round"
+   version="1.1"
+   viewBox="0 0 23.766002 30.188336"
+   width="20.920776pt"
+   xml:space="preserve"
+   id="svg13"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+<defs
+   id="defs1"><clipPath
+     clipPathUnits="userSpaceOnUse"
+     id="clipPath13697"><path
+       d="M 0,1190.55 H 841.89 V 0 H 0 Z"
+       transform="translate(-621.99302,-156.84098)"
+       id="path13697" /></clipPath><clipPath
+     clipPathUnits="userSpaceOnUse"
+     id="clipPath13691"><path
+       d="M 0,1190.55 H 841.89 V 0 H 0 Z"
+       transform="translate(-618.85102,-160.212)"
+       id="path13691" /></clipPath><clipPath
+     clipPathUnits="userSpaceOnUse"
+     id="clipPath13693"><path
+       d="M 0,1190.55 H 841.89 V 0 H 0 Z"
+       transform="translate(-618.90401,-155.84498)"
+       id="path13693" /></clipPath><clipPath
+     clipPathUnits="userSpaceOnUse"
+     id="clipPath13695"><path
+       d="M 0,1190.55 H 841.89 V 0 H 0 Z"
+       transform="translate(-621.77501,-156.23198)"
+       id="path13695" /></clipPath></defs>
+
+<path
+   id="path13690"
+   d="m 0,0 c 0,0 0.003,0.104 0.146,0.117 0.199,0.008 1.906,0.135 3.449,0.006 0,0 0.101,0 0.149,-0.08 L 3.827,-2.084 H -0.025 -0.104 Z M 3.574,0.653 V 0.257 c -2.1,0.125 -3.409,0 -3.409,0 l -0.002,0.39 c 1.336,0.124 3.411,0.006 3.411,0.006 m -3.65,-2.88 C 0.21,-2.315 0.356,-2.54 0.356,-2.54 0.37,-2.558 0.784,-3.2 0.784,-3.2 c 0,0 0.07,-0.106 0.222,-0.166 0.141,-0.061 0.428,-0.059 0.428,-0.059 h 0.42 0.429 c 0.427,0 0.571,0.104 0.646,0.225 0.076,0.113 0.343,0.524 0.427,0.66 0.089,0.135 0.233,0.236 0.434,0.313 0.193,0.077 0.202,0.149 0.202,0.149 0,0 -0.085,2.701 -0.121,2.772 C 3.804,0.803 3.696,0.854 3.575,0.878 3.37,0.913 1.851,0.96 1.851,0.96 1.851,0.96 0.582,0.911 0.146,0.878 0,0.866 -0.075,0.815 -0.124,0.73 c 0,0 -0.024,-0.044 -0.026,-0.096 -0.025,-0.46 -0.131,-2.71 -0.131,-2.71 0.037,-0.085 0.205,-0.151 0.205,-0.151"
+   style="clip-rule:evenodd;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-linecap:round;stroke-linejoin:round"
+   transform="matrix(5.5411518,0,0,-5.5411518,1.6124881,5.3195059)"
+   clip-path="url(#clipPath13691)" /><path
+   id="path13692"
+   d="m 0,0 c 0,0 0.023,-0.121 0.144,-0.121 h 0.46 c 0,0 0.122,0.019 0.132,0.125 V 0.392 L 0,0.448 Z"
+   style="clip-rule:evenodd;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-linecap:round;stroke-linejoin:round"
+   transform="matrix(5.5411518,0,0,-5.5411518,1.9061414,29.517855)"
+   clip-path="url(#clipPath13693)" /><path
+   id="path13694"
+   d="m 0,0 v -0.385 c 0,0 0.021,-0.119 0.143,-0.119 h 0.459 c 0,0 0.122,0.02 0.132,0.125 V 0.055 0.06 0.064 L 0,0.006 Z"
+   style="clip-rule:evenodd;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-linecap:round;stroke-linejoin:round"
+   transform="matrix(5.5411518,0,0,-5.5411518,17.814788,27.373429)"
+   clip-path="url(#clipPath13695)" /><path
+   id="path13696"
+   d="m 0,0 c 0,0 0.158,0.359 0.425,0.409 0,0 0.346,0.051 0.39,0.114 C 0.815,0.523 0.857,0.005 0,0 M -3.39,0.523 C -3.343,0.46 -2.997,0.409 -2.997,0.409 -2.732,0.359 -2.571,0 -2.571,0 -3.429,0.005 -3.39,0.523 -3.39,0.523 M 0.671,1.048 C 0.479,0.973 0.333,0.864 0.246,0.736 0.158,0.603 -0.114,0.191 -0.19,0.077 -0.266,-0.044 -0.399,-0.147 -0.829,-0.147 h -0.4 -0.038 -0.019 l -0.46,-0.001 c -0.541,-0.014 -0.648,0.228 -0.648,0.228 0,0 -0.33,0.505 -0.425,0.66 -0.096,0.156 -0.324,0.276 -0.428,0.308 -0.102,0.027 -0.186,0.114 -0.186,0.114 v -1.447 c 0,-0.247 0.3,-0.259 0.3,-0.259 l 0.044,-0.005 v 0.026 l 0.736,-0.068 v -0.013 l 0.037,-0.004 1.03,-0.018 1.02,0.021 0.048,0.003 v 0.009 l 0.046,0.003 0.689,0.051 v -0.005 l 0.037,0.002 c 0.304,0.001 0.3,0.251 0.3,0.251 l 0.002,1.45 C 0.832,1.133 0.778,1.087 0.671,1.048"
+   style="clip-rule:evenodd;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-linecap:round;stroke-linejoin:round"
+   transform="matrix(5.5411518,0,0,-5.5411518,19.022774,23.998867)"
+   clip-path="url(#clipPath13697)" /></svg>

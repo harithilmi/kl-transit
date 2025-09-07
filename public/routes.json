@@ -1,0 +1,2194 @@
+{
+  "151": {
+    "name": "Bandar Baru Selayang ⇌ Hab Lebuh Pudu",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "170": {
+    "name": "Hab Wira Damai ⇌ MRT Titiwangsa",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "171": {
+    "name": "Hab Wira Damai ⇌ Lebuh Ampang via Sentul",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "173": {
+    "name": "Taman Jasa Utama ⇌ Lebuh Ampang",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "180": {
+    "name": "Taman Dato' Senu ⇌ Hab Pasar Seni",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "190": {
+    "name": "Desa Sri Hartamas ⇌ Lin Ho Jln Lekiu",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "191": {
+    "name": "Taman Sri Segambut ⇌ Monorel Chow Kit",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "200": {
+    "name": "UIA Gombak ⇌ SOGO KL",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "201": {
+    "name": "Batu 12 Gombak ⇌ MRT Titiwangsa",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "202": {
+    "name": "Hub Wira Damai ⇌ Lebuh Ampang via Gombak",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "220": {
+    "name": "Taman Melawati ⇌ Lebuh Ampang",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "222": {
+    "name": "Taman Melawati ⇌ LRT Wangsa Maju",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "250": {
+    "name": "LRT Wangsa Maju ⇌ Lebuh Ampang",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "251": {
+    "name": "AU3 Jentayu ⇌ Chow Kit",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "253": {
+    "name": "LRT Wangsa Maju ⇌ Ampang Point",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "254": {
+    "name": "Ayer Panas ⇌ Titiwangsa via Chow Kit",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "300": {
+    "name": "Hab Pandan Indah ⇌ Lebuh Ampang",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "302": {
+    "name": "Titiwangsa ⇌ KLCC",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "303": {
+    "name": "Taman Mulia Jaya ⇌ Lebuh Ampang",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "400": {
+    "name": "Damai Perdana ⇌ Hab Lebuh Pudu via Bukit Bintang",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "402": {
+    "name": "Terminal Maluri ⇌ Titiwangsa",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "420": {
+    "name": "Hab Pandan Indah ⇌ Menara Maybank via Bukit Bintang",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "421": {
+    "name": "Hentian Taman Dagang ⇌ Menara Maybank via Bukit Bintang",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "450": {
+    "name": "Hentian Kajang ⇌ Hab Lebuh Pudu",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "451": {
+    "name": "MRT Kajang ⇌ MRT Putrajaya Sentral",
+    "operator": "rapid_bus",
+    "network": "bet",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "506": {
+    "name": "Putrajaya Sentral ⇌ Bandar Utama",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "540": {
+    "name": "Putra Permai ⇌ KTM Serdang",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "541": {
+    "name": "Putra Permai ⇌ LRT Kinrara BK 5",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "580": {
+    "name": "Desa Petaling ⇌ Hab Lebuh Pudu via LRT Salak Selatan",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "581": {
+    "name": "Desa Tasik ⇌ LRT Bandar Tasik Selatan",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "590": {
+    "name": "Bandar Sungai Long ⇌ Hab Lebuh Pudu",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "600": {
+    "name": "Terminal Puchong Utama ⇌ Hab Pasar Seni",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "602": {
+    "name": "Puchong Prima ⇌ IOI Puchong",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "640": {
+    "name": "Hab Bas Sri Manja ⇌ Hab Pasar Seni",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "641": {
+    "name": "LRT Subang Jaya ⇌ Pearl Point",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "650": {
+    "name": "Taman Desa ⇌ Hab Pasar Seni",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "651": {
+    "name": "LRT Muhibbah ↺ Pearl Point",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "652": {
+    "name": "LRT Awan Besar ↺ Batu 3 Jalan Klang Lama",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "708": {
+    "name": "Klang ⇌ Sunway Pyramid via Hentian Bandar",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "750": {
+    "name": "Hab Sekysen 2 ⇌ Hab Pasar Seni",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "751": {
+    "name": "Taman Sri Muda ⇌ Hab Pasar Seni",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "752": {
+    "name": "LRT Putra Height ⇌ Hentian Bandar Shah Alam",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "753": {
+    "name": "Hentian Bandar Shah Alam ⇌ UiTM Puncak Alam",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "754": {
+    "name": "Sekysen 13 Shah Alam ⇌ UITM Puncak Perdana",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "770": {
+    "name": "Subang Mewah USJ 1 ⇌ Hab Pasar Seni",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "771": {
+    "name": "Subang Mewah USJ 1 ⇌ Desa Mentari via Persiaran Tujuan",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "772": {
+    "name": "Subang Suria Mah Sing ⇌ Hab Pasar Seni",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "780": {
+    "name": "Kota Damansara ⇌ Hab Pasar Seni",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "782": {
+    "name": "Hentian PJ Old Town ⇌ Hab Pasar Seni",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "783": {
+    "name": "LRT Kelana Jaya ⇌ Subang Parade",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "801": {
+    "name": "Bandar Utama ⇌ Metro Prima",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "802": {
+    "name": "LRT Kelana Jaya ⇌ Kota Damansara",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "821": {
+    "name": "Pantai Hill Park ⇌ Hab Pasar Seni",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "822": {
+    "name": "LRT Bangsar ↺ Bangsar Shopping Centre",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "851": {
+    "name": "Hab Pasar Seni ⇌ Kompleks Mahkamah Jalan Duta",
+    "operator": "rapid_bus",
+    "network": "utama",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "BC2": {
+    "name": "Pasar Seni ↺ Batu Caves (Thaipusam)",
+    "operator": "rapid_bus",
+    "network": "batu_caves_shuttle",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "BC3": {
+    "name": "LRT Gombak ↺ Batu Caves (Thaipusam)",
+    "operator": "rapid_bus",
+    "network": "batu_caves_shuttle",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "BC4": {
+    "name": "MRT Kg Batu ↺ Batu Caves (Thaipusam)",
+    "operator": "rapid_bus",
+    "network": "batu_caves_shuttle",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "BET16": {
+    "name": "Warta Lama ⇌ Monumen Alaf Baru, Putrajaya",
+    "operator": "rapid_bus",
+    "network": "bet",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "BET17": {
+    "name": "Pinggiran Batu Caves ⇌ Monumen Alaf Baru, Putrajaya",
+    "operator": "rapid_bus",
+    "network": "bet",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "DS01(AM)": {
+    "name": "LRT Ampang ⇌ KLCC via AKLEH",
+    "operator": "rapid_bus",
+    "network": "bet",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "DS01(PM)": {
+    "name": "KLCC via AKLEH ⇌ LRT Ampang",
+    "operator": "rapid_bus",
+    "network": "bet",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T203": {
+    "name": "LRT Taman Melati ↺ Danau Kota",
+    "operator": "rapid_bus",
+    "network": "drt",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T221": {
+    "name": "LRT Sri Rampai ↺ Giant Ulu Kelang",
+    "operator": "rapid_bus",
+    "network": "drt",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T582": {
+    "name": "LRT Sri Petaling ↺ Bandar Sri Petaling",
+    "operator": "rapid_bus",
+    "network": "drt",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T757": {
+    "name": "LRT Alam Megah ↺ Seksyen 27 Shah Alam",
+    "operator": "rapid_bus",
+    "network": "drt",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T774": {
+    "name": "LRT Glenmarie ↺ MSU, Stadium Shah Alam",
+    "operator": "rapid_bus",
+    "network": "drt",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T778": {
+    "name": "LRT USJ 21 ↺ One City",
+    "operator": "rapid_bus",
+    "network": "drt",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T783": {
+    "name": "LRT Taman Bahagia ↺ SS 6",
+    "operator": "rapid_bus",
+    "network": "drt",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T785": {
+    "name": "LRT Taman Paramount ↺ Kampung Baiduri",
+    "operator": "rapid_bus",
+    "network": "drt",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T786": {
+    "name": "LRT Asia Jaya ↺ MRT Phileo Damansara",
+    "operator": "rapid_bus",
+    "network": "drt",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T200": {
+    "name": "LRT Gombak ↺ UIA Gombak",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T201": {
+    "name": "LRT Gombak ↺ Hab Wira Damai",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T202": {
+    "name": "LRT Taman Melati ↺ Taman Melewar",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T222": {
+    "name": "LRT Sri Rampai ↺ UKAY Perdana",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T223": {
+    "name": "LRT Setiawangsa ↺ AU3, Jentayu, Keramat",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T224": {
+    "name": "LRT Dato Keramat ↺ Desa Pandan",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T250": {
+    "name": "LRT Wangsa Maju ↺ Setapak Sentral",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T251": {
+    "name": "LRT Sri Rampai ↺ Seksyen 10 Wangsa Maju",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T303": {
+    "name": "Ampang Point ↺ LRT Pandan Indah",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T350": {
+    "name": "LRT Cempaka ↺ Taman Mawar",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T351": {
+    "name": "LRT Cempaka ↺ Taman Bukit Permai",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T580": {
+    "name": "LRT Awan Besar ↺ TPM via LRT Bukit Jalil",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T581": {
+    "name": "LRT Alam Sutera ↺ PPR Pinggiran Bukit Jalil",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T600": {
+    "name": "LRT IOI Puchong ↺ Taman Wawasan",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T601": {
+    "name": "Puchong Utama ↺ Puchong Prima",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T603": {
+    "name": "LRT Puchong Prima ↺ Taman Mas Sepang",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T604": {
+    "name": "LRT Perindustrian Puchong ↺ Taman Kinrara",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T605": {
+    "name": "LRT Bandar Puteri ↺ Bandar Puteri",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T640": {
+    "name": "LRT Taman Jaya ↺ Taman Sri Sentosa",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T776": {
+    "name": "LRT USJ 7 ↺ Subang Mewah",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T780": {
+    "name": "LRT Kelana Jaya ↺ Taman Mayang",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T781": {
+    "name": "LRT Kelana Jaya ↺ Kelana Centre Point",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T782": {
+    "name": "LRT Lembah Subang ↺ Ara Damansara",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T787": {
+    "name": "LRT Asia Jaya ↺ Seksyen 14 & 18",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T788": {
+    "name": "LRT Universiti ↺ Mid Valley",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T789": {
+    "name": "LRT Universiti ↺ Universiti Malaya via Pantai Hillpark",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T790": {
+    "name": "LRT Paramount ↺ Mid Valley",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T791": {
+    "name": "LRT Kerinchi ↺ Pantai Hill Park",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "T850": {
+    "name": "LRT Bangsar ↺ MRT Semantan",
+    "operator": "rapid_bus",
+    "network": "lrt_feeder",
+    "route_type": 3,
+    "color": "#0075bf",
+    "text_color": "#ffffff"
+  },
+  "HLB1": {
+    "name": "MRT Semantan ↺ Hong Leong Bank Pusat Bandar Damansara",
+    "operator": "unknown",
+    "network": "mall_shuttle",
+    "route_type": 3,
+    "color": "#666666",
+    "text_color": "#ffffff"
+  },
+  "PBD1": {
+    "name": "MRT Semantan ↺ Damanlela Open CarPark",
+    "operator": "unknown",
+    "network": "mall_shuttle",
+    "route_type": 3,
+    "color": "#666666",
+    "text_color": "#ffffff"
+  },
+  "KLG2A": {
+    "name": "SJKC Kong Hoe ↺ Taman Sri Pekan",
+    "operator": "mbdk",
+    "network": "mbdk",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "KLG2B": {
+    "name": "Bandar Klang ↺ AEON Mall Bukit Raja",
+    "operator": "mbdk",
+    "network": "mbdk",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "KLG3A": {
+    "name": "Taman Sri Andalas ↺ Bandar Klang",
+    "operator": "mbdk",
+    "network": "mbdk",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "KLG3B": {
+    "name": "Bandar Putera ↺ Bandar Klang via Jalan Raja Niong",
+    "operator": "mbdk",
+    "network": "mbdk",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "KLG3C": {
+    "name": "Bandar Putera ↺ Bandar Klang via Jalan Kebun",
+    "operator": "mbdk",
+    "network": "mbdk",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "PJ01": {
+    "name": "Terminal Taman Medan ↺ LRT Taman Jaya",
+    "operator": "mbpj",
+    "network": "mbpj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "PJ02": {
+    "name": "LRT Taman Jaya ↺ PPUM via SS2 PJ",
+    "operator": "mbpj",
+    "network": "mbpj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "PJ03": {
+    "name": "LRT Taman Bahagia ↺ SS6 Kelana Park View",
+    "operator": "mbpj",
+    "network": "mbpj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "PJ04": {
+    "name": "LRT Taman Bahagia ↺ Kg Tunku via SS3",
+    "operator": "mbpj",
+    "network": "mbpj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "PJ05": {
+    "name": "Bandar Utama ↺ LRT Taman Bahagia",
+    "operator": "mbpj",
+    "network": "mbpj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "PJ06": {
+    "name": "Bandar Utama ↺ Damansara Damai",
+    "operator": "mbpj",
+    "network": "mbpj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "SA01": {
+    "name": "KTM Seksyen 19 ↺ Seksyen 7",
+    "operator": "mbsa",
+    "network": "mbsa",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "SA02": {
+    "name": "Hentian Bandar Seksyen 14 ↺ KTM Batu 3",
+    "operator": "mbsa",
+    "network": "mbsa",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "SA05": {
+    "name": "Stesen Bas Seksyen 13 ↺ SJKC Subang via Bukit Jelutong",
+    "operator": "mbsa",
+    "network": "mbsa",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "SA07": {
+    "name": "KTM Batu 3 ↺ Seksyen 20 via HICOM",
+    "operator": "mbsa",
+    "network": "mbsa",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "SA08": {
+    "name": "LRT Alam Megah ↺ Kota Kemuning",
+    "operator": "mbsa",
+    "network": "mbsa",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "SU13A": {
+    "name": "Setia City ↺ Komuniti U13",
+    "operator": "mbsa",
+    "network": "mbsa",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "SJ01": {
+    "name": "BRT USJ 7 ↺ LRT Subang Jaya",
+    "operator": "mbsj",
+    "network": "mbsj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "SJ02": {
+    "name": "LRT Pusat Bandar Puchong ↺ LRT SS18",
+    "operator": "mbsj",
+    "network": "mbsj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "SJ03": {
+    "name": "SMK Bandar Puchong Jaya ↺ LRT Kinrara BK5",
+    "operator": "mbsj",
+    "network": "mbsj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "SJ04": {
+    "name": "KTM Serdang ↺ Hospital Serdang",
+    "operator": "mbsj",
+    "network": "mbsj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "SJ05": {
+    "name": "Putra Permai ↺ Taman Serdang Jaya",
+    "operator": "mbsj",
+    "network": "mbsj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "MPS4": {
+    "name": "Wangsa Permai ↺ Bandar Baru Selayang",
+    "operator": "rapid_bus",
+    "network": "merdeka_shuttle",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "MS01": {
+    "name": "MRT Putrajaya Sentral ↺ Dataran Putrajaya",
+    "operator": "rapid_bus",
+    "network": "merdeka_shuttle",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "MS02": {
+    "name": "MRT Putrajaya Sentral ↺ Kompleks Nasyrul Quran",
+    "operator": "rapid_bus",
+    "network": "merdeka_shuttle",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "MS03": {
+    "name": "MRT Putrajaya Sentral ↺ Marina Putrajaya",
+    "operator": "rapid_bus",
+    "network": "merdeka_shuttle",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "AJ01": {
+    "name": "Ukay Perdana ↺ Taman Melawati via Sg. Sering",
+    "operator": "mpaj",
+    "network": "mpaj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "AJ03": {
+    "name": "LRT Cempaka ↺ Bukit Teratai",
+    "operator": "mpaj",
+    "network": "mpaj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "AJ04": {
+    "name": "Pandan Perdana ↺ Hospital Ampang",
+    "operator": "mpaj",
+    "network": "mpaj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "AJ2A": {
+    "name": "Sri Nilam ↺ Taman Cahaya",
+    "operator": "mpaj",
+    "network": "mpaj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "AJ2B": {
+    "name": "Sri Nilam ↺ AEON Big Ampang",
+    "operator": "mpaj",
+    "network": "mpaj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "KJ01": {
+    "name": "Hentian Kajang ↺ Bandar Kajang via Seksyen 7 Bangi",
+    "operator": "mpkj",
+    "network": "mpkj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "KJ02": {
+    "name": "KTM Bangi ↺ Bandar Bukit Mahkota",
+    "operator": "mpkj",
+    "network": "mpkj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "KJ03": {
+    "name": "MRT Bandar Tun Hussein Onn ↺ Taman Tun Perak",
+    "operator": "mpkj",
+    "network": "mpkj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "KJ04": {
+    "name": "Hentian Kajang ↺ Bandar Baru Bangi",
+    "operator": "mpkj",
+    "network": "mpkj",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "BTG1": {
+    "name": "Hentian Banting ↺ Mitsui Outlet, KLIA 2",
+    "operator": "mpkl",
+    "network": "mpkl",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "BTG2": {
+    "name": "Hentian Banting ↺ Bandar Baru Banting",
+    "operator": "mpkl",
+    "network": "mpkl",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "MPS1": {
+    "name": "Selayang Mutiara ↺ LRT Gombak",
+    "operator": "mps",
+    "network": "mps",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "MPS2": {
+    "name": "Lotus Rawang ↺ Rawang Perdana",
+    "operator": "mps",
+    "network": "mps",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "MPS2A": {
+    "name": "Lotus Rawang ↺ Rawang Perdana",
+    "operator": "mps",
+    "network": "mps",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "MPS3": {
+    "name": "Batu Arang ↺ MRT Sungai Buloh",
+    "operator": "mps",
+    "network": "mps",
+    "route_type": 3,
+    "color": "#004ea2",
+    "text_color": "#ffffff"
+  },
+  "T100": {
+    "name": "MRT Sungai Buloh ↺ Masjid Hospital Sungai Buloh",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T101": {
+    "name": "MRT Sungai Buloh ↺ Bukit Rahman Putra",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T102": {
+    "name": "MRT Sungai Buloh ↺ Aman Putri",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T103": {
+    "name": "MRT Damansara Damai ↺ Sutera Damansara",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T104": {
+    "name": "MRT Kampung Selamat ↺ Kampung Baru Sg Buloh",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T105": {
+    "name": "MRT Sungai Buloh ↺ Taman Impian Indah",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T106": {
+    "name": "MRT Sri Damansara Barat ↺ Bandar Sri Damansara",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T107": {
+    "name": "MRT Sri Damansara Sentral ↺ Taman Wangsa Permai",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T108": {
+    "name": "MRT Sri Damansara Sentral ↺ Bandar Menjalara",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T109": {
+    "name": "MRT Sri Damansara Sentral ↺ Desa Parkcity",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T110": {
+    "name": "MRT Sri Damansara Timur ↺ Tmn Desa Jaya/Desa Aman Puri",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T111": {
+    "name": "MRT Sri Damansara Timur ↺ Taman Ehsan/Kepong Ulu",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T112": {
+    "name": "MRT Metro Prima ↺ Taman Kepong",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T113": {
+    "name": "MRT Metro Prima ↺ Kepong Entrepreneurs Park",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T114": {
+    "name": "MRT Metro Prima ↺ Bandar Baru Selayang",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T115": {
+    "name": "MRT Kepong Baru ↺ Taman Sri Sinar",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T117": {
+    "name": "MRT Jinjang ↺ Taman Sri Segambut",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T118": {
+    "name": "MRT Sri Delima ↺ Taman Kok Doh",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T119": {
+    "name": "MRT Kentonmen ↺ Perindustrian Taman Segambut",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T121": {
+    "name": "MRT Sri Delima ↺ Taman Wahyu",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T152": {
+    "name": "MRT Metro Prima ↺ Pusat Bandar Selayang",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T154": {
+    "name": "MRT Sungai Buloh ↺ Kuang",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T155": {
+    "name": "Pinewood Court ↺ MRT Sungai Buloh",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T180": {
+    "name": "MRT Sentul Barat ↺ Bandar Baru Sentul/Taman Dato Senu",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T305": {
+    "name": "MRT Taman Midah Pintu B ↺ Sri Nilam",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T352": {
+    "name": "MRT Cochrane ↺ Taman Shamelin",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T400": {
+    "name": "MRT Cochrane ↺ Bandar Tun Razak",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T401": {
+    "name": "MRT Cochrane ↺ Bandar Sri Permaisuri",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T402": {
+    "name": "MRT Taman Midah Pintu A ↺ LRT Salak Selatan",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T407": {
+    "name": "MRT Tun Razak Exchange ↺ Taman Maluri / Desa Pandan",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T408": {
+    "name": "MRT Taman Mutiara ↺ Taman Segar Perdana",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T409": {
+    "name": "MRT Taman Mutiara ↺ Taman Supreme / Ketumbar Hill",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T410": {
+    "name": "MRT Taman Connaught ↺ Bandar Tasik Selatan",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T411": {
+    "name": "MRT Taman Connaught ↺ Taman Cheras Awana",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T412": {
+    "name": "MRT Taman Connaught ↺ Alam Damai",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T413": {
+    "name": "MRT Taman Suntex ↺ Taman Kemacahaya",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T414": {
+    "name": "MRT Sri Raya ↺ Taman Tun Perak / Taman Megah",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T415": {
+    "name": "MRT Bandar Tun Hussein Onn Pintu B ↺ Mahkota Cheras",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T416": {
+    "name": "MRT Batu Sebelas Cheras ↺ Taman Cheras Jaya",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T417": {
+    "name": "MRT Batu 11 Cheras ↺ Taman Karunmas",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T418": {
+    "name": "MRT Chan Sow Lin ↺ Kenanga Mall",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T419": {
+    "name": "MRT Chan Sow Lin ↺ Razak Mansion",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T451": {
+    "name": "MRT Stadium Kajang Pintu A ↺ UKM Bangi",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T453": {
+    "name": "MRT Bukit Dukung ↺ Bandar Sg. Long",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T454": {
+    "name": "MRT Bukit Dukung ↺ Kg. Sg. Sekamat",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T455": {
+    "name": "MRT Bukit Dukung ↺ Taman Sutera Cheras",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T456": {
+    "name": "MRT Sungai Jernih Pintu B ↺ Saujana Impian",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T457": {
+    "name": "MRT Stadium Kajang Pintu A ↺ Prima Saujana",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T458": {
+    "name": "MRT Stadium Kajang Pintu A ↺ Taman Indah",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T459": {
+    "name": "MRT Stadium Kajang ↺ Taman Jasmin",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T460": {
+    "name": "MRT Stadium Kajang ↺ Bandar Teknologi",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T461": {
+    "name": "MRT Kajang Pintu A ↺ Taman Kajang Utama",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T462": {
+    "name": "MRT Kajang Pintu A ↺ Seksyen 8 Bangi",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T463": {
+    "name": "MRT Kajang Pintu A ↺ Bangi Seksyen 4",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T464": {
+    "name": "MRT Stadium Kajang ↺ Teras Jernang",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T465": {
+    "name": "MRT Stadium Kajang ↺ Jade Hills",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T504": {
+    "name": "MRT Cyberjaya Utara ↺ Cyber 11",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T505": {
+    "name": "MRT Cyberjaya Utara ↺ Taman Pinggiran Cyber",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T506": {
+    "name": "MRT Cyberjaya City Centre ↺ Cyber 10",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T507": {
+    "name": "MRT Cyberjaya City Centre ↺ Cyberjaya Transport Terminal",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T508": {
+    "name": "MRT Putrajaya Sentral ↺ Presint 10",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T509": {
+    "name": "MRT Putrajaya Sentral ↺ Presint 16/Alamanda",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T510": {
+    "name": "MRT Putrajaya Sentral ↺ Ayer 8",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T511": {
+    "name": "MRT Putrajaya Sentral ↺ Presint 4",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T512": {
+    "name": "MRT Putrajaya Sentral ↺ Presint 11",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T542": {
+    "name": "MRT Taman Equine ↺ Taman Pinggiran Putra",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T543": {
+    "name": "MRT Taman Equine ↺ Taman Puncak Jalil/PUJ 9",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T544": {
+    "name": "MRT Putra Permai ↺ Taman Lestari Putra",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T545": {
+    "name": "MRT Putra Permai ↺ LRT Puchong Perdana Via Terminal Puchong Utama",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T559": {
+    "name": "MRT Sungai Besi ↺ Kampung Malaysia Tambahan",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T560": {
+    "name": "MRT Sungai Besi ↺ Bandar Tasik Selatan",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T561": {
+    "name": "MRT Serdang Raya Utara ↺ The Park Bukit Serdang",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T562": {
+    "name": "MRT Serdang Raya Utara ↺ Serdang Perdana",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T563": {
+    "name": "MRT Serdang Raya Utara ↺ Bukit Jalil & TPM",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T564": {
+    "name": "MRT Serdang Raya Selatan ↺ Kampung Baru Seri Kembangan",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T565": {
+    "name": "MRT Serdang Jaya ↺ The Mines",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T566": {
+    "name": "MRT UPM ↺ Taman Bukit Serdang / Universiti Indah",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T567": {
+    "name": "MRT UPM ↺ Taman Sri Serdang / Fakulti Kejuruteraan",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T568": {
+    "name": "MRT UPM ↺ Fakulti Pertanian UPM",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T569": {
+    "name": "MRT Serdang Jaya ↺ MRT Batu 11 Cheras",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T585": {
+    "name": "MRT Kuchai ↺ Taman Desa",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T586": {
+    "name": "MRT Kuchai ↺ Taman Oversea Union",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T587": {
+    "name": "MRT Kuchai ↺ Desa Petaling",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T588": {
+    "name": "MRT Kuchai ↺ Jalan Klang Lama",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T589": {
+    "name": "MRT Taman Naga Emas ↺ Bandar Baru Sri Petaling / Salak South Garden",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T772": {
+    "name": "MRT Kwasa Sentral ↺ Bukit Subang",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T801": {
+    "name": "MRT Kwasa Sentral ↺ Seksyen 6. 7. 8. 9 Kota Damansara",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T802": {
+    "name": "MRT Kwasa Sentral ↺ Subang Bestari",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T803": {
+    "name": "MRT Kwasa Sentral ↺ Subang Suria",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T804": {
+    "name": "MRT Kwasa Sentral ↺ Subang Perdana",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T805": {
+    "name": "MRT Kota Damansara ↺ Seksyen 4 & 5",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T807": {
+    "name": "MRT Surian ↺ Ara Damansara",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T808": {
+    "name": "MRT Surian ↺ Sek 11 Kota Damansara",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T809": {
+    "name": "MRT Mutiara Damansara ↺ Damansara Perdana",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T810": {
+    "name": "MRT Mutiara Damansara ↺ Bukit Lanjan",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T811": {
+    "name": "MRT Bandar Utama ↺ Mutiara Tropicana",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T812": {
+    "name": "MRT Bandar Utama ↺ Kampung Sungai Penchala",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T813": {
+    "name": "MRT Taman Tun Dr Ismail ↺ SS22",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T814": {
+    "name": "MRT TTDI ↺ TTDI",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T815": {
+    "name": "MRT Phileo Damansara ↺ Universiti Malaya",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T816": {
+    "name": "MRT Phileo Damansara ↺ SS2",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T817": {
+    "name": "MRT Pusat Bandar Damansara ↺ Midvalley",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T818": {
+    "name": "Desa Sri Hartamas ↺ MRT Semantan",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T819": {
+    "name": "MRT Semantan ↺ Stesen KL Sentral Via KTM Segambut",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T820": {
+    "name": "MRT Semantan ↺ Menara DBKL 2",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T821": {
+    "name": "MRT Semantan ↺ Kompleks Mahkamah Jalan Duta",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "T852": {
+    "name": "MRT Semantan ↺ Mont Kiara",
+    "operator": "rapid_bus",
+    "network": "mrt_feeder",
+    "route_type": 3,
+    "color": "#3b7534",
+    "text_color": "#ffffff"
+  },
+  "MENARA PRASARANA": {
+    "name": "LRT Lembah Subang ↺ Menara Prasarana",
+    "operator": "rapid_bus",
+    "network": "shuttle",
+    "route_type": 3,
+    "color": "#666666",
+    "text_color": "#ffffff"
+  },
+  "T120": {
+    "name": "Kompleks Sungai Mas ↺ Taman Mastiara",
+    "operator": "rapid_bus",
+    "network": "tempatan",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T300": {
+    "name": "Bukit Indah ↺ Ampang Point via Jalan Rasmi",
+    "operator": "rapid_bus",
+    "network": "tempatan",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T301": {
+    "name": "Taman Mulia Jaya ↺ Ampang Point via Jalan Merdeka",
+    "operator": "rapid_bus",
+    "network": "tempatan",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T302": {
+    "name": "Lembah Jaya Utara ↺ Ampang Point",
+    "operator": "rapid_bus",
+    "network": "tempatan",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T304": {
+    "name": "Bukit Indah ↺ Ampang Point via Jalan Ampang",
+    "operator": "rapid_bus",
+    "network": "tempatan",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T406": {
+    "name": "Cheras Batu 10 ↺ Pangsun",
+    "operator": "rapid_bus",
+    "network": "tempatan",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T406B": {
+    "name": "Cheras Batu 10 ↺ Sungai Lui",
+    "operator": "rapid_bus",
+    "network": "tempatan",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T450": {
+    "name": "Beranang ↺ MRT Stadium Kajang",
+    "operator": "rapid_bus",
+    "network": "tempatan",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T571": {
+    "name": "KTM Serdang ↺ Taman Sri Pulai",
+    "operator": "rapid_bus",
+    "network": "tempatan",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T602": {
+    "name": "Puchong Utama ↺ Taman Saujana Puchong",
+    "operator": "rapid_bus",
+    "network": "tempatan",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T715": {
+    "name": "UiTM Puncak Alam ⇌ Bandar Puncak Alam",
+    "operator": "rapid_bus",
+    "network": "tempatan",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T753": {
+    "name": "Hentian Bandar Shah Alam ↺ Sekysen 11, 9, 8, 6, 5",
+    "operator": "rapid_bus",
+    "network": "tempatan",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T754": {
+    "name": "Hentian Bandar Shah Alam ↺ Terminal Seksyen 17",
+    "operator": "rapid_bus",
+    "network": "tempatan",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T756": {
+    "name": "Kemuning Business Park ↺ Hentian Bandar via Taman Muda",
+    "operator": "rapid_bus",
+    "network": "tempatan",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "T851": {
+    "name": "KL Sentral ↺ Parlimen",
+    "operator": "rapid_bus",
+    "network": "tempatan",
+    "route_type": 3,
+    "color": "#dc241f",
+    "text_color": "#ffffff"
+  },
+  "PTPM": {
+    "name": "Pavilion Bukit Jalil ↺ KLSC",
+    "operator": "unknown",
+    "network": "unknown",
+    "route_type": 3,
+    "color": "#666666",
+    "text_color": "#ffffff"
+  },
+  "P101": {
+    "name": "Pavilion Bukit Jalil ↺ KLSC",
+    "operator": "nadiputra",
+    "network": "nadiputra",
+    "route_type": 3,
+    "color": "#00a650",
+    "text_color": "#ffffff"
+  },
+  "P102": {
+    "name": "Presint 11 ↺ Kompleks E",
+    "operator": "nadiputra",
+    "network": "nadiputra",
+    "route_type": 3,
+    "color": "#00a650",
+    "text_color": "#ffffff"
+  },
+  "P104": {
+    "name": "Dataran Gemilang ↺ Kompleks ABCDE",
+    "operator": "nadiputra",
+    "network": "nadiputra",
+    "route_type": 3,
+    "color": "#00a650",
+    "text_color": "#ffffff"
+  },
+  "P108": {
+    "name": "Terminal Putrajaya Sentral ↺ Kompleks ABCDE",
+    "operator": "nadiputra",
+    "network": "nadiputra",
+    "route_type": 3,
+    "color": "#00a650",
+    "text_color": "#ffffff"
+  },
+  "P103": {
+    "name": "Presint 14 via Alamanda ↺ Kompleks E",
+    "operator": "nadiputra",
+    "network": "nadiputra",
+    "route_type": 3,
+    "color": "#00a650",
+    "text_color": "#ffffff"
+  },
+  "P105": {
+    "name": "Dataran Gemilang ↺ Kompleks ABCDE",
+    "operator": "nadiputra",
+    "network": "nadiputra",
+    "route_type": 3,
+    "color": "#00a650",
+    "text_color": "#ffffff"
+  },
+  "P106": {
+    "name": "Presint 4 ↺ Kompleks E",
+    "operator": "nadiputra",
+    "network": "nadiputra",
+    "route_type": 3,
+    "color": "#00a650",
+    "text_color": "#ffffff"
+  }
+}
