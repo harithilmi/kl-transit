@@ -343,23 +343,28 @@ export default function Home() {
   };
 
   const fitBoundsToRoute = (routeId: string) => {
-    const allCoords = services[routeId].map((service) => {
-      if (!shapes[service.shape_id]) return [];
+    const allCoords: [number, number][] = [];
+
+    services[routeId].forEach((service) => {
+      if (!shapes[service.shape_id]) return;
       const shapePolyline = shapes[service.shape_id];
-      if (!shapePolyline) return [];
-      return decodePolyline(shapePolyline);
+      if (!shapePolyline) return;
+      const coordinates = decodePolyline(shapePolyline);
+      allCoords.push(...coordinates);
     });
 
-    const bounds = new maplibregl.LngLatBounds();
-    allCoords.forEach((coord) => bounds.extend(coord));
-    map.current?.fitBounds(bounds, {
-      padding: {
-        top: 50,
-        bottom: 50,
-        left: 450,
-        right: 50,
-      },
-    });
+    if (allCoords.length > 0) {
+      const bounds = new maplibregl.LngLatBounds();
+      allCoords.forEach((coord) => bounds.extend(coord));
+      map.current?.fitBounds(bounds, {
+        padding: {
+          top: 50,
+          bottom: 50,
+          left: 450,
+          right: 50,
+        },
+      });
+    }
   };
 
   const previewRoute = (routeId: string | null) => {
@@ -418,7 +423,7 @@ export default function Home() {
 
   // Add stops to map
   const addStopsToMap = () => {
-    console.log("addStopsToMap called");
+    // console.log("addStopsToMap called");
 
     if (!map.current || !Object.keys(stops).length) {
       console.log("Skipping addStopsToMap: map or stops not ready", {
@@ -689,7 +694,7 @@ export default function Home() {
         checkStyle();
       }
     }
-  }, [stops]);
+  }, [stops, addStopsToMap]);
 
   // Handle search
   const handleSearch = (query: string) => {
