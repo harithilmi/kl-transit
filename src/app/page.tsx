@@ -321,8 +321,9 @@ export default function Home() {
   // Handle route selection
   const handleRouteSelect = (routeId: string) => {
     if (selectedRoute === routeId) {
-      // Hide current route
+      // Hide current route and show all stops
       toggleRouteVisibility(routeId, false);
+      hideRouteStops();
       setSelectedRoute(null);
       return;
     }
@@ -339,7 +340,12 @@ export default function Home() {
 
     toggleRouteVisibility(routeId, true);
     setSelectedRoute(routeId);
-    fitBoundsToRoute(routeId);
+
+    // Show route stops after setting selected route
+    setTimeout(() => {
+      showRouteStops(routeId);
+      fitBoundsToRoute(routeId);
+    }, 100);
   };
 
   const fitBoundsToRoute = (routeId: string) => {
@@ -626,6 +632,229 @@ export default function Home() {
     }
   };
 
+  // Add route-specific stops to map
+  const addRouteStopsToMap = () => {
+    if (!map.current || !map.current.isStyleLoaded()) {
+      return;
+    }
+
+    // Check if route-stops source already exists
+    if (!map.current.getSource("route-stops")) {
+      map.current.addSource("route-stops", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: [],
+        },
+      });
+
+      // Stops layer to be on top of route lines
+      map.current.addLayer({
+        id: "route-stops",
+        type: "circle",
+        source: "route-stops",
+        layout: {
+          visibility: "none", // Initially hidden
+        },
+        paint: {
+          "circle-radius": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            10,
+            1,
+            12,
+            2,
+            14,
+            3,
+            16,
+            4,
+          ],
+          "circle-color": ["step", ["zoom"], "#dc241f", 12, "#fff"],
+          "circle-stroke-color": ["step", ["zoom"], "#dc241f", 12, "#dc241f"],
+          "circle-stroke-width": ["step", ["zoom"], 0, 12, 1.5, 14, 2, 16, 2.5],
+          "circle-opacity": 0.9,
+          "circle-stroke-opacity": ["step", ["zoom"], 0, 12, 1],
+        },
+      });
+
+      map.current.addLayer({
+        id: "route-stops-label",
+        type: "symbol",
+        source: "route-stops",
+        minzoom: 17,
+        layout: {
+          "text-field": [
+            "format",
+            ["get", "code"],
+            { "font-scale": 1 },
+            "\n",
+            {},
+            ["get", "name"],
+            { "font-scale": 1.2 },
+          ],
+          "text-size": 12,
+          "text-offset": [1.5, 0],
+          "text-anchor": "left",
+          "text-max-width": 10,
+          "text-justify": "left",
+        },
+        paint: {
+          "text-color": "#f01b48",
+          "text-halo-color": "#fff",
+          "text-halo-width": 1,
+        },
+      });
+
+      // Add same hover and click handlers as main stops
+      map.current.on("mouseenter", "route-stops", (e) => {
+        const currentZoom = map.current!.getZoom();
+        if (currentZoom >= 17) return;
+
+        map.current!.getCanvas().style.cursor = "pointer";
+
+        if (e.features && e.features[0]) {
+          const feature = e.features[0];
+          const stopName = feature.properties?.name || "Unknown Stop";
+          const stopCode = feature.properties?.code || "";
+
+          new maplibregl.Popup({
+            closeButton: false,
+            closeOnClick: false,
+            className: "stop-tooltip hover-tooltip",
+          })
+            .setLngLat(e.lngLat)
+            .setHTML(
+              `${
+                stopCode ? `<span class="stop-code">${stopCode}</span>` : ""
+              }<span class="stop-name">${stopName}</span>`
+            )
+            .addTo(map.current!);
+        }
+      });
+
+      map.current.on("mouseleave", "route-stops", () => {
+        map.current!.getCanvas().style.cursor = "";
+        document
+          .querySelectorAll(".hover-tooltip")
+          .forEach((popup) => popup.remove());
+      });
+
+      map.current.on("click", "route-stops", (e) => {
+        console.log("Route stop clicked:", e.lngLat);
+        e.originalEvent.stopPropagation();
+        map.current!.flyTo({
+          center: e.lngLat,
+          zoom: 17,
+          padding: {
+            top: 50,
+            bottom: 50,
+            left: 450,
+            right: 50,
+          },
+        });
+      });
+    }
+  };
+
+  // Show route-specific stops
+  const showRouteStops = (routeId: string) => {
+    if (!map.current || !services[routeId] || !stops) return;
+
+    // Get all stop IDs from all directions of this route
+    const allStopIds: number[] = [];
+    services[routeId].forEach((service) => {
+      allStopIds.push(...service.stops);
+    });
+
+    // Remove duplicates
+    const uniqueStopIds = allStopIds.filter(
+      (stopId, pos, arr) => arr.indexOf(stopId) === pos
+    );
+
+    // Filter stops data to only include route stops
+    const routeStopsFeatures = uniqueStopIds
+      .filter((stopId) => stops[stopId.toString()])
+      .map((stopId) => {
+        const stop = stops[stopId.toString()];
+        return {
+          type: "Feature" as const,
+          id: stopId.toString(),
+          properties: {
+            name: stop.name || "",
+            code: stop.code || "",
+            street_name: stop.street_name || "",
+          },
+          geometry: {
+            type: "Point" as const,
+            coordinates: stop.coordinates,
+          },
+        };
+      });
+
+    // Ensure route-stops layer exists
+    addRouteStopsToMap();
+
+    // Update route-stops source with filtered data
+    if (map.current.getSource("route-stops")) {
+      (
+        map.current.getSource("route-stops") as maplibregl.GeoJSONSource
+      ).setData({
+        type: "FeatureCollection",
+        features: routeStopsFeatures,
+      });
+    }
+
+    // Hide main stops, show route stops
+    if (map.current.getLayer("stops")) {
+      map.current.setLayoutProperty("stops", "visibility", "none");
+    }
+    if (map.current.getLayer("stops-label")) {
+      map.current.setLayoutProperty("stops-label", "visibility", "none");
+    }
+    if (map.current.getLayer("route-stops")) {
+      map.current.setLayoutProperty("route-stops", "visibility", "visible");
+    }
+    if (map.current.getLayer("route-stops-label")) {
+      map.current.setLayoutProperty(
+        "route-stops-label",
+        "visibility",
+        "visible"
+      );
+    }
+
+    // Move route stops layers to top to ensure they're above route lines
+    try {
+      if (map.current.getLayer("route-stops")) {
+        map.current.moveLayer("route-stops");
+      }
+      if (map.current.getLayer("route-stops-label")) {
+        map.current.moveLayer("route-stops-label");
+      }
+    } catch (error) {
+      console.log("Layer reordering error (non-critical):", error);
+    }
+  };
+
+  // Hide route-specific stops and show all stops
+  const hideRouteStops = () => {
+    if (!map.current) return;
+
+    // Show main stops, hide route stops
+    if (map.current.getLayer("stops")) {
+      map.current.setLayoutProperty("stops", "visibility", "visible");
+    }
+    if (map.current.getLayer("stops-label")) {
+      map.current.setLayoutProperty("stops-label", "visibility", "visible");
+    }
+    if (map.current.getLayer("route-stops")) {
+      map.current.setLayoutProperty("route-stops", "visibility", "none");
+    }
+    if (map.current.getLayer("route-stops-label")) {
+      map.current.setLayoutProperty("route-stops-label", "visibility", "none");
+    }
+  };
+
   // Initialize map
   useEffect(() => {
     if (map.current || !mapContainer.current) return;
@@ -638,17 +867,20 @@ export default function Home() {
         style:
           "https://api.maptiler.com/maps/basic-v2/style.json?key=Ob6oqyzoBDkIaOhNs9Ew",
         center: [101.6869, 3.139], // Kuala Lumpur center
-        zoom: 12,
+        zoom: 10,
         maxZoom: 18,
         minZoom: 8,
       });
 
+      // After map loads, adjust for sidebar
       map.current.on("load", () => {
-        console.log("Map loaded successfully");
-      });
-
-      map.current.on("styledata", () => {
-        console.log("Map style loaded");
+        const sidebarPixelWidth = Math.min(window.innerWidth * 0.3, 400);
+        const offsetPixels = sidebarPixelWidth / 2;
+        map.current?.easeTo({
+          center: [101.6869, 3.139],
+          offset: [offsetPixels, 0],
+          duration: 0,
+        });
       });
 
       map.current.on("error", (e) => {
@@ -657,6 +889,13 @@ export default function Home() {
 
       // Add navigation control
       map.current.addControl(new maplibregl.NavigationControl(), "top-right");
+
+      // Initialize route-stops layers immediately after map load
+      map.current.on("styledata", () => {
+        if (!map.current?.getSource("route-stops")) {
+          addRouteStopsToMap();
+        }
+      });
 
       map.current.touchPitch.disable();
     } catch (error) {
@@ -694,7 +933,7 @@ export default function Home() {
         checkStyle();
       }
     }
-  }, [stops, addStopsToMap]);
+  }, [stops]);
 
   // Handle search
   const handleSearch = (query: string) => {
