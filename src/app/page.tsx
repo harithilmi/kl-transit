@@ -47,6 +47,52 @@ export default function Home() {
   } | null>(null);
   const [dragOffset, setDragOffset] = useState(0);
   const previewTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [selectedService, setSelectedService] = useState<Service | null>(null);
+  const resultsListRef = useRef<HTMLDivElement | null>(null);
+  const [savedScrollPosition, setSavedScrollPosition] = useState(0);
+
+  // Zoom level constants
+  const TOOLTIP_MIN_ZOOM = 14; // Show tooltips below this level (was 15)
+  const LABEL_MIN_ZOOM = 14; // Show labels at this level and above (was 15)
+  const FLYTO_ZOOM = 17; // Zoom level when flying to stops
+  
+  // Route color constant
+  const ROUTE_COLOR = "#dc241f";
+
+  // Function to close route info (reusable for X button and Escape key)
+  const closeRouteInfo = () => {
+    if (selectedRoute) {
+      toggleRouteVisibility(selectedRoute, false);
+      hideRouteStops();
+      setSelectedRoute(null);
+      setSelectedService(null);
+      
+      // Restore scroll position after React re-renders
+      setTimeout(() => {
+        if (resultsListRef.current) {
+          resultsListRef.current.scrollTop = savedScrollPosition;
+        }
+      }, 0);
+    }
+  };
+
+  // Reusable flyTo function for stops
+  const flyToStop = (coordinates: [number, number]) => {
+    if (!map.current) return;
+
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    // Desktop sidebar: 350px width + 10px left margin + 10px internal padding = 370px total
+    const sidebarWidth = 370;
+    const padding = isMobile
+      ? { top: 50, bottom: 120, left: 50, right: 50 }
+      : { top: 50, bottom: 50, left: sidebarWidth + 50, right: 50 };
+
+    map.current.flyTo({
+      center: coordinates,
+      zoom: FLYTO_ZOOM,
+      padding,
+    });
+  };
 
   // Touch/drag handlers for mobile drawer
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -99,30 +145,6 @@ export default function Home() {
     setDragOffset(0);
   };
 
-  // Helper functions for color manipulation
-  const lightenColor = (color: string, percent: number): string => {
-    const hex = color.replace("#", "");
-    const r = parseInt(hex.substr(0, 2), 16);
-    const g = parseInt(hex.substr(2, 2), 16);
-    const b = parseInt(hex.substr(4, 2), 16);
-
-    const lighten = (val: number) =>
-      Math.min(255, Math.floor(val + (255 - val) * (percent / 100)));
-
-    return `rgb(${lighten(r)}, ${lighten(g)}, ${lighten(b)})`;
-  };
-
-  const darkenColor = (color: string, percent: number): string => {
-    const hex = color.replace("#", "");
-    const r = parseInt(hex.substr(0, 2), 16);
-    const g = parseInt(hex.substr(2, 2), 16);
-    const b = parseInt(hex.substr(4, 2), 16);
-
-    const darken = (val: number) =>
-      Math.max(0, Math.floor(val * (1 - percent / 100)));
-
-    return `rgb(${darken(r)}, ${darken(g)}, ${darken(b)})`;
-  };
 
   // Decode polyline string to coordinates
   const decodePolyline = (str: string): [number, number][] => {
@@ -201,7 +223,7 @@ export default function Home() {
           data: {
             type: "Feature",
             properties: {
-              color: routes[routeId]?.color || "#dc241f",
+              color: ROUTE_COLOR,
               direction: service.direction,
               routeId: routeId,
             },
@@ -240,7 +262,7 @@ export default function Home() {
         });
 
         // Add main route layer with gradient
-        const baseColor = routes[routeId]?.color || "#dc241f";
+        const baseColor = ROUTE_COLOR;
         map.current?.addLayer({
           id: routeMainId,
           type: "line",
@@ -258,11 +280,11 @@ export default function Home() {
               0,
               baseColor,
               0.3,
-              lightenColor(baseColor, 30),
+              "#ef7875",
               0.7,
               baseColor,
               1,
-              darkenColor(baseColor, 20),
+              "#b01d1a",
             ],
             "line-width": [
               "interpolate",
@@ -309,7 +331,7 @@ export default function Home() {
             visibility: "none", // Hidden by default
           },
           paint: {
-            "text-color": routes[routeId]?.color || "#dc241f",
+            "text-color": ROUTE_COLOR,
             "text-opacity": 0.9,
             "text-halo-color": "#fff",
             "text-halo-width": 2,
@@ -321,7 +343,7 @@ export default function Home() {
     console.log("All routes pre-loaded successfully");
   };
 
-  const toggleRouteVisibility = (routeId: string, visible: boolean) => {
+  const toggleRouteVisibility = (routeId: string, visible: boolean, selectedServiceDirection?: number) => {
     if (!services[routeId]) return;
 
     services[routeId].forEach((service) => {
@@ -331,6 +353,9 @@ export default function Home() {
         `route-arrows-${service.shape_id}`,
       ];
 
+      const isSelectedService = selectedServiceDirection === service.direction;
+      const opacity = visible && selectedServiceDirection !== undefined && !isSelectedService ? 0.2 : 1;
+
       layerIds.forEach((layerId) => {
         if (map.current?.getLayer(layerId)) {
           map.current.setLayoutProperty(
@@ -338,6 +363,17 @@ export default function Home() {
             "visibility",
             visible ? "visible" : "none"
           );
+          
+          if (visible) {
+            // Set opacity based on selection
+            if (layerId.includes('background')) {
+              map.current.setPaintProperty(layerId, "line-opacity", opacity * 0.9);
+            } else if (layerId.includes('main')) {
+              map.current.setPaintProperty(layerId, "line-opacity", opacity * 0.8);
+            } else if (layerId.includes('arrows')) {
+              map.current.setPaintProperty(layerId, "text-opacity", opacity * 0.9);
+            }
+          }
         }
       });
     });
@@ -350,7 +386,20 @@ export default function Home() {
       toggleRouteVisibility(routeId, false);
       hideRouteStops();
       setSelectedRoute(null);
+      setSelectedService(null);
+      
+      // Restore scroll position after React re-renders
+      setTimeout(() => {
+        if (resultsListRef.current) {
+          resultsListRef.current.scrollTop = savedScrollPosition;
+        }
+      }, 0);
       return;
+    }
+
+    // Save current scroll position before showing route info
+    if (resultsListRef.current) {
+      setSavedScrollPosition(resultsListRef.current.scrollTop);
     }
 
     // Hide previous route if any
@@ -359,8 +408,12 @@ export default function Home() {
     }
 
     // Show new route (layers already exist from pre-loading)
-    toggleRouteVisibility(routeId, true);
+    const firstService = services[routeId]?.[0];
+    toggleRouteVisibility(routeId, true, firstService?.direction);
     setSelectedRoute(routeId);
+
+    // Default to first direction
+    setSelectedService(firstService || null);
 
     // Auto-close drawer on mobile when route is selected
     if (typeof window !== "undefined" && window.innerWidth < 768) {
@@ -368,7 +421,7 @@ export default function Home() {
     }
 
     // Show route stops and fit bounds
-    showRouteStops(routeId);
+    showRouteStops(routeId, firstService?.direction);
     fitBoundsToRoute(routeId);
   };
 
@@ -389,9 +442,10 @@ export default function Home() {
 
       // Responsive padding - different for mobile vs desktop
       const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+      const sidebarWidth = 370; // 350px width + 10px left margin + 10px internal padding
       const padding = isMobile
         ? { top: 50, bottom: 120, left: 50, right: 50 } // Mobile - bottom drawer offset
-        : { top: 50, bottom: 50, left: 450, right: 50 }; // Desktop - sidebar offset
+        : { top: 50, bottom: 50, left: sidebarWidth + 50, right: 50 }; // Desktop - sidebar offset
 
       map.current?.fitBounds(bounds, { padding });
     }
@@ -411,6 +465,7 @@ export default function Home() {
       }
 
       // Show new preview (layers already exist from pre-loading)
+      // Show all directions for preview
       toggleRouteVisibility(routeId, true);
       setPreviewedRoute(routeId);
     } else {
@@ -458,6 +513,21 @@ export default function Home() {
 
     loadData();
   }, []);
+
+  // Keyboard event handler for Escape key
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeRouteInfo();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedRoute]); // Re-run when selectedRoute changes
 
   // Pre-load all routes when data is ready
   useEffect(() => {
@@ -597,7 +667,7 @@ export default function Home() {
         id: "stops-label",
         type: "symbol",
         source: "stops",
-        minzoom: 15,
+        minzoom: LABEL_MIN_ZOOM,
         layout: {
           "text-field": [
             "format",
@@ -625,8 +695,8 @@ export default function Home() {
       map.current.on("mouseenter", "stops", (e) => {
         const currentZoom = map.current!.getZoom();
 
-        // Only show tooltip when labels aren't visible (zoom < 17)
-        if (currentZoom >= 15) return;
+        // Only show tooltip when labels aren't visible
+        if (currentZoom >= TOOLTIP_MIN_ZOOM) return;
 
         // Don't show hover tooltip if there's already a persistent one
         // if (persistentPopup) return;
@@ -664,23 +734,13 @@ export default function Home() {
 
       // Add click handler for persistent tooltip
       map.current.on("click", "stops", (e) => {
-        const isMobile =
-          typeof window !== "undefined" && window.innerWidth < 768;
-        const padding = isMobile
-          ? { top: 50, bottom: 120, left: 50, right: 50 }
-          : { top: 50, bottom: 50, left: 450, right: 50 };
-
-        map.current!.flyTo({
-          center: e.lngLat,
-          zoom: 17,
-          padding,
-        });
+        flyToStop([e.lngLat.lng, e.lngLat.lat]);
       });
 
       // Remove tooltips when zooming to high levels (when labels appear)
       map.current.on("zoom", () => {
         const currentZoom = map.current!.getZoom();
-        if (currentZoom >= 17) {
+        if (currentZoom >= LABEL_MIN_ZOOM) {
           document
             .querySelectorAll(".maplibregl-popup")
             .forEach((popup) => popup.remove());
@@ -743,7 +803,7 @@ export default function Home() {
         id: "route-stops-label",
         type: "symbol",
         source: "route-stops",
-        minzoom: 17,
+        minzoom: LABEL_MIN_ZOOM,
         layout: {
           "text-field": [
             "format",
@@ -769,10 +829,10 @@ export default function Home() {
 
       // Add same hover and click handlers as main stops
       map.current.on("mouseenter", "route-stops", (e) => {
-        const currentZoom = map.current!.getZoom();
-        if (currentZoom >= 17) return;
-
         map.current!.getCanvas().style.cursor = "pointer";
+        
+        const currentZoom = map.current!.getZoom();
+        if (currentZoom >= TOOLTIP_MIN_ZOOM) return;
 
         if (e.features && e.features[0]) {
           const feature = e.features[0];
@@ -804,30 +864,24 @@ export default function Home() {
       map.current.on("click", "route-stops", (e) => {
         console.log("Route stop clicked:", e.lngLat);
         e.originalEvent.stopPropagation();
-
-        const isMobile =
-          typeof window !== "undefined" && window.innerWidth < 768;
-        const padding = isMobile
-          ? { top: 50, bottom: 120, left: 50, right: 50 }
-          : { top: 50, bottom: 50, left: 450, right: 50 };
-
-        map.current!.flyTo({
-          center: e.lngLat,
-          zoom: 17,
-          padding,
-        });
+        flyToStop([e.lngLat.lng, e.lngLat.lat]);
       });
     }
   };
 
   // Show route-specific stops
-  const showRouteStops = (routeId: string) => {
+  const showRouteStops = (routeId: string, selectedServiceDirection?: number) => {
     if (!map.current || !services[routeId] || !stops) return;
 
     // Get all stop IDs from all directions of this route
     const allStopIds: number[] = [];
+    const selectedServiceStops = new Set<number>();
+    
     services[routeId].forEach((service) => {
       allStopIds.push(...service.stops);
+      if (selectedServiceDirection === service.direction) {
+        service.stops.forEach(stopId => selectedServiceStops.add(stopId));
+      }
     });
 
     // Remove duplicates
@@ -835,11 +889,13 @@ export default function Home() {
       (stopId, pos, arr) => arr.indexOf(stopId) === pos
     );
 
-    // Filter stops data to only include route stops
+    // Filter stops data to only include route stops with opacity based on selection
     const routeStopsFeatures = uniqueStopIds
       .filter((stopId) => stops[stopId.toString()])
       .map((stopId) => {
         const stop = stops[stopId.toString()];
+        const isSelectedServiceStop = selectedServiceStops.has(stopId);
+        
         return {
           type: "Feature" as const,
           id: stopId.toString(),
@@ -847,6 +903,7 @@ export default function Home() {
             name: stop.name || "",
             code: stop.code || "",
             street_name: stop.street_name || "",
+            isSelectedService: isSelectedServiceStop,
           },
           geometry: {
             type: "Point" as const,
@@ -866,6 +923,32 @@ export default function Home() {
         type: "FeatureCollection",
         features: routeStopsFeatures,
       });
+    }
+
+    // Update route-stops layer with conditional opacity
+    if (map.current.getLayer("route-stops")) {
+      map.current.setPaintProperty("route-stops", "circle-opacity", [
+        "case",
+        ["get", "isSelectedService"],
+        0.9, // Full opacity for selected service stops
+        0.2  // Low opacity for other stops
+      ]);
+      map.current.setPaintProperty("route-stops", "circle-stroke-opacity", [
+        "case",
+        ["get", "isSelectedService"],
+        1,   // Full opacity for selected service stops
+        0.2  // Low opacity for other stops
+      ]);
+    }
+
+    // Update route-stops-label layer with conditional opacity
+    if (map.current.getLayer("route-stops-label")) {
+      map.current.setPaintProperty("route-stops-label", "text-opacity", [
+        "case",
+        ["get", "isSelectedService"],
+        1,   // Full opacity for selected service stops
+        0.2  // Low opacity for other stops
+      ]);
     }
 
     // Hide main stops, show route stops
@@ -1007,7 +1090,9 @@ export default function Home() {
         onTouchEnd={handleTouchEnd}
         style={{
           transform:
-            typeof window !== 'undefined' && window.innerWidth < 768 && dragOffset !== 0
+            typeof window !== "undefined" &&
+            window.innerWidth < 768 &&
+            dragOffset !== 0
               ? `translateY(${
                   drawerOpen
                     ? Math.max(0, dragOffset) + "px"
@@ -1024,20 +1109,143 @@ export default function Home() {
           onTouchEnd={handleTouchEnd}
         />
 
-        <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Search routes, stops..."
-            value={searchQuery}
-            onChange={(e) => handleSearch(e.target.value)}
-            onFocus={() => setSearchActive(true)}
-            onBlur={() => setTimeout(() => setSearchActive(false), 150)}
-            className="search-input"
-          />
-        </div>
+        {!selectedRoute && (
+          <div className="search-bar">
+            <input
+              type="text"
+              placeholder="Search routes, stops..."
+              value={searchQuery}
+              onChange={(e) => handleSearch(e.target.value)}
+              onFocus={() => setSearchActive(true)}
+              onBlur={() => setTimeout(() => setSearchActive(false), 150)}
+              className="search-input"
+            />
+          </div>
+        )}
 
         <div className="search-results">
-          <div className="results-list" onMouseLeave={() => previewRoute(null)}>
+          {/* Route Info Header */}
+          {selectedRoute && (
+            <div style={{ marginBottom: "8px", marginTop: "8px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: "8px",
+                }}
+              >
+                <strong>Route {selectedRoute}</strong>
+                <button
+                  className="close-button"
+                  onClick={closeRouteInfo}
+                  title="Close route info (Esc)"
+                >
+                  ×
+                </button>
+              </div>
+
+              {/* Direction Selector */}
+              <div className="direction-selector">
+                {services[selectedRoute].map((service) => {
+                  const isLoop = services[selectedRoute].length === 1;
+                  const destination =
+                    service.headsign.split(" → ")[1] ||
+                    service.headsign.split(" - ")[1] ||
+                    service.headsign.split(" ↔ ")[1] ||
+                    service.headsign;
+                  const directionLabel = isLoop ? (
+                    <>
+                      Loop to
+                      <br />
+                      {destination}
+                    </>
+                  ) : (
+                    <>
+                      To <br />
+                      {destination}
+                    </>
+                  );
+
+                  return (
+                    <div
+                      key={service.direction}
+                      className={`direction-option ${
+                        selectedService?.direction === service.direction
+                          ? "selected"
+                          : ""
+                      }`}
+                      onClick={() => {
+                        setSelectedService(service);
+                        // Update route opacity to highlight selected service
+                        if (selectedRoute) {
+                          toggleRouteVisibility(selectedRoute, true, service.direction);
+                          showRouteStops(selectedRoute, service.direction);
+                        }
+                      }}
+                    >
+                      <div className="direction-label">{directionLabel}</div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {selectedService && (
+                <strong>Stops ({selectedService.stops.length}):</strong>
+              )}
+            </div>
+          )}
+
+          {/* Stops List */}
+          {selectedRoute && selectedService && (
+            <div className="results-list">
+              <ol
+                className="stops-timeline"
+                style={
+                  {
+                    "--line-start":
+                      selectedService.stops.length > 1 ? "50%" : "50%",
+                    "--line-end":
+                      selectedService.stops.length > 1 ? "50%" : "50%",
+                  } as React.CSSProperties
+                }
+              >
+                {selectedService.stops.map((stopId, index) => {
+                  const stop = stops[stopId.toString()];
+                  const isFirst = index === 0;
+                  const isLast = index === selectedService.stops.length - 1;
+
+                  return (
+                    <li
+                      key={stopId}
+                      className="stop-item"
+                      data-first={isFirst}
+                      data-last={isLast}
+                      onClick={() => {
+                        if (!stop) return;
+                        flyToStop(stop.coordinates);
+                      }}
+                    >
+                      {stop?.code && (
+                        <div className="stop-code">{stop.code}</div>
+                      )}
+                      <div className="stop-name">
+                        {stop?.name || `Stop ID: ${stopId}`}
+                      </div>
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
+          )}
+
+          {/* Route List */}
+          <div
+            ref={resultsListRef}
+            className="results-list"
+            onMouseLeave={() => previewRoute(null)}
+            style={{ display: selectedRoute ? "none" : "block" }}
+          >
             {filteredRoutes.map((routeId) => {
               const route = routes[routeId];
               if (!route) return null;
@@ -1047,7 +1255,7 @@ export default function Home() {
                   key={routeId}
                   className={`result-item ${
                     selectedRoute === routeId ? "selected" : ""
-                  }`}
+                  } select-none`}
                   onClick={() => handleRouteSelect(routeId)}
                   onMouseEnter={() => previewRoute(routeId)}
                   onMouseLeave={() => previewRoute(null)}
@@ -1055,8 +1263,8 @@ export default function Home() {
                   <div
                     className="route-badge"
                     style={{
-                      border: "2px solid " + (route.color || "#dc241f"),
-                      color: route.color || "#dc241f",
+                      border: "2px solid " + ROUTE_COLOR,
+                      color: ROUTE_COLOR,
                     }}
                   >
                     {routeId}
@@ -1070,9 +1278,6 @@ export default function Home() {
                           .replace(" ⇌ ", " <br>⇌ "),
                       }}
                     ></div>
-                    <div className="route-operator">
-                      {route.operator || "Unknown Operator"}
-                    </div>
                   </div>
                 </div>
               );
